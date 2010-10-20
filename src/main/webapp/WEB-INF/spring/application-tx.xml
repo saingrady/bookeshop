@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <!-- ========================== -->
+    <!--      Tx  configuration     -->
+    <!-- ========================== -->
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
+    <tx:advice id="bookTxAdvice">
+        <tx:attributes>
+            <tx:method name="checkoutBook" isolation="REPEATABLE_READ" propagation="REQUIRED" timeout="10000"/>
+            <tx:method name="*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true" timeout="10000"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <tx:advice id="categoryTxAdvice">
+        <tx:attributes>
+            <tx:method name="getCategories" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"
+                       timeout="10000"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <tx:advice id="customerTxAdvice">
+        <tx:attributes>
+            <tx:method name="createCustomer" isolation="REPEATABLE_READ" propagation="REQUIRED" timeout="10000"/>
+            <tx:method name="updateCustomer" isolation="REPEATABLE_READ" propagation="REQUIRED" timeout="10000"/>
+            <tx:method name="removeCustomer" isolation="REPEATABLE_READ" propagation="REQUIRED" timeout="10000"/>
+            <tx:method name="*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true" timeout="10000"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:advisor pointcut="execution(public * fr.mbh.bookeshop.business.impl.BookManagerImpl.*(..))"
+                     advice-ref="bookTxAdvice"/>
+        <aop:advisor pointcut="execution(public * fr.mbh.bookeshop.business.impl.CustomerManagerImpl.*(..))"
+                     advice-ref="customerTxAdvice"/>
+        <aop:advisor pointcut="execution(public * fr.mbh.bookeshop.business.impl.CategoryManagerImpl.getCategories())"
+                     advice-ref="categoryTxAdvice"/>
+    </aop:config>
+
+</beans>

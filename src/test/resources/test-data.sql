@@ -1,0 +1,33 @@
+INSERT INTO category VALUES (1, 'Java/JEE');
+INSERT INTO category VALUES (2, 'Web Development');
+INSERT INTO category VALUES (3, 'Unix/Linux');
+INSERT INTO category VALUES (4, 'Network Administration');
+INSERT INTO category VALUES (5, 'Database');
+INSERT INTO category VALUES (6, 'Windows');
+
+INSERT INTO book VALUES ('9781430216407', 'Pro Spring dm Server', 'Mahmoud Ben Hassine', 2010, 59.0, 100, 1);
+INSERT INTO book VALUES ('9781430218418', 'Expert Shell scripting', 'Foulen Ben Falten', 2009, 39.0, 50, 3);
+INSERT INTO book VALUES ('9781430218517', 'Cisco Routers', 'Foulen Ben Falten', 2009, 39.0, 50, 4);
+INSERT INTO book VALUES ('9781430218890', 'Linux commnad line', 'Foulen Ben Falten', 2009, 39.0, 50, 3);
+INSERT INTO book VALUES ('9781430219088', 'Pro Hyper-V', 'Foulen Ben Falten', 2009, 39.0, 50, 6);
+INSERT INTO book VALUES ('9781430224259', 'Silverlight 4 lab', 'Foulen Ben Falten', 2009, 39.0, 50, 2);
+INSERT INTO book VALUES ('9781430224693', 'Windows Azure', 'Foulen Ben Falten', 2009, 39.0, 50, 6);
+INSERT INTO book VALUES ('9781430224976', 'Spring Entreprise recipes', 'Foulen Ben Falten', 2009, 39.0, 50, 1);
+INSERT INTO book VALUES ('9781430225539', 'Java Google App Engine', 'Foulen Ben Falten', 2009, 39.0, 50, 1);
+INSERT INTO book VALUES ('9781430228028', 'Beginning Google Maps API 3', 'Foulen Ben Falten', 2009, 39.0, 50, 2);
+INSERT INTO book VALUES ('9781430228509', 'Beginning Hibernate', 'Foulen Ben Falten', 2009, 39.0, 50, 1);
+INSERT INTO book VALUES ('9781430228899', 'JavaEE6 with Glassfish', 'Foulen Ben Falten', 2009, 39.0, 50, 1);
+INSERT INTO book VALUES ('9781430232889', 'Pro CSS', 'Foulen Ben Falten', 2009, 39.0, 50, 2);
+INSERT INTO book VALUES ('9781430233213', 'Windows Power Shell', 'Foulen Ben Falten', 2009, 39.0, 50, 6);
+INSERT INTO book VALUES ('9781430268727', 'Java FX 2', 'Foulen Ben Falten', 2009, 39.0, 50, 1);
+INSERT INTO book VALUES ('9781430272151', 'Adobe Cold Fusion', 'Foulen Ben Falten', 2009, 39.0, 50, 2);
+INSERT INTO book VALUES ('9781590592779', 'Samba 3', 'Foulen Ben Falten', 2009, 39.0, 50, 4);
+INSERT INTO book VALUES ('9781590593578', 'WiMAx', 'Foulen Ben Falten', 2009, 39.0, 50, 4);
+INSERT INTO book VALUES ('9781590596746', 'Beginning Suse Linux', 'Foulen Ben Falten', 2009, 39.0, 50, 3);
+INSERT INTO book VALUES ('9781590597415', 'Expert MySql', 'Foulen Ben Falten', 2009, 39.0, 50, 5);
+INSERT INTO book VALUES ('9781590598276', 'Pro Oracle Application', 'Foulen Ben Falten', 2009, 39.0, 50, 5);
+INSERT INTO book VALUES ('9781590599686', 'Oracle Database 11g', 'Foulen Ben Falten', 2009, 39.0, 50, 5);
+
+INSERT INTO customer VALUES ('md.benhassine@gmail.com', 'Mahmoud', 'Ben Hassine', '11 Rue Jean pierre calloch', 'mahmoud');
+INSERT INTO customer VALUES ('chakroun_imen@yahoo.fr', 'Imen', 'Chakroun', '10 Rue de la mosquée Bir el bey Tunis 2055', 'imen');
+INSERT INTO customer VALUES ('amin.benhsin@gmail.com', 'Amin', 'Ben Hassine', '10 Rue sidi chiboub taourit Houmt Souk Djerba ', 'farid');
