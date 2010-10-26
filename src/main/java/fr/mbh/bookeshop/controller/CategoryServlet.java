@@ -54,23 +54,35 @@ public class CategoryServlet extends HttpServlet {
        ApplicationContext context =
                 WebApplicationContextUtils.getRequiredWebApplicationContext((getServletContext()));
 
-        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        String address;
+        int categoryId = 0;
+        try {
+            categoryId = Integer.parseInt(request.getParameter("categoryId"));
+            BookManager bookManager = (BookManager) context.getBean("bookManager");
+            CategoryManager categoryManager = (CategoryManager) context.getBean("categoryManager");
 
-        BookManager bookManager = (BookManager) context.getBean("bookManager");
-        CategoryManager categoryManager = (CategoryManager) context.getBean("categoryManager");
+            List<Book> categoryBooks = bookManager.getBooksByCategory(categoryId);
+            Category category = categoryManager.getCategoryById(categoryId);
 
-        List<Book> categoryBooks = bookManager.getBooksByCategory(categoryId);
-        Category category = categoryManager.getCategoryById(categoryId);
+            if (category != null){ //user may input nonexistent category ID manually in url
+                request.setAttribute("category", category.getName());
+                request.setAttribute("categoryBooks", categoryBooks);
+                address = "/WEB-INF/jsp/category.jsp"; 
+            }else{
+                request.setAttribute("error", "No such category with ID = " + categoryId);
+                address = "/WEB-INF/jsp/error.jsp";
+            }
+        } catch (NumberFormatException e) {  //user may input category ID manually in url
+            request.setAttribute("error", "No such category with ID = " + categoryId);
+            address = "/WEB-INF/jsp/error.jsp";
+        }
 
-        request.setAttribute("category", category.getName());
-        request.setAttribute("categoryBooks", categoryBooks);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/category.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
     } 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -102,7 +114,7 @@ public class CategoryServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Books by category Servlet";
+    }
 
 }
