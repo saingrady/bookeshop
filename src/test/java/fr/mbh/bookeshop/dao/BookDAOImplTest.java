@@ -38,14 +38,6 @@ import java.util.List;
 
 import static junit.framework.Assert.*;
 
-/**
- * Created by IntelliJ IDEA.
- * User: mahmoud
- * Date: Aug 10, 2010
- * Time: 7:31:43 AM
- * To change this template use File | Settings | File Templates.
- */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:test-context.xml"})
 public class BookDAOImplTest {
