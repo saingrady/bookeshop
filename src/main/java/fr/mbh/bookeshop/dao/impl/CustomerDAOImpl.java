@@ -21,22 +21,12 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package fr.mbh.bookeshop.dao.impl;
 
 import fr.mbh.bookeshop.dao.api.CustomerDAO;
 import fr.mbh.bookeshop.domain.Customer;
 import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
-/**
- *
- * @author Mahmoud
- */
 
 public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO{
 

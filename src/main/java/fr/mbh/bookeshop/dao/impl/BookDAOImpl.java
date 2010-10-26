@@ -21,11 +21,6 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package fr.mbh.bookeshop.dao.impl;
 
 import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
@@ -38,11 +33,6 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
-/**
- *
- * @author Mahmoud
- */
 
 public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 

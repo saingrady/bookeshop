@@ -30,13 +30,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by IntelliJ IDEA.
- * User: mahmoud
- * Date: Aug 4, 2010
- * Time: 10:54:50 PM
- * To change this template use File | Settings | File Templates.
- */
 public class UpdateServlet extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

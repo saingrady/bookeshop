@@ -21,10 +21,6 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.mbh.bookeshop.controller;
 
 import fr.mbh.bookeshop.business.api.BookManager;
@@ -44,10 +40,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-/**
- *
- * @author Mahmoud
- */
 public class CheckoutServlet extends HttpServlet {
 
     /** 

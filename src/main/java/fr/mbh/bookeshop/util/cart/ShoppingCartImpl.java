@@ -21,20 +21,11 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package fr.mbh.bookeshop.util.cart;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author Mahmoud
- */
 public class ShoppingCartImpl implements ShoppingCart {
 
     /*

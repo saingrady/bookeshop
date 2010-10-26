@@ -38,13 +38,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * Created by IntelliJ IDEA.
- * User: mahmoud
- * Date: Aug 4, 2010
- * Time: 10:53:17 PM
- * To change this template use File | Settings | File Templates.
- */
+
 public class CreateServlet extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.

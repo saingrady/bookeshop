@@ -21,20 +21,12 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package fr.mbh.bookeshop.dao.api;
 
 import fr.mbh.bookeshop.domain.Customer;
 import java.util.List;
 
-/**
- *
- * @author Mahmoud
- */
+
 public interface CustomerDAO {
 
     public Customer findByEmail(String email);

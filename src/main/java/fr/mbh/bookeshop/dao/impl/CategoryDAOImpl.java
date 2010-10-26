@@ -21,11 +21,6 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package fr.mbh.bookeshop.dao.impl;
 
 import fr.mbh.bookeshop.dao.api.CategoryDAO;
@@ -34,10 +29,6 @@ import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author Mahmoud
- */
 public class CategoryDAOImpl extends HibernateDaoSupport implements CategoryDAO {
 
 
