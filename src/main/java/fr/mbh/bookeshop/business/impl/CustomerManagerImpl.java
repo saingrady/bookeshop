@@ -24,7 +24,7 @@
 package fr.mbh.bookeshop.business.impl;
 
 import fr.mbh.bookeshop.business.api.CustomerManager;
-import fr.mbh.bookeshop.business.exception.CustomerExistantException;
+import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import fr.mbh.bookeshop.business.exception.LoginException;
 import fr.mbh.bookeshop.dao.api.CustomerDAO;
 import fr.mbh.bookeshop.domain.Customer;
@@ -46,12 +46,12 @@ public class CustomerManagerImpl implements CustomerManager {
         else throw new LoginException("Invalid login credentials : email='"+email+"'/password='"+password+"'");
     }
 
-    public Customer updateCustomer(Customer customer) throws CustomerExistantException{
+    public Customer updateCustomer(Customer customer) throws CustomerExistentException {
         try {
             customerDAO.update(customer);
             return customerDAO.findByEmail(customer.getEmail());
         } catch (Exception e) {
-            throw new CustomerExistantException();
+            throw new CustomerExistentException();
         }
     }
 
@@ -59,12 +59,12 @@ public class CustomerManagerImpl implements CustomerManager {
             customerDAO.delete(customer);
     }
 
-    public Customer createCustomer(Customer customer) throws CustomerExistantException {
+    public Customer createCustomer(Customer customer) throws CustomerExistentException {
         try {
             customerDAO.save(customer);
             return customerDAO.findByEmail(customer.getEmail());
         } catch (Exception e) {
-            throw new CustomerExistantException();
+            throw new CustomerExistentException();
         }
     }
 
