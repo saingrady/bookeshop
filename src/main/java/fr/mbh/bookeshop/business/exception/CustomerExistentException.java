@@ -24,5 +24,5 @@
 package fr.mbh.bookeshop.business.exception;
 
 
-public class CustomerExistantException extends Exception {
+public class CustomerExistentException extends Exception {
 }

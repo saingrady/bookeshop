@@ -24,8 +24,8 @@
 package fr.mbh.bookeshop.controller;
 
 import fr.mbh.bookeshop.business.api.CustomerManager;
+import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import fr.mbh.bookeshop.domain.Customer;
-import fr.mbh.bookeshop.business.exception.CustomerExistantException;
 import fr.mbh.bookeshop.util.cart.ShoppingCartImpl;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -75,7 +75,7 @@ public class CreateAccountServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("loggedCustomer", customer);
             session.setAttribute("theCart", new ShoppingCartImpl());
-        } catch (CustomerExistantException ex) {
+        } catch (CustomerExistentException ex) {
             nextPage = "/WEB-INF/jsp/error.jsp";
         }
 

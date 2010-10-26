@@ -23,7 +23,7 @@
 
 package fr.mbh.bookeshop.business.api;
 
-import fr.mbh.bookeshop.business.exception.CustomerExistantException;
+import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import fr.mbh.bookeshop.business.exception.LoginException;
 import fr.mbh.bookeshop.domain.Customer;
 
@@ -45,9 +45,9 @@ public interface CustomerManager {
      * update an existant customer
      * @param customer the customer to update
      * @return the updated customer
-     * @throws CustomerExistantException if the customer updates his identifier (email) with a value of an already existant customer
+     * @throws fr.mbh.bookeshop.business.exception.CustomerExistentException if the customer updates his identifier (email) with a value of an already existant customer
      */
-    public Customer updateCustomer(Customer customer) throws CustomerExistantException;
+    public Customer updateCustomer(Customer customer) throws CustomerExistentException;
 
     /**
      * remove a customer
@@ -59,8 +59,8 @@ public interface CustomerManager {
      * Create a customer
      * @param customer the customer to create
      * @return the created customer
-     * @throws CustomerExistantException if a customer with the given email already exists
+     * @throws fr.mbh.bookeshop.business.exception.CustomerExistentException if a customer with the given email already exists
      */
-    public Customer createCustomer(Customer customer) throws CustomerExistantException;
+    public Customer createCustomer(Customer customer) throws CustomerExistentException;
 
 }

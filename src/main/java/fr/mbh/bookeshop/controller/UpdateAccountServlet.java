@@ -24,7 +24,7 @@
 package fr.mbh.bookeshop.controller;
 
 import fr.mbh.bookeshop.business.api.CustomerManager;
-import fr.mbh.bookeshop.business.exception.CustomerExistantException;
+import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import fr.mbh.bookeshop.domain.Customer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -71,7 +71,7 @@ public class UpdateAccountServlet extends HttpServlet {
 
         try {
             customerManager.updateCustomer(loggedCustomer);
-        } catch (CustomerExistantException ex) {
+        } catch (CustomerExistentException ex) {
             nextPage = "/WEB-INF/jsp/error.jsp";
         }
 
