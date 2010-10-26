@@ -21,11 +21,6 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package fr.mbh.bookeshop.business.impl;
 
 import fr.mbh.bookeshop.business.api.CustomerManager;
@@ -33,11 +28,9 @@ import fr.mbh.bookeshop.business.exception.CustomerExistantException;
 import fr.mbh.bookeshop.business.exception.LoginException;
 import fr.mbh.bookeshop.dao.api.CustomerDAO;
 import fr.mbh.bookeshop.domain.Customer;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
- * @author Mahmoud
+ * Customer Manager implementation
  */
 public class CustomerManagerImpl implements CustomerManager {
 

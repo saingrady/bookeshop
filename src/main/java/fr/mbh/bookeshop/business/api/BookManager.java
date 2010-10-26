@@ -29,18 +29,44 @@ import java.util.List;
 
 /**
  *
- * @author Mahmoud
+ * Book Manager interface
+ * 
  */
 public interface BookManager {
 
+    /**
+     * lists all available books
+     * @return the list of available books
+     */
     public List<Book> getBooks();
 
+    /**
+     * look for books for a category
+     * @param categoryId the category ID
+     * @return the list of books belonging to the given category
+     */
     public List<Book> getBooksByCategory(int categoryId);
 
+    /**
+     * look for books by title/author
+     * @param keyword the keyword
+     * @return  the list of found books for given keyword
+     */
     public List<Book> getBooksByTitleAuthor(String keyword);
 
+    /**
+     * look for a book by its ISBN
+     * @param isbn the book ISBN to look for
+     * @return the book
+     */
     public Book getBookByIsbn(String isbn);
 
+    /**
+     * checkout a book from the stock
+     * @param isbn the book ISBN
+     * @param quantity the quantity to checkout
+     * @throws StockUnavailableException thrown if no stock is available for the given quantity
+     */
     public void checkoutBook(String isbn,int quantity) throws StockUnavailableException;
 
 }

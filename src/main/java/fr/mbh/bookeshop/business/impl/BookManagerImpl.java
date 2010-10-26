@@ -21,11 +21,6 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package fr.mbh.bookeshop.business.impl;
 
 import fr.mbh.bookeshop.business.api.BookManager;
@@ -34,11 +29,9 @@ import fr.mbh.bookeshop.dao.api.BookDAO;
 import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
 import fr.mbh.bookeshop.domain.Book;
 import java.util.List;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
- * @author Mahmoud
+ * Book Manager implementation
  */
 public class BookManagerImpl implements BookManager{
 

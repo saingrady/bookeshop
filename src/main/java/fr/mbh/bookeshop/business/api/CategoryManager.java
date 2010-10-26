@@ -21,23 +21,26 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package fr.mbh.bookeshop.business.api;
 
 import fr.mbh.bookeshop.domain.Category;
 import java.util.List;
 
 /**
- *
- * @author Mahmoud
+ * Category Manager interface
  */
 public interface CategoryManager {
 
+    /**
+     * list all categories
+     * @return the list of categories
+     */
     public List<Category> getCategories();
 
+    /**
+     * look for a category by its ID
+     * @param categoryId the category ID to look for
+     * @return the category with the given ID
+     */
     public Category getCategoryById(int categoryId);
 }
