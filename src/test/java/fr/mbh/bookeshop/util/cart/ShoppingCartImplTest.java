@@ -29,60 +29,44 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * ShoppingCartImpl Tester.
- *
- * @author <Authors name>
- * @since <pre>08/07/2010</pre>
- * @version 1.0
+ * Shopping cart unit tests
  */
 public class ShoppingCartImplTest {
 
+    private ShoppingCart cart;
+
     @Before
     public void setUp() throws Exception {
+        cart = new ShoppingCartImpl();
+        cart.addItem("9781430216407");
+        cart.addItem("9781430219088");
     }
 
     @After
     public void tearDown() throws Exception {
+        cart = null;
+        System.gc();
     }
 
-    /**
-     *
-     * Method: addItem(String bookId)
-     *
-     */
     @Test
     public void testAddItem() throws Exception {
-        //TODO: Test goes here...
+        cart.addItem("9781430224693");
+        assertEquals(3,cart.getItems().size());
+        assertEquals(1,(Object)cart.getItems().get("9781430224693"));
+
     }
 
-    /**
-     *
-     * Method: removeItem(String bookId)
-     *
-     */
     @Test
     public void testRemoveItem() throws Exception {
-        //TODO: Test goes here...
+        cart.removeItem("9781430216407");
+        assertEquals(1,cart.getItems().size()); 
+        assertNull(cart.getItems().get("9781430216407"));
     }
 
-    /**
-     *
-     * Method: clearCart()
-     *
-     */
     @Test
     public void testClearCart() throws Exception {
-        //TODO: Test goes here...
-    }
-
-    /**
-     *
-     * Method: getItems()
-     *
-     */
-    @Test
-    public void testGetItems() throws Exception {
-        //TODO: Test goes here...
+        cart.clearCart();
+        assertEquals(0,cart.getItems().size());
     }
 
 }
