@@ -31,8 +31,10 @@ TODO :
 - add I18N
 - add 'home','about' and 'contacts' pages (may use http://www.emailmeform.com/)
 - sort cart content before displaying cart details
+- add 'remove account' feature (scrum user story : as a customer i want to be able to delete my account)
 - add 'Forgot your password' feature
 - add download ebook feature
+- add 'remember me' feature (at least see how to do it)
 - add advanced search feature (title,author,edition,year,etc)
 - add 'survey' feature
 - add multi page result displaying
@@ -40,3 +42,9 @@ TODO :
 - add currency selection/conversion
 - add checkout with PayPal API (at least see how to do it)
 - add web services exposed to partners (available books, quantity,etc)
+- test transactional behavior
+- add mock service for email sending bean
+- use shopping cart and logged customer as session-scoped beans in spring context
+- add apache tiles for pages layout
+- add apache velocity template for confirmation emails sent to customers
+- split the project into separate maven web modules
