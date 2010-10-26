@@ -21,16 +21,22 @@
 # 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
 #
 
-BookeShop V1.0 : Servlet/JSP + Spring + Hibernate
+Book e-Shop v1.0 : Servlet/JSP + Spring + Hibernate
 
 TODO :
-- add forms validation
+- add forms validation (create/update customer), may use bean validation JSR 303
+- change customer ID (id=email -> bad design)
 - security checks
 - add order table
 - add I18N
-- add 'home','about' and 'contacts' pages
+- add 'home','about' and 'contacts' pages (may use http://www.emailmeform.com/)
 - sort cart content before displaying cart details
 - add 'Forgot your password' feature
 - add download ebook feature
 - add advanced search feature (title,author,edition,year,etc)
+- add 'survey' feature
 - add multi page result displaying
+- add sort results by price,name,author
+- add currency selection/conversion
+- add checkout with PayPal API (at least see how to do it)
+- add web services exposed to partners (available books, quantity,etc)
