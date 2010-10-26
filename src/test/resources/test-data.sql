@@ -23,7 +23,7 @@ INSERT INTO book VALUES ('9781430268727', 'Java FX 2', 'Weiqi Gao', 2011, 39.99,
 INSERT INTO book VALUES ('9781430272151', 'Adobe Cold Fusion', 'Michael Dinowitz', 2010, 39.99, 50, 2);
 INSERT INTO book VALUES ('9781590592779', 'Samba 3', 'Richard Sharpe', 2003, 39.99, 50, 4);
 INSERT INTO book VALUES ('9781590593578', 'WiMAx', 'Daniel Sweeney', 2005, 39.99, 50, 4);
-INSERT INTO book VALUES ('9781590596746', 'Beginning Suse Linux', 'Keir Thomas', 2006 39.99, 50, 3);
+INSERT INTO book VALUES ('9781590596746', 'Beginning Suse Linux', 'Keir Thomas', 2006, 39.99, 50, 3);
 INSERT INTO book VALUES ('9781590597415', 'Expert MySql', 'Charles A. Bell', 2007, 29.99, 50, 5);
 INSERT INTO book VALUES ('9781590598276', 'Pro Oracle Application', 'John Scott ', 2008, 49.99, 50, 5);
 INSERT INTO book VALUES ('9781590599686', 'Oracle Database 11g', 'Darl Kuhn', 2010, 49.99, 50, 5);
