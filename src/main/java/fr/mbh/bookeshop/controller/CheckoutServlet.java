@@ -26,7 +26,7 @@ package fr.mbh.bookeshop.controller;
 import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.business.exception.StockUnavailableException;
 import fr.mbh.bookeshop.domain.Book;
-import fr.mbh.bookeshop.domain.Customer;
+//import fr.mbh.bookeshop.domain.Customer;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import java.io.IOException;
 import java.util.HashMap;
@@ -37,7 +37,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
-import org.springframework.mail.SimpleMailMessage;
+//import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 public class CheckoutServlet extends HttpServlet {
@@ -98,8 +98,7 @@ public class CheckoutServlet extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -131,6 +130,6 @@ public class CheckoutServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Checkout Order Servlet";
+    }
 }

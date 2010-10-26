@@ -58,8 +58,7 @@ public class SearchServlet extends HttpServlet {
         dispatcher.forward(request, response);
     } 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -91,7 +90,7 @@ public class SearchServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Search Books by Title/Author Servlet";
+    }
 
 }

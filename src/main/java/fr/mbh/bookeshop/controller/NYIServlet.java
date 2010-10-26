@@ -77,6 +77,6 @@ public class NYIServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Not Yet implemented Servlet";
     }
 }

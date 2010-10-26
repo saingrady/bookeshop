@@ -76,6 +76,6 @@ public class UpdateServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Update Customer Account Controller Servlet";
     }
 }

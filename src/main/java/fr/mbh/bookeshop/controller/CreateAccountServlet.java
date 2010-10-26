@@ -53,7 +53,6 @@ public class CreateAccountServlet extends HttpServlet {
         
         Customer customer = new Customer();
         CustomerManager customerManager = (CustomerManager) context.getBean("customerManager");
-//        Customer loggedCustomer = (Customer) context.getBean("loggedCustomer");
 
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -73,7 +72,6 @@ public class CreateAccountServlet extends HttpServlet {
 
         try {
             customer = customerManager.createCustomer(customer);
-//            loggedCustomer = customer;
             HttpSession session = request.getSession();
             session.setAttribute("loggedCustomer", customer);
             session.setAttribute("theCart", new ShoppingCartImpl());
@@ -85,8 +83,7 @@ public class CreateAccountServlet extends HttpServlet {
         dispatcher.forward(request, response);
     } 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -118,7 +115,7 @@ public class CreateAccountServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Create Account Servlet";
+    }
 
 }

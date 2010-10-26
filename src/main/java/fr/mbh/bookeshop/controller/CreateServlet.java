@@ -23,19 +23,11 @@
 
 package fr.mbh.bookeshop.controller;
 
-import fr.mbh.bookeshop.business.api.CustomerManager;
-import fr.mbh.bookeshop.business.exception.LoginException;
-import fr.mbh.bookeshop.domain.Customer;
-import fr.mbh.bookeshop.util.cart.ShoppingCartImpl;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
@@ -85,6 +77,6 @@ public class CreateServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Create Account Controller Servlet";
     }
 }

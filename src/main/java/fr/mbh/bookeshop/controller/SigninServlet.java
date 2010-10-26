@@ -76,6 +76,6 @@ public class SigninServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Signin controller Servlet";
     }
 }

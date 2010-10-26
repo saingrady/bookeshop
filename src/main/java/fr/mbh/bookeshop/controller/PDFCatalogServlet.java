@@ -23,13 +23,13 @@
 
 package fr.mbh.bookeshop.controller;
 
-import java.io.File;
+//import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+//import java.io.PrintWriter;
+//import java.io.StringWriter;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.HashMap;
+//import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -115,4 +115,14 @@ public class PDFCatalogServlet extends HttpServlet {
         }*/
 
     }
+
+    /**
+     * Returns a short description of the servlet.
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "PDF Catalog generation and download Servlet";
+    }
+
 }

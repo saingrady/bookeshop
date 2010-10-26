@@ -54,7 +54,7 @@ public class CatalogServlet extends HttpServlet {
         CategoryManager categoryManager = (CategoryManager)context.getBean("categoryManager");
         List<Category> categories = categoryManager.getCategories();
         if (getServletContext().getAttribute("categories") == null)
-        getServletContext().setAttribute("categories", categories);
+        getServletContext().setAttribute("categories", categories); //available categories are Application scoped
 
         BookManager bookManager = (BookManager) context.getBean("bookManager");
         List<Book> books = bookManager.getBooks();
@@ -64,8 +64,7 @@ public class CatalogServlet extends HttpServlet {
         dispatcher.forward(request, response);
     } 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -97,7 +96,7 @@ public class CatalogServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Catalog for all available books Servlet";
+    }
 
 }

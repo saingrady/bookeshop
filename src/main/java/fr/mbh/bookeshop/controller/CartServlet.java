@@ -52,7 +52,7 @@ public class CartServlet extends HttpServlet {
                 WebApplicationContextUtils.getRequiredWebApplicationContext((getServletContext()));
 
        BookManager bookManager = (BookManager) context.getBean("bookManager");
-//       ShoppingCart theCart = (ShoppingCart) context.getBean("theCart");
+//       ShoppingCart theCart = (ShoppingCart) context.getBean("theCart"); //should be used if defined in spring context as session scoped bean
        ShoppingCart theCart = (ShoppingCart)request.getSession().getAttribute("theCart");
        String address = "/WEB-INF/jsp/cart-details.jsp";
        if( theCart != null){
@@ -73,8 +73,7 @@ public class CartServlet extends HttpServlet {
        dispatcher.forward(request, response);
     } 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -106,7 +105,7 @@ public class CartServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Cart Details Servlet";
+    }
 
 }

@@ -79,8 +79,7 @@ public class UpdateAccountServlet extends HttpServlet {
         dispatcher.forward(request, response);
     } 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -112,7 +111,7 @@ public class UpdateAccountServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
+        return "Update Customer Account details Servlet";
+    }
 
 }
