@@ -42,10 +42,10 @@ public interface CustomerManager {
     public Customer Login(String email,String password) throws LoginException;
 
     /**
-     * update an existant customer
+     * update an existent customer
      * @param customer the customer to update
      * @return the updated customer
-     * @throws fr.mbh.bookeshop.business.exception.CustomerExistentException if the customer updates his identifier (email) with a value of an already existant customer
+     * @throws CustomerExistentException if the customer updates his identifier (email) with a value of an already existent customer
      */
     public Customer updateCustomer(Customer customer) throws CustomerExistentException;
 
@@ -59,7 +59,7 @@ public interface CustomerManager {
      * Create a customer
      * @param customer the customer to create
      * @return the created customer
-     * @throws fr.mbh.bookeshop.business.exception.CustomerExistentException if a customer with the given email already exists
+     * @throws CustomerExistentException if a customer with the given email already exists
      */
     public Customer createCustomer(Customer customer) throws CustomerExistentException;
 
