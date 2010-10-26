@@ -28,6 +28,5 @@ INSERT INTO book VALUES ('9781590597415', 'Expert MySql', 'Foulen Ben Falten', 2
 INSERT INTO book VALUES ('9781590598276', 'Pro Oracle Application', 'Foulen Ben Falten', 2009, 39.0, 50, 5);
 INSERT INTO book VALUES ('9781590599686', 'Oracle Database 11g', 'Foulen Ben Falten', 2009, 39.0, 50, 5);
 
-INSERT INTO customer VALUES ('md.benhassine@gmail.com', 'Mahmoud', 'Ben Hassine', '11 Rue Jean pierre calloch', 'mahmoud');
-INSERT INTO customer VALUES ('chakroun_imen@yahoo.fr', 'Imen', 'Chakroun', '10 Rue de la mosquée Bir el bey Tunis 2055', 'imen');
-INSERT INTO customer VALUES ('amin.benhsin@gmail.com', 'Amin', 'Ben Hassine', '10 Rue sidi chiboub taourit Houmt Souk Djerba ', 'farid');
+INSERT INTO customer VALUES ('md.benhassine@gmail.com', 'Mahmoud', 'Ben Hassine', 'somewhere on earth', 'mahmoud');
+INSERT INTO customer VALUES ('mahmoud@server.com', 'Mahmood', 'Benassi', 'somewhere on moon', 'mahmood');
