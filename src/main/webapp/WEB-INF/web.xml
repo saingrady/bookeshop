@@ -165,15 +165,15 @@
     </session-config>
 
     <welcome-file-list>
-        <welcome-file>//WEB-INF/jsp/index.jsp</welcome-file>
+        <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
     </welcome-file-list>
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/spring/applicationContext.xml</param-value>
     </context-param>
-
     <listener>
+
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <listener>
