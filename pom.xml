@@ -52,8 +52,10 @@
         <junit.version>4.7</junit.version>
     </properties>
 
-    <dependencies>
+    <dependencyManagement>
 
+        <dependencies>
+            
         <!-- Test dependencies -->
         <dependency>
             <groupId>junit</groupId>
@@ -61,8 +63,10 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+            
+        </dependencies>
 
-    </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
