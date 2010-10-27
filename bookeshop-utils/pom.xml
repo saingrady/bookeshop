@@ -43,11 +43,19 @@
             <artifactId>jasperreports</artifactId>
             <version>${jasperreports.version}</version>
         </dependency>
-        
+
+        <!-- Test -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>            
+        </dependency>
+
+        <!-- Spring context support for mail utilities -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         
     </dependencies>
