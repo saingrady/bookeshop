@@ -24,8 +24,8 @@
 package fr.mbh.bookeshop.dao;
 
 import fr.mbh.bookeshop.dao.api.BookDAO;
+import fr.mbh.bookeshop.dao.domain.Book;
 import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
-import fr.mbh.bookeshop.domain.Book;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

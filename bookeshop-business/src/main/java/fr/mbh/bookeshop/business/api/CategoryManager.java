@@ -23,7 +23,8 @@
 
 package fr.mbh.bookeshop.business.api;
 
-import fr.mbh.bookeshop.domain.Category;
+import fr.mbh.bookeshop.dao.domain.Category;
+
 import java.util.List;
 
 /**

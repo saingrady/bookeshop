@@ -24,7 +24,8 @@
 package fr.mbh.bookeshop.dao.impl;
 
 import fr.mbh.bookeshop.dao.api.CategoryDAO;
-import fr.mbh.bookeshop.domain.Category;
+import fr.mbh.bookeshop.dao.domain.Category;
+
 import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Transactional;

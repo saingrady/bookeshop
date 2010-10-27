@@ -25,7 +25,7 @@ package fr.mbh.bookeshop.business.api;
 
 import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import fr.mbh.bookeshop.business.exception.LoginException;
-import fr.mbh.bookeshop.domain.Customer;
+import fr.mbh.bookeshop.dao.domain.Customer;
 
 /**
  * Customer Manager interface

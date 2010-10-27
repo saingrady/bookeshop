@@ -23,8 +23,9 @@
 
 package fr.mbh.bookeshop.dao.api;
 
+import fr.mbh.bookeshop.dao.domain.Book;
 import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
-import fr.mbh.bookeshop.domain.Book;
+
 import java.util.List;
 
 

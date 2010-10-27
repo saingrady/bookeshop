@@ -24,7 +24,7 @@
 
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <class name="fr.mbh.bookeshop.domain.Customer" table="customer">
+  <class name="fr.mbh.bookeshop.dao.domain.Customer" table="customer">
     <id column="email" name="email">
       <generator class="assigned"/>
     </id>

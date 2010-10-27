@@ -21,7 +21,7 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package fr.mbh.bookeshop.domain;
+package fr.mbh.bookeshop.dao.domain;
 
 public class Customer {
 

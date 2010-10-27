@@ -27,7 +27,7 @@ import fr.mbh.bookeshop.business.api.CustomerManager;
 import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import fr.mbh.bookeshop.business.exception.LoginException;
 import fr.mbh.bookeshop.dao.api.CustomerDAO;
-import fr.mbh.bookeshop.domain.Customer;
+import fr.mbh.bookeshop.dao.domain.Customer;
 
 /**
  * Customer Manager implementation

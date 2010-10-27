@@ -23,7 +23,8 @@
 
 package fr.mbh.bookeshop.dao.api;
 
-import fr.mbh.bookeshop.domain.Customer;
+import fr.mbh.bookeshop.dao.domain.Customer;
+
 import java.util.List;
 
 

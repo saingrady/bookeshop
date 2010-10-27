@@ -23,13 +23,13 @@
 
 package fr.mbh.bookeshop.dao.impl;
 
+import fr.mbh.bookeshop.dao.domain.Book;
 import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
 import fr.mbh.bookeshop.dao.api.BookDAO;
-import fr.mbh.bookeshop.domain.Book;
+
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;

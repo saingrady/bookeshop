@@ -24,7 +24,7 @@
 package fr.mbh.bookeshop.dao.impl;
 
 import fr.mbh.bookeshop.dao.api.CustomerDAO;
-import fr.mbh.bookeshop.domain.Customer;
+import fr.mbh.bookeshop.dao.domain.Customer;
 import java.util.List;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 

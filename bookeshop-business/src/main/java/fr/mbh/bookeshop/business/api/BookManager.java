@@ -24,7 +24,8 @@
 package fr.mbh.bookeshop.business.api;
 
 import fr.mbh.bookeshop.business.exception.StockUnavailableException;
-import fr.mbh.bookeshop.domain.Book;
+import fr.mbh.bookeshop.dao.domain.Book;
+
 import java.util.List;
 
 /**
