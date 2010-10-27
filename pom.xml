@@ -38,7 +38,7 @@
         <module>bookeshop-business</module>
         <module>bookeshop-dao</module>
         <module>bookeshop-web</module>
-        <module>bookeshop-util</module>
+        <module>bookeshop-utils</module>
     </modules>
 
 

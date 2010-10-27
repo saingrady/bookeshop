@@ -33,7 +33,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>bookeshop-util</artifactId>
+    <artifactId>bookeshop-utils</artifactId>
 
     <dependencies>
         <!-- Jasper Reports -->
