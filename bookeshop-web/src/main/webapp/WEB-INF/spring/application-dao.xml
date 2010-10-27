@@ -46,8 +46,8 @@
     </bean>
 
     <jdbc:initialize-database data-source="storeDataSource">
-        <jdbc:script location="classpath:/data-config/schema.sql"/>
-        <jdbc:script location="classpath:/data-config/data.sql"/>
+        <jdbc:script location="classpath:config/schema.sql"/>
+        <jdbc:script location="classpath:config/data.sql"/>
     </jdbc:initialize-database>
 
     <util:properties id="hibernateProperties" location="classpath:config/hibernate.properties">
