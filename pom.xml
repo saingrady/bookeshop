@@ -52,22 +52,6 @@
         <junit.version>4.7</junit.version>
     </properties>
 
-    <dependencyManagement>
-
-        <dependencies>
-            
-        <!-- Test dependencies -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-            
-        </dependencies>
-
-    </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
