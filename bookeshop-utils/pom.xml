@@ -34,6 +34,7 @@
     </parent>
 
     <artifactId>bookeshop-utils</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- Jasper Reports -->

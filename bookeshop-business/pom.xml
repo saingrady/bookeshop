@@ -34,6 +34,7 @@
     </parent>
 
     <artifactId>bookeshop-business</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- Spring artifacts -->
