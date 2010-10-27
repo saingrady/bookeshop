@@ -30,7 +30,7 @@
     <parent>
         <artifactId>BookeShop</artifactId>
         <groupId>org.benassi</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>2.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>bookeshop-utils</artifactId>
