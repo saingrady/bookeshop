@@ -24,7 +24,7 @@
 package fr.mbh.bookeshop.controller;
 
 import fr.mbh.bookeshop.business.api.BookManager;
-import fr.mbh.bookeshop.domain.Book;
+import fr.mbh.bookeshop.dao.domain.Book;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 

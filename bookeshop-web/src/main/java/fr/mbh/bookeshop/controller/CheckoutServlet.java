@@ -25,7 +25,7 @@ package fr.mbh.bookeshop.controller;
 
 import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.business.exception.StockUnavailableException;
-import fr.mbh.bookeshop.domain.Book;
+import fr.mbh.bookeshop.dao.domain.Book;
 //import fr.mbh.bookeshop.domain.Customer;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import java.io.IOException;

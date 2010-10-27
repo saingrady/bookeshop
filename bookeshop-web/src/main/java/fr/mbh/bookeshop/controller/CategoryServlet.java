@@ -25,10 +25,10 @@ package fr.mbh.bookeshop.controller;
 
 import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.business.api.CategoryManager;
-import fr.mbh.bookeshop.domain.Book;
-import fr.mbh.bookeshop.dao.api.BookDAO;
+import fr.mbh.bookeshop.dao.domain.Book;
+import fr.mbh.bookeshop.dao.domain.Category;
+
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -36,7 +36,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.mbh.bookeshop.domain.Category;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 

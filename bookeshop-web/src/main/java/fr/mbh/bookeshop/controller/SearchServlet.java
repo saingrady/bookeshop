@@ -24,7 +24,8 @@
 package fr.mbh.bookeshop.controller;
 
 import fr.mbh.bookeshop.business.api.BookManager;
-import fr.mbh.bookeshop.domain.Book;
+import fr.mbh.bookeshop.dao.domain.Book;
+
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;

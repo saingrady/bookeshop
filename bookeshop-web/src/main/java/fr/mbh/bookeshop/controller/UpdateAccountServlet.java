@@ -25,7 +25,7 @@ package fr.mbh.bookeshop.controller;
 
 import fr.mbh.bookeshop.business.api.CustomerManager;
 import fr.mbh.bookeshop.business.exception.CustomerExistentException;
-import fr.mbh.bookeshop.domain.Customer;
+import fr.mbh.bookeshop.dao.domain.Customer;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
