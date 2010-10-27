@@ -49,4 +49,3 @@ TODO :
 - add apache tiles for pages layout
 - add apache velocity template for confirmation emails sent to customers
 - add a batch task to send a complete report for sales (may use spring batch/ quartz)
-- split the project into separate maven web modules
