@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This file is part of the Book-eShop project.
+  ~
+  ~  Copyright (C) 2010-2011 Mahmoud Ben Hassine <md.benhassine@gmail.com>
+  ~
+  ~  This program is free software; you can redistribute it and/or modify
+  ~  it under the terms of the GNU General Public License as published by
+  ~  the Free Software Foundation; either version 2 of the License, or
+  ~  (at your option) any later version.
+  ~
+  ~  This program is distributed in the hope that it will be useful,
+  ~  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~  GNU General Public License for more details.
+  ~
+  ~  You should have received a copy of the GNU General Public License
+  ~  along with this program; if not, write to the Free Software
+  ~  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+  ~
+  ~ Author :
+  ~ 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/jdbc
+       http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+       http://www.springframework.org/schema/util 
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- ========================== -->
+    <!--      DAO configuration     -->
+    <!-- ========================== -->
+
+
+    <bean id="storeDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+
+    <jdbc:initialize-database data-source="storeDataSource">
+        <jdbc:script location="classpath:/config/schema.sql"/>
+        <jdbc:script location="classpath:/config/data.sql"/>
+    </jdbc:initialize-database>
+
+    <util:properties id="hibernateProperties" location="classpath:config/hibernate.properties">
+        <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+        <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+        <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+        <prop key="hibernate.use_sql_comments">${hibernate.use_sql_comments}</prop>
+    </util:properties>
+
+    <bean id="hibernateSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="storeDataSource"/>
+        <property name="mappingDirectoryLocations" value="classpath:/mappings"/>
+        <property name="hibernateProperties" ref="hibernateProperties"/>
+    </bean>
+
+    <bean id="customerDAO" class="fr.mbh.bookeshop.dao.impl.CustomerDAOImpl">
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
+    <bean id="bookDAO" class="fr.mbh.bookeshop.dao.impl.BookDAOImpl">
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
+    <bean id="categoryDAO" class="fr.mbh.bookeshop.dao.impl.CategoryDAOImpl">
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
+</beans>
