@@ -21,4 +21,4 @@
   ~ 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
   --%>
 
-<jsp:forward page="/catalog"></jsp:forward>
+<% response.sendRedirect("index.action"); %>
