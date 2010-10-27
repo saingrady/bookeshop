@@ -29,6 +29,8 @@
 
 <struts>
 	<package name="org.benassi.bookeshop.web.actions" extends="struts-default">
-
+        <action name="index" class="org.benassi.bookeshop.web.actions.CatalogAction">
+			<result>/WEB-INF/jsp/catalog.jsp</result>
+		</action>
 	</package>
 </struts>
