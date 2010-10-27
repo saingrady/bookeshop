@@ -59,6 +59,14 @@
             <artifactId>mail</artifactId>
             <version>1.4.1</version>
         </dependency>
+
+        <!-- bookeshop business dependency -->
+        <dependency>
+            <groupId>org.benassi</groupId>
+            <artifactId>bookeshop-business</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
 </project>
