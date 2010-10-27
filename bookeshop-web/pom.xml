@@ -34,6 +34,7 @@
     </parent>
 
     <artifactId>bookeshop-web</artifactId>
+    <packaging>war</packaging>
     
     <dependencies>
                 <!-- Servlet -->
@@ -76,4 +77,16 @@
 
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warName>bookeshop</warName>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
 </project>
