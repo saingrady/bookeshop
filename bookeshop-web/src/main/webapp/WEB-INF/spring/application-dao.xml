@@ -46,11 +46,11 @@
     </bean>
 
     <jdbc:initialize-database data-source="storeDataSource">
-        <jdbc:script location="classpath:/config/schema.sql"/>
-        <jdbc:script location="classpath:/config/data.sql"/>
+        <jdbc:script location="classpath:/data-config/schema.sql"/>
+        <jdbc:script location="classpath:/data-config/data.sql"/>
     </jdbc:initialize-database>
 
-    <util:properties id="hibernateProperties" location="classpath:hibernate.properties">
+    <util:properties id="hibernateProperties" location="classpath:config/hibernate.properties">
         <prop key="hibernate.dialect">${hibernate.dialect}</prop>
         <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
         <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
