@@ -36,7 +36,8 @@
     <artifactId>bookeshop-dao</artifactId>
 
     <dependencies>
-                <!-- DataSource -->
+        
+        <!-- DataSource -->
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
@@ -73,6 +74,14 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+
+        <!-- bookeshop utils dependency -->
+        <dependency>
+            <groupId>org.benassi</groupId>
+            <artifactId>bookeshop-utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
         
 
