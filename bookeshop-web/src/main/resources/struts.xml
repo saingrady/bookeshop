@@ -41,5 +41,9 @@
 			<result>/WEB-INF/jsp/book-details.jsp</result>
 			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
+        <action name="category" class="org.benassi.bookeshop.web.actions.CategoryAction">
+			<result>/WEB-INF/jsp/category.jsp</result>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>
 	</package>
 </struts>

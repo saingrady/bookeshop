@@ -31,7 +31,7 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                    <h1>Books in category '${category}'</h1><br/>
+                    <h1>Books in category '${category.name}'</h1><br/>
                     <c:choose>
                         <c:when test="${not empty categoryBooks}">
                             <table border="2" align="center">
