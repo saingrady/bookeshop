@@ -45,5 +45,8 @@
 			<result>/WEB-INF/jsp/category.jsp</result>
 			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
+        <action name="nyi" class="org.benassi.bookeshop.web.actions.NotYetImplementedAction">
+			<result>/WEB-INF/jsp/not-yet-implemented.jsp</result>
+		</action>
 	</package>
 </struts>
