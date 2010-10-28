@@ -28,7 +28,9 @@ import fr.mbh.bookeshop.dao.domain.Book;
 
 import java.util.List;
 
-
+/**
+ * CatalogAction : loads all books and makes them available to the view
+ */
 public class CatalogAction {
 
     private BookManager bookManager;
