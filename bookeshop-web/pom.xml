@@ -89,7 +89,10 @@
             <version>1.4.1</version>
         </dependency>
 
-        <!-- Spring web for context utilities -->
+        <!-- Spring web for context utilities
+        TODO : to be removed when all servlets are replaced with struts2 action
+        ( no more need for WebApplicationContextUtils.getRequiredWebApplicationContext((getServletContext())); )
+        -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
