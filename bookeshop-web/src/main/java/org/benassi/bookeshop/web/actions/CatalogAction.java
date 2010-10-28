@@ -40,7 +40,7 @@ public class CatalogAction {
     private List<Book> books;
 
     public List<Book> getBooks() {
-        return bookManager.getBooks();
+        return books;
     }
 
     public void setBooks(List<Book> books) {
@@ -48,6 +48,7 @@ public class CatalogAction {
     }
 
     public String execute() throws Exception {
+        this.books = bookManager.getBooks();
         return "success";
     }
 
