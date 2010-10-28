@@ -37,5 +37,9 @@
         <action name="catalog" class="org.benassi.bookeshop.web.actions.CatalogAction">
 			<result>/WEB-INF/jsp/catalog.jsp</result>
 		</action>
+        <action name="bookDetails" class="org.benassi.bookeshop.web.actions.BookDetailsAction">
+			<result>/WEB-INF/jsp/book-details.jsp</result>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>
 	</package>
 </struts>

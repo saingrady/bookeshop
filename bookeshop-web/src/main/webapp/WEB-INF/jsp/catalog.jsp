@@ -46,7 +46,7 @@
                         <tbody>
                         <c:forEach var="book" items="${books}">
                             <tr>
-                                <td><a href="book?id=${book.isbn}"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></a></td>
+                                <td><a href="bookDetails?bookId=${book.isbn}"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></a></td>
                                 <td><c:out value="${book.title}"/></td>
                                 <td><c:out value="${book.author}"/></td>
                                 <td><c:out value="${book.year}"/></td>
