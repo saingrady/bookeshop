@@ -37,6 +37,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
     public List<Book> getBooks() {
+        //TODO return only available books (check quantity field or Book_Stock table when added)
         return  this.getHibernateTemplate().find("from Book");
     }
 
