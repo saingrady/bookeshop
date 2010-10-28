@@ -30,7 +30,11 @@ import org.apache.struts2.util.ServletContextAware;
 import javax.servlet.ServletContext;
 import java.util.List;
 
-
+/**
+ * IndexAction : use category manager to get available categories
+ * and put the list in servlet context (ServletContextAware)
+ * //available categories are application scoped (until this requirement changes)
+ */
 public class IndexAction implements ServletContextAware{
 
     private CategoryManager categoryManager;
@@ -43,10 +47,9 @@ public class IndexAction implements ServletContextAware{
         return "success";
     }
 
-
     @Override
     public void setServletContext(ServletContext context) {
         List<Category> categories = categoryManager.getCategories();
-        context.setAttribute("categories", categories); //available categories are Application scoped
+        context.setAttribute("categories", categories);
     }
 }
