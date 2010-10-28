@@ -29,7 +29,12 @@
 
 <struts>
 	<package name="org.benassi.bookeshop.web.actions" extends="struts-default">
-        <action name="index" class="org.benassi.bookeshop.web.actions.CatalogAction">
+        <action name="index" class="org.benassi.bookeshop.web.actions.IndexAction">
+			<result type="redirectAction">
+                <param name="actionName">catalog</param>
+			</result>
+		</action>
+        <action name="catalog" class="org.benassi.bookeshop.web.actions.CatalogAction">
 			<result>/WEB-INF/jsp/catalog.jsp</result>
 		</action>
 	</package>
