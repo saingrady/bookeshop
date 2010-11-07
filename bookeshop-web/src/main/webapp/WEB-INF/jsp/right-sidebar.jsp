@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%--
@@ -30,15 +31,13 @@
             <c:choose>
                 <c:when test="${loggedCustomer == null}">
                     <h2>Client Account</h2>
-                    <form id="loginForm" method="post" action="login">
-                        <label for="email">Email:</label>
-                        <input id="email" type="text" name="email"/>
-                        <label for="password">Password:</label>
-                        <input id="password" type="password" name="password"/>
-                        <input type="submit" name="signin" value="Sign In" />
-                        <p>Forgot your password? <a href="nyi">Get it here</a><br/>
-                            New customer? <a href="create">Start here</a></p>
-                    </form>
+                    <s:form action="login">
+                        <s:textfield name="email" label="Email"/>
+                        <s:password name="password" label="Password"/>
+                        <s:submit value="Sign In" />
+                    </s:form>
+                    <p>Forgot your password? <a href="nyi">Get it here</a><br/>
+                    New customer? <a href="create">Start here</a></p>
                 </c:when>
                 <c:otherwise>
                     <h2>Client Details</h2>
