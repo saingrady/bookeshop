@@ -35,16 +35,15 @@
     </bean>
 
     <bean id="bookManager" class="fr.mbh.bookeshop.business.impl.BookManagerImpl">
-        <property name="bookDAO" ref="bookDAO"/>
+        <property name="bookDAO" ref="bookDAO"/>                    
     </bean>
 
     <bean id="categoryManager" class="fr.mbh.bookeshop.business.impl.CategoryManagerImpl">
         <property name="categoryDAO" ref="categoryDAO"/>
     </bean>
 
-    <!-- may be used instead of http session attributes
     <bean id="theCart" class="fr.mbh.bookeshop.util.cart.ShoppingCartImpl" scope="session"/>
 
-    <bean id="loggedCustomer" class="fr.mbh.bookeshop.domain.Customer" scope="session"/>-->
+    <bean id="loggedCustomer" class="fr.mbh.bookeshop.dao.domain.Customer" scope="session"/>
 
 </beans>
