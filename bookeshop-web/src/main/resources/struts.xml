@@ -54,6 +54,11 @@
             </result>
 			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
+        <action name="logout" class="org.benassi.bookeshop.web.actions.LogoutAction">
+            <result type="redirectAction">
+                <param name="actionName">catalog</param>
+            </result>
+        </action>
 
 	</package>
 </struts>
