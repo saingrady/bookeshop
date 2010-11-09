@@ -59,6 +59,15 @@
                 <param name="actionName">catalog</param>
             </result>
         </action>
+        <action name="update" class="org.benassi.bookeshop.web.actions.UpdateAction">
+            <result>/WEB-INF/jsp/update-account.jsp</result>
+        </action>
+        <action name="update-account" class="org.benassi.bookeshop.web.actions.UpdateAccountAction">
+            <result type="redirectAction">
+                <param name="actionName">catalog</param>
+            </result>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>
 
 	</package>
 </struts>
