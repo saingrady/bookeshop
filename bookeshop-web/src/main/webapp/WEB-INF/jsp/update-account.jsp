@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%--
@@ -31,35 +32,16 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                <h1> Your personal data : </h1><br/>
-                    <form name="updateAccountForm" action="update-account" method="POST">
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td>Fist name </td>
-                                <td><input type="text" name="firstName" value="${loggedCustomer.firstName}"  size="20"/></td>
-                            </tr>
-                            <tr>
-                                <td>Last name</td>
-                                <td><input type="text" name="lastName" value="${loggedCustomer.lastName}" size="20"/></td>
-                            </tr>
-                            <tr>
-                                <td>E-mail </td>
-                                <td><input type="text" name="email" value="${loggedCustomer.email}" size="20"/></td>
-                            </tr>
-                            <tr>
-                                <td>Address</td>
-                                <td><input type="text" name="address" value="${loggedCustomer.address}" size="20"/></td>
-                            </tr>
-                            <tr>
-                                <td>Password</td>
-                                <td><input type="text" name="password" value="${loggedCustomer.password}" size="20"/></td>
-                            </tr>
-                            </tbody>
-                        </table><br/>
-                        <input type="submit" value="Update" name="updateButton"/> <input type="reset" value="Reset" /> <input type=button value="Cancel" onClick="history.go(-1)">
-                        <div style="clear: both;">&nbsp;</div>
-                    </form>
+                <h1> Your personal data : </h1>
+                    <s:form action="update-account">
+                       <s:textfield label="Fist name"  name="firstName"  size="20"/>
+                       <s:textfield label="Last name" name="lastName" size="20"/>
+                       <s:textfield label="E-mail" name="email" size="20" disabled="true"/>
+                       <s:textfield label="Address" name="address"  size="20"/>
+                       <s:textfield label="Password" name="password" size="20"/>
+                       <s:submit value="Update"/> <s:reset value="Reset" />
+                       <s:div style="clear: both;">&nbsp;</s:div>
+                    </s:form>
                 </div>
             </div>
         </div>
