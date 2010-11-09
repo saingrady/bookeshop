@@ -62,6 +62,9 @@
         <action name="update" class="org.benassi.bookeshop.web.actions.UpdateAction">
             <result>/WEB-INF/jsp/update-account.jsp</result>
         </action>
+        <action name="search" class="org.benassi.bookeshop.web.actions.SearchAction">
+            <result>/WEB-INF/jsp/search.jsp</result>
+        </action>
         <action name="update-account" class="org.benassi.bookeshop.web.actions.UpdateAccountAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>

@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%--
@@ -37,11 +38,10 @@
         </li>
         <li>
             <h2>Quick Search</h2>
-            <form id="lookup" method="post" action="lookup">
-                <label for="keyword">Book Title/Author:</label>
-                <input id="keyword" type="text" name="keyword"/>
-                <input id="go" type="submit" value="Go!" />
-            </form>
+            <s:form action="search">
+                <s:textfield name="keyword" label="Title/Author"/>
+                <s:submit value="Go!" />
+            </s:form>
         </li>
     </ul>
     <div style="clear: both;">&nbsp;</div>
