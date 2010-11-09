@@ -97,6 +97,8 @@ public class LoginAction implements SessionAware{
             session.put("theCart",theCart);
             return "success";
         } catch (LoginException e) {
+            // TODO probable bug : if login fails, client details should not be shown in jsp right-sidebar.jsp
+//            loggedCustomer = null;// may fix the bug
             error = e.getMessage();
             return "error";
         }
