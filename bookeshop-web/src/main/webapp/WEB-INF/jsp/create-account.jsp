@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%--
@@ -32,34 +33,15 @@
             <div class="post-bgbtm">
                 <div align="center">
                 <h1>Fill in the form with your personal data </h1><br/>
-                    <form name="createAccountForm" action="create-account" method="POST">
-                        <table>
-                            <tbody>
-                            <tr>
-                                <td>Fist name </td>
-                                <td><input type="text" name="firstName" value=""  size="20"/></td>
-                            </tr>
-                            <tr>
-                                <td>Last name</td>
-                                <td><input type="text" name="lastName" value="" size="20"/></td>
-                            </tr>
-                            <tr>
-                                <td>E-mail </td>
-                                <td><input type="text" name="email" value="" size="20"/></td>
-                            </tr>
-                            <tr>
-                                <td>Address</td>
-                                <td><input type="text" name="address" value="" size="20"/></td>
-                            </tr>
-                            <tr>
-                                <td>Password</td>
-                                <td><input type="text" name="password" value="" size="20"/></td>
-                            </tr>
-                            </tbody>
-                        </table><br/>
-                        <input type="submit" value="Create" name="createButton"/> <input type="reset" value="Reset" />
-                        <div style="clear: both;">&nbsp;</div>
-                    </form>
+                    <s:form action="create-account">
+                       <s:textfield label="Fist name"  name="firstName"  size="20"/>
+                       <s:textfield label="Last name" name="lastName" size="20"/>
+                       <s:textfield label="E-mail" name="email" size="20"/>
+                       <s:textfield label="Address" name="address"  size="20"/>
+                       <s:textfield label="Password" name="password" size="20"/>
+                       <s:submit value="Create"/> <s:reset value="Reset" />
+                       <s:div style="clear: both;">&nbsp;</s:div>
+                    </s:form>
                 </div>
             </div>
         </div>
