@@ -21,44 +21,60 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package fr.mbh.bookeshop.controller;
-
-//import java.io.File;
-import java.io.IOException;
-//import java.io.PrintWriter;
-//import java.io.StringWriter;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-//import java.util.HashMap;
-
-import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+package org.benassi.bookeshop.web.actions;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import org.apache.struts2.interceptor.ServletResponseAware;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.io.Resource;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-public class PDFCatalogServlet extends HttpServlet {
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+/**
+ * Action class to generate and download PDF catalog
+ */
+public class PDFCatalogAction implements ServletResponseAware, ApplicationContextAware {
 
-        ApplicationContext context =
-                WebApplicationContextUtils.getRequiredWebApplicationContext((getServletContext()));
+    private ApplicationContext applicationContext;
 
-        Resource jreport = context.getResource("classpath:reports/report.jrxml");
-        ServletOutputStream servletOutputStream = response.getOutputStream();
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
+
+    private HttpServletResponse response;
+
+     public void setServletResponse(HttpServletResponse response){
+       this.response = response;
+     }
+
+     public HttpServletResponse getServletResponse(){
+       return response;
+     }
+
+    private String error;
+
+    public String getError() {
+        return error;
+    }
+
+    public String execute(){
+
+        Resource jreport = applicationContext.getResource("classpath:reports/report.jrxml");
+
 
         byte[] bytes = null;
         java.sql.Connection connection = null;
         java.sql.Statement statement = null;
+        ServletOutputStream servletOutputStream = null;
         try {
+            servletOutputStream = response.getOutputStream();
             Class.forName("org.hsqldb.jdbcDriver").newInstance();
             connection = DriverManager.getConnection("jdbc:hsqldb:mem:bookeshop", "SA", "");
             statement = connection.createStatement();
@@ -81,10 +97,14 @@ public class PDFCatalogServlet extends HttpServlet {
             servletOutputStream.flush();
             servletOutputStream.close();
 
+            return"success";
+
 
         }
         catch (Exception e) {
             e.printStackTrace();
+            error = "An exception occurred while generating PDF catalog.";
+            return "error";
         }finally {
             try {
                 statement.close();
@@ -95,9 +115,9 @@ public class PDFCatalogServlet extends HttpServlet {
 
         }
 
-        /* May be used if PDF catalog is already prepared and not generated on the fly with Jasper Reports
-          
-        Resource catalog = context.getResource("classpath:catalog/catalog.pdf");
+        /* May be used if PDF catalog is already prepared (static content) and not generated on the fly with Jasper Reports
+
+        Resource catalog = applicationContext.getResource("classpath:catalog/catalog.pdf");
         try {
             InputStream is = catalog.getInputStream();
             OutputStream os = response.getOutputStream();
@@ -114,15 +134,6 @@ public class PDFCatalogServlet extends HttpServlet {
             e.printStackTrace();
         }*/
 
-    }
 
-    /**
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "PDF Catalog generation and download Servlet";
     }
-
 }

@@ -80,6 +80,12 @@
             </result>
             <result name="error">/WEB-INF/jsp/error.jsp</result>
         </action>
+        <action name="pdf-catalog" class="org.benassi.bookeshop.web.actions.PDFCatalogAction">
+            <result type="redirectAction">
+                <param name="actionName">catalog</param>
+            </result>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>
 
 
 	</package>
