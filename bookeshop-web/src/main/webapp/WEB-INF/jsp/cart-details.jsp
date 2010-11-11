@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%--
@@ -65,10 +66,9 @@
 
                     <p><b>Cart Total = <c:out value="${total}"/></b></p>
 
-                    <form method="post" action="checkout">
-                        <p><label for="gift">This order is a gift (free)</label><input id="gift" type="checkbox" name="gift" value="yes"/> <img src="images/present.png" width="32" height="32" border="0"/></p><br/>
-                        <input id="proceed" type="submit" name="proceed" value="proceed to checkout"/>
-                    </form>
+                    <s:form action="checkout">
+                        <s:submit value="proceed to checkout"/>
+                    </s:form>
 
                 </div>
                 <div style="clear: both;">&nbsp;</div>
