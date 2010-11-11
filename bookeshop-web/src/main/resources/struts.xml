@@ -86,6 +86,10 @@
             </result>
 			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
+        <action name="cart" class="org.benassi.bookeshop.web.actions.CartDetailsAction">
+            <result>/WEB-INF/jsp/cart-details.jsp</result>
+			<result name="error">/WEB-INF/jsp/login.jsp</result>
+		</action>
 
 
 	</package>
