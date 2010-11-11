@@ -90,6 +90,10 @@
             <result>/WEB-INF/jsp/cart-details.jsp</result>
 			<result name="error">/WEB-INF/jsp/login.jsp</result>
 		</action>
+        <action name="checkout" class="org.benassi.bookeshop.web.actions.CheckoutAction">
+            <result>/WEB-INF/jsp/confirm.jsp</result>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>
 
 
 	</package>
