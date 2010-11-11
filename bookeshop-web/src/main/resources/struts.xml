@@ -94,6 +94,19 @@
             <result>/WEB-INF/jsp/confirm.jsp</result>
 			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
+        <action name="update-cart" class="org.benassi.bookeshop.web.actions.UpdateCartAction">
+            <result name="catalog" type="redirectAction">
+                <param name="actionName">catalog</param>
+            </result>
+            <result name="category" type="redirectAction">
+                <param name="actionName">category</param>
+            </result>
+            <result name="cart" type="redirectAction">
+                <param name="actionName">cart</param>
+            </result>
+			<result name="error">/WEB-INF/jsp/error.jsp</result>
+		</action>
+
 
 
 	</package>
