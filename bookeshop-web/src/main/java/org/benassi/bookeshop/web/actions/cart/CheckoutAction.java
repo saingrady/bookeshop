@@ -38,17 +38,31 @@ import java.util.Map;
 /**
  * Action class to checkout an order
  */
-public class CheckoutAction implements RequestAware,SessionAware {
+public class CheckoutAction implements SessionAware {
 
     private Map<String, Object> session;
-
-    private Map<String, Object> request;
-
-    private String error;
 
     private BookManager bookManager;
 
     private ShoppingCart theCart;
+
+    private Map<Book, Integer> items;
+
+    private Double total;
+
+    private String error;
+
+    public Map<Book, Integer> getItems() {
+        return items;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public String getError() {
+        return error;
+    }
 
     /*private MailSender mailSender;
 
@@ -60,30 +74,17 @@ public class CheckoutAction implements RequestAware,SessionAware {
         this.session = session;
     }
 
-    public void setRequest(Map<String, Object> request) {
-        this.request = request;
-    }
-
     public void setBookManager(BookManager bookManager) {
         this.bookManager = bookManager;
     }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
 
     public String execute() {
         // logged customer to get email
         //Customer loggedCustomer = (Customer) session.get("loggedCustomer");
 
-        Map<Book, Integer> items = new HashMap<Book,Integer>();
+        items = new HashMap<Book,Integer>();
         theCart = (ShoppingCart) session.get("theCart");
-        double total = 0.0;
+        total = 0.0;
         try {
             for (String bookId : theCart.getItems().keySet()) {
                 Book book = bookManager.getBookByIsbn(bookId);
@@ -92,8 +93,6 @@ public class CheckoutAction implements RequestAware,SessionAware {
                 bookManager.checkoutBook(book.getIsbn(),quantity);
                 items.put(book, quantity);
             }
-            request.put("items", items);
-            request.put("total",total);
             theCart.clearCart();
 
             /* Populate the order confirmation mail from velocity template and send it to the customer
