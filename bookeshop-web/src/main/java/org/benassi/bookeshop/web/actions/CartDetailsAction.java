@@ -73,7 +73,7 @@ public class CartDetailsAction implements RequestAware, SessionAware {
            request.put("total", total);
            return "success";
        }else
-           return "error";
+           return "login";
     }
 
 }

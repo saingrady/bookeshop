@@ -29,71 +29,84 @@
 
 <struts>
 	<package name="org.benassi.bookeshop.web.actions" extends="struts-default">
+
+        <global-results>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </global-results>
+
         <action name="index" class="org.benassi.bookeshop.web.actions.IndexAction">
 			<result type="redirectAction">
                 <param name="actionName">catalog</param>
 			</result>
 		</action>
+
         <action name="catalog" class="org.benassi.bookeshop.web.actions.CatalogAction">
 			<result>/WEB-INF/jsp/catalog.jsp</result>
 		</action>
+
         <action name="bookDetails" class="org.benassi.bookeshop.web.actions.BookDetailsAction">
 			<result>/WEB-INF/jsp/book-details.jsp</result>
-			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
+
         <action name="category" class="org.benassi.bookeshop.web.actions.CategoryAction">
 			<result>/WEB-INF/jsp/category.jsp</result>
-			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
+
         <action name="nyi" class="org.benassi.bookeshop.web.actions.NotYetImplementedAction">
 			<result>/WEB-INF/jsp/not-yet-implemented.jsp</result>
 		</action>
+
         <action name="login" class="org.benassi.bookeshop.web.actions.LoginAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>
-			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
+
         <action name="logout" class="org.benassi.bookeshop.web.actions.LogoutAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>
         </action>
+
         <action name="update" class="org.benassi.bookeshop.web.actions.UpdateAction">
             <result>/WEB-INF/jsp/update-account.jsp</result>
         </action>
+
         <action name="update-account" class="org.benassi.bookeshop.web.actions.UpdateAccountAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>
-            <result name="error">/WEB-INF/jsp/error.jsp</result>
         </action>
+
         <action name="search" class="org.benassi.bookeshop.web.actions.SearchAction">
             <result>/WEB-INF/jsp/search.jsp</result>
         </action>
+
         <action name="create" class="org.benassi.bookeshop.web.actions.CreateAction">
             <result>/WEB-INF/jsp/create-account.jsp</result>
         </action>
+
         <action name="create-account" class="org.benassi.bookeshop.web.actions.CreateAccountAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>
-            <result name="error">/WEB-INF/jsp/error.jsp</result>
         </action>
+
         <action name="pdf-catalog" class="org.benassi.bookeshop.web.actions.PDFCatalogAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>
-			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
+
         <action name="cart" class="org.benassi.bookeshop.web.actions.CartDetailsAction">
             <result>/WEB-INF/jsp/cart-details.jsp</result>
-			<result name="error">/WEB-INF/jsp/login.jsp</result>
+            <result name="login">/WEB-INF/jsp/login.jsp</result>
 		</action>
+
         <action name="checkout" class="org.benassi.bookeshop.web.actions.CheckoutAction">
             <result>/WEB-INF/jsp/confirm.jsp</result>
-			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
+
         <action name="update-cart" class="org.benassi.bookeshop.web.actions.UpdateCartAction">
             <result name="catalog" type="redirectAction">
                 <param name="actionName">catalog</param>
@@ -104,7 +117,6 @@
             <result name="cart" type="redirectAction">
                 <param name="actionName">cart</param>
             </result>
-			<result name="error">/WEB-INF/jsp/error.jsp</result>
 		</action>
 
 
