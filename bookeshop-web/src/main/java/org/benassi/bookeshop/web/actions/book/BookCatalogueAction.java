@@ -35,24 +35,19 @@ public class BookCatalogueAction {
 
     private BookManager bookManager;
 
+    private List<Book> books;
+
     public void setBookManager(BookManager bookManager) {
         this.bookManager = bookManager;
     }
 
-    private List<Book> books;
-
     public List<Book> getBooks() {
         return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
     }
 
     public String execute() throws Exception {
         this.books = bookManager.getBooks();
         return "success";
     }
-
 
 }
