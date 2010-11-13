@@ -32,44 +32,53 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                <h1> Your cart details : </h1><br/>
-                    <table border="1">
-                        <thead>
-                        <tr>
-                            <th><b>Preview</b></th>
-                            <th><b>Isbn</b></th>
-                            <th><b>Title</b></th>
-                            <th><b>Author</b></th>
-                            <th><b>Year</b></th>
-                            <th><b>Price</b></th>
-                            <th><b>Quantity</b></th>
-                            <th><b>update</b></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="entry" items="${items}">
-                            <tr>
-                                <td><img src="images/books/${entry.key.isbn}.gif" width="80" height="120" border="0"/></td>
-                                <td><c:out value="${entry.key.isbn}"/></td>
-                                <td><c:out value="${entry.key.title}"/></td>
-                                <td><c:out value="${entry.key.author}"/></td>
-                                <td><c:out value="${entry.key.year}"/></td>
-                                <td><c:out value="${entry.key.price}"/></td>
-                                <td><c:out value="${entry.value}"/></td>
-                                <td><a href="update-cart?id=${entry.key.isbn}&action=add&from=cart"/><img src="images/cart_add.png" width="32" height="32" border="0"/><a href="update-cart?id=${entry.key.isbn}&action=remove&from=cart"/><img src="images/cart_remove.png" width="32" height="32" border="0"/></td>
+                    <c:choose>
+                        <c:when test="${not empty items}">
+                            <h1> Your cart details : </h1><br/>
+                            <table border="1">
+                                <thead>
+                                <tr>
+                                    <th><b>Preview</b></th>
+                                    <th><b>Isbn</b></th>
+                                    <th><b>Title</b></th>
+                                    <th><b>Author</b></th>
+                                    <th><b>Year</b></th>
+                                    <th><b>Price</b></th>
+                                    <th><b>Quantity</b></th>
+                                    <th><b>update</b></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="entry" items="${items}">
+                                    <tr>
+                                        <td><img src="images/books/${entry.key.isbn}.gif" width="80" height="120" border="0"/></td>
+                                        <td><c:out value="${entry.key.isbn}"/></td>
+                                        <td><c:out value="${entry.key.title}"/></td>
+                                        <td><c:out value="${entry.key.author}"/></td>
+                                        <td><c:out value="${entry.key.year}"/></td>
+                                        <td><c:out value="${entry.key.price}"/></td>
+                                        <td><c:out value="${entry.value}"/></td>
+                                        <td><a href="addItem.do?bookId=${entry.key.isbn}"/><img src="images/cart_add.png" width="32" height="32" border="0"/><a href="removeItem.do?bookId=${entry.key.isbn}"/><img src="images/cart_remove.png" width="32" height="32" border="0"/></td>
 
-                            </tr>
-                        </c:forEach>
-                        </tbody>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
 
-                    </table><br/>
+                            </table><br/>
 
-                    <p><b>Cart Total = <c:out value="${total}"/></b></p>
+                            <p><b>Cart Total = <c:out value="${total}"/></b></p>
+                            <b>Clear cart </b><a href="clearCart.do"><img src="images/cart.png" width="32" height="32" border="0"/></a>
 
-                    <s:form action="checkout">
-                        <s:submit value="proceed to checkout"/>
-                    </s:form>
-
+                            <s:form action="checkout">
+                                <s:submit value="proceed to checkout"/>
+                            </s:form>
+                        </c:when>
+                        <c:otherwise>
+                            <h1>Your shopping cart is empty</h1>
+                            <p><a href="catalogue.do">Back to catalogue</a></p>
+                        </c:otherwise>
+                    </c:choose>
+                    <div style="clear: both;">&nbsp;</div>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
             </div>
