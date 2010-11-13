@@ -35,9 +35,7 @@ import java.util.Map;
 /**
  * Action class to show shopping cart details
  */
-public class CartDetailsAction implements RequestAware, SessionAware {
-
-    private Map<String, Object> request;
+public class CartDetailsAction implements SessionAware {
 
     private Map<String, Object> session;
 
@@ -45,7 +43,19 @@ public class CartDetailsAction implements RequestAware, SessionAware {
 
     private ShoppingCart theCart;
 
+    private Map<Book,Integer> items;
+
+    private Double total;
+
     private String error;
+
+    public Map<Book, Integer> getItems() {
+        return items;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
 
     public String getError() {
         return error;
@@ -55,28 +65,21 @@ public class CartDetailsAction implements RequestAware, SessionAware {
         this.session = session;
     }
 
-    public void setRequest(Map<String, Object> request) {
-        this.request = request;
-    }
-
     public void setBookManager(BookManager bookManager) {
         this.bookManager = bookManager;
     }
-
 
     public String execute() {
         
        theCart = (ShoppingCart) session.get("theCart");
        if( theCart != null){
-           double total = 0.0;
-           Map<Book,Integer> items = new HashMap<Book,Integer>();
+           total = 0.0;
+           items = new HashMap<Book,Integer>();
            for (String bookId : theCart.getItems().keySet()) {
                Book book = bookManager.getBookByIsbn(bookId);
                items.put(book, theCart.getItems().get(bookId));
                total += book.getPrice() * theCart.getItems().get(bookId);
            }
-           request.put("items", items);
-           request.put("total", total);
            return "success";
        }else
            error = "Please login before adding items to your cart";
