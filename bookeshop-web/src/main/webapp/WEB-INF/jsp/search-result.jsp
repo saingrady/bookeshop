@@ -48,7 +48,7 @@
                                 <tbody>
                                 <c:forEach var="book" items="${foundBooks}">
                                     <tr>
-                                        <td><a href="bookDetails?bookId=${book.isbn}"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></a></td>
+                                        <td><a href="bookDetails.do?bookId=${book.isbn}"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></a></td>
                                         <td><c:out value="${book.title}"/></td>
                                         <td><c:out value="${book.author}"/></td>
                                         <td><c:out value="${book.year}"/></td>
@@ -59,7 +59,7 @@
                                                     <img src="images/cancel.png" width="32" height="32" border="0"/>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="addItem?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                                                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>
