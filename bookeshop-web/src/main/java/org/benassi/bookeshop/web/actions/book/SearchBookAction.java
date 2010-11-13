@@ -32,13 +32,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Action class to lokk for books by Title/Author
+ * Action class to look for books by Title/Author
  */
-public class SearchBookAction implements RequestAware{
+public class SearchBookAction{
 
     private String keyword;
+
     private BookManager bookManager;
-    private Map<String, Object> request;
+
+    private List<Book> foundBooks;
+
+    public List<Book> getFoundBooks() {
+        return foundBooks;
+    }
 
     public void setBookManager(BookManager bookManager) {
         this.bookManager = bookManager;
@@ -53,12 +59,8 @@ public class SearchBookAction implements RequestAware{
     }
 
     public String execute(){
-        List<Book> foundBooks = bookManager.getBooksByTitleAuthor(keyword);
-        request.put("foundBooks", foundBooks);
+        foundBooks = bookManager.getBooksByTitleAuthor(keyword);
         return "success";
     }
 
-    public void setRequest(Map<String, Object> request) {
-        this.request = request;
-    }
 }
