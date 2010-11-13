@@ -33,38 +33,26 @@ public class BookDetailsAction {
 
     private BookManager bookManager;
 
+    private String bookId;
+
+    private Book book;
+
+    private String error;
+
     public void setBookManager(BookManager bookManager) {
         this.bookManager = bookManager;
     }
 
-    private Book book;
-
     public Book getBook() {
         return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    private String bookId;
-
-    public String getBookId() {
-        return bookId;
     }
 
     public void setBookId(String bookId) {
         this.bookId = bookId;
     }
 
-    private String error;
-
     public String getError() {
         return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
     }
 
     public String execute(){
