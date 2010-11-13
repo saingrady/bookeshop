@@ -21,7 +21,7 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package org.benassi.bookeshop.web.actions;
+package org.benassi.bookeshop.web.actions.customer;
 
 import com.opensymphony.xwork2.ActionSupport;
 import fr.mbh.bookeshop.business.api.CustomerManager;

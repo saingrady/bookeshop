@@ -21,55 +21,43 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package org.benassi.bookeshop.web.actions;
+package org.benassi.bookeshop.web.actions.book;
 
 import fr.mbh.bookeshop.business.api.BookManager;
-import fr.mbh.bookeshop.business.api.CategoryManager;
 import fr.mbh.bookeshop.dao.domain.Book;
-import fr.mbh.bookeshop.dao.domain.Category;
-
-import java.util.List;
 
 /**
- * CategoryAction : action class to get books by category
+ * BookDetailsAction : action class to get book details
  */
-public class CategoryAction {
-
-    private CategoryManager categoryManager;
+public class BookDetailsAction {
 
     private BookManager bookManager;
-
-    private int categoryId;
-
-    private Category category;
-
-    private String error;
-
-    private List<Book> categoryBooks;
-
-    public void setCategoryManager(CategoryManager categoryManager) {
-        this.categoryManager = categoryManager;
-    }
 
     public void setBookManager(BookManager bookManager) {
         this.bookManager = bookManager;
     }
 
-    public Category getCategory() {
-        return category;
+    private Book book;
+
+    public Book getBook() {
+        return book;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    private String bookId;
+
+    public String getBookId() {
+        return bookId;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
+
+    private String error;
 
     public String getError() {
         return error;
@@ -79,22 +67,12 @@ public class CategoryAction {
         this.error = error;
     }
 
-    public List<Book> getCategoryBooks() {
-        return categoryBooks;
-    }
-
-    public void setCategoryBooks(List<Book> categoryBooks) {
-        this.categoryBooks = categoryBooks;
-    }
-
     public String execute(){
-        category = categoryManager.getCategoryById(categoryId);
-        if (category != null) {
-            categoryBooks = bookManager.getBooksByCategory(categoryId);
+        book = bookManager.getBookByIsbn(bookId);
+        if (book != null)
             return "success";
-        }
         else {
-            error = "No such category with ID = " + categoryId;
+            error = "No such book with ISBN = " + bookId;
             return "error";
         }
 

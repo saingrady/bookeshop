@@ -21,7 +21,7 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package org.benassi.bookeshop.web.actions;
+package org.benassi.bookeshop.web.actions.cart;
 
 import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.business.exception.StockUnavailableException;

@@ -40,7 +40,7 @@ import java.sql.SQLException;
 /**
  * Action class to generate and download PDF catalog
  */
-public class PDFCatalogAction implements ServletResponseAware, ApplicationContextAware {
+public class DownloadCatalogueAction implements ServletResponseAware, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 

@@ -21,13 +21,38 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package org.benassi.bookeshop.web.actions;
+package org.benassi.bookeshop.web.actions.book;
 
-import com.opensymphony.xwork2.ActionSupport;
+import fr.mbh.bookeshop.business.api.BookManager;
+import fr.mbh.bookeshop.dao.domain.Book;
+
+import java.util.List;
 
 /**
- * Action class to redirect create account request to create account form page
+ * BookCatalogueAction : loads all books and makes them available to the view
  */
-public class CreateAction extends ActionSupport {
+public class BookCatalogueAction {
+
+    private BookManager bookManager;
+
+    public void setBookManager(BookManager bookManager) {
+        this.bookManager = bookManager;
+    }
+
+    private List<Book> books;
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public String execute() throws Exception {
+        this.books = bookManager.getBooks();
+        return "success";
+    }
+
 
 }

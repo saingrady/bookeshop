@@ -40,15 +40,15 @@
 			</result>
 		</action>
 
-        <action name="catalog" class="org.benassi.bookeshop.web.actions.CatalogAction">
+        <action name="catalog" class="org.benassi.bookeshop.web.actions.book.BookCatalogueAction">
 			<result>/WEB-INF/jsp/catalog.jsp</result>
 		</action>
 
-        <action name="bookDetails" class="org.benassi.bookeshop.web.actions.BookDetailsAction">
+        <action name="bookDetails" class="org.benassi.bookeshop.web.actions.book.BookDetailsAction">
 			<result>/WEB-INF/jsp/book-details.jsp</result>
 		</action>
 
-        <action name="category" class="org.benassi.bookeshop.web.actions.CategoryAction">
+        <action name="category" class="org.benassi.bookeshop.web.actions.book.BookCategoryAction">
 			<result>/WEB-INF/jsp/category.jsp</result>
 		</action>
 
@@ -56,58 +56,58 @@
 			<result>/WEB-INF/jsp/not-yet-implemented.jsp</result>
 		</action>
 
-        <action name="login" class="org.benassi.bookeshop.web.actions.LoginAction">
+        <action name="login" class="org.benassi.bookeshop.web.actions.customer.LoginAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>
 		</action>
 
-        <action name="logout" class="org.benassi.bookeshop.web.actions.LogoutAction">
+        <action name="logout" class="org.benassi.bookeshop.web.actions.customer.LogoutAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>
         </action>
 
-        <action name="update" class="org.benassi.bookeshop.web.actions.UpdateAction">
+        <action name="update" class="org.benassi.bookeshop.web.actions.customer.UpdateAction">
             <result>/WEB-INF/jsp/update-account.jsp</result>
         </action>
 
-        <action name="update-account" class="org.benassi.bookeshop.web.actions.UpdateAccountAction">
+        <action name="update-account" class="org.benassi.bookeshop.web.actions.customer.UpdateAccountAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>
         </action>
 
-        <action name="search" class="org.benassi.bookeshop.web.actions.SearchAction">
+        <action name="search" class="org.benassi.bookeshop.web.actions.book.SearchBookAction">
             <result>/WEB-INF/jsp/search.jsp</result>
         </action>
 
-        <action name="create" class="org.benassi.bookeshop.web.actions.CreateAction">
+        <action name="create" class="org.benassi.bookeshop.web.actions.customer.CreateAction">
             <result>/WEB-INF/jsp/create-account.jsp</result>
         </action>
 
-        <action name="create-account" class="org.benassi.bookeshop.web.actions.CreateAccountAction">
+        <action name="create-account" class="org.benassi.bookeshop.web.actions.customer.CreateAccountAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>
         </action>
 
-        <action name="pdf-catalog" class="org.benassi.bookeshop.web.actions.PDFCatalogAction">
+        <action name="pdf-catalog" class="org.benassi.bookeshop.web.actions.DownloadCatalogueAction">
             <result type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>
 		</action>
 
-        <action name="cart" class="org.benassi.bookeshop.web.actions.CartDetailsAction">
+        <action name="cart" class="org.benassi.bookeshop.web.actions.cart.CartDetailsAction">
             <result>/WEB-INF/jsp/cart-details.jsp</result>
             <result name="login">/WEB-INF/jsp/login.jsp</result>
 		</action>
 
-        <action name="checkout" class="org.benassi.bookeshop.web.actions.CheckoutAction">
+        <action name="checkout" class="org.benassi.bookeshop.web.actions.cart.CheckoutAction">
             <result>/WEB-INF/jsp/confirm.jsp</result>
 		</action>
 
-        <action name="update-cart" class="org.benassi.bookeshop.web.actions.UpdateCartAction">
+        <action name="update-cart" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction">
             <result name="catalog" type="redirectAction">
                 <param name="actionName">catalog</param>
             </result>

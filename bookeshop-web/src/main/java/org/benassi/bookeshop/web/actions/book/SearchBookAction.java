@@ -21,7 +21,7 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package org.benassi.bookeshop.web.actions;
+package org.benassi.bookeshop.web.actions.book;
 
 import com.sun.xml.internal.xsom.impl.parser.state.AttributesImpl;
 import fr.mbh.bookeshop.business.api.BookManager;
@@ -34,7 +34,7 @@ import java.util.Map;
 /**
  * Action class to lokk for books by Title/Author
  */
-public class SearchAction implements RequestAware{
+public class SearchBookAction implements RequestAware{
 
     private String keyword;
     private BookManager bookManager;

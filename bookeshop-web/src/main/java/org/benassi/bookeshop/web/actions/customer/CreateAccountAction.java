@@ -21,21 +21,26 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package org.benassi.bookeshop.web.actions;
+package org.benassi.bookeshop.web.actions.customer;
 
 import fr.mbh.bookeshop.business.api.CustomerManager;
 import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import fr.mbh.bookeshop.dao.domain.Customer;
+import fr.mbh.bookeshop.util.cart.ShoppingCart;
+import fr.mbh.bookeshop.util.cart.ShoppingCartImpl;
 import org.apache.struts2.interceptor.SessionAware;
 
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 /**
- * Action class to update customer data
+ * Action class to create a new customer account
  */
-public class UpdateAccountAction implements SessionAware{
+public class CreateAccountAction implements SessionAware {
 
     private Map<String,Object> session;
+
+    private ShoppingCart theCart;
 
     private CustomerManager customerManager;
 
@@ -52,6 +57,10 @@ public class UpdateAccountAction implements SessionAware{
     private Customer loggedCustomer;
 
     private String error;
+
+    public void setTheCart(ShoppingCart theCart) {
+        this.theCart = theCart;
+    }
 
     public String getError() {
         return error;
@@ -125,15 +134,19 @@ public class UpdateAccountAction implements SessionAware{
         this.password = password;
     }
 
-    public String execute() {
+
+    public String execute(){
+        
+        Customer customer = new Customer();
+        customer.setFirstName(firstName);
+        customer.setLastName(lastName);
+        customer.setEmail(email);
+        customer.setAddress(address);
+        customer.setPassword(password);
         try {
-            // TODO check values
-            loggedCustomer.setFirstName(firstName);
-            loggedCustomer.setLastName(lastName);
-            //loggedCustomer.setEmail(email); disabled in jsp : very bad design as said : should use/generate customer ID and not email as ID
-            loggedCustomer.setAddress(address);
-            loggedCustomer.setPassword(password);
-            session.put("loggedCustomer", customerManager.updateCustomer(loggedCustomer));
+            customer = customerManager.createCustomer(customer);
+            session.put("loggedCustomer", customer);
+            session.put("theCart", theCart  );
             return "success";
         } catch (CustomerExistentException ex) {
             error = ex.getMessage();
