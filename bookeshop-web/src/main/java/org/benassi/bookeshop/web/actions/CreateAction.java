@@ -23,12 +23,11 @@
 
 package org.benassi.bookeshop.web.actions;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 /**
  * Action class to redirect create account request to create account form page
  */
-public class CreateAction {
+public class CreateAction extends ActionSupport {
 
-    public String execute(){
-        return "success";
-    }
 }

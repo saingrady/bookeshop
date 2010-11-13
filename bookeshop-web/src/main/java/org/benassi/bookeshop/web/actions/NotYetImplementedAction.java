@@ -23,12 +23,11 @@
 
 package org.benassi.bookeshop.web.actions;
 
+import com.opensymphony.xwork2.ActionSupport;
+
 /**
  * action class to redirect requests for not yet implemented features to NYI view
  */
-public class NotYetImplementedAction {
+public class NotYetImplementedAction extends ActionSupport {
 
-    public String execute(){
-        return "success";
-    }
 }
