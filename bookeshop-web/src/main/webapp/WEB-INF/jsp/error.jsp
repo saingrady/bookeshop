@@ -32,7 +32,7 @@
             <div class="post-bgbtm">
                 <div align="center">
                     <h1>Sorry, an error occurred and we were unable to fulfill your request.</h1><br/>
-                    <h1>Error details : <%= request.getAttribute("error")%></h1><br/>
+                    <h1>Error details : <c:out value="${error}"/> </h1><br/>
                     <div style="clear: both;">&nbsp;</div>
                 </div>
                 <div style="clear: both;">&nbsp;</div>

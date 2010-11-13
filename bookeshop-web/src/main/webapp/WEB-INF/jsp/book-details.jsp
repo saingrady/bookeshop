@@ -38,7 +38,7 @@
                     <p><h2>Author : <c:out value="${book.author}"/></h2></p>
                     <p><h2>Year : <c:out value="${book.year}"/></h2></p>
                     <p><h2>Price : <c:out value="${book.price}"/></h2></p>
-                    <a href="update-cart?id=${book.isbn}&action=add&from=book"><img src="images/cart_add.png" width="32" height="32" border="0" class="floatRight"/></a>
+                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0" class="floatRight"/></a>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
             </div>

@@ -31,7 +31,7 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                    <h1>Search results for keyword : '<%= request.getParameter("keyword")%>'</h1><br/>
+                    <h1>Search results for keyword : '<c:out value="${keyword}"/>'</h1><br/>
                     <c:choose>
                         <c:when test="${not empty foundBooks}">
                             <table border="2" align="center">
@@ -48,7 +48,7 @@
                                 <tbody>
                                 <c:forEach var="book" items="${foundBooks}">
                                     <tr>
-                                        <td><a href="book?id=${book.isbn}"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></a></td>
+                                        <td><a href="bookDetails?bookId=${book.isbn}"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></a></td>
                                         <td><c:out value="${book.title}"/></td>
                                         <td><c:out value="${book.author}"/></td>
                                         <td><c:out value="${book.year}"/></td>
@@ -59,7 +59,7 @@
                                                     <img src="images/cancel.png" width="32" height="32" border="0"/>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="update-cart?id=${book.isbn}&action=add&from=lookup&keyword=<%= request.getParameter("keyword")%>"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                                                    <a href="addItem?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>
@@ -70,7 +70,7 @@
                         </c:when>
                         <c:otherwise>
                             <br>
-                            <c:out value="No books found for Title/Author = "/> <%= request.getParameter("keyword")%>
+                            <c:out value="No books found for Title/Author = ${keyword}"/> 
                         </c:otherwise>
                     </c:choose>
                     <div style="clear: both;">&nbsp;</div>

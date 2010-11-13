@@ -24,47 +24,50 @@
   -->
 
 <!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd">
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<package name="org.benassi.bookeshop.web.actions" extends="struts-default">
+    
+    <package name="book" extends="struts-default">
 
         <global-results>
             <result name="error">/WEB-INF/jsp/error.jsp</result>
         </global-results>
 
-        <action name="index" class="org.benassi.bookeshop.web.actions.IndexAction">
-			<result type="redirectAction">
-                <param name="actionName">catalog</param>
-			</result>
-		</action>
-
-        <action name="catalog" class="org.benassi.bookeshop.web.actions.book.BookCatalogueAction">
-			<result>/WEB-INF/jsp/catalog.jsp</result>
-		</action>
+        <action name="catalogue" class="org.benassi.bookeshop.web.actions.book.BookCatalogueAction">
+            <result>/WEB-INF/jsp/catalogue.jsp</result>
+        </action>
 
         <action name="bookDetails" class="org.benassi.bookeshop.web.actions.book.BookDetailsAction">
-			<result>/WEB-INF/jsp/book-details.jsp</result>
-		</action>
+            <result>/WEB-INF/jsp/book-details.jsp</result>
+        </action>
 
         <action name="category" class="org.benassi.bookeshop.web.actions.book.BookCategoryAction">
-			<result>/WEB-INF/jsp/category.jsp</result>
-		</action>
+            <result>/WEB-INF/jsp/category.jsp</result>
+        </action>
 
-        <action name="nyi" class="org.benassi.bookeshop.web.actions.NotYetImplementedAction">
-			<result>/WEB-INF/jsp/not-yet-implemented.jsp</result>
-		</action>
+        <action name="search" class="org.benassi.bookeshop.web.actions.book.SearchBookAction">
+            <result>/WEB-INF/jsp/search-result.jsp</result>
+        </action>
+
+    </package>
+
+    <package name="customer" extends="struts-default">
+
+        <global-results>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </global-results>
 
         <action name="login" class="org.benassi.bookeshop.web.actions.customer.LoginAction">
             <result type="redirectAction">
-                <param name="actionName">catalog</param>
+                <param name="actionName">catalogue</param>
             </result>
-		</action>
+        </action>
 
         <action name="logout" class="org.benassi.bookeshop.web.actions.customer.LogoutAction">
             <result type="redirectAction">
-                <param name="actionName">catalog</param>
+                <param name="actionName">catalogue</param>
             </result>
         </action>
 
@@ -74,13 +77,10 @@
 
         <action name="update-account" class="org.benassi.bookeshop.web.actions.customer.UpdateAccountAction">
             <result type="redirectAction">
-                <param name="actionName">catalog</param>
+                <param name="actionName">catalogue</param>
             </result>
         </action>
 
-        <action name="search" class="org.benassi.bookeshop.web.actions.book.SearchBookAction">
-            <result>/WEB-INF/jsp/search.jsp</result>
-        </action>
 
         <action name="create" class="org.benassi.bookeshop.web.actions.customer.CreateAction">
             <result>/WEB-INF/jsp/create-account.jsp</result>
@@ -88,38 +88,65 @@
 
         <action name="create-account" class="org.benassi.bookeshop.web.actions.customer.CreateAccountAction">
             <result type="redirectAction">
-                <param name="actionName">catalog</param>
+                <param name="actionName">catalogue</param>
             </result>
         </action>
 
-        <action name="pdf-catalog" class="org.benassi.bookeshop.web.actions.DownloadCatalogueAction">
-            <result type="redirectAction">
-                <param name="actionName">catalog</param>
-            </result>
-		</action>
+    </package>
 
-        <action name="cart" class="org.benassi.bookeshop.web.actions.cart.CartDetailsAction">
+
+    <package name="cart" extends="struts-default">
+
+        <global-results>
+            <result name="error">/WEB-INF/jsp/error.jsp</result>
+        </global-results>
+
+        <action name="cartDetails" class="org.benassi.bookeshop.web.actions.cart.CartDetailsAction">
             <result>/WEB-INF/jsp/cart-details.jsp</result>
-            <result name="login">/WEB-INF/jsp/login.jsp</result>
-		</action>
+        </action>
 
         <action name="checkout" class="org.benassi.bookeshop.web.actions.cart.CheckoutAction">
-            <result>/WEB-INF/jsp/confirm.jsp</result>
-		</action>
+            <result>/WEB-INF/jsp/confirm-order.jsp</result>
+        </action>
 
-        <action name="update-cart" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction">
-            <result name="catalog" type="redirectAction">
-                <param name="actionName">catalog</param>
+        <action name="addItem" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="addItem">
+            <result type="redirectAction">
+                <param name="actionName">cartDetails</param>
             </result>
-            <result name="category" type="redirectAction">
-                <param name="actionName">category</param>
+        </action>
+
+        <action name="removeItem" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="removeItem">
+            <result type="redirectAction">
+                <param name="actionName">cartDetails</param>
             </result>
-            <result name="cart" type="redirectAction">
-                <param name="actionName">cart</param>
+        </action>
+
+        <action name="clearCart" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="clearCart">
+            <result type="redirectAction">
+                <param name="actionName">catalogue</param>
             </result>
-		</action>
+        </action>
 
+    </package>
 
+    <package name="utils" extends="struts-default">
 
-	</package>
+        <action name="index" class="org.benassi.bookeshop.web.actions.IndexAction">
+            <result type="redirectAction">
+                <param name="actionName">catalogue</param>
+            </result>
+        </action>
+
+        <action name="nyi" class="org.benassi.bookeshop.web.actions.NotYetImplementedAction">
+            <result>/WEB-INF/jsp/not-yet-implemented.jsp</result>
+        </action>
+
+        <action name="download-catalogue" class="org.benassi.bookeshop.web.actions.DownloadCatalogueAction">
+            <result type="redirectAction">
+                <param name="actionName">catalogue</param>
+            </result>
+        </action>
+
+    </package>    
+
 </struts>

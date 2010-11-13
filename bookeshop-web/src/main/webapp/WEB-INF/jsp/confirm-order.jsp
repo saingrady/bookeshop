@@ -31,42 +31,41 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                    <h1>Welcome ${loggedCustomer.firstName}</h1><br/>
+                <h1> Your order details : </h1><br/>
                     <table border="1">
                         <thead>
                         <tr>
-                            <th><b>Preview</b></th>
+                            <th><b>Isbn</b></th>
                             <th><b>Title</b></th>
                             <th><b>Author</b></th>
                             <th><b>Year</b></th>
                             <th><b>Price(<img src="images/euro.png" width="12" height="12" border="0"/>)</b></th>
-                            <th><b>Cart</b></th>
+                            <th><b>Quantity</b></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="book" items="${books}">
+                        <c:forEach var="entry" items="${items}">
                             <tr>
-                                <td><a href="bookDetails?bookId=${book.isbn}"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></a></td>
-                                <td><c:out value="${book.title}"/></td>
-                                <td><c:out value="${book.author}"/></td>
-                                <td><c:out value="${book.year}"/></td>
-                                <td><c:out value="${book.price}"/></td>
-                                <td>
-                                    <c:choose>
-                                        <c:when test="${book.quantity == 0}">
-                                            <img src="images/cancel.png" width="32" height="32" border="0"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <a href="update-cart?id=${book.isbn}&action=add&from=catalog"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </td>
+                                <td><c:out value="${entry.key.isbn}"/></td>
+                                <td><c:out value="${entry.key.title}"/></td>
+                                <td><c:out value="${entry.key.author}"/></td>
+                                <td><c:out value="${entry.key.year}"/></td>
+                                <td><c:out value="${entry.key.price}"/></td>
+                                <td><c:out value="${entry.value}"/></td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
+                    <p><b>Your order total = <c:out value="${total}"/></b>(<img src="images/euro.png" width="12" height="12" border="0"/>)</p>
+                    <p><img src="images/ok.png" width="32" height="32" border="0"/>Thank you for your order on our site. <a href="javascript:window.print()"> Print details</a></p>
+                    <p><img src="images/mail.png" width="32" height="25" border="0"/> A confirmation email was sent to '<b><c:out value="${loggedCustomer.email}"/></b>'</p>
+
+                    <p><img src="images/delivery.png" width="32" height="32" border="0"/> Your items will be delivered to '<b><c:out value="${loggedCustomer.address}"/></b>'</p>
+                    <p><img src="images/customer_service.png" width="32" height="32" border="0"/> For after sale service, please contact us at <a href="mailto:customer@bookeshop.com">customer@bookeshop.com</a></p>
+                    <p>We hope to see you soon on our site. <a href="catalogue.do"> Back to catalogue page</a></p>
+                    <p>We will be grateful if you respond to our one minute survey and help us improve our site. <a href="nyi.do"> Go to survey</a></p>
+                    <div style="clear: both;">&nbsp;</div>
                 </div>
-                <div style="clear: both;">&nbsp;</div>
             </div>
         </div>
     </div>
@@ -74,4 +73,5 @@
 </div>
 <!-- end #content -->
 <jsp:include page="right-sidebar.jsp" flush="true"/>
-<jsp:include page="footer.jsp" flush="true"/>
+<jsp:include page="footer.jsp" flush="true"/>            
+

@@ -59,7 +59,7 @@
                                                     <img src="images/cancel.png" width="32" height="32" border="0"/>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="update-cart?id=${book.isbn}&action=add&from=category&categoryId=<%= request.getParameter("categoryId")%>"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                                                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>

@@ -36,15 +36,15 @@
                         <s:password name="password" label="Password"/>
                         <s:submit value="Sign In" />
                     </s:form>
-                    <p>Forgot your password? <a href="nyi">Get it here</a><br/>
-                    New customer? <a href="create">Start here</a></p>
+                    <p>Forgot your password? <a href="nyi.do">Get it here</a><br/>
+                    New customer? <a href="create.do">Start here</a></p>
                 </c:when>
                 <c:otherwise>
                     <h2>Client Details</h2>
                     First name: <c:out value="${loggedCustomer.firstName}"/><br/>
                     Last name: <c:out value="${loggedCustomer.lastName}"/><br/>
                     Email: <c:out value="${loggedCustomer.email}"/><br/>
-                    <p><a href="update">My account</a> | <a href="logout">Sign out</a></p>
+                    <p><a href="update.do">My account</a> | <a href="logout.do">Sign out</a></p>
                 </c:otherwise>
             </c:choose>
         </li>
@@ -57,7 +57,7 @@
                     </c:when>
                     <c:otherwise>
                         <li>Items number = ${theCart.count}</li>
-                        <a href="cart">cart details</a>
+                        <a href="cartDetails.do">cart details</a>
                     </c:otherwise>
                 </c:choose>
             </ul>
@@ -65,8 +65,8 @@
         <li>
             <h2>Download</h2>
             <ul>
-                <li><a href="pdf-catalog">Download PDF catalog</a></li>
-                <li><a href="nyi">Download eBooks</a></li>
+                <li><a href="download-catalogue.do">Download PDF catalog</a></li>
+                <li><a href="nyi.do">Download eBooks</a></li>
             </ul>
         </li>        
     </ul>

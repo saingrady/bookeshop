@@ -31,9 +31,9 @@
             <h2>Categories</h2>
             <ul>
                 <c:forEach var="category" items="${categories}">
-                <li><a href="category?categoryId=${category.id}">${category.name}</a></li>
+                <li><a href="category.do?categoryId=${category.id}">${category.name}</a></li>
                 </c:forEach>
-                <li><a href="catalog">All</a></li>
+                <li><a href="catalogue.do">All</a></li>
             </ul>
         </li>
         <li>

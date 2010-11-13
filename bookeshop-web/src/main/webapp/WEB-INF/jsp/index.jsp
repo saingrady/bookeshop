@@ -21,4 +21,4 @@
   ~ 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
   --%>
 
-<% response.sendRedirect("index.action"); %>
+<% response.sendRedirect("index.do"); %>
