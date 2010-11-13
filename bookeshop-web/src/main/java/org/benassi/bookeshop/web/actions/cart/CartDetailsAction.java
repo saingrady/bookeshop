@@ -63,6 +63,7 @@ public class CartDetailsAction implements SessionAware {
 
     public void setSession(Map<String, Object> session) {
         this.session = session;
+        theCart = (ShoppingCart) session.get("theCart");
     }
 
     public void setBookManager(BookManager bookManager) {
@@ -70,8 +71,7 @@ public class CartDetailsAction implements SessionAware {
     }
 
     public String execute() {
-        
-       theCart = (ShoppingCart) session.get("theCart");
+
        if( theCart != null){
            total = 0.0;
            items = new HashMap<Book,Integer>();
@@ -82,7 +82,7 @@ public class CartDetailsAction implements SessionAware {
            }
            return "success";
        }else
-           error = "Please login before adding items to your cart";
+           error = "Please sign up or log in to buy from Book e-Shop";
            return "error";
     }
 
