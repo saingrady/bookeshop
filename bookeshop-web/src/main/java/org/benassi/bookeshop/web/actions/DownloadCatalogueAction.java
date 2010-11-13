@@ -38,7 +38,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Action class to generate and download PDF catalog
+ * Action class to generate and download PDF catalogue
  */
 public class DownloadCatalogueAction implements ServletResponseAware, ApplicationContextAware {
 
@@ -66,6 +66,8 @@ public class DownloadCatalogueAction implements ServletResponseAware, Applicatio
 
     public String execute(){
 
+        //TODO externalize configuration
+        
         Resource jreport = applicationContext.getResource("classpath:reports/report.jrxml");
 
 
