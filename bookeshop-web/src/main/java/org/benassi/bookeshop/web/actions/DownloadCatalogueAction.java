@@ -92,6 +92,7 @@ public class DownloadCatalogueAction implements ServletResponseAware, Applicatio
 
             response.setContentType("application/pdf");
             response.setContentLength(bytes.length);
+            // TODO check file extension for downloaded file (currently .do!)
 
             servletOutputStream.write(bytes, 0, bytes.length);
             servletOutputStream.flush();
