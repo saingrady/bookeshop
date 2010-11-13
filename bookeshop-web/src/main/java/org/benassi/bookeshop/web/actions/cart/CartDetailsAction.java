@@ -45,6 +45,12 @@ public class CartDetailsAction implements RequestAware, SessionAware {
 
     private ShoppingCart theCart;
 
+    private String error;
+
+    public String getError() {
+        return error;
+    }
+
     public void setSession(Map<String, Object> session) {
         this.session = session;
     }
@@ -73,7 +79,8 @@ public class CartDetailsAction implements RequestAware, SessionAware {
            request.put("total", total);
            return "success";
        }else
-           return "login";
+           error = "Please login before adding items to your cart";
+           return "error";
     }
 
 }
