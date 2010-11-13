@@ -36,87 +36,74 @@ import java.util.Map;
  */
 public class UpdateCartAction implements SessionAware {
 
-    private String error;
-
     private Map<String, Object> session;
 
     private BookManager bookManager;
 
     private ShoppingCart theCart;
 
+    private String bookId;
+
+    private String error;
+
     public void setSession(Map<String, Object> session) {
         this.session = session;
+        theCart = (ShoppingCart)session.get("theCart");
     }
 
     public void setBookManager(BookManager bookManager) {
         this.bookManager = bookManager;
     }
 
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
+    }
+
     public String getError() {
         return error;
     }
 
-    public void setError(String error) {
-        this.error = error;
-    }
+    public String addItem(){
 
-    private String id;
-    private int categoryId;
-    private String action;
-    private String from;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String execute() {
-
-        //TODO : create private method and split ugly test
-
-        Book book = bookManager.getBookByIsbn(id);
-
-        theCart = (ShoppingCart)session.get("theCart");
+        Book book = bookManager.getBookByIsbn(bookId);
 
         if(theCart != null){
-            if(book != null)
-                if ("add".equals(action))
-                    theCart.addItem(book.getIsbn());
-                else theCart.removeItem(book.getIsbn());
+            if(book != null){
+                theCart.addItem(book.getIsbn());
+            } //TODO validate bookId, test else and returning result
+            return "success";
+        }
+        else {
+            error = "Please sign up or log in to buy from Book e-Shop";
+            return "error";
+        }
+    }
+
+    public String removeItem(){
+
+        Book book = bookManager.getBookByIsbn(bookId);
+
+        if(theCart != null){
+            if(book != null){
+                theCart.removeItem(book.getIsbn());
+            } //TODO validate bookId, test else and returning result
+            return "success";
+        }
+        else {
+            error = "Please sign up or log in to buy from Book e-Shop";
+            return "error";
+        }
+    }
+
+    public String clearCart(){
+
+        if (theCart != null){
+            theCart.clearCart();
+            return "success";
         }else{
             error = "Please sign up or log in to buy from Book e-Shop";
             return "error";
         }
-
-        // TODO : fix redirect to category : categoryId is not forwarded in request
-        //request.setAttribute("categoryId", categoryId);
-        return from;
     }
+
 }
