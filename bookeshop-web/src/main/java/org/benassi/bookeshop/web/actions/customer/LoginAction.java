@@ -58,16 +58,8 @@ public class LoginAction implements SessionAware{
         return error;
     }
 
-    public void setError(String error) {
-        this.error = error;
-    }
-
     public void setCustomerManager(CustomerManager customerManager) {
         this.customerManager = customerManager;
-    }
-
-    public void setLoggedCustomer(Customer loggedCustomer) {
-        this.loggedCustomer = loggedCustomer;
     }
 
     public void setSession(Map<String, Object> session) {
