@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.web.actions;
 
+import com.opensymphony.xwork2.ActionSupport;
 import fr.mbh.bookeshop.business.api.CategoryManager;
 import fr.mbh.bookeshop.dao.domain.Category;
 import org.apache.struts2.util.ServletContextAware;
@@ -35,16 +36,12 @@ import java.util.List;
  * and put the list in servlet context (ServletContextAware)
  * //available categories are application scoped (until this requirement changes)
  */
-public class IndexAction implements ServletContextAware{
+public class IndexAction extends ActionSupport implements ServletContextAware{
 
     private CategoryManager categoryManager;
 
     public void setCategoryManager(CategoryManager categoryManager) {
         this.categoryManager = categoryManager;
-    }
-
-    public String execute(){
-        return "success";
     }
 
     @Override
