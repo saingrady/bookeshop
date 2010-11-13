@@ -59,14 +59,6 @@ public class BookCategoryAction {
         return category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
@@ -75,16 +67,8 @@ public class BookCategoryAction {
         return error;
     }
 
-    public void setError(String error) {
-        this.error = error;
-    }
-
     public List<Book> getCategoryBooks() {
         return categoryBooks;
-    }
-
-    public void setCategoryBooks(List<Book> categoryBooks) {
-        this.categoryBooks = categoryBooks;
     }
 
     public String execute(){
