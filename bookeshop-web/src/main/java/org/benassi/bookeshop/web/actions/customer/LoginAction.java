@@ -84,7 +84,7 @@ public class LoginAction implements SessionAware{
 
     public String execute(){
         try {
-            loggedCustomer = customerManager.Login(email,password);
+            loggedCustomer = customerManager.login(email,password);
             session.put("loggedCustomer",loggedCustomer);
             session.put("theCart",theCart);
             return "success";

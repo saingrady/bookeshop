@@ -39,7 +39,7 @@ public interface CustomerManager {
      * @return the logged customer
      * @throws LoginException if the login fails
      */
-    public Customer Login(String email,String password) throws LoginException;
+    public Customer login(String email,String password) throws LoginException;
 
     /**
      * update an existent customer

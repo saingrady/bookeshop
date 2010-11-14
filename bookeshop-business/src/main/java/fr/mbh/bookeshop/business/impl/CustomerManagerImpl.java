@@ -40,7 +40,7 @@ public class CustomerManagerImpl implements CustomerManager {
         this.customerDAO = customerDAO;
     }
 
-    public Customer Login(String email, String password) throws LoginException {
+    public Customer login(String email, String password) throws LoginException {
         if(customerDAO.checkLogin(email, password))
             return customerDAO.findByEmail(email);
         else throw new LoginException("Invalid login credentials : email='"+email+"'/password='"+password+"'");
