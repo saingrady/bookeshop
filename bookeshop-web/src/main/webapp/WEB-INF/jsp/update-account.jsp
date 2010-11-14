@@ -42,6 +42,8 @@
                        <s:submit value="Update"/> <s:reset value="Reset" />
                        <s:div style="clear: both;">&nbsp;</s:div>
                     </s:form>
+                    <p><b><a href="remove.do">Remove my account</a></b></p>
+                    <%-- TODO add onclick="confirm_account_removal() --%>
                 </div>
             </div>
         </div>
