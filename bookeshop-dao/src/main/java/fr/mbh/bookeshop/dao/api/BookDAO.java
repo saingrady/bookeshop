@@ -39,6 +39,6 @@ public interface BookDAO {
 
     public Book getBookByIsbn(String isbn);
 
-    public void updateQuantity(String isbn,int quantity) throws InsufficientStockException;
+    public void updateStock(String isbn,int quantity) throws InsufficientStockException;
     
 }

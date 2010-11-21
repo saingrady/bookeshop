@@ -74,14 +74,14 @@ public class BookDAOImplTest {
     @Test
     public void testUpdateQuantityOK() throws InsufficientStockException {
         String isbn = "9781430216407"; // pro spring dm server
-        bookDao.updateQuantity(isbn,20);   //there are only 100 items available in stock
+        bookDao.updateStock(isbn,20);   //there are only 100 items available in stock
         assertEquals(80,bookDao.getBookByIsbn(isbn).getQuantity());
     }
 
     @Test
     @ExpectedException(InsufficientStockException.class)
     public void testUpdateQuantityKO() throws InsufficientStockException {
-        bookDao.updateQuantity("9781430216407",200);   //there are only 100 items available in stock
+        bookDao.updateStock("9781430216407",200);   //there are only 100 items available in stock
     }
 
 }

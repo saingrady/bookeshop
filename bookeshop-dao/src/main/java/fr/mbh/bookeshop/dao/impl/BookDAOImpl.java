@@ -64,7 +64,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
         return this.getHibernateTemplate().get(Book.class,isbn);
     }
     
-    public void updateQuantity(String isbn,int quantity) throws InsufficientStockException{
+    public void updateStock(String isbn,int quantity) throws InsufficientStockException{
         Book book = getBookByIsbn(isbn);
         if (book.getQuantity() >= quantity ){
             book.setQuantity(book.getQuantity() - quantity);
