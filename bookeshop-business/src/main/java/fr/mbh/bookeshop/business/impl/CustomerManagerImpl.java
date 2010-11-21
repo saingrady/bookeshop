@@ -28,6 +28,7 @@ import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import fr.mbh.bookeshop.business.exception.LoginException;
 import fr.mbh.bookeshop.dao.api.CustomerDAO;
 import fr.mbh.bookeshop.dao.domain.Customer;
+import org.springframework.dao.DataAccessException;
 
 /**
  * Customer Manager implementation
@@ -41,18 +42,14 @@ public class CustomerManagerImpl implements CustomerManager {
     }
 
     public Customer login(String email, String password) throws LoginException {
-        if(customerDAO.checkLogin(email, password))
+        if(customerDAO.checkLoginCredentials(email, password))
             return customerDAO.findByEmail(email);
         else throw new LoginException("Invalid login credentials : email='"+email+"'/password='"+password+"'");
     }
 
-    public Customer updateCustomer(Customer customer) throws CustomerExistentException {
-        try {
+    public Customer updateCustomer(Customer customer) {
             customerDAO.update(customer);
             return customerDAO.findByEmail(customer.getEmail());
-        } catch (Exception e) {
-            throw new CustomerExistentException();
-        }
     }
 
     public void removeCustomer(Customer customer) {
@@ -63,7 +60,7 @@ public class CustomerManagerImpl implements CustomerManager {
         try {
             customerDAO.save(customer);
             return customerDAO.findByEmail(customer.getEmail());
-        } catch (Exception e) {
+        } catch (DataAccessException e) {
             throw new CustomerExistentException();
         }
     }

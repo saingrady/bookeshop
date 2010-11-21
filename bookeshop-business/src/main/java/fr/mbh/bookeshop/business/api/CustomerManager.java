@@ -45,9 +45,8 @@ public interface CustomerManager {
      * update an existent customer
      * @param customer the customer to update
      * @return the updated customer
-     * @throws CustomerExistentException if the customer updates his identifier (email) with a value of an already existent customer
      */
-    public Customer updateCustomer(Customer customer) throws CustomerExistentException;
+    public Customer updateCustomer(Customer customer);
 
     /**
      * remove a customer

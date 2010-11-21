@@ -24,22 +24,21 @@
 package fr.mbh.bookeshop.dao.api;
 
 import fr.mbh.bookeshop.dao.domain.Customer;
+import org.springframework.dao.DataAccessException;
 
-import java.util.List;
-
-
+/**
+ * Interface for customer data access object
+ */
 public interface CustomerDAO {
 
     public Customer findByEmail(String email);
 
-    public List<Customer> findByLastName(String lastName);
+    public boolean checkLoginCredentials(String email,String password);
 
-    public boolean checkLogin(String email,String password);
+    public void update(Customer customer) throws DataAccessException;
 
-    public void update(Customer customer);
+    public void delete(Customer customer) throws DataAccessException;
 
-    public void delete(Customer customer);
-
-    public void save(Customer customer);
+    public void save(Customer customer) throws DataAccessException;
 
 }

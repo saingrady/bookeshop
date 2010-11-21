@@ -25,34 +25,33 @@ package fr.mbh.bookeshop.dao.impl;
 
 import fr.mbh.bookeshop.dao.api.CustomerDAO;
 import fr.mbh.bookeshop.dao.domain.Customer;
-import java.util.List;
+import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO{
+import java.util.List;
 
+/**
+ * Hibernate implementation of customer DAO interface
+ */
+public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO{
 
     public Customer findByEmail(String email) {
       return getHibernateTemplate().get(Customer.class,email);
     }
 
-
-    public List<Customer> findByLastName(String lastName) {
-        return getHibernateTemplate().find("from Customer c where c.lastName = ? ",lastName);
-    }
-
-    public void update(Customer customer){
+    public void update(Customer customer) throws DataAccessException {
         getHibernateTemplate().update(customer);
     }
 
-    public void delete(Customer customer){
+    public void delete(Customer customer) throws DataAccessException{
         getHibernateTemplate().delete(customer);
     }
 
-    public void save(Customer customer){
+    public void save(Customer customer) throws DataAccessException{
         getHibernateTemplate().save(customer);
     }
 
-    public boolean checkLogin(String email, String password) {
+    public boolean checkLoginCredentials(String email, String password) {
         final String[] params = new String[]{"email", "password"};
         final Object[] values = new Object[]{email, password};
         List<Customer> customers=
