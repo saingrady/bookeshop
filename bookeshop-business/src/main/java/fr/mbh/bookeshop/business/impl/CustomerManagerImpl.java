@@ -43,13 +43,13 @@ public class CustomerManagerImpl implements CustomerManager {
 
     public Customer login(String email, String password) throws LoginException {
         if(customerDAO.checkLoginCredentials(email, password))
-            return customerDAO.findByEmail(email);
+            return customerDAO.getCustomerByEmail(email);
         else throw new LoginException("Invalid login credentials : email='"+email+"'/password='"+password+"'");
     }
 
     public Customer updateCustomer(Customer customer) {
             customerDAO.update(customer);
-            return customerDAO.findByEmail(customer.getEmail());
+            return customerDAO.getCustomerByEmail(customer.getEmail());
     }
 
     public void removeCustomer(Customer customer) {
@@ -59,7 +59,7 @@ public class CustomerManagerImpl implements CustomerManager {
     public Customer createCustomer(Customer customer) throws CustomerExistentException {
         try {
             customerDAO.save(customer);
-            return customerDAO.findByEmail(customer.getEmail());
+            return customerDAO.getCustomerByEmail(customer.getEmail());
         } catch (DataAccessException e) {
             throw new CustomerExistentException();
         }

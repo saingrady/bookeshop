@@ -35,7 +35,7 @@ import java.util.List;
  */
 public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO{
 
-    public Customer findByEmail(String email) {
+    public Customer getCustomerByEmail(String email) {
       return getHibernateTemplate().get(Customer.class,email);
     }
 
@@ -52,10 +52,7 @@ public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO{
     }
 
     public boolean checkLoginCredentials(String email, String password) {
-        final String[] params = new String[]{"email", "password"};
-        final Object[] values = new Object[]{email, password};
-        List<Customer> customers=
-                getHibernateTemplate().findByNamedParam("from Customer c where c.email=:email and c.password=:password", params, values);
+        List<Customer> customers= getHibernateTemplate().find("from Customer where email = ? and password = ?", email,password);
         return (customers != null && customers.size() > 0) ? true : false ;
     }
 

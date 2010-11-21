@@ -36,7 +36,7 @@ public interface CustomerDAO {
      * @param email the customer email
      * @return the found customer or null if no customer found for the given email
      */
-    public Customer findByEmail(String email);
+    public Customer getCustomerByEmail(String email);
 
     /**
      * check login credentials
