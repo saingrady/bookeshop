@@ -23,7 +23,7 @@
 
 package fr.mbh.bookeshop.business.api;
 
-import fr.mbh.bookeshop.business.exception.StockUnavailableException;
+import fr.mbh.bookeshop.business.exception.OutOfStockException;
 import fr.mbh.bookeshop.dao.domain.Book;
 
 import java.util.List;
@@ -66,8 +66,8 @@ public interface BookManager {
      * checkout a book from the stock
      * @param isbn the book ISBN
      * @param quantity the quantity to checkout
-     * @throws StockUnavailableException thrown if no stock is available for the given quantity
+     * @throws OutOfStockException thrown if no stock is available for the given quantity
      */
-    public void checkoutBook(String isbn,int quantity) throws StockUnavailableException;
+    public void checkoutBook(String isbn,int quantity) throws OutOfStockException;
 
 }

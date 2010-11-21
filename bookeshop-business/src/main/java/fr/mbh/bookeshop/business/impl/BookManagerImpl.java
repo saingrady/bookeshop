@@ -24,7 +24,7 @@
 package fr.mbh.bookeshop.business.impl;
 
 import fr.mbh.bookeshop.business.api.BookManager;
-import fr.mbh.bookeshop.business.exception.StockUnavailableException;
+import fr.mbh.bookeshop.business.exception.OutOfStockException;
 import fr.mbh.bookeshop.dao.api.BookDAO;
 import fr.mbh.bookeshop.dao.domain.Book;
 import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
@@ -58,11 +58,11 @@ public class BookManagerImpl implements BookManager{
         return bookDAO.getBookByIsbn(isbn);
     }
 
-    public void checkoutBook(String isbn,int quantity) throws StockUnavailableException{
+    public void checkoutBook(String isbn,int quantity) throws OutOfStockException {
         try {
-            bookDAO.updateQuantity(isbn, quantity);
+            bookDAO.updateStock(isbn, quantity);
         } catch (InsufficientStockException ex) {
-            throw new StockUnavailableException(ex.getMessage());
+            throw new OutOfStockException(ex.getMessage());
         }
     }
 

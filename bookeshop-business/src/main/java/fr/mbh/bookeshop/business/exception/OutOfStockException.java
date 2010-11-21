@@ -23,9 +23,10 @@
 
 package fr.mbh.bookeshop.business.exception;
 
-public class StockUnavailableException extends Exception{
+public class OutOfStockException extends Exception{
 
-    public StockUnavailableException(String message) {
+    public OutOfStockException(String message) {
         super(message);
     }
+    
 }
