@@ -23,6 +23,9 @@
 
 package fr.mbh.bookeshop.dao.domain;
 
+/**
+ * Customer domain object
+ */
 public class Customer {
 
     private String email;
@@ -30,17 +33,6 @@ public class Customer {
     private String lastName;
     private String address;
     private String password;
-
-    public Customer() {
-    }
-
-    public Customer(String firstName, String lastName, String email, String address, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.address = address;
-        this.password = password;
-    }
 
     public String getEmail() {
         return email;
