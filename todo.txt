@@ -27,6 +27,7 @@ TODO :
 - add forms validation (create/update customer), may use bean validation JSR 303
 - change customer ID (id=email -> bad design)
 - all security checks
+- store book images in DB (blob type)
 - add order table
 - add book stock table
 - add discount offers on some books
