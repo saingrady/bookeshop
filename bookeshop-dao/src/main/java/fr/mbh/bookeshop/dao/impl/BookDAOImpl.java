@@ -33,6 +33,9 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import java.util.List;
 
+/**
+ * Hibernate implementation of book DAO interface
+ */
 public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
     public List<Book> getBooks() {
