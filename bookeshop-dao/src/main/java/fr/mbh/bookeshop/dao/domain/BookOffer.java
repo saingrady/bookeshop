@@ -24,21 +24,13 @@
 package fr.mbh.bookeshop.dao.domain;
 
 /**
- * Book domain object
+ * Book offer domain object
  */
-public class Book {
+public class BookOffer {
 
     private String isbn;
 
-    private String title;
-
-    private String author;
-
-    private int year;
-
-    private double price;
-
-    private int category;
+    private int offer;
 
     public String getIsbn() {
         return isbn;
@@ -48,49 +40,17 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public String getTitle() {
-        return title;
+    public int getOffer() {
+        return offer;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getCategory() {
-        return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    public void setOffer(int offer) {
+        this.offer = offer;
     }
 
     @Override
     public String toString() {
-        return "fr.mbh.bookeshop.dao.domain.Book[isbn=" + isbn + "]";
+        return "fr.mbh.bookeshop.dao.domain.BookOffer[isbn=" + isbn + " | offer=" + offer + "]";
     }
 
 }

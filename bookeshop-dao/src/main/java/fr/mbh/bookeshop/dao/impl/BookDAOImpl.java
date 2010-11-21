@@ -25,6 +25,8 @@ package fr.mbh.bookeshop.dao.impl;
 
 import fr.mbh.bookeshop.dao.api.BookDAO;
 import fr.mbh.bookeshop.dao.domain.Book;
+import fr.mbh.bookeshop.dao.domain.BookOffer;
+import fr.mbh.bookeshop.dao.domain.BookStock;
 import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
@@ -38,9 +40,18 @@ import java.util.List;
  */
 public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
-    public List<Book> getBooks() {
-        //TODO return only available books (check quantity field or Book_Stock table when added)
-        return  this.getHibernateTemplate().find("from Book");
+    public List<Book> getOffers() {
+        return  this.getHibernateTemplate().find("from Book where isbn in (from BookOffer where offer > 0)");
+    }
+
+    public int getBookStock(String isbn) {
+        BookStock bookStock = this.getHibernateTemplate().get(BookStock.class,isbn);
+        return bookStock.getStock();
+    }
+
+    public int getBookOffer(String isbn) {
+        BookOffer bookOffer = this.getHibernateTemplate().get(BookOffer.class,isbn);
+        return bookOffer.getOffer();
     }
 
     public List<Book> getBooksByCategory(int categoryId) {
@@ -68,14 +79,13 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
 
     public void updateStock(String isbn,int quantity) throws InsufficientStockException{
-        // TODO should operates on Book_Stock table
-        // TODO should throw DataAccessException (add trigger for negative quantity
-        Book book = getBookByIsbn(isbn);
-        if (book.getQuantity() >= quantity ){
-            book.setQuantity(book.getQuantity() - quantity);
-            this.getHibernateTemplate().update(book);
+        // TODO should throw DataAccessException (add trigger for negative stock)
+        BookStock bookStock = this.getHibernateTemplate().get(BookStock.class,isbn);
+        if (bookStock.getStock() >= quantity ){
+            bookStock.setStock(bookStock.getStock() - quantity);
+            this.getHibernateTemplate().update(bookStock);
         }else
-            throw new InsufficientStockException("Insufficient stock of " + quantity + " items for book '"+ book.getTitle() + "'");
+            throw new InsufficientStockException("Insufficient stock of " + quantity + " items for book '"+ getBookByIsbn(isbn).getTitle() + "'");
     }
 
 }

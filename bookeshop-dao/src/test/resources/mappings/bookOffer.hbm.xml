@@ -24,14 +24,10 @@
 
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <class name="fr.mbh.bookeshop.dao.domain.Book" table="book">
-    <id column="isbn" name="isbn">
+  <class name="fr.mbh.bookeshop.dao.domain.BookOffer" table="book_offer">
+    <id name="isbn" column="bookId" >
       <generator class="assigned"/>
     </id>
-    <property name="title"/>
-    <property name="author"/>
-    <property name="year"/>
-    <property name="price"/>
-    <property column="category_id" name="category"/>
+    <property name="offer"/>
   </class>
 </hibernate-mapping>

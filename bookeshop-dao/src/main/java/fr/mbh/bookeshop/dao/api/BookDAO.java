@@ -28,17 +28,60 @@ import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
 
 import java.util.List;
 
-
+/**
+ * Interface for book data access object
+ * (may be split in BookDAO and BookStockDAO)
+ */
 public interface BookDAO {
 
-    public List<Book> getBooks();
-
-    public List<Book> getBooksByCategory(int categoryId);
-
-    public List<Book> getBooksByTitleAuthor(String keyword);
-
+    /**
+     * get a book by id
+     * @param isbn the book id = isbn
+     * @return the found book or null if no book with such isbn
+     */
     public Book getBookByIsbn(String isbn);
 
+    /**
+     * get book by category
+     * @param categoryId the category id
+     * @return the list of found books in the for the given category
+     */
+    public List<Book> getBooksByCategory(int categoryId);
+
+    /**
+     * look for book by Title or Author
+     * @param keyword the keyword
+     * @return the list of found books for the given keyword
+     */
+    public List<Book> getBooksByTitleAuthor(String keyword);
+
+    /**
+     * get discount books
+     * @return the list of discount books
+     */
+    public List<Book> getOffers();
+
+    /**
+     * get the available stock for a book
+     * @param isbn the book isbn
+     * @return the book stock
+     */
+    public int getBookStock(String isbn);
+
+    /**
+     * get offer for a book
+     *
+     * @param isbn the book isbn
+     * @return the book offer
+     */
+    public int getBookOffer(String isbn);
+
+    /**
+     * update the book stock
+     * @param isbn the book id
+     * @param quantity the quantity to checkout
+     * @throws InsufficientStockException if no stock available for the given quantity
+     */
     public void updateStock(String isbn,int quantity) throws InsufficientStockException;
     
 }

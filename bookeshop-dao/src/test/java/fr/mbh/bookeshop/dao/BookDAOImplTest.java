@@ -26,7 +26,6 @@ package fr.mbh.bookeshop.dao;
 import fr.mbh.bookeshop.dao.api.BookDAO;
 import fr.mbh.bookeshop.dao.domain.Book;
 import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-import static junit.framework.Assert.*;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:test-context.xml"})
@@ -46,10 +46,25 @@ public class BookDAOImplTest {
     private BookDAO bookDao;
 
     @Test
-    public void testGetBooks() {
-        List<Book> books = bookDao.getBooks();
-        assertEquals(22,books.size());
+    public void testGetOffers() {
+        List<Book> discountBooks = bookDao.getOffers();
+        assertEquals(4,discountBooks.size());
     }
+
+    @Test
+    public void testGetBookOfferOK() {
+        String isbn = "9781430216407"; // 5% discount for book 'pro spring dm server'
+        int offer = bookDao.getBookOffer(isbn);
+        assertEquals(5,offer);
+    }
+
+    @Test
+    public void testGetBookOfferKO() {
+        String isbn = "9781430219088"; // no offer for book 'Pro Hyper-V'
+        int offer = bookDao.getBookOffer(isbn);
+        assertEquals(0,offer);
+    }
+
 
     @Test
     public void testGetBooksByCategory() {
@@ -75,7 +90,7 @@ public class BookDAOImplTest {
     public void testUpdateQuantityOK() throws InsufficientStockException {
         String isbn = "9781430216407"; // pro spring dm server
         bookDao.updateStock(isbn,20);   //there are only 100 items available in stock
-        assertEquals(80,bookDao.getBookByIsbn(isbn).getQuantity());
+        assertEquals(80,bookDao.getBookStock(isbn));
     }
 
     @Test
