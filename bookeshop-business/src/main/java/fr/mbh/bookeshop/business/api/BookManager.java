@@ -36,10 +36,10 @@ import java.util.List;
 public interface BookManager {
 
     /**
-     * lists all available books
-     * @return the list of available books
+     * lists discount books
+     * @return the list of discount books
      */
-    public List<Book> getBooks();
+    public List<Book> getDiscountBooks();
 
     /**
      * look for books for a category

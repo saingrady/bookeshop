@@ -42,8 +42,8 @@ public class BookManagerImpl implements BookManager{
         this.bookDAO = bookDAO;
     }
 
-    public List<Book> getBooks() {
-        return bookDAO.getBooks();
+    public List<Book> getDiscountBooks() {
+        return bookDAO.getOffers();
     }
 
     public List<Book> getBooksByCategory(int categoryId) {

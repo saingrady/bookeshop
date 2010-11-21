@@ -46,7 +46,7 @@ public class BookCatalogueAction {
     }
 
     public String execute() throws Exception {
-        this.books = bookManager.getBooks();
+        this.books = bookManager.getDiscountBooks();
         return "success";
     }
 
