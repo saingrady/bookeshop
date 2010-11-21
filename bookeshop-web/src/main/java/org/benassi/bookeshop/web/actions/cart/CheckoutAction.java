@@ -24,11 +24,9 @@
 package org.benassi.bookeshop.web.actions.cart;
 
 import fr.mbh.bookeshop.business.api.BookManager;
-import fr.mbh.bookeshop.business.exception.StockUnavailableException;
+import fr.mbh.bookeshop.business.exception.OutOfStockException;
 import fr.mbh.bookeshop.dao.domain.Book;
-import fr.mbh.bookeshop.dao.domain.Customer;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
-import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 //import org.springframework.mail.MailSender;
 
@@ -105,7 +103,7 @@ public class CheckoutAction implements SessionAware {
 
             return "success";
 
-        } catch (StockUnavailableException e) {
+        } catch (OutOfStockException e) {
             error = e.getMessage();
             return "error";
         }
