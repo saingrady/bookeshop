@@ -31,14 +31,40 @@ import org.springframework.dao.DataAccessException;
  */
 public interface CustomerDAO {
 
+    /**
+     * get a customer by email
+     * @param email the customer email
+     * @return the found customer or null if no customer found for the given email
+     */
     public Customer findByEmail(String email);
 
+    /**
+     * check login credentials
+     * @param email the customer email
+     * @param password the customer password
+     * @return true if login/password matches a valid entry in the DB
+     */
     public boolean checkLoginCredentials(String email,String password);
 
+    /**
+     * update a customer
+     * @param customer the customer to update
+     * @throws DataAccessException thrown if the customer cannot be updated
+     */
     public void update(Customer customer) throws DataAccessException;
 
+    /**
+     * delete a customer
+     * @param customer the customer to delete
+     * @throws DataAccessException thrown if the customer cannot be deleted
+     */
     public void delete(Customer customer) throws DataAccessException;
 
+    /**
+     * save a new customer
+     * @param customer the customer to save
+     * @throws DataAccessException thrown if the customer cannot be saved
+     */
     public void save(Customer customer) throws DataAccessException;
 
 }

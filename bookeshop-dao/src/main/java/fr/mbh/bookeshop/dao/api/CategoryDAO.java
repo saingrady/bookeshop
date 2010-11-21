@@ -27,9 +27,21 @@ import fr.mbh.bookeshop.dao.domain.Category;
 
 import java.util.List;
 
+/**
+ * Interface for category data access object
+ */
 public interface CategoryDAO {
 
+    /**
+     * get all categories
+     * @return the list of all categories
+     */
     public List<Category> getCategories();
 
+    /**
+     * get a category by id
+     * @param categoryId the category id
+     * @return the found category or null if no category for the given id
+     */
     public Category getCategoryById(int categoryId);
 }
