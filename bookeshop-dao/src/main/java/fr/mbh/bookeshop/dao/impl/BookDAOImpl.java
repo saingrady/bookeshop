@@ -23,16 +23,15 @@
 
 package fr.mbh.bookeshop.dao.impl;
 
+import fr.mbh.bookeshop.dao.api.BookDAO;
 import fr.mbh.bookeshop.dao.domain.Book;
 import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
-import fr.mbh.bookeshop.dao.api.BookDAO;
-
-import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import java.util.List;
 
 public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
@@ -63,8 +62,11 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
     public Book getBookByIsbn(String isbn) {
         return this.getHibernateTemplate().get(Book.class,isbn);
     }
-    
+
+
     public void updateStock(String isbn,int quantity) throws InsufficientStockException{
+        // TODO should operates on Book_Stock table
+        // TODO should throw DataAccessException (add trigger for negative quantity
         Book book = getBookByIsbn(isbn);
         if (book.getQuantity() >= quantity ){
             book.setQuantity(book.getQuantity() - quantity);
