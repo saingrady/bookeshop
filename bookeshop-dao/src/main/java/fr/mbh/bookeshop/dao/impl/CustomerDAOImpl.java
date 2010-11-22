@@ -35,8 +35,13 @@ import java.util.List;
  */
 public class CustomerDAOImpl extends HibernateDaoSupport implements CustomerDAO{
 
+    public Customer getCustomerById(int id) {
+        return getHibernateTemplate().get(Customer.class,id);
+    }
+
     public Customer getCustomerByEmail(String email) {
-      return getHibernateTemplate().get(Customer.class,email);
+        List<Customer> customers= getHibernateTemplate().find("from Customer where email = ? ", email);
+        return (customers != null && customers.size() > 0) ? customers.get(0) : null ;
     }
 
     public void update(Customer customer) throws DataAccessException {

@@ -32,6 +32,13 @@ import org.springframework.dao.DataAccessException;
 public interface CustomerDAO {
 
     /**
+     * get a customer by id
+     * @param id the customer id
+     * @return the found customer or null if no customer found for the given id
+     */
+    public Customer getCustomerById(int id);
+
+    /**
      * get a customer by email
      * @param email the customer email
      * @return the found customer or null if no customer found for the given email

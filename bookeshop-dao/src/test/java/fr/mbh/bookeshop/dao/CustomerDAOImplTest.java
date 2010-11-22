@@ -25,6 +25,8 @@ package fr.mbh.bookeshop.dao;
 
 import fr.mbh.bookeshop.dao.api.CustomerDAO;
 import fr.mbh.bookeshop.dao.domain.Customer;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,16 @@ public class CustomerDAOImplTest {
 
     @Autowired
     private CustomerDAO customerDAO;
+
+    private Customer toto;
+
+    private Customer titi;
+
+    @Before
+    public void setup() {
+        toto = new Customer("toto@gmail.com", "toto", "ben toto", "totoadr", "totopwd");
+        titi = new Customer("titi@gmail.com", "titi", "ben titi", "titiadr", "titipwd");
+    }
 
     @Test
     public void testCheckLoginCredentialsOK(){
@@ -77,91 +89,20 @@ public class CustomerDAOImplTest {
     @Test
     public void testSaveOK(){
 
-        Customer newCustomer = new Customer();
-        newCustomer.setFirstName("toto");
-        newCustomer.setLastName("ben toto");
-        newCustomer.setAddress("adr");
-        newCustomer.setEmail("toto@gmail.org");
-        newCustomer.setPassword("totopwd");
+        customerDAO.save(toto);
 
-        customerDAO.save(newCustomer);
-
-        Customer customer = customerDAO.getCustomerByEmail(newCustomer.getEmail());
+        Customer customer = customerDAO.getCustomerById(toto.getIdentifier());
+        System.out.println("customer = " + customer);
         assertNotNull(customer);
     }
 
-
     /**
-     * try to save a customer without id (id = email)
-     */
-    @Test
-    @ExpectedException(DataAccessException.class)
-    public void testSaveKO(){
-
-        Customer newCustomer = new Customer();
-        newCustomer.setFirstName("toto");
-        newCustomer.setLastName("ben toto");
-        newCustomer.setAddress("adr");
-        newCustomer.setPassword("totopwd");
-
-        customerDAO.save(newCustomer);
-
-    }
-
-    /**
-     * try to save a customer with an existent customer email
+     * try to save a customer with an existent email
      */
     @Test
     @ExpectedException(DataAccessException.class)
     public void testSaveExistentCustomer(){
-
-        Customer newCustomer = new Customer();
-        newCustomer.setFirstName("toto");
-        newCustomer.setLastName("ben toto");
-        newCustomer.setAddress("adr");
-        newCustomer.setEmail("md.benhassine@gmail.com");
-        newCustomer.setPassword("totopwd");
-
-        customerDAO.save(newCustomer);
-
-    }
-
-    /**
-     * test to delete a loaded customer
-     */
-    @Test
-    public void testDeleteLoadedCustomer() {
-
-        String email = "md.benhassine@gmail.com";
-
-        Customer customer = customerDAO.getCustomerByEmail(email);
-
-        customerDAO.delete(customer);
-
-        customer = customerDAO.getCustomerByEmail(email);
-
-        assertNull(customerDAO.getCustomerByEmail(email));
-
-    }
-
-    /**
-     * test to delete a manually created customer
-     */
-    @Test
-    public void testDeleteManuallyCreatedCustomer() {
-
-        String email = "md.benhassine@gmail.com";
-
-        Customer customer = new Customer();
-
-        customer.setEmail(email);
-
-        customerDAO.delete(customer);
-
-        customer = customerDAO.getCustomerByEmail(email);
-
-        assertNull(customerDAO.getCustomerByEmail(email));
-
+        customerDAO.save(toto);
     }
 
     /**
@@ -170,36 +111,36 @@ public class CustomerDAOImplTest {
     @Test
     public void testUpdateOK() {
 
-        String email = "mahmoud@server.com";
+        int id = 56326;
 
-        Customer customer = customerDAO.getCustomerByEmail(email);
-        customer.setFirstName("toto");
-        customer.setLastName("ben toto");
-        customer.setAddress("adr");
-        customer.setPassword("totopwd");
+        Customer customer = customerDAO.getCustomerById(id);
+        customer.setAddress("new adr");
+        customer.setEmail("mahmoud@yahoo.com");
+        customer.setPassword("new pwd");
 
         customerDAO.update(customer);
 
-        Customer c = customerDAO.getCustomerByEmail(email);
+        Customer c = customerDAO.getCustomerById(id);
 
-        assertEquals("toto", c.getFirstName());
-        assertEquals("ben toto", c.getLastName());
-        assertEquals("adr", c.getAddress());
-        assertEquals("totopwd", c.getPassword());
+        assertEquals("new adr", c.getAddress());
+        assertEquals("mahmoud@yahoo.com", c.getEmail());
+        assertEquals("new pwd", c.getPassword());
 
     }
 
     /**
-     * try to update a customer id (email) //should be replaced, ie TODOs
+     * try to update email with an existent email of another customer
      */
     @Test
-    @ExpectedException(DataAccessException.class)
-    public void testUpdateCustomerId() {
+    @ExpectedException(DataAccessException.class) // constraint unique_email on table customer violated
+    public void testUpdateCustomerEmailKO() {
 
-        String email = "mahmoud@server.com";
-        String newEmail = "toto@gmail.com";
+        int id = 56326;
 
-        Customer customer = customerDAO.getCustomerByEmail(email);
+        String newEmail = "md.benhassine@gmail.com";
+
+        Customer customer = customerDAO.getCustomerById(id);
+        
         customer.setEmail(newEmail);
 
         customerDAO.update(customer);
@@ -212,17 +153,30 @@ public class CustomerDAOImplTest {
     @Test
     @ExpectedException(DataAccessException.class)
     public void testUpdateNonExistentCustomer() {
-
-        Customer customer = new Customer();
-        customer.setFirstName("titi");
-        customer.setLastName("ben titi");
-        customer.setAddress("titadr");
-        customer.setEmail("titi@gmail.com");
-        customer.setPassword("titipwd");
-
-        customerDAO.update(customer);
-
+        customerDAO.update(titi);
     }
 
+    /**
+     * test to delete a loaded customer
+     */
+    @Test
+    public void testDeleteLoadedCustomer() {
+
+        int id = 56325;
+
+        Customer customer = customerDAO.getCustomerById(id);
+
+        customerDAO.delete(customer);
+
+        assertNull( customerDAO.getCustomerById(id) );
+    }
+
+    @After
+    public void teardown(){
+        toto =null;
+        titi = null;
+        customerDAO = null;
+        System.gc();
+    }
 
 }

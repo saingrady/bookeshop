@@ -2,12 +2,15 @@
 DROP TABLE IF EXISTS customer;
 
 CREATE TABLE customer (
-  email varchar(32) NOT NULL PRIMARY KEY,
+  id int IDENTITY NOT NULL PRIMARY KEY,
+  email varchar(32) NOT NULL,
   firstname varchar(32) DEFAULT NULL,
   lastname varchar(32) DEFAULT NULL,
   address varchar(256) DEFAULT NULL,
   password varchar(32) DEFAULT NULL
 );
+
+ALTER TABLE customer ADD CONSTRAINT unique_email UNIQUE (email);
 
 -- Category table
 DROP TABLE IF EXISTS category;

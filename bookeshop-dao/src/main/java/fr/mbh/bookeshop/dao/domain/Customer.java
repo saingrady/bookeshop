@@ -28,11 +28,31 @@ package fr.mbh.bookeshop.dao.domain;
  */
 public class Customer {
 
+    private int identifier;
     private String email;
     private String firstName;
     private String lastName;
     private String address;
     private String password;
+
+    public Customer() {
+    }
+
+    public Customer(String email, String firstName, String lastName, String address, String password) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.password = password;
+    }
+
+    public int getIdentifier() {
+        return identifier;
+    }
+
+    public void setIdentifier(int identifier) {
+        this.identifier = identifier;
+    }
 
     public String getEmail() {
         return email;
@@ -76,11 +96,12 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "\nfirst name = " + firstName
-                + "\nlast name = " + lastName
-                + "\nemail = " + email
-                + "\naddress = " + address
-                + "\npassword = " + password ;
+        return    "\n identifier = " + identifier
+                + "\n first name = " + firstName
+                + "\n last name = " + lastName
+                + "\n email = " + email
+                + "\n address = " + address
+                + "\n password = " + password ;
     }
 
 }

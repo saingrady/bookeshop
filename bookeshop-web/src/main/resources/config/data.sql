@@ -80,5 +80,4 @@ INSERT INTO book_offer VALUES ('9781590598276',0);
 INSERT INTO book_offer VALUES ('9781590599686',0);
 
 -- customers
-INSERT INTO customer VALUES ('md.benhassine@gmail.com', 'Mahmoud', 'Ben Hassine', 'somewhere on earth', 'mahmoud');
-INSERT INTO customer VALUES ('mahmoud@server.com', 'Mahmood', 'Benassi', 'somewhere on moon', 'mahmood');
+INSERT INTO customer VALUES (56325,'md.benhassine@gmail.com', 'Mahmoud', 'Ben Hassine', 'somewhere on earth', 'mahmoud');
