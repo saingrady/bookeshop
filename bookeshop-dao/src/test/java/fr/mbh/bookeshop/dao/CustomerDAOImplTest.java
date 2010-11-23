@@ -92,7 +92,6 @@ public class CustomerDAOImplTest {
         customerDAO.save(toto);
 
         Customer customer = customerDAO.getCustomerById(toto.getIdentifier());
-        System.out.println("customer = " + customer);
         assertNotNull(customer);
     }
 
