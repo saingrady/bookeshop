@@ -47,9 +47,13 @@ public class CustomerManagerImpl implements CustomerManager {
         else throw new LoginException("Invalid login credentials : email='"+email+"'/password='"+password+"'");
     }
 
-    public Customer updateCustomer(Customer customer) {
+    public Customer updateCustomer(Customer customer) throws CustomerExistentException {
+        try {
             customerDAO.update(customer);
             return customerDAO.getCustomerByEmail(customer.getEmail());
+        } catch (DataAccessException e) {
+            throw new CustomerExistentException();
+        }
     }
 
     public void removeCustomer(Customer customer) {
