@@ -54,8 +54,8 @@ public class CustomerDAOImplTest {
 
     @Before
     public void setup() {
-        toto = new Customer("toto@gmail.com", "toto", "ben toto", "totoadr", "totopwd");
-        titi = new Customer("titi@gmail.com", "titi", "ben titi", "titiadr", "titipwd");
+        toto = new Customer( "toto", "ben toto", "totoadr","toto@gmail.com","totopwd");
+        titi = new Customer( "titi", "ben titi", "titiadr","titi@gmail.com","titipwd");
     }
 
     @Test

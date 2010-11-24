@@ -38,11 +38,11 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String email, String firstName, String lastName, String address, String password) {
-        this.email = email;
+    public Customer(String firstName, String lastName, String address,String email,String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        this.email = email;
         this.password = password;
     }
 
