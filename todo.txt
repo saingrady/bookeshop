@@ -29,9 +29,6 @@ TODO :
 - all security checks
 - store book images in DB (blob type)
 - add order table
-- add book stock table
-- add discount offers on some books
-- display offers and new items on welcome page and not all books
 - add I18N
 - add 'home','about' and 'contacts' pages (may use http://www.emailmeform.com/)
 - sort cart content before displaying cart details
@@ -47,7 +44,7 @@ TODO :
 - add checkout with PayPal API (at least see how to do it)
 - add web services exposed to partners (available books, quantity,etc)
 - review TX advised methods / test transactional behavior
-- add mock service for email sending bean
+- add mock service for email sending bean (use it in an interceptor after confirmation action = aop)
 - add apache tiles for pages layout
 - add apache velocity template for confirmation emails sent to customers
 - add a batch task to send a complete report for sales (may use spring batch/ quartz)
