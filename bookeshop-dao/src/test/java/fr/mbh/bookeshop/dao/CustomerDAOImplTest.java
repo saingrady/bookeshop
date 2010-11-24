@@ -77,6 +77,7 @@ public class CustomerDAOImplTest {
         String email = "md.benhassine@gmail.com";
         Customer customer = customerDAO.getCustomerByEmail(email);
         assertNotNull(customer);
+        assertEquals(56325,customer.getIdentifier());
     }
 
     @Test
