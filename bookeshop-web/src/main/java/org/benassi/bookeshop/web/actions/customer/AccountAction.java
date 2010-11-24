@@ -74,7 +74,7 @@ public class AccountAction implements SessionAware {
             return "success";
         } catch (CustomerExistentException e) {
             error = "We have already an account for email '" + email + "'!\n" +
-                    "If you are have already signed up with this email and forgot your password,\n" +
+                    "If you have already signed up with this email and forgot your password,\n" +
                     "you can request to reset your password on the right-side bar";
             return "error";
         }
@@ -93,7 +93,7 @@ public class AccountAction implements SessionAware {
             return "success";
         } catch (CustomerExistentException e) {
             error = "We have already an account for email '" + email + "'!\n" +
-                    "If you are have already signed up with this email and forgot your password,\n" +
+                    "If you ave already signed up with this email and forgot your password,\n" +
                     "you can request to reset your password on the right-side bar";
             return "error";
         }
