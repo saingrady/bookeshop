@@ -51,7 +51,11 @@
                                 <tbody>
                                 <c:forEach var="entry" items="${items}">
                                     <tr>
-                                        <td><img src="images/books/${entry.key.isbn}.gif" width="80" height="120" border="0"/></td>
+                                        <td>
+                                            <a href="bookDetails.do?bookId=${entry.key.isbn}">
+                                                <img src="images/books/${entry.key.isbn}.gif" width="80" height="120" border="0"/>
+                                            </a>
+                                        </td>
                                         <td><c:out value="${entry.key.isbn}"/></td>
                                         <td><c:out value="${entry.key.title}"/></td>
                                         <td><c:out value="${entry.key.author}"/></td>
