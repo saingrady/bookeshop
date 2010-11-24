@@ -25,28 +25,40 @@ package org.benassi.bookeshop.web.actions.book;
 
 import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.dao.domain.Book;
+import org.benassi.bookeshop.web.beans.ItemBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * BookCatalogueAction : loads all books and makes them available to the view
+ * BookCatalogueAction : loads discount books and makes them available to the view
  */
 public class BookCatalogueAction {
 
     private BookManager bookManager;
 
-    private List<Book> books;
+    private List<ItemBean> items;
 
     public void setBookManager(BookManager bookManager) {
         this.bookManager = bookManager;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public List<ItemBean> getItems() {
+        return items;
     }
 
     public String execute() throws Exception {
-        this.books = bookManager.getDiscountBooks();
+        items = new ArrayList<ItemBean>();
+        List<Book> books = bookManager.getDiscountBooks();
+        for (int i = 0; i < books.size(); i++) {
+            Book book =  books.get(i);
+            ItemBean itemBean = new ItemBean(
+                    book,
+                    bookManager.getBookStockStatus(book.getIsbn()),
+                    bookManager.getBookOffer(book.getIsbn())
+            );
+            items.add(itemBean);
+        }
         return "success";
     }
 
