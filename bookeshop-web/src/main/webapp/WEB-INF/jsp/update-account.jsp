@@ -34,9 +34,10 @@
                 <div align="center">
                 <h1> Your personal data : </h1>
                     <s:form action="update-account">
+                       <s:textfield label="Identifier" name="identifier"  size="20" disabled="true"/>
                        <s:textfield label="Fist name"  name="firstName"  size="20"/>
                        <s:textfield label="Last name" name="lastName" size="20"/>
-                       <s:textfield label="E-mail" name="email" size="20" disabled="true"/>
+                       <s:textfield label="E-mail" name="email" size="20"/>
                        <s:textfield label="Address" name="address"  size="20"/>
                        <s:textfield label="Password" name="password" size="20"/>
                        <s:submit value="Update"/> <s:reset value="Reset" />

@@ -24,11 +24,7 @@
 package org.benassi.bookeshop.web.actions.customer;
 
 import com.opensymphony.xwork2.ActionSupport;
-import fr.mbh.bookeshop.business.api.CustomerManager;
 import fr.mbh.bookeshop.dao.domain.Customer;
-import org.apache.struts2.interceptor.SessionAware;
-
-import java.util.Map;
 
 /**
  * Action class to redirect update account requests to update form page
@@ -49,7 +45,10 @@ public class UpdateAction extends ActionSupport {
     /*
      * Getters to populate the form with actual logged customer data
      */
-    
+    public int getIdentifier() {
+        return loggedCustomer.getIdentifier();
+    }
+
     public String getFirstName() {
         return loggedCustomer.getFirstName();
     }

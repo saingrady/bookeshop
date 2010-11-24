@@ -65,12 +65,7 @@ public class AccountAction implements SessionAware {
 
     public String create() {
 
-        Customer customer = new Customer();
-        customer.setFirstName(firstName);
-        customer.setLastName(lastName);
-        customer.setAddress(address);
-        customer.setEmail(email);
-        customer.setPassword(password);
+        Customer customer = new Customer(firstName,lastName,address,email,password);
 
         try {
             customerManager.createCustomer(customer);
@@ -89,13 +84,19 @@ public class AccountAction implements SessionAware {
 
         loggedCustomer.setFirstName(firstName);
         loggedCustomer.setLastName(lastName);
-        //loggedCustomer.setEmail(email); email disabled in jsp : very poorly designed as said : should use/generate customer ID and not email as ID
+        loggedCustomer.setEmail(email);
         loggedCustomer.setAddress(address);
         loggedCustomer.setPassword(password);
-        customerManager.updateCustomer(loggedCustomer);
-        session.put("loggedCustomer",loggedCustomer);
-        return "success";
-
+        try {
+            customerManager.updateCustomer(loggedCustomer);
+            session.put("loggedCustomer",loggedCustomer);
+            return "success";
+        } catch (CustomerExistentException e) {
+            error = "We have already an account for email '" + email + "'!\n" +
+                    "If you are have already signed up with this email and forgot your password,\n" +
+                    "you can request to reset your password on the right-side bar";
+            return "error";
+        }
     }
 
     public String remove() {
