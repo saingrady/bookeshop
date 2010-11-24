@@ -40,27 +40,26 @@
                             <th><b>Author</b></th>
                             <th><b>Year</b></th>
                             <th><b>Price(<img src="images/euro.png" width="12" height="12" border="0"/>)</b></th>
+                            <th><b>Stock</b></th>
+                            <th><b>Offer</b></th>
                             <th><b>Cart</b></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="book" items="${books}">
+                        <c:forEach var="item" items="${items}">
                             <tr>
-                                <td><a href="bookDetails.do?bookId=${book.isbn}"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></a></td>
-                                <td><c:out value="${book.title}"/></td>
-                                <td><c:out value="${book.author}"/></td>
-                                <td><c:out value="${book.year}"/></td>
-                                <td><c:out value="${book.price}"/></td>
                                 <td>
-                                    <c:choose>
-                                        <c:when test="${book.quantity == 0}">
-                                            <img src="images/cancel.png" width="32" height="32" border="0"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <a href="bookDetails.do?bookId=${item.book.isbn}">
+                                        <img src="images/books/${item.book.isbn}.gif" width="80" height="120" border="0"/>
+                                    </a>
                                 </td>
+                                <td><c:out value="${item.book.title}"/></td>
+                                <td><c:out value="${item.book.author}"/></td>
+                                <td><c:out value="${item.book.year}"/></td>
+                                <td><c:out value="${item.book.price}"/></td>
+                                <td><c:out value="${item.stockStatus}"/></td>
+                                <td><img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/></td>
+                                <td><a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a></td>
                             </tr>
                         </c:forEach>
                         </tbody>
