@@ -46,6 +46,19 @@ public class BookManagerImpl implements BookManager{
         return bookDAO.getOffers();
     }
 
+    public String getBookStockStatus(String isbn) {
+        int stock = bookDAO.getBookStock(isbn);
+        if (stock <= 0)
+            return "Out of stock";
+        else if (stock <= 10)
+            return "Last items";
+        else return "In stock";
+    }
+
+    public int getBookOffer(String isbn) {
+        return bookDAO.getBookOffer(isbn);
+    }
+
     public List<Book> getBooksByCategory(int categoryId) {
         return bookDAO.getBooksByCategory(categoryId);
     }

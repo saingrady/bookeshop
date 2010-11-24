@@ -42,6 +42,20 @@ public interface BookManager {
     public List<Book> getDiscountBooks();
 
     /**
+     * return the stock status for a book (inStock,OutOfStock or LastItems)
+     * @param isbn the book isbn
+     * @return the book stock status
+     */
+    public String getBookStockStatus(String isbn);
+
+    /**
+     * return the book offer (if there is an offer for the book)
+     * @param isbn the book isbn
+     * @return the book offer
+     */
+    public int getBookOffer(String isbn);
+
+    /**
      * look for books for a category
      * @param categoryId the category ID
      * @return the list of books belonging to the given category
