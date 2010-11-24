@@ -50,7 +50,7 @@ public class CustomerManagerImpl implements CustomerManager {
     public Customer updateCustomer(Customer customer) throws CustomerExistentException {
         try {
             customerDAO.update(customer);
-            return customerDAO.getCustomerByEmail(customer.getEmail());
+            return customerDAO.getCustomerById(customer.getIdentifier());
         } catch (DataAccessException e) {
             throw new CustomerExistentException();
         }
@@ -63,7 +63,7 @@ public class CustomerManagerImpl implements CustomerManager {
     public Customer createCustomer(Customer customer) throws CustomerExistentException {
         try {
             customerDAO.save(customer);
-            return customerDAO.getCustomerByEmail(customer.getEmail());
+            return customerDAO.getCustomerById(customer.getIdentifier());
         } catch (DataAccessException e) {
             throw new CustomerExistentException();
         }
