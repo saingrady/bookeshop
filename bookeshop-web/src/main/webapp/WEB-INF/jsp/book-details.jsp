@@ -31,14 +31,23 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                    <h1> Book details : ${book.title} </h1><br/>
-                    <img src="images/books/${book.isbn}.gif" width="80" height="120" border="0" class="floatRight"/>
-                    <p><h2>Isbn : <c:out value="${book.isbn}"/></h2></p>
-                    <p><h2>Title : <c:out value="${book.title}"/></h2></p>
-                    <p><h2>Author : <c:out value="${book.author}"/></h2></p>
-                    <p><h2>Year : <c:out value="${book.year}"/></h2></p>
-                    <p><h2>Price : <c:out value="${book.price}"/></h2></p>
-                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0" class="floatRight"/></a>
+                    <h1> Book details : ${item.book.title} </h1><br/>
+                    <img src="images/books/${item.book.isbn}.gif" width="80" height="120" border="0" class="floatRight"/>
+                    <p><h2>Isbn : <c:out value="${item.book.isbn}"/></h2></p>
+                    <p><h2>Title : <c:out value="${item.book.title}"/></h2></p>
+                    <p><h2>Author : <c:out value="${item.book.author}"/></h2></p>
+                    <p><h2>Year : <c:out value="${item.book.year}"/></h2></p>
+                    <p>
+                        <h2>Price : <c:out value="${item.book.price}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
+                           <c:choose>
+                              <c:when test="${item.offer != 0}">
+                                  <img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/> = <c:out value="${item.book.price * (1 - item.offer/100)}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
+                               </c:when>
+                            </c:choose>
+                        </h2>
+                    </p>
+                    <p><h2>Availability : <c:out value="${item.stockStatus}"/></h2></p>
+                    <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0" class="floatRight"/></a>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
             </div>

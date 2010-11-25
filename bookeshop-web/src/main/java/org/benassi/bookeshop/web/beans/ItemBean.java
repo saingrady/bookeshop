@@ -36,6 +36,9 @@ public class ItemBean {
 
     private int offer;
 
+    public ItemBean() {
+    }
+
     public ItemBean(Book book, String stockStatus, int offer) {
         this.book = book;
         this.stockStatus = stockStatus;
@@ -52,5 +55,17 @@ public class ItemBean {
 
     public int getOffer() {
         return offer;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public void setStockStatus(String stockStatus) {
+        this.stockStatus = stockStatus;
+    }
+
+    public void setOffer(int offer) {
+        this.offer = offer;
     }
 }
