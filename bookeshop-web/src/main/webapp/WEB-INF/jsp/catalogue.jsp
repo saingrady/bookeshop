@@ -40,8 +40,8 @@
                             <th><b>Author</b></th>
                             <th><b>Year</b></th>
                             <th><b>Price(<img src="images/euro.png" width="12" height="12" border="0"/>)</b></th>
-                            <th><b>Stock</b></th>
                             <th><b>Offer</b></th>
+                            <th><b>Stock</b></th>
                             <th><b>Cart</b></th>
                         </tr>
                         </thead>
@@ -57,8 +57,8 @@
                                 <td><c:out value="${item.book.author}"/></td>
                                 <td><c:out value="${item.book.year}"/></td>
                                 <td><c:out value="${item.book.price}"/></td>
-                                <td><c:out value="${item.stockStatus}"/></td>
                                 <td><img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/></td>
+                                <td><c:out value="${item.stockStatus}"/></td>
                                 <td><a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a></td>
                             </tr>
                         </c:forEach>
