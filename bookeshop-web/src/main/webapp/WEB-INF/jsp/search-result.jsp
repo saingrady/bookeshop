@@ -33,7 +33,7 @@
                 <div align="center">
                     <h1>Search results for keyword : '<c:out value="${keyword}"/>'</h1><br/>
                     <c:choose>
-                        <c:when test="${not empty foundBooks}">
+                        <c:when test="${not empty foundItems}">
                             <table border="2" align="center">
                                 <thead>
                                 <tr>
@@ -42,24 +42,30 @@
                                     <th><b>Author</b></th>
                                     <th><b>Year</b></th>
                                     <th><b>Price(<img src="images/euro.png" width="12" height="12" border="0"/>)</b></th>
+                                    <th><b>Stock</b></th>
                                     <th><b>Cart</b></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach var="book" items="${foundBooks}">
+                                <c:forEach var="item" items="${foundItems}">
                                     <tr>
-                                        <td><a href="bookDetails.do?bookId=${book.isbn}"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></a></td>
-                                        <td><c:out value="${book.title}"/></td>
-                                        <td><c:out value="${book.author}"/></td>
-                                        <td><c:out value="${book.year}"/></td>
-                                        <td><c:out value="${book.price}"/></td>
+                                        <td><a href="bookDetails.do?bookId=${item.book.isbn}"><img src="images/books/${item.book.isbn}.gif" width="80" height="120" border="0"/></a></td>
+                                        <td><c:out value="${item.book.title}"/></td>
+                                        <td><c:out value="${item.book.author}"/></td>
+                                        <td><c:out value="${item.book.year}"/></td>
+                                        <td><c:out value="${item.book.price}"/>
+                                            <c:if test="${item.offer != 0}">
+                                                <img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/>
+                                            </c:if>
+                                        </td>
+                                        <td><c:out value="${item.stockStatus}"/></td>
                                         <td>
                                             <c:choose>
-                                                <c:when test="${book.quantity == 0}">
+                                                <c:when test="${item.stockStatus == 'Out of stock'}">
                                                     <img src="images/cancel.png" width="32" height="32" border="0"/>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                                                    <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>

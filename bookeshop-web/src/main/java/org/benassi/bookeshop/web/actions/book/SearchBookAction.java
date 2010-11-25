@@ -23,13 +23,12 @@
 
 package org.benassi.bookeshop.web.actions.book;
 
-import com.sun.xml.internal.xsom.impl.parser.state.AttributesImpl;
 import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.dao.domain.Book;
-import org.apache.struts2.interceptor.RequestAware;
+import org.benassi.bookeshop.web.beans.ItemBean;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Action class to look for books by Title/Author
@@ -40,10 +39,10 @@ public class SearchBookAction{
 
     private BookManager bookManager;
 
-    private List<Book> foundBooks;
+    private List<ItemBean> foundItems;
 
-    public List<Book> getFoundBooks() {
-        return foundBooks;
+    public List<ItemBean> getFoundItems() {
+        return foundItems;
     }
 
     public void setBookManager(BookManager bookManager) {
@@ -59,7 +58,13 @@ public class SearchBookAction{
     }
 
     public String execute(){
-        foundBooks = bookManager.getBooksByTitleAuthor(keyword);
+        List<Book> books = bookManager.getBooksByTitleAuthor(keyword);
+        foundItems = new ArrayList<ItemBean>();
+        for (int i = 0; i < books.size(); i++) {
+            Book book =  books.get(i);
+            ItemBean itemBean = new ItemBean(book, bookManager.getBookStockStatus(book.getIsbn()), bookManager.getBookOffer(book.getIsbn()));
+            foundItems.add(itemBean);
+        }
         return "success";
     }
 
