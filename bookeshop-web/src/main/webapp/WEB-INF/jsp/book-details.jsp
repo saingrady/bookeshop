@@ -45,7 +45,9 @@
                         </h2>
                     </p>
                     <p><h2>Availability : <c:out value="${item.stockStatus}"/></h2></p>
-                    <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0" class="floatRight"/></a>
+                        <c:if test="${item.stockStatus != 'Out of stock'}">
+                           <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0" class="floatRight"/></a>
+                        </c:if>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
             </div>
