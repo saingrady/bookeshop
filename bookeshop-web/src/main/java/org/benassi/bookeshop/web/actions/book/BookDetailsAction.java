@@ -61,11 +61,7 @@ public class BookDetailsAction {
         if (book != null) {
             String stock = bookManager.getBookStockStatus(bookId);
             int offer = bookManager.getBookOffer(bookId);
-            item = new ItemBean();
-            item.setBook(book);
-            item.setStockStatus(stock);
-            if (offer>0)
-                item.setOffer(offer);
+            item = new ItemBean(book,stock,offer);
             return "success";
         }
         else {
