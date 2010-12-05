@@ -33,7 +33,6 @@
                 <c:forEach var="category" items="${categories}">
                 <li><a href="category.do?categoryId=${category.id}">${category.name}</a></li>
                 </c:forEach>
-                <li><a href="catalogue.do">All</a></li>
             </ul>
         </li>
         <li>
