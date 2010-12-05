@@ -25,6 +25,8 @@ package org.benassi.bookeshop.web.beans;
 
 import fr.mbh.bookeshop.dao.domain.Book;
 
+import java.text.DecimalFormat;
+
 /**
  * Bean encapsulating a book with its stock status and offer
  */
@@ -35,6 +37,8 @@ public class ItemBean {
     private String stockStatus;
 
     private int offer;
+
+    private double discountPrice;
 
     public ItemBean() {
     }
@@ -68,4 +72,10 @@ public class ItemBean {
     public void setOffer(int offer) {
         this.offer = offer;
     }
+
+    public double getDiscountPrice(){
+        DecimalFormat df = new DecimalFormat("###.##");
+        return Double.valueOf(df.format(book.getPrice() - book.getPrice() * offer/100));
+    }
+    
 }

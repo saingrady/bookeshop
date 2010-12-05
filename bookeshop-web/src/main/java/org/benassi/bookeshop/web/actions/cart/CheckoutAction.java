@@ -93,7 +93,7 @@ public class CheckoutAction implements SessionAware {
                 );
                 Integer quantity = theCart.getItems().get(bookId);
                 bookManager.checkoutBook(book.getIsbn(),quantity);
-                total += (book.getPrice() - book.getPrice() * bookManager.getBookOffer(bookId)/100) * theCart.getItems().get(bookId);
+                total += itemBean.getDiscountPrice() * quantity;
                 items.put(itemBean, quantity);
             }
             theCart.clearCart();

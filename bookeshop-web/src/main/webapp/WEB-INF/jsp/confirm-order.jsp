@@ -50,7 +50,7 @@
                                 <td><c:out value="${entry.key.book.title}"/></td>
                                 <td><c:out value="${entry.key.book.author}"/></td>
                                 <td><c:out value="${entry.key.book.year}"/></td>
-                                <td><c:out value="${entry.key.book.price * (1 - entry.key.offer/100)}"/></td>
+                                <td><c:out value="${entry.key.discountPrice}"/></td>
                                 <td><c:out value="${entry.value}"/></td>
                             </tr>
                         </c:forEach>

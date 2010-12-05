@@ -62,7 +62,7 @@
                                         <td><c:out value="${entry.key.book.year}"/></td>
                                         <td><c:out value="${entry.key.book.price}"/>
                                         <c:if test="${entry.key.offer != 0}">
-                                                <img src="images/offer_${entry.key.offer}.png" width="32" height="32" border="0"/> = <c:out value="${entry.key.book.price * (1 - entry.key.offer/100)}"/>
+                                                <img src="images/offer_${entry.key.offer}.png" width="32" height="32" border="0"/> = <c:out value="${entry.key.discountPrice}"/>
                                         </c:if>
                                         </td>
                                         <td><c:out value="${entry.value}"/></td>

@@ -40,7 +40,7 @@
                     <p>
                         <h2>Price : <c:out value="${item.book.price}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
                               <c:if test="${item.offer != 0}">
-                                  <img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/> = <c:out value="${item.book.price * (1 - item.offer/100)}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
+                                  <img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/> = <c:out value="${item.discountPrice}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
                                </c:if>
                         </h2>
                     </p>

@@ -82,8 +82,9 @@ public class CartDetailsAction implements SessionAware {
                        bookManager.getBookStockStatus(book.getIsbn()),
                        bookManager.getBookOffer(book.getIsbn())
                );
-               items.put(itemBean, theCart.getItems().get(bookId));
-               total += (book.getPrice() - book.getPrice() * bookManager.getBookOffer(bookId)/100) * theCart.getItems().get(bookId);
+               Integer quantity = theCart.getItems().get(bookId);
+               items.put(itemBean, quantity);
+               total += itemBean.getDiscountPrice() * quantity;
            }
            return "success";
        }else
