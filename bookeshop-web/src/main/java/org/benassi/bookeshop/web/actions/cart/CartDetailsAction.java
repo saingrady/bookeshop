@@ -26,8 +26,8 @@ package org.benassi.bookeshop.web.actions.cart;
 import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.dao.domain.Book;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
-import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
+import org.benassi.bookeshop.web.beans.ItemBean;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,13 +43,13 @@ public class CartDetailsAction implements SessionAware {
 
     private ShoppingCart theCart;
 
-    private Map<Book,Integer> items;
+    private Map<ItemBean,Integer> items;
 
     private Double total;
 
     private String error;
 
-    public Map<Book, Integer> getItems() {
+    public Map<ItemBean, Integer> getItems() {
         return items;
     }
 
@@ -74,11 +74,16 @@ public class CartDetailsAction implements SessionAware {
 
        if( theCart != null){
            total = 0.0;
-           items = new HashMap<Book,Integer>();
+           items = new HashMap<ItemBean,Integer>();
            for (String bookId : theCart.getItems().keySet()) {
                Book book = bookManager.getBookByIsbn(bookId);
-               items.put(book, theCart.getItems().get(bookId));
-               total += book.getPrice() * theCart.getItems().get(bookId);
+               ItemBean itemBean = new ItemBean(
+                       book,
+                       bookManager.getBookStockStatus(book.getIsbn()),
+                       bookManager.getBookOffer(book.getIsbn())
+               );
+               items.put(itemBean, theCart.getItems().get(bookId));
+               total += (book.getPrice() - book.getPrice() * bookManager.getBookOffer(bookId)/100) * theCart.getItems().get(bookId);
            }
            return "success";
        }else
