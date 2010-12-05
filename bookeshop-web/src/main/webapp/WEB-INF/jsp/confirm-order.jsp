@@ -46,11 +46,11 @@
                         <tbody>
                         <c:forEach var="entry" items="${items}">
                             <tr>
-                                <td><c:out value="${entry.key.isbn}"/></td>
-                                <td><c:out value="${entry.key.title}"/></td>
-                                <td><c:out value="${entry.key.author}"/></td>
-                                <td><c:out value="${entry.key.year}"/></td>
-                                <td><c:out value="${entry.key.price}"/></td>
+                                <td><c:out value="${entry.key.book.isbn}"/></td>
+                                <td><c:out value="${entry.key.book.title}"/></td>
+                                <td><c:out value="${entry.key.book.author}"/></td>
+                                <td><c:out value="${entry.key.book.year}"/></td>
+                                <td><c:out value="${entry.key.book.price * (1 - entry.key.offer/100)}"/></td>
                                 <td><c:out value="${entry.value}"/></td>
                             </tr>
                         </c:forEach>

@@ -28,7 +28,7 @@ import fr.mbh.bookeshop.business.exception.OutOfStockException;
 import fr.mbh.bookeshop.dao.domain.Book;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
-//import org.springframework.mail.MailSender;
+import org.benassi.bookeshop.web.beans.ItemBean;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,13 +44,13 @@ public class CheckoutAction implements SessionAware {
 
     private ShoppingCart theCart;
 
-    private Map<Book, Integer> items;
+    private Map<ItemBean, Integer> items;
 
     private Double total;
 
     private String error;
 
-    public Map<Book, Integer> getItems() {
+    public Map<ItemBean, Integer> getItems() {
         return items;
     }
 
@@ -80,16 +80,21 @@ public class CheckoutAction implements SessionAware {
         // logged customer to get email
         //Customer loggedCustomer = (Customer) session.get("loggedCustomer");
 
-        items = new HashMap<Book,Integer>();
+        items = new HashMap<ItemBean,Integer>();
         theCart = (ShoppingCart) session.get("theCart");
         total = 0.0;
         try {
             for (String bookId : theCart.getItems().keySet()) {
                 Book book = bookManager.getBookByIsbn(bookId);
+                ItemBean itemBean = new ItemBean(
+                        book,
+                        bookManager.getBookStockStatus(book.getIsbn()),
+                        bookManager.getBookOffer(book.getIsbn())
+                );
                 Integer quantity = theCart.getItems().get(bookId);
-                total += book.getPrice() * quantity;
                 bookManager.checkoutBook(book.getIsbn(),quantity);
-                items.put(book, quantity);
+                total += (book.getPrice() - book.getPrice() * bookManager.getBookOffer(bookId)/100) * theCart.getItems().get(bookId);
+                items.put(itemBean, quantity);
             }
             theCart.clearCart();
 
