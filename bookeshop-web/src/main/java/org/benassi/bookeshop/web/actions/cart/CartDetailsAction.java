@@ -29,6 +29,7 @@ import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.web.beans.ItemBean;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,7 +55,8 @@ public class CartDetailsAction implements SessionAware {
     }
 
     public Double getTotal() {
-        return total;
+        DecimalFormat df = new DecimalFormat("###.##");
+        return Double.valueOf(df.format(total));
     }
 
     public String getError() {
