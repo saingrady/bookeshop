@@ -24,12 +24,12 @@
 Book e-Shop v2.0 : Struts2 + Spring3 + Hibernate3
 
 TODO :
-- add forms validation (create/update customer), may use bean validation JSR 303
+- replace jstl with struts tags
 - add log
+- add I18N
 - all security checks
 - store book images in DB (blob type)
 - add order table
-- add I18N
 - add 'home','about' and 'contacts' pages (may use http://www.emailmeform.com/)
 - sort cart content before displaying cart details
 - add 'Forgot your password'/ remember me feature
