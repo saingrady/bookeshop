@@ -23,18 +23,20 @@
 
 package org.benassi.bookeshop.web.actions.customer;
 
+import com.opensymphony.xwork2.ActionSupport;
 import fr.mbh.bookeshop.business.api.CustomerManager;
 import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import fr.mbh.bookeshop.dao.domain.Customer;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import java.util.Map;
 
 /**
  * Action class to manage customer account
  */
-public class AccountAction implements SessionAware {
+public class AccountAction extends ActionSupport implements SessionAware {
 
     private Map<String,Object> session;
 
@@ -99,6 +101,7 @@ public class AccountAction implements SessionAware {
         }
     }
 
+    @SkipValidation
     public String remove() {
         customerManager.removeCustomer(loggedCustomer);
         session.clear();
@@ -118,6 +121,8 @@ public class AccountAction implements SessionAware {
 
     private String password;
 
+    private String passwordConfirm;
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -136,5 +141,40 @@ public class AccountAction implements SessionAware {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
+    /*
+     * getters to populate creation/update forms if there are errors 
+     */
+    public int getIdentifier() {
+        return loggedCustomer.getIdentifier();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 }
