@@ -33,14 +33,17 @@
             <div class="post-bgbtm">
                 <div align="center">
                 <h1>Fill in the form with your personal data </h1><br/>
+                <h3>(Fields marked with * are required)</h3><br/>
                     <s:form action="create-account">
-                       <s:textfield label="Fist name"  name="firstName"  size="20"/>
-                       <s:textfield label="Last name" name="lastName" size="20"/>
-                       <s:textfield label="E-mail" name="email" size="20"/>
-                       <s:textfield label="Address" name="address"  size="20"/>
-                       <s:textfield label="Password" name="password" size="20"/>
-                       <s:submit value="Create"/> <s:reset value="Reset" />
-                       <s:div style="clear: both;">&nbsp;</s:div>
+                        <s:actionerror/>
+                        <s:textfield label="Fist name *"  name="firstName"  size="20"/>
+                        <s:textfield label="Last name" name="lastName" size="20"/>
+                        <s:textfield label="E-mail *" name="email" size="20"/>
+                        <s:textfield label="Address *" name="address"  size="20"/>
+                        <s:password label="Password *" name="password" size="20"/>
+                        <s:password label="Confirm password *" name="passwordConfirm" size="20"/>
+                        <s:submit value="Create"/> <s:reset value="Reset" />
+                        <s:div style="clear: both;">&nbsp;</s:div>
                     </s:form>
                 </div>
             </div>
