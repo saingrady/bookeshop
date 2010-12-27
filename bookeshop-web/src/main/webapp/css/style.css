@@ -434,3 +434,7 @@ img.floatRight {
     float: right;
     margin: 20px;
 }
+
+.errorMessage{
+    color:red;
+}
