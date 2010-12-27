@@ -79,6 +79,7 @@
         </action>
 
         <action name="update-account" class="org.benassi.bookeshop.web.actions.customer.AccountAction" method="update">
+            <result name="input">/WEB-INF/jsp/update-account.jsp</result>
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
             </result>
@@ -90,12 +91,14 @@
         </action>
 
         <action name="create-account" class="org.benassi.bookeshop.web.actions.customer.AccountAction" method="create">
+            <result name="input">/WEB-INF/jsp/create-account.jsp</result>
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
             </result>
         </action>
 
         <action name="remove" class="org.benassi.bookeshop.web.actions.customer.AccountAction" method="remove">
+            <result name="input">/WEB-INF/jsp/update-account.jsp</result>
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
             </result>
