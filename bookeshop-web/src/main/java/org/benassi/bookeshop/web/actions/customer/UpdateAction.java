@@ -33,7 +33,6 @@ public class UpdateAction extends ActionSupport {
 
     private Customer loggedCustomer;
 
-
     public Customer getLoggedCustomer() {
         return loggedCustomer;
     }
@@ -43,7 +42,7 @@ public class UpdateAction extends ActionSupport {
     }
 
     /*
-     * Getters to populate the form with actual logged customer data
+     * Getters to populate the form with logged customer data
      */
     public int getIdentifier() {
         return loggedCustomer.getIdentifier();
@@ -67,7 +66,15 @@ public class UpdateAction extends ActionSupport {
         return loggedCustomer.getAddress();
     }
 
+    /*
+     * Warning : even with password getters, password fields are not populated in the form when using <s:password> tag 
+     * (but they are populated when using <s:textfield>)
+     */
     public String getPassword() {
+        return loggedCustomer.getPassword();
+    }
+
+    public String getPasswordConfirm() {
         return loggedCustomer.getPassword();
     }
 
