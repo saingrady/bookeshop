@@ -30,6 +30,7 @@
         <li>
             <c:choose>
                 <c:when test="${loggedCustomer == null}">
+                    <%--TODO : prevent form populating from Value stack when creating a customer--%>
                     <h2>Client Account</h2>
                     <s:form action="login">
                         <s:textfield name="email" label="Email"/>
@@ -40,7 +41,8 @@
                     New customer? <a href="create.do">Start here</a></p>
                 </c:when>
                 <c:otherwise>
-                    <h2>Client Details</h2>
+                    <h2>Client details</h2>
+                    Identifier : <c:out value="${loggedCustomer.identifier}"/><br/>
                     First name: <c:out value="${loggedCustomer.firstName}"/><br/>
                     Last name: <c:out value="${loggedCustomer.lastName}"/><br/>
                     Email: <c:out value="${loggedCustomer.email}"/><br/>
