@@ -27,7 +27,7 @@ TODO :
 - replace jstl with struts tags
 - add log
 - add I18N
-- all security checks
+- all security checks (Spring security)
 - store book images in DB (blob type)
 - add order table
 - add 'home','about' and 'contacts' pages (may use http://www.emailmeform.com/)
