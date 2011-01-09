@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="display" uri="http://displaytag.sf.net/el"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%--
@@ -34,45 +35,33 @@
                     <h1>Search results for keyword : '<c:out value="${keyword}"/>'</h1><br/>
                     <c:choose>
                         <c:when test="${not empty foundItems}">
-                            <table border="2" align="center">
-                                <thead>
-                                <tr>
-                                    <th><b>Preview</b></th>
-                                    <th><b>Title</b></th>
-                                    <th><b>Author</b></th>
-                                    <th><b>Year</b></th>
-                                    <th><b>Price(<img src="images/euro.png" width="12" height="12" border="0"/>)</b></th>
-                                    <th><b>Stock</b></th>
-                                    <th><b>Cart</b></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach var="item" items="${foundItems}">
-                                    <tr>
-                                        <td><a href="bookDetails.do?bookId=${item.book.isbn}"><img src="images/books/${item.book.isbn}.gif" width="80" height="120" border="0"/></a></td>
-                                        <td><c:out value="${item.book.title}"/></td>
-                                        <td><c:out value="${item.book.author}"/></td>
-                                        <td><c:out value="${item.book.year}"/></td>
-                                        <td><c:out value="${item.book.price}"/>
-                                            <c:if test="${item.offer != 0}">
-                                                <img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/>
-                                            </c:if>
-                                        </td>
-                                        <td><c:out value="${item.stockStatus}"/></td>
-                                        <td>
-                                            <c:choose>
-                                                <c:when test="${item.stockStatus == 'Out of stock'}">
-                                                    <img src="images/cancel.png" width="32" height="32" border="0"/>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
+                            <display:table name="foundItems" uid="item" sort="list" defaultorder="descending" requestURI="search.do">
+                                <display:column title="Preview" >
+                                    <a href="bookDetails.do?bookId=${item.book.isbn}">
+                                        <img src="images/books/${item.book.isbn}.gif" width="80" height="120" border="0"/>
+                                    </a>
+                                </display:column>
+                                <display:column property="book.title" title="Title" sortable="true"/>
+                                <display:column property="book.author" title="Author" sortable="true"/>
+                                <display:column property="book.year" title="Year" sortable="true"/>
+                                <display:column property="book.price" title="Price(euro)" sortable="true"/>
+                                <display:column title="Offer">
+                                    <c:if test="${item.offer != 0}">
+                                        <img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/>
+                                    </c:if>
+                                </display:column>
+                                <display:column property="stockStatus" title="Stock" />
+                                <display:column title="Cart">
+                                    <c:choose>
+                                        <c:when test="${item.stockStatus == 'Out of stock'}">
+                                            <img src="images/cancel.png" width="32" height="32" border="0"/>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </display:column>
+                            </display:table>
                         </c:when>
                         <c:otherwise>
                             <br>
