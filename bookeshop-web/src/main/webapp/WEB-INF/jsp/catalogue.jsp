@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="display" uri="http://displaytag.sf.net/el"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%--
@@ -32,38 +33,24 @@
             <div class="post-bgbtm">
                 <div align="center">
                     <h1>Welcome ${loggedCustomer.firstName}</h1><br/>
-                    <table border="1">
-                        <thead>
-                        <tr>
-                            <th><b>Preview</b></th>
-                            <th><b>Title</b></th>
-                            <th><b>Author</b></th>
-                            <th><b>Year</b></th>
-                            <th><b>Price(<img src="images/euro.png" width="12" height="12" border="0"/>)</b></th>
-                            <th><b>Offer</b></th>
-                            <th><b>Stock</b></th>
-                            <th><b>Cart</b></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <c:forEach var="item" items="${items}">
-                            <tr>
-                                <td>
-                                    <a href="bookDetails.do?bookId=${item.book.isbn}">
-                                        <img src="images/books/${item.book.isbn}.gif" width="80" height="120" border="0"/>
-                                    </a>
-                                </td>
-                                <td><c:out value="${item.book.title}"/></td>
-                                <td><c:out value="${item.book.author}"/></td>
-                                <td><c:out value="${item.book.year}"/></td>
-                                <td><c:out value="${item.book.price}"/></td>
-                                <td><img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/></td>
-                                <td><c:out value="${item.stockStatus}"/></td>
-                                <td><a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a></td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
+                    <display:table name="items" uid="item" sort="list" defaultorder="descending" requestURI="catalogue.do">
+                        <display:column title="Preview" >
+                            <a href="bookDetails.do?bookId=${item.book.isbn}">
+                                <img src="images/books/${item.book.isbn}.gif" width="80" height="120" border="0"/>
+                            </a>
+                        </display:column>
+                        <display:column property="book.title" title="Title" sortable="true"/>
+                        <display:column property="book.author" title="Author" sortable="true"/>
+                        <display:column property="book.year" title="Year" sortable="true"/>
+                        <display:column property="book.price" title="Price(euro)" sortable="true"/>
+                        <display:column title="Offer">
+                            <img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/>
+                        </display:column>
+                        <display:column property="stockStatus" title="Stock" />
+                        <display:column title="Cart" >
+                            <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                        </display:column>
+                    </display:table>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
             </div>
