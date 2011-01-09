@@ -67,7 +67,7 @@
         <li>
             <h2>Download</h2>
             <ul>
-                <li><a href="download-catalogue.do">Download PDF catalog</a></li>
+                <li><a href="download-catalogue.do">Download PDF catalogue</a></li>
                 <li><a href="nyi.do">Download eBooks</a></li>
             </ul>
         </li>        
