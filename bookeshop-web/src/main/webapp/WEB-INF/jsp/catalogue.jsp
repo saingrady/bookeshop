@@ -48,7 +48,14 @@
                         </display:column>
                         <display:column property="stockStatus" title="Stock" />
                         <display:column title="Cart" >
-                            <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                            <c:choose>
+                                <c:when test="${item.stockStatus == 'Out of stock'}">
+                                    <img src="images/cancel.png" width="32" height="32" border="0"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                                </c:otherwise>
+                            </c:choose>
                         </display:column>
                     </display:table>
                 </div>
