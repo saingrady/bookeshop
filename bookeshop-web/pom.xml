@@ -65,6 +65,13 @@
             </exclusions>
         </dependency>
 
+        <!-- DisplayTags -->
+        <dependency>
+            <groupId>displaytag</groupId>
+            <artifactId>displaytag</artifactId>
+            <version>1.2</version>
+        </dependency>
+
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
