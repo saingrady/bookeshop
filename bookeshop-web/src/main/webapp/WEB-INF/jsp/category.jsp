@@ -44,7 +44,8 @@
                                 <display:column property="book.title" title="Title" sortable="true"/>
                                 <display:column property="book.author" title="Author" sortable="true"/>
                                 <display:column property="book.year" title="Year" sortable="true"/>
-                                <display:column property="book.price" title="Price(euro)" sortable="true">
+                                <display:column property="book.price" title="Price(euro)" sortable="true"/>
+                                <display:column title="Offer">
                                     <c:if test="${item.offer != 0}">
                                         <img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/>
                                     </c:if>
