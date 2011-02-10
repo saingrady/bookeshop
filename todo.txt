@@ -37,8 +37,6 @@ TODO :
 - add 'remember me' feature (at least see how to do it)
 - add 'advanced search' feature (title,author,edition,year,etc)
 - add 'survey' feature
-- add multi page result displaying
-- add 'sort results by price,title,author' feature
 - add currency selection/conversion (may call web service)
 - use google maps API to show a map for the customer address
 - add checkout with PayPal API (at least see how to do it)
