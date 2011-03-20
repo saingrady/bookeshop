@@ -31,9 +31,10 @@ TODO :
 - review TX advised methods / test transactional behavior
 - add mock service for email sending bean (use it in an interceptor after confirmation action = aop)
 - sort cart content before displaying cart details
+- add SOAP/REST web services exposed to partners (available books, quantity,etc)
+- add order table
 TODO Feature request & enhancement :
 - store book images in DB (blob type)
-- add order table
 - add 'home','about' and 'contacts' pages (may use http://www.emailmeform.com/) (in /static url)
 - add 'Forgot your password'/ remember me feature
 - add 'download ebook' feature
@@ -43,7 +44,6 @@ TODO Feature request & enhancement :
 - add currency selection/conversion (may call web service)
 - use google maps API to show a map for the customer address
 - add checkout with PayPal API (at least see how to do it)
-- add web services exposed to partners (available books, quantity,etc)
 - add apache tiles for pages layout
 - add apache velocity template for confirmation emails sent to customers
 - add a batch task to send a complete report for sales (may use spring batch/ quartz)
