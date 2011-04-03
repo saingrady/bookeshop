@@ -28,7 +28,7 @@ package org.benassi.bookeshop.data.model;
  */
 public class Customer {
 
-    private int identifier;
+    private int id;
     private String email;
     private String firstName;
     private String lastName;
@@ -46,12 +46,12 @@ public class Customer {
         this.password = password;
     }
 
-    public int getIdentifier() {
-        return identifier;
+    public int getId() {
+        return id;
     }
 
-    public void setIdentifier(int identifier) {
-        this.identifier = identifier;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -96,7 +96,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return    "\n identifier = " + identifier
+        return    "\n identifier = " + id
                 + "\n first name = " + firstName
                 + "\n last name = " + lastName
                 + "\n email = " + email
