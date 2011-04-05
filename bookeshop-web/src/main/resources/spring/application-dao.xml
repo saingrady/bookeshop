@@ -63,15 +63,23 @@
         <property name="hibernateProperties" ref="hibernateProperties"/>
     </bean>
 
-    <bean id="customerDAO" class="fr.mbh.bookeshop.dao.impl.CustomerDAOImpl">
-        <property name="sessionFactory" ref="hibernateSessionFactory"/>
-    </bean>
-
     <bean id="bookDAO" class="fr.mbh.bookeshop.dao.impl.BookDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
+    <bean id="customerDAO" class="fr.mbh.bookeshop.dao.impl.CustomerDAOImpl">
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
     <bean id="categoryDAO" class="fr.mbh.bookeshop.dao.impl.CategoryDAOImpl">
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
+    <bean id="orderDAO" class="fr.mbh.bookeshop.dao.impl.OrderDAOImpl">
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
+    <bean id="orderStatusDAO" class="fr.mbh.bookeshop.dao.impl.OrderStatusDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
