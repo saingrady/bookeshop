@@ -22,10 +22,10 @@
   ~ 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
   -->
 
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <class name="fr.mbh.bookeshop.dao.domain.Customer" table="customer">
-    <id column="id" name="identifier">
+  <class name="org.benassi.bookeshop.data.model.Customer" table="customer">
+    <id column="id" name="id">
       <generator class="identity"/>
     </id>
     <property name="email"/>

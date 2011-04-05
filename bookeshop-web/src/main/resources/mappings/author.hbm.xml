@@ -24,10 +24,11 @@
 
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <class name="org.benassi.bookeshop.data.model.Category" table="category">
+  <class name="org.benassi.bookeshop.data.model.Author" table="author">
     <id name="id">
       <generator class="increment"/>
     </id>
-    <property name="name"/>
+    <property name="firstName"/>
+    <property name="lastName"/>
   </class>
 </hibernate-mapping>

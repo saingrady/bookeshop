@@ -22,16 +22,18 @@
   ~ 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
   -->
 
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <class name="fr.mbh.bookeshop.dao.domain.Book" table="book">
+  <class name="org.benassi.bookeshop.data.model.Book" table="book">
     <id column="isbn" name="isbn">
       <generator class="assigned"/>
     </id>
     <property name="title"/>
-    <property name="author"/>
-    <property name="year"/>
+    <many-to-one column="author_id" name="author" class="org.benassi.bookeshop.data.model.Author"/>
+    <property column="pub_date" name="publishDate"/>
+    <many-to-one column="category_id" name="category" class="org.benassi.bookeshop.data.model.Category"/>
+    <property name="stock"/>
     <property name="price"/>
-    <property column="category_id" name="category"/>
+    <property name="offer"/>
   </class>
 </hibernate-mapping>

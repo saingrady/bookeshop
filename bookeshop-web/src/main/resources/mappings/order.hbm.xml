@@ -24,10 +24,20 @@
 
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <class name="org.benassi.bookeshop.data.model.Category" table="category">
-    <id name="id">
+  <class name="org.benassi.bookeshop.data.model.Order" table="book_order">
+
+    <id column="orderId" name="orderId">
       <generator class="increment"/>
     </id>
-    <property name="name"/>
+
+    <many-to-one name="customer" column="customerId" class="org.benassi.bookeshop.data.model.Customer" unique="true" lazy="false"/>
+    <property column="orderDate" name="date"/>
+    <many-to-one column="statusId" name="status" class="org.benassi.bookeshop.data.model.OrderStatus" lazy="false"/>
+
+    <set name="items" lazy="false" inverse="true" >
+        <key column="orderId" not-null="true" on-delete="cascade"/>
+        <one-to-many class="org.benassi.bookeshop.data.model.OrderItem"/>
+    </set>
+
   </class>
 </hibernate-mapping>
