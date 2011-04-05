@@ -73,10 +73,10 @@ alter table book_order add constraint status_fk foreign key (statusId) reference
 DROP TABLE IF EXISTS book_order_item;
 
 CREATE TABLE book_order_item (
+  `itemId` int NOT NULL PRIMARY KEY,
   `orderId` int NOT NULL,
   `bookId` varchar(13) NOT NULL,
-  `quantity` int NOT NULL,
-  PRIMARY KEY (orderId,bookId)
+  `quantity` int NOT NULL
 );
 
 alter table book_order_item add constraint order_id_fk foreign key (orderId) references book_order(orderId);
