@@ -23,6 +23,9 @@
 
 package org.benassi.bookeshop.data.model;
 
+/**
+ * Domain object for book author
+ */
 public class Author {
 
     private int id;
