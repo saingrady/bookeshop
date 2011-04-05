@@ -24,8 +24,11 @@
 package org.benassi.bookeshop.data.model;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
+/**
+ * Domain object for orders
+ */
 public class Order {
 
     private int orderId;
@@ -36,14 +39,13 @@ public class Order {
 
     private OrderStatus status;
 
-    private List<OrderItem> items;
+    private Set<OrderItem> items;
 
     public int getOrderId() {
         return orderId;
     }
 
-    //private setter since id is generated
-    private void setOrderId(int orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -71,19 +73,12 @@ public class Order {
         this.status = status;
     }
 
-    public List<OrderItem> getItems() {
+    public Set<OrderItem> getItems() {
         return items;
     }
 
-    public void setItems(List<OrderItem> items) {
+    public void setItems(Set<OrderItem> items) {
         this.items = items;
-    }
-
-    public double getTotal() {
-        double result = 0.0;
-        for (OrderItem item: items)
-            result += item.getTotal();
-        return result;
     }
 
 }
