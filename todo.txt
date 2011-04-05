@@ -30,9 +30,9 @@ TODO :
 - all security checks (Spring security)
 - review TX advised methods / test transactional behavior
 - add mock service for email sending bean (use it in an interceptor after confirmation action = aop)
+- add apache velocity template for confirmation emails sent to customers
 - sort cart content before displaying cart details
 - add SOAP/REST web services exposed to partners (available books, quantity,etc)
-- add order table
 TODO Feature request & enhancement :
 - store book images in DB (blob type)
 - add 'home','about' and 'contacts' pages (may use http://www.emailmeform.com/) (in /static url)
@@ -45,5 +45,4 @@ TODO Feature request & enhancement :
 - use google maps API to show a map for the customer address
 - add checkout with PayPal API (at least see how to do it)
 - add apache tiles for pages layout
-- add apache velocity template for confirmation emails sent to customers
 - add a batch task to send a complete report for sales (may use spring batch/ quartz)
