@@ -25,7 +25,8 @@ package fr.mbh.bookeshop.business.impl;
 
 import fr.mbh.bookeshop.business.api.CategoryManager;
 import fr.mbh.bookeshop.dao.api.CategoryDAO;
-import fr.mbh.bookeshop.dao.domain.Category;
+import org.benassi.bookeshop.data.model.Category;
+
 import java.util.List;
 
 /**

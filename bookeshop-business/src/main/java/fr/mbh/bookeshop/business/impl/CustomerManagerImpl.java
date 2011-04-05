@@ -27,7 +27,7 @@ import fr.mbh.bookeshop.business.api.CustomerManager;
 import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import fr.mbh.bookeshop.business.exception.LoginException;
 import fr.mbh.bookeshop.dao.api.CustomerDAO;
-import fr.mbh.bookeshop.dao.domain.Customer;
+import org.benassi.bookeshop.data.model.Customer;
 import org.springframework.dao.DataAccessException;
 
 /**
@@ -50,7 +50,7 @@ public class CustomerManagerImpl implements CustomerManager {
     public Customer updateCustomer(Customer customer) throws CustomerExistentException {
         try {
             customerDAO.update(customer);
-            return customerDAO.getCustomerById(customer.getIdentifier());
+            return customerDAO.getCustomerById(customer.getId());
         } catch (DataAccessException e) {
             throw new CustomerExistentException();
         }
@@ -63,7 +63,7 @@ public class CustomerManagerImpl implements CustomerManager {
     public Customer createCustomer(Customer customer) throws CustomerExistentException {
         try {
             customerDAO.save(customer);
-            return customerDAO.getCustomerById(customer.getIdentifier());
+            return customerDAO.getCustomerById(customer.getId());
         } catch (DataAccessException e) {
             throw new CustomerExistentException();
         }

@@ -26,8 +26,9 @@ package fr.mbh.bookeshop.business.impl;
 import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.business.exception.OutOfStockException;
 import fr.mbh.bookeshop.dao.api.BookDAO;
-import fr.mbh.bookeshop.dao.domain.Book;
+
 import fr.mbh.bookeshop.dao.exception.InsufficientStockException;
+import org.benassi.bookeshop.data.model.Book;
 
 import java.util.List;
 
@@ -47,7 +48,8 @@ public class BookManagerImpl implements BookManager{
     }
 
     public String getBookStockStatus(String isbn) {
-        int stock = bookDAO.getBookStock(isbn);
+        Book book = bookDAO.getBookByIsbn(isbn);
+        int stock = book.getStock();
         if (stock <= 0)
             return "Out of stock";
         else if (stock <= 10)
@@ -56,7 +58,7 @@ public class BookManagerImpl implements BookManager{
     }
 
     public int getBookOffer(String isbn) {
-        return bookDAO.getBookOffer(isbn);
+        return bookDAO.getBookByIsbn(isbn).getOffer();
     }
 
     public List<Book> getBooksByCategory(int categoryId) {
