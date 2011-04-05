@@ -23,9 +23,13 @@
 
 package org.benassi.bookeshop.data.model;
 
+/**
+ * Domain object for order status
+ */
 public class OrderStatus {
 
     private int  id;
+
     private String label;
 
     public int getId() {
