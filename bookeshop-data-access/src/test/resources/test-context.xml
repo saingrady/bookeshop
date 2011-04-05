@@ -66,7 +66,7 @@
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
-    <bean id="orderDAO" class="fr.mbh.bookeshop.dao.impl.OrderDaoImpl">
+    <bean id="orderDAO" class="fr.mbh.bookeshop.dao.impl.OrderDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
