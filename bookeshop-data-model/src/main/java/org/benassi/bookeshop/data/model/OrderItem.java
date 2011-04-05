@@ -23,41 +23,49 @@
 
 package org.benassi.bookeshop.data.model;
 
+/**
+ * Domain object for order items
+ */
 public class OrderItem {
 
-    private int itemOrderId;
+    private int itemId;
 
-    private Book book;
+    private int orderId;
+
+    private String bookId;
 
     private int quantity;
 
-    public int getItemOrderId() {
-        return itemOrderId;
+    public int getItemId() {
+        return itemId;
     }
 
-    /*TODO : to remove if id assigned*/
-    public void setItemOrderId(int itemOrderId) {
-        this.itemOrderId = itemOrderId;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
-    public Book getBook() {
-        return book;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public double getTotal() {
-        return book.getPrice() * quantity;
+    public int getQuantity() {
+        return quantity;
     }
 
 }
