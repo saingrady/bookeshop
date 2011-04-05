@@ -26,7 +26,7 @@ package org.benassi.bookeshop.web.actions.customer;
 import com.opensymphony.xwork2.ActionSupport;
 import fr.mbh.bookeshop.business.api.CustomerManager;
 import fr.mbh.bookeshop.business.exception.CustomerExistentException;
-import fr.mbh.bookeshop.dao.domain.Customer;
+import org.benassi.bookeshop.data.model.Customer;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
@@ -150,8 +150,8 @@ public class AccountAction extends ActionSupport implements SessionAware {
     /*
      * getters to populate creation/update forms if there are errors 
      */
-    public int getIdentifier() {
-        return loggedCustomer.getIdentifier();
+    public int getId() {
+        return loggedCustomer.getId();
     }
 
     public String getEmail() {

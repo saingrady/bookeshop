@@ -23,7 +23,7 @@
 
 package org.benassi.bookeshop.web.beans;
 
-import fr.mbh.bookeshop.dao.domain.Book;
+import org.benassi.bookeshop.data.model.Book;
 
 import java.text.DecimalFormat;
 

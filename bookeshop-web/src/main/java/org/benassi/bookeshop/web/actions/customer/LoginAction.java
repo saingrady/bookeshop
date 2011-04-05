@@ -25,7 +25,7 @@ package org.benassi.bookeshop.web.actions.customer;
 
 import fr.mbh.bookeshop.business.api.CustomerManager;
 import fr.mbh.bookeshop.business.exception.LoginException;
-import fr.mbh.bookeshop.dao.domain.Customer;
+import org.benassi.bookeshop.data.model.Customer;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 

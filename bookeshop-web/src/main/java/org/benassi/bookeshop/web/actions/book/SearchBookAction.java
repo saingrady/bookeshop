@@ -24,7 +24,7 @@
 package org.benassi.bookeshop.web.actions.book;
 
 import fr.mbh.bookeshop.business.api.BookManager;
-import fr.mbh.bookeshop.dao.domain.Book;
+import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.web.beans.ItemBean;
 
 import java.util.ArrayList;
