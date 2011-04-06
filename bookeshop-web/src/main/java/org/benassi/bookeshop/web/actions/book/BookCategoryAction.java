@@ -27,9 +27,7 @@ import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.business.api.CategoryManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.data.model.Category;
-import org.benassi.bookeshop.web.beans.ItemBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,7 +45,7 @@ public class BookCategoryAction {
 
     private String error;
 
-    private List<ItemBean> categoryItems;
+    private List<Book> categoryItems;
 
     public void setCategoryManager(CategoryManager categoryManager) {
         this.categoryManager = categoryManager;
@@ -69,20 +67,14 @@ public class BookCategoryAction {
         return error;
     }
 
-    public List<ItemBean> getCategoryItems() {
+    public List<Book> getCategoryItems() {
         return categoryItems;
     }
 
     public String execute(){
         category = categoryManager.getCategoryById(categoryId);
-        if (category != null) {
-            List<Book> books = bookManager.getBooksByCategory(categoryId);
-            categoryItems = new ArrayList<ItemBean>();
-            for (int i = 0; i < books.size(); i++) {
-                Book book =  books.get(i);
-                ItemBean itemBean = new ItemBean(book, bookManager.getBookStockStatus(book.getIsbn()), bookManager.getBookOffer(book.getIsbn()));
-                categoryItems.add(itemBean);
-            }
+        if (category != null){
+            categoryItems = bookManager.getBooksByCategory(categoryId);
             return "success";
         }
         else {
