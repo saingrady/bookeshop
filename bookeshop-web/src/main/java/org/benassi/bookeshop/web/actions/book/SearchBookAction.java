@@ -25,9 +25,7 @@ package org.benassi.bookeshop.web.actions.book;
 
 import fr.mbh.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
-import org.benassi.bookeshop.web.beans.ItemBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,9 +37,9 @@ public class SearchBookAction{
 
     private BookManager bookManager;
 
-    private List<ItemBean> foundItems;
+    private List<Book> foundItems;
 
-    public List<ItemBean> getFoundItems() {
+    public List<Book> getFoundItems() {
         return foundItems;
     }
 
@@ -58,13 +56,7 @@ public class SearchBookAction{
     }
 
     public String execute(){
-        List<Book> books = bookManager.getBooksByTitleAuthor(keyword);
-        foundItems = new ArrayList<ItemBean>();
-        for (int i = 0; i < books.size(); i++) {
-            Book book =  books.get(i);
-            ItemBean itemBean = new ItemBean(book, bookManager.getBookStockStatus(book.getIsbn()), bookManager.getBookOffer(book.getIsbn()));
-            foundItems.add(itemBean);
-        }
+        foundItems = bookManager.getBooksByTitleAuthor(keyword);
         return "success";
     }
 
