@@ -58,8 +58,4 @@ public class Author {
         this.lastName = lastName;
     }
 
-    private String getFullName(){
-        return firstName + " " + lastName;
-    }
-
 }
