@@ -40,7 +40,9 @@
                             </a>
                         </display:column>
                         <display:column property="title" title="Title" sortable="true"/>
-
+                        <display:column title="Author" sortable="true">
+                            <c:out value="${book.author.firstName}"/> <c:out value="${book.author.lastName}"/>
+                        </display:column>
                         <display:column property="publishDate" title="Publication Date" sortable="true"/>
                         <display:column property="price" title="Price(euro)" sortable="true"/>
                         <display:column title="Offer">
