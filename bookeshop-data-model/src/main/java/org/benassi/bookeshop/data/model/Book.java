@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.data.model;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 /**
@@ -111,4 +112,10 @@ public class Book {
     public void setOffer(int offer) {
         this.offer = offer;
     }
+
+    public double getDiscountPrice(){
+        DecimalFormat df = new DecimalFormat("###.##");
+        return Double.valueOf(df.format(price - price * offer/100));
+    }
+
 }
