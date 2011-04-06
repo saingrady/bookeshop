@@ -25,7 +25,6 @@ package org.benassi.bookeshop.web.actions.book;
 
 import fr.mbh.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
-import org.benassi.bookeshop.web.beans.ItemBean;
 
 /**
  * BookDetailsAction : action class to get book details
@@ -36,7 +35,7 @@ public class BookDetailsAction {
 
     private String bookId;
 
-    private ItemBean item;
+    private Book book;
 
     private String error;
 
@@ -44,8 +43,8 @@ public class BookDetailsAction {
         this.bookManager = bookManager;
     }
 
-    public ItemBean getItem() {
-        return item;
+    public Book getBook() {
+        return book;
     }
 
     public void setBookId(String bookId) {
@@ -57,13 +56,9 @@ public class BookDetailsAction {
     }
 
     public String execute(){
-        Book book = bookManager.getBookByIsbn(bookId);
-        if (book != null) {
-            String stock = bookManager.getBookStockStatus(bookId);
-            int offer = bookManager.getBookOffer(bookId);
-            item = new ItemBean(book,stock,offer);
+        book = bookManager.getBookByIsbn(bookId);
+        if (book != null)
             return "success";
-        }
         else {
             error = "No such book with ISBN = " + bookId;
             return "error";
