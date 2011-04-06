@@ -25,9 +25,7 @@ package org.benassi.bookeshop.web.actions.book;
 
 import fr.mbh.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
-import org.benassi.bookeshop.web.beans.ItemBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,28 +35,18 @@ public class BookCatalogueAction {
 
     private BookManager bookManager;
 
-    private List<ItemBean> items;
+    private List<Book> books;
 
     public void setBookManager(BookManager bookManager) {
         this.bookManager = bookManager;
     }
 
-    public List<ItemBean> getItems() {
-        return items;
+    public List<Book> getBooks() {
+        return books;
     }
 
     public String execute() throws Exception {
-        items = new ArrayList<ItemBean>();
-        List<Book> books = bookManager.getDiscountBooks();
-        for (int i = 0; i < books.size(); i++) {
-            Book book =  books.get(i);
-            ItemBean itemBean = new ItemBean(
-                    book,
-                    bookManager.getBookStockStatus(book.getIsbn()),
-                    bookManager.getBookOffer(book.getIsbn())
-            );
-            items.add(itemBean);
-        }
+        books =  bookManager.getDiscountBooks();
         return "success";
     }
 

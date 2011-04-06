@@ -33,27 +33,27 @@
             <div class="post-bgbtm">
                 <div align="center">
                     <h1>Welcome ${loggedCustomer.firstName}</h1><br/>
-                    <display:table name="items" uid="item" sort="list" defaultorder="descending" requestURI="catalogue.do">
+                    <display:table name="books" uid="book" sort="list" defaultorder="descending" requestURI="catalogue.do">
                         <display:column title="Preview" >
-                            <a href="bookDetails.do?bookId=${item.book.isbn}">
-                                <img src="images/books/${item.book.isbn}.gif" width="80" height="120" border="0"/>
+                            <a href="bookDetails.do?bookId=${book.isbn}">
+                                <img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/>
                             </a>
                         </display:column>
-                        <display:column property="book.title" title="Title" sortable="true"/>
-                        <display:column property="book.author" title="Author" sortable="true"/>
-                        <display:column property="book.year" title="Year" sortable="true"/>
-                        <display:column property="book.price" title="Price(euro)" sortable="true"/>
+                        <display:column property="title" title="Title" sortable="true"/>
+
+                        <display:column property="publishDate" title="Publication Date" sortable="true"/>
+                        <display:column property="price" title="Price(euro)" sortable="true"/>
                         <display:column title="Offer">
-                            <img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/>
+                            <img src="images/offer_${book.offer}.png" width="32" height="32" border="0"/>
                         </display:column>
                         <display:column property="stockStatus" title="Stock" />
                         <display:column title="Cart" >
                             <c:choose>
-                                <c:when test="${item.stockStatus == 'Out of stock'}">
+                                <c:when test="${book.stockStatus == 'Out of stock'}">
                                     <img src="images/cancel.png" width="32" height="32" border="0"/>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
                                 </c:otherwise>
                             </c:choose>
                         </display:column>
