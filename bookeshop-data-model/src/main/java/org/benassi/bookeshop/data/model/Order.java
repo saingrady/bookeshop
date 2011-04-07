@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.data.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -79,6 +80,14 @@ public class Order {
 
     public void setItems(Set<OrderItem> items) {
         this.items = items;
+    }
+
+    /*
+     * Utility methods
+     */
+    public String getFormattedDate() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return simpleDateFormat.format(date);
     }
 
 }
