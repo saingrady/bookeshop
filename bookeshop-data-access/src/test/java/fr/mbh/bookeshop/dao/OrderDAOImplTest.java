@@ -23,9 +23,8 @@
 
 package fr.mbh.bookeshop.dao;
 
-import fr.mbh.bookeshop.dao.api.OrderDao;
+import fr.mbh.bookeshop.dao.api.OrderDAO;
 import org.benassi.bookeshop.data.model.Order;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,19 +40,19 @@ import static junit.framework.Assert.*;
 public class OrderDAOImplTest {
 
     @Autowired
-    private OrderDao orderDao;
+    private OrderDAO orderDAO;
 
     @Test
     public void testGetOrderById() {
-        Order order = orderDao.getOrderById(22135);
+        Order order = orderDAO.getOrderById(22135);
         assertNotNull(order);
-        assertEquals(1,order.getItems().size());
+        assertEquals(1, order.getItems().size());
         assertEquals("Mahmoud",order.getCustomer().getFirstName());
     }
 
     @Test
     public void testGetOrdersByCustomer() {
-        Set<Order> orders = orderDao.getOrdersByCustomer(56325);
+        Set<Order> orders = orderDAO.getOrdersByCustomer(56325);
         assertNotNull(orders);
         assertEquals(2, orders.size());
     }
