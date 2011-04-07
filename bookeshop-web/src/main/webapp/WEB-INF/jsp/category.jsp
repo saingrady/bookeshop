@@ -45,7 +45,7 @@
                                 <display:column title="Author" sortable="true">
                                     <c:out value="${book.author.firstName}"/> <c:out value="${book.author.lastName}"/>
                                 </display:column>
-                                <display:column property="publishDate" title="Publication Date" sortable="true"/>
+                                <display:column property="formattedPublishDate" title="Publication date" sortable="true"/>
                                 <display:column property="price" title="Price(euro)" sortable="true"/>
                                 <display:column title="Offer">
                                     <c:if test="${book.offer != 0}">

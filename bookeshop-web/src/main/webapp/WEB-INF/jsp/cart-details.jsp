@@ -42,7 +42,7 @@
                                     <th><b>Isbn</b></th>
                                     <th><b>Title</b></th>
                                     <th><b>Author</b></th>
-                                    <th><b>Year</b></th>
+                                    <th><b>Publication date</b></th>
                                     <th><b>Price (<img src="images/euro.png" width="18" height="18" border="0"/>)</b></th>
                                     <th><b>Quantity</b></th>
                                     <th><b>update</b></th>
@@ -52,21 +52,21 @@
                                 <c:forEach var="entry" items="${items}">
                                     <tr>
                                         <td>
-                                            <a href="bookDetails.do?bookId=${entry.key.book.isbn}">
-                                                <img src="images/books/${entry.key.book.isbn}.gif" width="80" height="120" border="0"/>
+                                            <a href="bookDetails.do?bookId=${entry.key.isbn}">
+                                                <img src="images/books/${entry.key.isbn}.gif" width="80" height="120" border="0"/>
                                             </a>
                                         </td>
-                                        <td><c:out value="${entry.key.book.isbn}"/></td>
-                                        <td><c:out value="${entry.key.book.title}"/></td>
-                                        <td><c:out value="${entry.key.book.author}"/></td>
-                                        <td><c:out value="${entry.key.book.year}"/></td>
-                                        <td><c:out value="${entry.key.book.price}"/>
+                                        <td><c:out value="${entry.key.isbn}"/></td>
+                                        <td><c:out value="${entry.key.title}"/></td>
+                                        <td><c:out value="${entry.key.author.firstName}"/> <c:out value="${entry.key.author.lastName}"/></td>
+                                        <td><c:out value="${entry.key.formattedPublishDate}"/></td>
+                                        <td><c:out value="${entry.key.price}"/>
                                         <c:if test="${entry.key.offer != 0}">
                                                 <img src="images/offer_${entry.key.offer}.png" width="32" height="32" border="0"/> = <c:out value="${entry.key.discountPrice}"/>
                                         </c:if>
                                         </td>
                                         <td><c:out value="${entry.value}"/></td>
-                                        <td><a href="addItem.do?bookId=${entry.key.book.isbn}"/><img src="images/cart_add.png" width="32" height="32" border="0"/><a href="removeItem.do?bookId=${entry.key.book.isbn}"/><img src="images/cart_remove.png" width="32" height="32" border="0"/></td>
+                                        <td><a href="addItem.do?bookId=${entry.key.isbn}"/><img src="images/cart_add.png" width="32" height="32" border="0"/><a href="removeItem.do?bookId=${entry.key.isbn}"/><img src="images/cart_remove.png" width="32" height="32" border="0"/></td>
 
                                     </tr>
                                 </c:forEach>

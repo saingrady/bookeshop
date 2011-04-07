@@ -35,7 +35,7 @@
                 <h1> Update your personal data : </h1>
                     <s:form action="update-account">
                         <s:actionerror/>
-                        <s:textfield label="Identifier" name="identifier"  size="20" disabled="true"/>
+                        <s:textfield label="Identifier" name="id"  size="20" disabled="true"/>
                         <s:textfield label="Fist name"  name="firstName"  size="20"/>
                         <s:textfield label="Last name" name="lastName" size="20"/>
                         <s:textfield label="E-mail" name="email" size="20"/>

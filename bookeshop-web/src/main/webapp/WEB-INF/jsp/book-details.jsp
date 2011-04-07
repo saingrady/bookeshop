@@ -31,38 +31,38 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                    <h1> Book details : ${item.book.title} </h1><br/>
-                    <img src="images/books/${item.book.isbn}.gif" width="80" height="120" border="0" class="floatRight"/>
+                    <h1> Book details : ${book.title} </h1><br/>
+                    <img src="images/books/${book.isbn}.gif" width="80" height="120" border="0" class="floatRight"/>
                     <table border="0" align="center">
                         <tr>
                             <td>ISBN</td>
-                            <td><c:out value="${item.book.isbn}"/></td>
+                            <td><c:out value="${book.isbn}"/></td>
                         </tr>
                         <tr>
                             <td>Title</td>
-                            <td><c:out value="${item.book.title}"/></td>
+                            <td><c:out value="${book.title}"/></td>
                         </tr>
                         <tr>
                             <td>Author</td>
-                            <td><c:out value="${item.book.author}"/></td>
+                            <td><c:out value="${book.author.firstName}"/> <c:out value="${book.author.lastName}"/></td>
                         </tr>
                         <tr>
-                            <td>Year</td>
-                            <td><c:out value="${item.book.year}"/></td>
+                            <td>Publication date</td>
+                            <td><c:out value="${book.formattedPublishDate}"/></td>
                         </tr>
                         <tr>
                             <td>Price</td>
-                            <td><c:out value="${item.book.price}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
-                              <c:if test="${item.offer != 0}">
-                                  <img src="images/offer_${item.offer}.png" width="32" height="32" border="0"/> = <c:out value="${item.discountPrice}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
+                            <td><c:out value="${book.price}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
+                              <c:if test="${book.offer != 0}">
+                                  <img src="images/offer_${book.offer}.png" width="32" height="32" border="0"/> = <c:out value="${book.discountPrice}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
                                </c:if>
                             </td>
                         </tr>
                         <tr>
                             <td>Availability :</td>
-                            <td><c:out value="${item.stockStatus}"/>
-                                <c:if test="${item.stockStatus != 'Out of stock'}">
-                                    <a href="addItem.do?bookId=${item.book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                            <td><c:out value="${book.stockStatus}"/>
+                                <c:if test="${book.stockStatus != 'Out of stock'}"><!-- TODO : use ${book.stockStatus}.png and remove test -->
+                                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
                                 </c:if>
                             </td>
                         </tr>

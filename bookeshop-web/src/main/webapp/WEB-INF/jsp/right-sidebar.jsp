@@ -42,7 +42,7 @@
                 </c:when>
                 <c:otherwise>
                     <h2>Client details</h2>
-                    Identifier : <c:out value="${loggedCustomer.identifier}"/><br/>
+                    Identifier : <c:out value="${loggedCustomer.id}"/><br/>
                     First name: <c:out value="${loggedCustomer.firstName}"/><br/>
                     Last name: <c:out value="${loggedCustomer.lastName}"/><br/>
                     Email: <c:out value="${loggedCustomer.email}"/><br/>

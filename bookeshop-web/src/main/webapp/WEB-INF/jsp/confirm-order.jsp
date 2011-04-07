@@ -38,7 +38,7 @@
                             <th><b>Isbn</b></th>
                             <th><b>Title</b></th>
                             <th><b>Author</b></th>
-                            <th><b>Year</b></th>
+                            <th><b>Publication date</b></th>
                             <th><b>Price(<img src="images/euro.png" width="12" height="12" border="0"/>)</b></th>
                             <th><b>Quantity</b></th>
                         </tr>
@@ -46,10 +46,10 @@
                         <tbody>
                         <c:forEach var="entry" items="${items}">
                             <tr>
-                                <td><c:out value="${entry.key.book.isbn}"/></td>
-                                <td><c:out value="${entry.key.book.title}"/></td>
-                                <td><c:out value="${entry.key.book.author}"/></td>
-                                <td><c:out value="${entry.key.book.year}"/></td>
+                                <td><c:out value="${entry.key.isbn}"/></td>
+                                <td><c:out value="${entry.key.title}"/></td>
+                                <td><c:out value="${entry.key.author.firstName}"/> <c:out value="${entry.key.author.lastName}"/></td>
+                                <td><c:out value="${entry.key.formattedPublishDate}"/></td>
                                 <td><c:out value="${entry.key.discountPrice}"/></td>
                                 <td><c:out value="${entry.value}"/></td>
                             </tr>
