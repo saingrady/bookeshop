@@ -23,7 +23,7 @@
 
 package org.benassi.bookeshop.data.model;
 
-import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -113,9 +113,24 @@ public class Book {
         this.offer = offer;
     }
 
-    public double getDiscountPrice(){
-        DecimalFormat df = new DecimalFormat("###.##");
-        return Double.valueOf(df.format(price - price * offer/100));
+    /*
+     * Utility methods
+     */
+    public float getDiscountPrice(){
+        return price - price * offer / 100;
+    }
+
+    public String getStockStatus() {
+        if (stock <= 0)
+            return "Out of stock";
+        else if (stock <= 10)
+            return "Last items";
+        else return "In stock";
+    }
+
+    public String getFormattedPublishDate() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return simpleDateFormat.format(publishDate);
     }
 
 }
