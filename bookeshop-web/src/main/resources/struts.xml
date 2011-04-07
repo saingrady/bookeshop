@@ -108,6 +108,10 @@
             <result>/WEB-INF/jsp/orders.jsp</result>
         </action>
 
+        <action name="orderDetails" class="org.benassi.bookeshop.web.actions.customer.OrderDetailsAction">
+            <result>/WEB-INF/jsp/order-details.jsp</result>
+        </action>
+
     </package>
 
 
