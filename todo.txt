@@ -29,11 +29,13 @@ TODO :
 - add log
 - add I18N (english,french)
 - all security checks (Spring security)
-- review TX advised methods / test transactional behavior
+- review TX advised methods / test transactional behaviour
 - add mock service for email sending bean (use it in an interceptor after confirmation action = aop)
 - add apache velocity template for confirmation emails sent to customers
 - sort cart content before displaying cart details
 - add SOAP/REST web services exposed to partners (available books, quantity,etc)
+- add javascript (jQuery) for client side validation and effects (thickbox)
+- add ajax to get book/order details without reloading/redirecting to details JSPs
 TODO Feature request & enhancement :
 - store book images in DB (blob type)
 - add 'home','about' and 'contacts' pages (may use http://www.emailmeform.com/) (in /static url)
