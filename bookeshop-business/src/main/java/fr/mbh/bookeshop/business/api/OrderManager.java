@@ -32,6 +32,13 @@ import java.util.Set;
 public interface OrderManager {
 
     /**
+     * get order by id
+     * @param orderId the order id
+     * @return the order
+     */
+    public Order getOrderById(final int orderId);
+
+    /**
      * get orders by customers
      * @param customerId customer Id
      * @return the customer orders

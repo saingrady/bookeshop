@@ -62,6 +62,11 @@ public class OrderManagerImpl implements OrderManager{
     }
 
     @Override
+    public Order getOrderById(int orderId) {
+        return orderDAO.getOrderById(orderId);
+    }
+
+    @Override
     public Set<Order> getOrdersByCustomers(final int customerId) {
         return orderDAO.getOrdersByCustomer(customerId);
     }
