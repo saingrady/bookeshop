@@ -24,6 +24,7 @@
 Book e-Shop v2.0 : Struts2 + Spring3 + Hibernate3
 
 TODO :
+- add interceptors for requests with parameters for validation
 - replace jstl with struts tags
 - add log
 - add I18N (english,french)
