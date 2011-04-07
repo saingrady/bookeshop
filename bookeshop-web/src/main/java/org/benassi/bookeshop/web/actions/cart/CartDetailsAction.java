@@ -27,7 +27,6 @@ import fr.mbh.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
-import org.benassi.bookeshop.web.beans.ItemBean;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -44,13 +43,13 @@ public class CartDetailsAction implements SessionAware {
 
     private ShoppingCart theCart;
 
-    private Map<ItemBean,Integer> items;
+    private Map<Book,Integer> items;
 
-    private Double total;
+    private float total;
 
     private String error;
 
-    public Map<ItemBean, Integer> getItems() {
+    public Map<Book, Integer> getItems() {
         return items;
     }
 
@@ -75,18 +74,13 @@ public class CartDetailsAction implements SessionAware {
     public String execute() {
 
        if( theCart != null){
-           total = 0.0;
-           items = new HashMap<ItemBean,Integer>();
+           total = 0;
+           items = new HashMap<Book,Integer>();
            for (String bookId : theCart.getItems().keySet()) {
                Book book = bookManager.getBookByIsbn(bookId);
-               ItemBean itemBean = new ItemBean(
-                       book,
-                       bookManager.getBookStockStatus(book.getIsbn()),
-                       bookManager.getBookOffer(book.getIsbn())
-               );
                Integer quantity = theCart.getItems().get(bookId);
-               items.put(itemBean, quantity);
-               total += itemBean.getDiscountPrice() * quantity;
+               items.put(book, quantity);
+               total += book.getDiscountPrice() * quantity;
            }
            return "success";
        }else

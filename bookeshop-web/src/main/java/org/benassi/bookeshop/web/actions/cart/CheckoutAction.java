@@ -25,10 +25,9 @@ package org.benassi.bookeshop.web.actions.cart;
 
 import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.business.exception.OutOfStockException;
-import org.benassi.bookeshop.data.model.Book;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
-import org.benassi.bookeshop.web.beans.ItemBean;
+import org.benassi.bookeshop.data.model.Book;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -45,13 +44,13 @@ public class CheckoutAction implements SessionAware {
 
     private ShoppingCart theCart;
 
-    private Map<ItemBean, Integer> items;
+    private Map<Book, Integer> items;
 
-    private Double total;
+    private float total;
 
     private String error;
 
-    public Map<ItemBean, Integer> getItems() {
+    public Map<Book, Integer> getItems() {
         return items;
     }
 
@@ -82,21 +81,16 @@ public class CheckoutAction implements SessionAware {
         // logged customer to get email
         //Customer loggedCustomer = (Customer) session.get("loggedCustomer");
 
-        items = new HashMap<ItemBean,Integer>();
+        items = new HashMap<Book,Integer>();
         theCart = (ShoppingCart) session.get("theCart");
-        total = 0.0;
+        total = 0;
         try {
             for (String bookId : theCart.getItems().keySet()) {
                 Book book = bookManager.getBookByIsbn(bookId);
-                ItemBean itemBean = new ItemBean(
-                        book,
-                        bookManager.getBookStockStatus(book.getIsbn()),
-                        bookManager.getBookOffer(book.getIsbn())
-                );
                 Integer quantity = theCart.getItems().get(bookId);
                 bookManager.checkoutBook(book.getIsbn(),quantity);
-                total += itemBean.getDiscountPrice() * quantity;
-                items.put(itemBean, quantity);
+                total += book.getDiscountPrice() * quantity;
+                items.put(book, quantity);
             }
             theCart.clearCart();
 
