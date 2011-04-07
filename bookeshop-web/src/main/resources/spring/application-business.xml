@@ -42,6 +42,13 @@
         <property name="categoryDAO" ref="categoryDAO"/>
     </bean>
 
+    <bean id="orderManager" class="fr.mbh.bookeshop.business.impl.OrderManagerImpl">
+        <property name="orderDAO" ref="orderDAO"/>
+        <property name="orderItemDAO" ref="orderItemDAO"/>
+        <property name="orderStatusDAO" ref="orderStatusDAO"/>
+        <property name="bookManager" ref="bookManager"/>
+    </bean>
+
     <bean id="theCart" class="fr.mbh.bookeshop.util.cart.ShoppingCartImpl" scope="session"/>
 
     <bean id="loggedCustomer" class="fr.mbh.bookeshop.dao.domain.Customer" scope="session"/>

@@ -46,7 +46,7 @@
                     First name: <c:out value="${loggedCustomer.firstName}"/><br/>
                     Last name: <c:out value="${loggedCustomer.lastName}"/><br/>
                     Email: <c:out value="${loggedCustomer.email}"/><br/>
-                    <p><a href="update.do">My account</a> | <a href="logout.do">Sign out</a></p>
+                    <p><a href="update.do">My account</a> | <a href="orders.do">My orders</a> |<a href="logout.do">Sign out</a></p>
                 </c:otherwise>
             </c:choose>
         </li>
