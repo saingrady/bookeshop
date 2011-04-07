@@ -50,6 +50,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
     public List<Book> getBooksByTitleAuthor(String keyword) {
 
         Criteria criteria = this.getSession().createCriteria(Book.class);
+        //TODO : fix & test this restriction
         criteria.add( //Restrictions.or(
                         Restrictions.like("title",keyword, MatchMode.ANYWHERE).ignoreCase()
                         //Restrictions.ilike("author.firstName",keyword, MatchMode.ANYWHERE) // ilike = a case-insensitive like (see hibernate javadoc)
