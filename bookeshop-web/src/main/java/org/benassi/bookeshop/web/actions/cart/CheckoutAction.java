@@ -24,10 +24,12 @@
 package org.benassi.bookeshop.web.actions.cart;
 
 import fr.mbh.bookeshop.business.api.BookManager;
+import fr.mbh.bookeshop.business.api.OrderManager;
 import fr.mbh.bookeshop.business.exception.OutOfStockException;
 import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.data.model.Book;
+import org.benassi.bookeshop.data.model.Customer;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -41,6 +43,10 @@ public class CheckoutAction implements SessionAware {
     private Map<String, Object> session;
 
     private BookManager bookManager;
+
+    private OrderManager orderManager;
+
+    private Customer loggedCustomer;
 
     private ShoppingCart theCart;
 
@@ -63,23 +69,20 @@ public class CheckoutAction implements SessionAware {
         return error;
     }
 
-    /*private MailSender mailSender;
-
-    public void setMailSender(MailSender mailSender) {
-        this.mailSender = mailSender;
-    }*/
-
     public void setSession(Map<String, Object> session) {
         this.session = session;
+        loggedCustomer = (Customer)session.get("loggedCustomer");
     }
 
     public void setBookManager(BookManager bookManager) {
         this.bookManager = bookManager;
     }
 
+    public void setOrderManager(OrderManager orderManager) {
+        this.orderManager = orderManager;
+    }
+
     public String execute() {
-        // logged customer to get email
-        //Customer loggedCustomer = (Customer) session.get("loggedCustomer");
 
         items = new HashMap<Book,Integer>();
         theCart = (ShoppingCart) session.get("theCart");
@@ -94,14 +97,7 @@ public class CheckoutAction implements SessionAware {
             }
             theCart.clearCart();
 
-            /* Populate the order confirmation mail from velocity template and send it to the customer
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("customer@bookeshop.com");
-            message.setTo(loggedCustomer.getEmail());
-            message.setSubject("Book eShopping center : Order N° ");
-            message.setText("content to populate from a velocity template");
-            mailSender.send(message);*/
-
+            orderManager.createOrder(loggedCustomer,theCart);
             return "success";
 
         } catch (OutOfStockException e) {

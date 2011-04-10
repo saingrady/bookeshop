@@ -28,7 +28,7 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    
+
     <package name="book" extends="struts-default">
 
         <global-results>
@@ -117,6 +117,10 @@
 
     <package name="cart" extends="struts-default">
 
+        <interceptors>
+            <interceptor name="confirmOrderByMail" class="org.benassi.bookeshop.web.interceptors.ConfirmationEmailInterceptor"/>
+        </interceptors>
+
         <global-results>
             <result name="error">/WEB-INF/jsp/error.jsp</result>
         </global-results>
@@ -127,7 +131,7 @@
 
         <action name="checkout" class="org.benassi.bookeshop.web.actions.cart.CheckoutAction">
             <interceptor-ref name="defaultStack"/>
-            <interceptor-ref name="execAndWait"/>
+            <interceptor-ref name="confirmOrderByMail"/>
             <result name="wait">/WEB-INF/jsp/processing.jsp</result>
             <result>/WEB-INF/jsp/confirm-order.jsp</result>
         </action>
