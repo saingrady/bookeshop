@@ -74,7 +74,8 @@ CREATE TABLE book_order_item (
   itemId int NOT NULL PRIMARY KEY,
   orderId int NOT NULL,
   bookId varchar(13) NOT NULL,
-  quantity int NOT NULL
+  quantity int NOT NULL,
+  purchasePrice float NOT NULL
 );
 
 alter table book_order_item add constraint order_id_fk foreign key (orderId) references book_order(orderId);

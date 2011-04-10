@@ -36,7 +36,10 @@
                     <display:table name="items" uid="item" sort="list" defaultorder="descending" requestURI="orderDetails.do">
                         <display:column property="bookId" title="Book ID"/>
                         <display:column property="quantity" title="Quantity" sortable="true"/>
+                        <display:column property="purchasePrice" title="Price" sortable="true"/>
+                        <display:column property="total" title="Subtotal" sortable="true"/>
                     </display:table>
+                    <p><b>Total = <c:out value="${order.formattedTotal}"/></b></p>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
             </div>

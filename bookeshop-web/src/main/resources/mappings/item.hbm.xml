@@ -33,5 +33,7 @@
     <!--<many-to-one name="book" class="org.benassi.bookeshop.data.model.Book" lazy="false"/>-->
     <property name="bookId"/>
     <property name="quantity"/>
+    <property name="purchasePrice"/>
+
   </class>
 </hibernate-mapping>

@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.data.model;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
@@ -41,6 +42,8 @@ public class Order {
     private OrderStatus status;
 
     private Set<OrderItem> items;
+
+    private float total;
 
     public int getOrderId() {
         return orderId;
@@ -82,12 +85,28 @@ public class Order {
         this.items = items;
     }
 
+    public float getTotal() {
+        float result = 0;
+        for (OrderItem item: items)
+            result += item.getTotal();
+        return result;
+    }
+
     /*
-     * Utility methods
-     */
+    * Utility methods
+    */
     public String getFormattedDate() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         return simpleDateFormat.format(date);
+    }
+
+    public String getFormattedTotal() {
+        float result = 0;
+        for (OrderItem item: items)
+            result += item.getTotal();
+        DecimalFormat df = new DecimalFormat("###.##");
+        return df.format(result);
+
     }
 
 }

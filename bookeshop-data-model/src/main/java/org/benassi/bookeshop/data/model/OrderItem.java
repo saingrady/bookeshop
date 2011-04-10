@@ -36,6 +36,8 @@ public class OrderItem {
 
     private int quantity;
 
+    private float purchasePrice;
+
     public int getItemId() {
         return itemId;
     }
@@ -68,4 +70,15 @@ public class OrderItem {
         return quantity;
     }
 
+    public float getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(float purchasePrice) {
+        this.purchasePrice = purchasePrice;
+    }
+
+    public float getTotal() {
+        return purchasePrice * quantity;
+    }
 }
