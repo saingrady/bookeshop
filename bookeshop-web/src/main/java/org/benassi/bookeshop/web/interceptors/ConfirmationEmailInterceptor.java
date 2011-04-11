@@ -26,14 +26,16 @@ package org.benassi.bookeshop.web.interceptors;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-import com.opensymphony.xwork2.interceptor.Interceptor;
 import org.benassi.bookeshop.data.model.Customer;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
 import java.util.Map;
 
-public class ConfirmationEmailInterceptor implements Interceptor {
+/**
+ * Confirmation email interceptor
+ */
+public class ConfirmationEmailInterceptor extends AbstractInterceptor {
 
     private Customer loggedCustomer;
 
@@ -41,16 +43,6 @@ public class ConfirmationEmailInterceptor implements Interceptor {
 
     public void setMailSender(MailSender mailSender) {
         this.mailSender = mailSender;
-    }
-
-    @Override
-    public void destroy() {
-        System.out.println("ConfirmationEmailInterceptor destriyed");
-    }
-
-    @Override
-    public void init() {
-        System.out.println("ConfirmationEmailInterceptor created");
     }
 
     @Override
