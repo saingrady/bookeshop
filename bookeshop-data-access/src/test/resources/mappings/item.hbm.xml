@@ -26,7 +26,7 @@
 <hibernate-mapping>
   <class name="org.benassi.bookeshop.data.model.OrderItem" table="book_order_item">
     <id name="itemId">
-      <generator class="native"/>
+      <generator class="increment"/>
     </id>
     <!--<many-to-one name="order" class="org.benassi.bookeshop.data.model.Book" lazy="false" unique="true"/>-->
     <property name="orderId"/>
