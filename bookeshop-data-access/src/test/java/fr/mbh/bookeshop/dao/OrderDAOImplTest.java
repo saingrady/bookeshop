@@ -23,14 +23,15 @@
 
 package fr.mbh.bookeshop.dao;
 
-import fr.mbh.bookeshop.dao.api.OrderDAO;
-import org.benassi.bookeshop.data.model.Order;
+import fr.mbh.bookeshop.dao.api.*;
+import org.benassi.bookeshop.data.model.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Date;
 import java.util.Set;
 
 import static junit.framework.Assert.*;
@@ -41,6 +42,18 @@ public class OrderDAOImplTest {
 
     @Autowired
     private OrderDAO orderDAO;
+
+    @Autowired
+    private CustomerDAO customerDAO;
+
+    @Autowired
+    private OrderStatusDAO orderStatusDAO;
+
+    @Autowired
+    private BookDAO bookManager;
+
+    @Autowired
+    private OrderItemDAO orderItemDAO;
 
     @Test
     public void testGetOrderById() {
@@ -55,6 +68,34 @@ public class OrderDAOImplTest {
         Set<Order> orders = orderDAO.getOrdersByCustomer(56325);
         assertNotNull(orders);
         assertEquals(2, orders.size());
+    }
+
+    @Test
+    public void testCreateOrder(){
+
+        Customer customer = customerDAO.getCustomerById(56325);
+        Order order = new Order();
+        order.setCustomer(customer);
+        order.setDate(new Date());
+        OrderStatus orderStatus = orderStatusDAO.getStatusById(1);
+        order.setStatus(orderStatus);
+        //persist order
+        orderDAO.createOrder(order);
+
+        //persist order item
+        String bookId = "9781430218418";
+        Book book = bookManager.getBookByIsbn(bookId);
+        OrderItem orderItem = new OrderItem();
+        orderItem.setOrderId(order.getOrderId());
+        orderItem.setBookId(book.getIsbn());
+        orderItem.setQuantity(2);
+        orderItem.setPurchasePrice(book.getPrice());
+        orderItemDAO.createOrderItem(orderItem);
+
+        Order createdOrder = orderDAO.getOrderById(order.getOrderId());
+        assertNotNull(createdOrder);
+        assertEquals(1,createdOrder.getItems().size());
+
     }
 
 }
