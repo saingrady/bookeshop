@@ -63,7 +63,6 @@
                     <p><img src="images/delivery.png" width="32" height="32" border="0"/> Your items will be delivered to '<b><c:out value="${loggedCustomer.address}"/></b>'</p>
                     <p><img src="images/customer_service.png" width="32" height="32" border="0"/> For after sale service, please contact us at <a href="mailto:customer@bookeshop.com">customer@bookeshop.com</a></p>
                     <p>We hope to see you soon on our site. <a href="catalogue.do"> Back to catalogue page</a></p>
-                    <p>We will be grateful if you respond to our one minute survey and help us improve our site. <a href="nyi.do"> Go to survey</a></p>
                     <div style="clear: both;">&nbsp;</div>
                 </div>
             </div>
