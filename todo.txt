@@ -31,21 +31,16 @@ TODO :
 - all security checks (Spring security)
 - review TX advised methods / test transactional behaviour
 - add apache velocity template for confirmation emails sent to customers
-- sort cart content before displaying cart details
-- add SOAP/REST web services exposed to partners (available books, quantity,etc)
 - add javascript (jQuery) for client side validation and effects (thickbox)
 - add ajax to get book/order details without reloading/redirecting to details JSPs
 - review and remove all unused setters from data model objects
-TODO Feature request & enhancement :
-- store book images in DB (blob type)
 - add 'home','about' and 'contacts' pages (may use http://www.emailmeform.com/) (in /static url)
+TODO Feature request & enhancement :
+- add SOAP/REST web services exposed to partners (available books, quantity,etc)
+- store book images in DB (blob type)
 - add 'Forgot your password'/ remember me feature
-- add 'download ebook' feature
 - add 'remember me' feature (at least see how to do it)
 - add 'advanced search' feature (title,author,edition,year,etc)
-- add 'survey' feature
-- add currency selection/conversion (may call web service)
-- use google maps API to show a map for the customer address
 - add checkout with PayPal API (at least see how to do it)
 - add apache tiles for pages layout
 - add a batch task to send a complete report for sales (may use spring batch/ quartz)
