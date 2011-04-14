@@ -61,7 +61,7 @@
                         <tr>
                             <td>Availability :</td>
                             <td><c:out value="${book.stockStatus}"/>
-                                <c:if test="${book.stockStatus != 'Out of stock'}"><!-- TODO : use ${book.stockStatus}.png and remove test -->
+                                <c:if test="${book.stockStatus != 'Out of stock'}">
                                     <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
                                 </c:if>
                             </td>
