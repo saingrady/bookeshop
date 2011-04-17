@@ -33,6 +33,7 @@
                 <c:forEach var="category" items="${categories}">
                 <li><a href="category.do?categoryId=${category.id}">${category.name}</a></li>
                 </c:forEach>
+                <li><a href="download-catalogue.do">Download PDF catalogue <img src="images/pdf.png" width="40" height="40" border="0"/></a></li>
             </ul>
         </li>
         <li>
