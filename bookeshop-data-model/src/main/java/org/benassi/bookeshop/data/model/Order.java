@@ -92,6 +92,18 @@ public class Order {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", customer=" + customer +
+                ", date=" + date +
+                ", status=" + status +
+                ", items=" + items +
+                ", total=" + total +
+                '}';
+    }
+
     /*
     * Utility methods
     */

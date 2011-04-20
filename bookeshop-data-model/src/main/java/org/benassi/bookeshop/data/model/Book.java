@@ -113,9 +113,23 @@ public class Book {
         this.offer = offer;
     }
 
+    @Override
+    public String toString() {
+        return "Book{" +
+                "isbn='" + isbn + '\'' +
+                ", title='" + title + '\'' +
+                ", publishDate=" + publishDate +
+                ", author=" + author +
+                ", category=" + category +
+                ", stock=" + stock +
+                ", price=" + price +
+                ", offer=" + offer +
+                '}';
+    }
+
     /*
-     * Utility methods
-     */
+    * Utility methods
+    */
     public float getDiscountPrice(){
         return price - price * offer / 100;
     }

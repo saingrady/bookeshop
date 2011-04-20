@@ -81,4 +81,15 @@ public class OrderItem {
     public float getTotal() {
         return purchasePrice * quantity;
     }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "itemId=" + itemId +
+                ", orderId=" + orderId +
+                ", bookId='" + bookId + '\'' +
+                ", quantity=" + quantity +
+                ", purchasePrice=" + purchasePrice +
+                '}';
+    }
 }

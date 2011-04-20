@@ -47,4 +47,12 @@ public class OrderStatus {
     public void setLabel(String label) {
         this.label = label;
     }
+
+    @Override
+    public String toString() {
+        return "OrderStatus{" +
+                "id=" + id +
+                ", label='" + label + '\'' +
+                '}';
+    }
 }

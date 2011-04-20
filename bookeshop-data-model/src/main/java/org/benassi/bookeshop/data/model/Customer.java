@@ -96,12 +96,14 @@ public class Customer {
 
     @Override
     public String toString() {
-        return    "\n identifier = " + id
-                + "\n first name = " + firstName
-                + "\n last name = " + lastName
-                + "\n email = " + email
-                + "\n address = " + address
-                + "\n password = " + password ;
+        return "Customer{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 
 }
