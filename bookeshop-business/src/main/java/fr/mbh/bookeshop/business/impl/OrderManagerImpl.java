@@ -28,7 +28,6 @@ import fr.mbh.bookeshop.business.api.OrderManager;
 import fr.mbh.bookeshop.dao.api.OrderDAO;
 import fr.mbh.bookeshop.dao.api.OrderItemDAO;
 import fr.mbh.bookeshop.dao.api.OrderStatusDAO;
-import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import org.benassi.bookeshop.data.model.*;
 
 import java.util.Date;

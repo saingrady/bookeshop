@@ -25,7 +25,7 @@ package org.benassi.bookeshop.web.actions.cart;
 
 import fr.mbh.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
-import fr.mbh.bookeshop.util.cart.ShoppingCart;
+import org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 

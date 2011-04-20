@@ -26,7 +26,7 @@ package org.benassi.bookeshop.web.actions.customer;
 import fr.mbh.bookeshop.business.api.CustomerManager;
 import fr.mbh.bookeshop.business.exception.LoginException;
 import org.benassi.bookeshop.data.model.Customer;
-import fr.mbh.bookeshop.util.cart.ShoppingCart;
+import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
@@ -90,7 +90,8 @@ public class LoginAction implements SessionAware{
             return "success";
         } catch (LoginException e) {
             // TODO probable bug : if login fails, client details should not be shown in jsp right-sidebar.jsp
-//            loggedCustomer = null;// may fix the bug
+//            loggedCustomer = null;// may fix the bug. no! because it should be already null not here
+            //instead, may add lazy-init="true" to the  bean declaration
             error = e.getMessage();
             return "error";
         }

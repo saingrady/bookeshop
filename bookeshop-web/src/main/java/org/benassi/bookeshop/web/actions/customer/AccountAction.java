@@ -27,7 +27,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import fr.mbh.bookeshop.business.api.CustomerManager;
 import fr.mbh.bookeshop.business.exception.CustomerExistentException;
 import org.benassi.bookeshop.data.model.Customer;
-import fr.mbh.bookeshop.util.cart.ShoppingCart;
+import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
