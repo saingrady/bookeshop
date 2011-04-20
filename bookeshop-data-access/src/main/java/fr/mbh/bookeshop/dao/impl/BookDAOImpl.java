@@ -30,6 +30,7 @@ import org.benassi.bookeshop.data.model.Book;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.context.MessageSource;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import java.util.List;
@@ -38,6 +39,12 @@ import java.util.List;
  * Hibernate implementation of book DAO interface
  */
 public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
+
+    private MessageSource messages;
+
+    public void setMessages(MessageSource messages) {
+        this.messages = messages;
+    }
 
     public List<Book> getOffers() {
         return  this.getHibernateTemplate().find("from Book where offer > 0");
@@ -76,7 +83,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
             book.setStock(book.getStock() - quantity);
             this.getHibernateTemplate().update(book);
         }else
-            throw new InsufficientStockException("Insufficient stock of " + quantity + " items for book '"+ getBookByIsbn(isbn).getTitle() + "'! Remaining only " + book.getStock()  + " item(s)");
+            throw new InsufficientStockException(messages.getMessage("stock.insufficient",new Object[]{quantity,getBookByIsbn(isbn).getTitle(),book.getStock()},"Insufficient Stock",null));
     }
 
 }
