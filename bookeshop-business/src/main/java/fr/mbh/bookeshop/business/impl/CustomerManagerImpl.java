@@ -51,7 +51,7 @@ public class CustomerManagerImpl implements CustomerManager {
     public Customer login(String email, String password) throws LoginException {
         if(customerDAO.checkLoginCredentials(email, password))
             return customerDAO.getCustomerByEmail(email);
-        else throw new LoginException(messages.getMessage("login.invalid",null,null));
+        else throw new LoginException(messages.getMessage("login.invalid",null,"Invalid login credentials!",null));
     }
 
     public Customer updateCustomer(Customer customer) throws CustomerExistentException {
