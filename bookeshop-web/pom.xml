@@ -113,6 +113,14 @@
             <version>${jasperreports.version}</version>
         </dependency>
 
+        <!--  Test  -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+            <version>${junit.version}</version>
+        </dependency>
+
         <!-- bookeshop business dependency -->
         <dependency>
             <groupId>org.benassi</groupId>

@@ -23,8 +23,8 @@
 
 package org.benassi.bookeshop.web.cart;
 
-import fr.mbh.bookeshop.util.cart.ShoppingCart;
-import fr.mbh.bookeshop.util.cart.ShoppingCartImpl;
+import  org.benassi.bookeshop.web.cart.ShoppingCart;
+import  org.benassi.bookeshop.web.cart.ShoppingCartImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
