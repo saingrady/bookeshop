@@ -49,6 +49,6 @@
         <property name="password" value="${mail.password}"/>
     </bean> -->
 
-    <bean id="mailSender" class="org.benassi.bookeshop.util.MailSenderMock"/>
+    <bean id="mailSender" class="org.benassi.bookeshop.web.util.MailSenderMock"/>
 
 </beans>
