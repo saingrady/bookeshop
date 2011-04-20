@@ -106,6 +106,13 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!--  Jasper Reports -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>${jasperreports.version}</version>
+        </dependency>
+
         <!-- bookeshop business dependency -->
         <dependency>
             <groupId>org.benassi</groupId>
