@@ -39,7 +39,6 @@
         <module>bookeshop-data-model</module>
         <module>bookeshop-data-access</module>
         <module>bookeshop-web</module>
-        <module>bookeshop-utils</module>
     </modules>
 
 
