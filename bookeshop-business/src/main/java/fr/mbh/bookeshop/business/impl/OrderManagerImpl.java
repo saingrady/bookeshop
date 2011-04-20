@@ -72,7 +72,7 @@ public class OrderManagerImpl implements OrderManager{
     }
 
     @Override
-    public void createOrder(final Customer customer,final ShoppingCart shoppingCart) {
+    public void createOrder(final Customer customer,final Map<String,Integer> items) {
 
         Order order = new Order();
         order.setCustomer(customer);
@@ -82,7 +82,7 @@ public class OrderManagerImpl implements OrderManager{
 
         orderDAO.createOrder(order);
 
-        Map<String,Integer> books = shoppingCart.getItems();
+        Map<String,Integer> books = items;
         for (String bookId : books.keySet()) {
             Book book = bookManager.getBookByIsbn(bookId);
             OrderItem orderItem = new OrderItem();

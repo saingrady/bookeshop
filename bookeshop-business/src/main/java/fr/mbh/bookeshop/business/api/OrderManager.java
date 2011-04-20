@@ -23,10 +23,10 @@
 
 package fr.mbh.bookeshop.business.api;
 
-import fr.mbh.bookeshop.util.cart.ShoppingCart;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
 
+import java.util.Map;
 import java.util.Set;
 
 public interface OrderManager {
@@ -48,8 +48,8 @@ public interface OrderManager {
     /**
      * create order from a validated shopping cart
      * @param customer the customer for which the order will be created
-     * @param shoppingCart the shopping cart containing items
+     * @param items the shopping cart items
      */
-    public void createOrder(final Customer customer,final ShoppingCart shoppingCart);
+    public void createOrder(final Customer customer,final Map<String,Integer> items);
 
 }

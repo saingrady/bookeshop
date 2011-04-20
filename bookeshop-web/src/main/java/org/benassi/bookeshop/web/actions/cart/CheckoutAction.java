@@ -97,7 +97,7 @@ public class CheckoutAction implements SessionAware {
             }
             theCart.clearCart();
 
-            orderManager.createOrder(loggedCustomer,theCart);
+            orderManager.createOrder(loggedCustomer,theCart.getItems());
             return "success";
 
         } catch (OutOfStockException e) {
