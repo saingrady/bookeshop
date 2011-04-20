@@ -25,7 +25,6 @@ Book e-Shop v2.0 : Struts2 + Spring3 + Hibernate3
 
 TODO issues:
 - download catalogue action
-- even if login fails, client details are shown!
 
 TODO enhancements:
 - add interceptors for requests with parameters for validation
