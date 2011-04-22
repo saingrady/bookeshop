@@ -169,8 +169,11 @@
         </action>
 
         <action name="download-catalogue" class="org.benassi.bookeshop.web.actions.DownloadCatalogueAction">
-            <result type="redirectAction">
-                <param name="actionName">catalogue</param>
+            <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename=catalogue.pdf</param>
+                <param name="contentType">application/pdf</param>
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">1024</param>
             </result>
         </action>
 
