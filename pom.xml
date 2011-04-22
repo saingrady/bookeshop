@@ -46,7 +46,8 @@
         <spring.version>3.0.5.RELEASE</spring.version>
         <slf4j.version>1.6.1</slf4j.version>
         <aspectj.version>1.6.8</aspectj.version>
-        <jasperreports.version>3.7.4</jasperreports.version>
+        <jasperreports.version>3.6.2</jasperreports.version>
+        <itext.version>2.1.0</itext.version>
         <hsqldb.version>1.8.0.10</hsqldb.version>
         <hibernate.version>3.6.2.Final</hibernate.version>
         <junit.version>4.7</junit.version>
