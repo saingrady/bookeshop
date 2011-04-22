@@ -87,4 +87,8 @@
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
+    <bean id="pdfCatalogueGenerator" class="org.benassi.bookeshop.web.util.PdfCatalogueGenerator">
+        <property name="dataSource" ref="storeDataSource"/>
+    </bean>
+
 </beans>
