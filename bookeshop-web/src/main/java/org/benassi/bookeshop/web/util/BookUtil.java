@@ -44,7 +44,7 @@ public class BookUtil {
     }
 
     public static String getFormattedPublishDate(Date publishDate) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return simpleDateFormat.format(publishDate);
     }
 }

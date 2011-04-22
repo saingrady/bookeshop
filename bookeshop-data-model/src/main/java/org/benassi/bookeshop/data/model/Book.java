@@ -143,7 +143,7 @@ public class Book {
     }
 
     public String getFormattedPublishDate() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return simpleDateFormat.format(publishDate);
     }
 
