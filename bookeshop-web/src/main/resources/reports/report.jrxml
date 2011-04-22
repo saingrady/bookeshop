@@ -27,7 +27,7 @@
 <jasperReport name="BasicReport" >
   <field name="TITLE" class="java.lang.String"/>
   <field name="AUTHOR" class="java.lang.String"/>
-  <field name="PRICE" class="java.lang.Double"/>
+  <field name="PRICE" class="java.lang.Float"/>
   <pageHeader>
     <band>
     </band>
@@ -69,7 +69,7 @@
       </textField>
       <textField pattern="0.00">
         <reportElement x="460" y="0" width="180" height="20"/>
-        <textFieldExpression class="java.lang.Double"><![CDATA[$F{PRICE}]]></textFieldExpression>
+        <textFieldExpression class="java.lang.Float"><![CDATA[$F{PRICE}]]></textFieldExpression>
       </textField>
     </band>
   </detail>
