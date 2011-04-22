@@ -25,7 +25,6 @@ Book e-Shop v2.0 : Struts2 + Spring3 + Hibernate3
 
 TODO issues:
 - download catalogue action
-- in search result, sorting by column (display tag) should not recall search action (and hence display processing.gif)
 
 TODO enhancements:
 - add interceptors for requests with parameters for validation
