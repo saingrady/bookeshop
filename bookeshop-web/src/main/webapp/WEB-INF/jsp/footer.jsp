@@ -27,7 +27,11 @@
 	</div>
 	<!-- end #page -->
 	<div id="footer">
-		<p>Copyright (c) 2010 Book e-Shop. All rights reserved.</p>
+	<p>
+	    <a href="http://maven.apache.org/"><img alt="Built by Maven" src="images/maven.png" border="0"/></a>
+		Copyright (c) 2011 Book e-Shop. All rights reserved
+	    <a href="http://www.jetbrains.com/idea/"><img alt="The best Java IDE" src="images/idea.png" border="0"/></a>
+	</p>
 	</div>
 	<!-- end #footer -->
 </div>
