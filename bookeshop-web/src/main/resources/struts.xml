@@ -164,6 +164,10 @@
             </result>
         </action>
 
+        <action name="about" class="org.benassi.bookeshop.web.actions.AboutAction">
+            <result>/WEB-INF/jsp/about.jsp</result>
+        </action>
+
         <action name="nyi" class="org.benassi.bookeshop.web.actions.NotYetImplementedAction">
             <result>/WEB-INF/jsp/not-yet-implemented.jsp</result>
         </action>

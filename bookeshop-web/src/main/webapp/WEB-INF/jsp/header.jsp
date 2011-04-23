@@ -35,15 +35,15 @@
 <div id="wrapper">
 	<div id="header">
 		<div id="logo">
-			<h1><a href="#">Welcome to Book e-Shop</a></h1>
+			<h1><a href="index.do">Welcome to Book e-Shop</a></h1>
 		</div>
 	</div>
 	<!-- end #header -->
 	<div id="menu">
 		<ul>
-			<li><a href="#">Home</a><img src="images/home.png" width="32" height="32" border="0"/></li>
-			<li><a href="#">About</a><img src="images/info.png" width="32" height="32" border="0"/></li>
-			<li><a href="#">Contact</a><img src="images/customer_service.png" width="32" height="32" border="0"/></li>
+			<li><a href="index.do">Home</a><img src="images/home.png" width="32" height="32" border="0"/></li>
+			<li><a href="contact.do">Contact</a><img src="images/customer_service.png" width="32" height="32" border="0"/></li>
+			<li><a href="about.do">About</a><img src="images/info.png" width="32" height="32" border="0"/></li>
 		</ul>
 	</div>
 	<!-- end #menu -->
