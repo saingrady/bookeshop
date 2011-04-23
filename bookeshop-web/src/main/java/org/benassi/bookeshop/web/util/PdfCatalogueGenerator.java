@@ -44,6 +44,8 @@ public class PdfCatalogueGenerator implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 
+    private String query;
+
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
@@ -52,13 +54,16 @@ public class PdfCatalogueGenerator implements ApplicationContextAware {
         this.dataSource = dataSource;
     }
 
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
     public ByteArrayInputStream getPdfCatalogueStream() {
 
         Resource jreport = applicationContext.getResource("classpath:reports/report.jrxml");
 
         java.sql.Connection connection = null;
         java.sql.Statement statement = null;
-        String query = "SELECT b.title,a.firstName + ' ' + a.lastName as author, b.price FROM book b, author a where b.author_id = a.id;";
 
         try {
             connection = dataSource.getConnection();

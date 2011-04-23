@@ -87,8 +87,15 @@
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
+
+    <!-- ===================================== -->
+    <!--      PDF catalogue generator bean     -->
+    <!-- ===================================== -->
+
     <bean id="pdfCatalogueGenerator" class="org.benassi.bookeshop.web.util.PdfCatalogueGenerator">
         <property name="dataSource" ref="storeDataSource"/>
+        <!-- any update of the sql query should be followed by an update in the jasper report design (reports/report.jrxml) -->
+        <property name="query" value="SELECT b.title,a.firstName + ' ' + a.lastName as author, b.price FROM book b, author a where b.author_id = a.id;"/>
     </bean>
 
 </beans>
