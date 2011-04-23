@@ -34,7 +34,6 @@ TODO enhancements:
 - add javascript (jQuery) for client side validation and effects (thickbox)
 - add ajax to get book/order details without reloading/redirecting to details JSPs
 - review and remove all unused setters from data model objects
-- add 'home','about' and 'contacts' pages (may use http://www.emailmeform.com/) (in /static url)
 - remove "not yet implemented" (scrum : deliver only done items!)
 - uniform packages : org.benassi.bookeshop
 TODO Feature request :

@@ -168,6 +168,10 @@
             <result>/WEB-INF/jsp/about.jsp</result>
         </action>
 
+        <action name="contact" class="org.benassi.bookeshop.web.actions.ContactAction">
+            <result>/WEB-INF/jsp/contact.jsp</result>
+        </action>
+
         <action name="nyi" class="org.benassi.bookeshop.web.actions.NotYetImplementedAction">
             <result>/WEB-INF/jsp/not-yet-implemented.jsp</result>
         </action>
