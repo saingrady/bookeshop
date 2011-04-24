@@ -53,9 +53,8 @@ public class CartDetailsAction implements SessionAware {
         return items;
     }
 
-    public Double getTotal() {
-        DecimalFormat df = new DecimalFormat("###.##");
-        return Double.valueOf(df.format(total));
+    public float getTotal() {
+        return total;
     }
 
     public String getError() {
@@ -86,6 +85,14 @@ public class CartDetailsAction implements SessionAware {
        }else
            error = "Please sign up or log in to buy from Book e-Shop";
            return "error";
+    }
+
+    /*
+     * Utility methods
+     */
+    public String getFormattedTotal() {
+        DecimalFormat df = new DecimalFormat("###.##");
+        return df.format(total);
     }
 
 }

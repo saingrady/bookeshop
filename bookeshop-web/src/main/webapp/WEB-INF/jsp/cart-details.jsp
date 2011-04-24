@@ -74,7 +74,7 @@
 
                             </table><br/>
 
-                            <p><b>Cart Total = <c:out value="${total}"/></b></p>
+                            <p><b>Cart Total = <c:out value="${formattedTotal}"/></b></p>
                             <b>Clear cart </b><a href="clearCart.do"><img src="images/cart.png" width="32" height="32" border="0"/></a>
 
                             <s:form action="checkout">
