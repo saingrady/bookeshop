@@ -34,6 +34,8 @@ import org.springframework.dao.DataAccessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Locale;
+
 /**
  * Customer Manager implementation
  */
@@ -57,7 +59,7 @@ public class CustomerManagerImpl implements CustomerManager {
         if(customerDAO.checkLoginCredentials(email, password))
             return customerDAO.getCustomerByEmail(email);
         else{
-            String error = messages.getMessage("login.invalid", null, "Invalid login credentials!", null);
+            String error = messages.getMessage("login.invalid", null, "Invalid login credentials!", Locale.getDefault());
             logger.error(error);
             throw new LoginException(error);
         }
