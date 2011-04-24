@@ -49,7 +49,8 @@ public interface OrderManager {
      * create order from a validated shopping cart
      * @param customer the customer for which the order will be created
      * @param items the shopping cart items
+     * @return the created order
      */
-    public void createOrder(final Customer customer,final Map<String,Integer> items);
+    public Order createOrder(final Customer customer,final Map<String,Integer> items);
 
 }

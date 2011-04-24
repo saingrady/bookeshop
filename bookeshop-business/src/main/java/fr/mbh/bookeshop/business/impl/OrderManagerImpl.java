@@ -31,6 +31,7 @@ import fr.mbh.bookeshop.dao.api.OrderStatusDAO;
 import org.benassi.bookeshop.data.model.*;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -71,25 +72,28 @@ public class OrderManagerImpl implements OrderManager{
     }
 
     @Override
-    public void createOrder(final Customer customer,final Map<String,Integer> items) {
+    public Order createOrder(final Customer customer,final Map<String,Integer> items) {
 
         Order order = new Order();
         order.setCustomer(customer);
         order.setDate(new Date());
         OrderStatus orderStatus = orderStatusDAO.getStatusById(1);
         order.setStatus(orderStatus);
+        order.setItems(new HashSet<OrderItem>());
 
         orderDAO.createOrder(order);
 
-        Map<String,Integer> books = items;
-        for (String bookId : books.keySet()) {
+        for (String bookId : items.keySet()) {
             Book book = bookManager.getBookByIsbn(bookId);
             OrderItem orderItem = new OrderItem();
             orderItem.setOrderId(order.getOrderId());
             orderItem.setBookId(book.getIsbn());
-            orderItem.setQuantity(books.get(bookId));
+            orderItem.setQuantity(items.get(bookId));
             orderItem.setPurchasePrice(book.getPrice());
+            order.getItems().add(orderItem);
             orderItemDAO.createOrderItem(orderItem);
         }
+
+        return order;
     }
 }
