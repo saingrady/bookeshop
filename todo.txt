@@ -23,8 +23,6 @@
 
 Book e-Shop v2.0 : Struts2 + Spring3 + Hibernate3
 
-TODO issues
-- new orders details are not shown
 
 TODO enhancements:
 - add interceptors for requests with parameters for validation
@@ -34,6 +32,7 @@ TODO enhancements:
 - review and remove all unused setters from data model objects
 - uniform packages : org.benassi.bookeshop
 - update struts URLs (naming + namespace)
+- review pom dependencies
 TODO Feature request :
 - add security checks (Spring security)
 - add javascript (jQuery) for client side validation and UI effects (thickbox)

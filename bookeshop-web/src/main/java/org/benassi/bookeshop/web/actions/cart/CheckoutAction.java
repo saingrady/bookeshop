@@ -26,6 +26,7 @@ package org.benassi.bookeshop.web.actions.cart;
 import fr.mbh.bookeshop.business.api.BookManager;
 import fr.mbh.bookeshop.business.api.OrderManager;
 import fr.mbh.bookeshop.business.exception.OutOfStockException;
+import org.benassi.bookeshop.data.model.Order;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.data.model.Book;
@@ -56,13 +57,18 @@ public class CheckoutAction implements SessionAware {
 
     private String error;
 
+    private Order order;
+
+    public Order getOrder() {
+        return order;
+    }
+
     public Map<Book, Integer> getItems() {
         return items;
     }
 
-    public Double getTotal() {
-        DecimalFormat df = new DecimalFormat("###.##");
-        return Double.valueOf(df.format(total));
+    public float getTotal() {
+        return total;
     }
 
     public String getError() {
@@ -95,14 +101,21 @@ public class CheckoutAction implements SessionAware {
                 total += book.getDiscountPrice() * quantity;
                 items.put(book, quantity);
             }
+            order = orderManager.createOrder(loggedCustomer,theCart.getItems());
             theCart.clearCart();
-
-            orderManager.createOrder(loggedCustomer,theCart.getItems());
             return "success";
 
         } catch (OutOfStockException e) {
             error = e.getMessage();
             return "error";
         }
+    }
+
+    /*
+     * Utility method
+     */
+    public String getFormattedTotal() {
+        DecimalFormat df = new DecimalFormat("###.##");
+        return df.format(total);
     }
 }
