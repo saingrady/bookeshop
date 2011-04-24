@@ -26,12 +26,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/jdbc
        http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
        http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
 
     <context:property-placeholder location="classpath:db.properties"/>
 
@@ -47,11 +50,32 @@
         <jdbc:script location="classpath:data.sql"/>
     </jdbc:initialize-database>
 
+    <util:properties id="hibernateProperties">
+        <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+    </util:properties>
+
+    <bean id="hibernateSessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="storeDataSource"/>
+        <property name="mappingDirectoryLocations" value="classpath:/mappings"/>
+        <property name="hibernateProperties" ref="hibernateProperties"/>
+    </bean>
 
     <bean id="pdfCatalogueGenerator" class="org.benassi.bookeshop.web.util.PdfCatalogueGenerator">
         <property name="dataSource" ref="storeDataSource"/>
         <!-- any update of the sql query should be followed by an update in the jasper report design (reports/report.jrxml) -->
         <property name="query" value="SELECT b.title,a.firstName + ' ' + a.lastName as author, b.price FROM book b, author a where b.author_id = a.id;"/>
+    </bean>
+
+    <bean id="customerDAO" class="fr.mbh.bookeshop.dao.impl.CustomerDAOImpl">
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
+    <bean id="orderDAO" class="fr.mbh.bookeshop.dao.impl.OrderDAOImpl">
+        <property name="sessionFactory" ref="hibernateSessionFactory"/>
+    </bean>
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="configLocation" value="velocity/velocity.properties"/>
     </bean>
 
 </beans>
