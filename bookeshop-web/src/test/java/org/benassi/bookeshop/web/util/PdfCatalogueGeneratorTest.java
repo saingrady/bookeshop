@@ -21,7 +21,7 @@
  *   	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package org.benassi.bookeshop.web.cart;
+package org.benassi.bookeshop.web.util;
 
 import org.benassi.bookeshop.web.util.PdfCatalogueGenerator;
 import org.junit.Test;
