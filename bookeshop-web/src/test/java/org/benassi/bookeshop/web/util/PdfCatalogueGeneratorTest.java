@@ -39,7 +39,7 @@ import static junit.framework.Assert.assertNotNull;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:application-dao-test.xml"})
+@ContextConfiguration(locations = {"classpath:application-test.xml"})
 public class PdfCatalogueGeneratorTest {
 
     @Autowired

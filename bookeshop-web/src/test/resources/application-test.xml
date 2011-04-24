@@ -75,7 +75,7 @@
     </bean>
 
     <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
-        <property name="configLocation" value="velocity/velocity.properties"/>
+        <property name="configLocation" value="classpath:velocity/velocity.properties"/>
     </bean>
 
 </beans>
