@@ -32,7 +32,7 @@
 
     <bean id="customerManager" class="fr.mbh.bookeshop.business.impl.CustomerManagerImpl">
         <property name="customerDAO" ref="customerDAO"/>
-        <property name="messages" ref="messageSource"/>
+        <property name="messages" ref="businessMessageSource"/>
     </bean>
 
     <bean id="bookManager" class="fr.mbh.bookeshop.business.impl.BookManagerImpl">
@@ -48,10 +48,6 @@
         <property name="orderItemDAO" ref="orderItemDAO"/>
         <property name="orderStatusDAO" ref="orderStatusDAO"/>
         <property name="bookManager" ref="bookManager"/>
-    </bean>
-
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="business_exceptions"/>
     </bean>
 
     <bean id="theCart" class="org.benassi.bookeshop.web.cart.ShoppingCartImpl" scope="session"/>

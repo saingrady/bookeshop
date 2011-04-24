@@ -65,6 +65,7 @@
 
     <bean id="bookDAO" class="fr.mbh.bookeshop.dao.impl.BookDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
+        <property name="messages" ref="dataMessageSource"/>
     </bean>
 
     <bean id="customerDAO" class="fr.mbh.bookeshop.dao.impl.CustomerDAOImpl">
