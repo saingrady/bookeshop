@@ -23,7 +23,7 @@
 
 package org.benassi.bookeshop.web.actions.book;
 
-import fr.mbh.bookeshop.business.api.BookManager;
+import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 
 import java.util.List;

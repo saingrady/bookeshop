@@ -23,8 +23,8 @@
 
 package org.benassi.bookeshop.web.actions.book;
 
-import fr.mbh.bookeshop.business.api.BookManager;
-import fr.mbh.bookeshop.business.api.CategoryManager;
+import org.benassi.bookeshop.business.api.BookManager;
+import org.benassi.bookeshop.business.api.CategoryManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.data.model.Category;
 

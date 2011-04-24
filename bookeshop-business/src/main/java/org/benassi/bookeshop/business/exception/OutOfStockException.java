@@ -21,33 +21,12 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package org.benassi.bookeshop.web.actions.book;
+package org.benassi.bookeshop.business.exception;
 
-import org.benassi.bookeshop.business.api.BookManager;
-import org.benassi.bookeshop.data.model.Book;
+public class OutOfStockException extends Exception{
 
-import java.util.List;
-
-/**
- * BookCatalogueAction : loads discount books and makes them available to the view
- */
-public class BookCatalogueAction {
-
-    private BookManager bookManager;
-
-    private List<Book> books;
-
-    public void setBookManager(BookManager bookManager) {
-        this.bookManager = bookManager;
+    public OutOfStockException(String message) {
+        super(message);
     }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public String execute() throws Exception {
-        books =  bookManager.getDiscountBooks();
-        return "success";
-    }
-
+    
 }

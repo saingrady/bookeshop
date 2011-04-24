@@ -28,17 +28,17 @@ TODO enhancements:
 - add interceptors for requests with parameters for validation
 - add I18N (english,french)
 - review TX advised methods / test transactional behaviour
+- test insufficient stock exception
 - review and remove all unused setters from data model objects
-- uniform packages : org.benassi.bookeshop
 - update struts URLs (naming + namespace)
 - review pom dependencies
 TODO Feature request :
 - add security checks (Spring security)
 - add javascript (jQuery) for client side validation and UI effects (thickbox)
-- add ajax to get book/order details without reloading/redirecting to details JSPs
+- add ajax to get book/order details and update cart without reloading/redirecting to details JSPs
 - add SOAP/REST web services exposed to partners (available books, quantity,etc)
 - add 'Forgot your password' and 'remember me' features
 - add 'advanced search' feature (title,author,edition,year,etc)
 - add checkout with PayPal API (at least see how to do it)
 - add apache tiles for pages layout
-- add a batch task to send a complete report for sales (may use spring batch/ quartz)
+- add a batch job to send a complete report for sales (may use spring batch/ quartz)

@@ -23,10 +23,10 @@
 
 package org.benassi.bookeshop.web.util;
 
-import fr.mbh.bookeshop.dao.api.CustomerDAO;
-import fr.mbh.bookeshop.dao.api.OrderDAO;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
+import org.benassi.bookeshop.data.access.api.CustomerDAO;
+import org.benassi.bookeshop.data.access.api.OrderDAO;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
 import org.junit.Test;

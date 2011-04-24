@@ -23,14 +23,14 @@
 
 package org.benassi.bookeshop.web.actions.cart;
 
-import fr.mbh.bookeshop.business.api.BookManager;
-import fr.mbh.bookeshop.business.api.OrderManager;
-import fr.mbh.bookeshop.business.exception.OutOfStockException;
-import org.benassi.bookeshop.data.model.Order;
-import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
+import org.benassi.bookeshop.business.api.BookManager;
+import org.benassi.bookeshop.business.api.OrderManager;
+import org.benassi.bookeshop.business.exception.OutOfStockException;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.data.model.Customer;
+import org.benassi.bookeshop.data.model.Order;
+import org.benassi.bookeshop.web.cart.ShoppingCart;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;

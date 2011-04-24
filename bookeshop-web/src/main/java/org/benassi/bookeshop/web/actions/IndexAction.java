@@ -24,8 +24,8 @@
 package org.benassi.bookeshop.web.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
-import fr.mbh.bookeshop.business.api.CategoryManager;
 import org.apache.struts2.util.ServletContextAware;
+import org.benassi.bookeshop.business.api.CategoryManager;
 import org.benassi.bookeshop.data.model.Category;
 
 import javax.servlet.ServletContext;

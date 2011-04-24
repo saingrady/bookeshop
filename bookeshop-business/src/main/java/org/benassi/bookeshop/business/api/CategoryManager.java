@@ -21,33 +21,29 @@
  * 	Mahmoud Ben Hassine <md.benhassine@gmail.com>
  */
 
-package org.benassi.bookeshop.web.actions.book;
+package org.benassi.bookeshop.business.api;
 
-import org.benassi.bookeshop.business.api.BookManager;
-import org.benassi.bookeshop.data.model.Book;
+
+
+import org.benassi.bookeshop.data.model.Category;
 
 import java.util.List;
 
 /**
- * BookCatalogueAction : loads discount books and makes them available to the view
+ * Category Manager interface
  */
-public class BookCatalogueAction {
+public interface CategoryManager {
 
-    private BookManager bookManager;
+    /**
+     * list all categories
+     * @return the list of categories
+     */
+    public List<Category> getCategories();
 
-    private List<Book> books;
-
-    public void setBookManager(BookManager bookManager) {
-        this.bookManager = bookManager;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public String execute() throws Exception {
-        books =  bookManager.getDiscountBooks();
-        return "success";
-    }
-
+    /**
+     * look for a category by its ID
+     * @param categoryId the category ID to look for
+     * @return the category with the given ID
+     */
+    public Category getCategoryById(int categoryId);
 }

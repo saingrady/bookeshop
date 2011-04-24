@@ -66,11 +66,11 @@
         <property name="query" value="SELECT b.title,a.firstName + ' ' + a.lastName as author, b.price FROM book b, author a where b.author_id = a.id;"/>
     </bean>
 
-    <bean id="customerDAO" class="fr.mbh.bookeshop.dao.impl.CustomerDAOImpl">
+    <bean id="customerDAO" class="org.benassi.bookeshop.data.access.impl.CustomerDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
-    <bean id="orderDAO" class="fr.mbh.bookeshop.dao.impl.OrderDAOImpl">
+    <bean id="orderDAO" class="org.benassi.bookeshop.data.access.impl.OrderDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 

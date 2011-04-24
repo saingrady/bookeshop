@@ -23,8 +23,8 @@
 
 package org.benassi.bookeshop.web.actions.customer;
 
-import fr.mbh.bookeshop.business.api.CustomerManager;
-import fr.mbh.bookeshop.business.exception.LoginException;
+import org.benassi.bookeshop.business.api.CustomerManager;
+import org.benassi.bookeshop.business.exception.LoginException;
 import org.benassi.bookeshop.data.model.Customer;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;

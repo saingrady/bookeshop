@@ -65,11 +65,11 @@
     </tx:advice>
 
     <aop:config>
-        <aop:advisor pointcut="execution(public * fr.mbh.bookeshop.business.impl.BookManagerImpl.*(..))"
+        <aop:advisor pointcut="execution(public * org.benassi.bookeshop.business.impl.BookManagerImpl.*(..))"
                      advice-ref="bookTxAdvice"/>
-        <aop:advisor pointcut="execution(public * fr.mbh.bookeshop.business.impl.CustomerManagerImpl.*(..))"
+        <aop:advisor pointcut="execution(public * org.benassi.bookeshop.business.impl.CustomerManagerImpl.*(..))"
                      advice-ref="customerTxAdvice"/>
-        <aop:advisor pointcut="execution(public * fr.mbh.bookeshop.business.impl.CategoryManagerImpl.getCategories())"
+        <aop:advisor pointcut="execution(public * org.benassi.bookeshop.business.impl.CategoryManagerImpl.getCategories())"
                      advice-ref="categoryTxAdvice"/>
     </aop:config>
 

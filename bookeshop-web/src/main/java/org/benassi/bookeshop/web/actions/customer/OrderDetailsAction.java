@@ -23,9 +23,7 @@
 
 package org.benassi.bookeshop.web.actions.customer;
 
-import fr.mbh.bookeshop.business.api.BookManager;
-import fr.mbh.bookeshop.business.api.OrderManager;
-import org.benassi.bookeshop.data.model.Book;
+import org.benassi.bookeshop.business.api.OrderManager;
 import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.data.model.OrderItem;
 

@@ -23,7 +23,7 @@
 
 package org.benassi.bookeshop.web.actions.cart;
 
-import fr.mbh.bookeshop.business.api.BookManager;
+import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;

@@ -54,28 +54,28 @@
         <property name="hibernateProperties" ref="hibernateProperties"/>
     </bean>
 
-    <bean id="bookDAO" class="fr.mbh.bookeshop.dao.impl.BookDAOImpl">
+    <bean id="bookDAO" class="org.benassi.bookeshop.data.access.impl.BookDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
         <property name="messages" ref="messageSource"/>
     </bean>
 
-    <bean id="customerDAO" class="fr.mbh.bookeshop.dao.impl.CustomerDAOImpl">
+    <bean id="customerDAO" class="org.benassi.bookeshop.data.access.impl.CustomerDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
-    <bean id="categoryDAO" class="fr.mbh.bookeshop.dao.impl.CategoryDAOImpl">
+    <bean id="categoryDAO" class="org.benassi.bookeshop.data.access.impl.CategoryDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
-    <bean id="orderDAO" class="fr.mbh.bookeshop.dao.impl.OrderDAOImpl">
+    <bean id="orderDAO" class="org.benassi.bookeshop.data.access.impl.OrderDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
-    <bean id="orderStatusDAO" class="fr.mbh.bookeshop.dao.impl.OrderStatusDAOImpl">
+    <bean id="orderStatusDAO" class="org.benassi.bookeshop.data.access.impl.OrderStatusDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
-    <bean id="orderItemDAO" class="fr.mbh.bookeshop.dao.impl.OrderItemDAOImpl">
+    <bean id="orderItemDAO" class="org.benassi.bookeshop.data.access.impl.OrderItemDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
 
