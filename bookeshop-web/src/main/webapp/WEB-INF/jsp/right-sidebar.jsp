@@ -37,7 +37,6 @@
                         <s:password name="password" label="Password" size="13"/>
                         <s:submit value="Sign In" />
                     </s:form>
-                    <p>Forgot your password? <a href="nyi.do">Get it here</a><br/>
                     New customer? <a href="create.do">Start here</a></p>
                 </c:when>
                 <c:otherwise>
