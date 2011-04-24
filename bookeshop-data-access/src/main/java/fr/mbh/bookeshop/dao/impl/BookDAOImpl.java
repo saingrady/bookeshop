@@ -37,6 +37,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Hibernate implementation of book DAO interface
@@ -88,7 +89,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
             book.setStock(book.getStock() - quantity);
             this.getHibernateTemplate().update(book);
         }else{
-            String error = messages.getMessage("stock.insufficient",new Object[]{quantity,getBookByIsbn(isbn).getTitle(),book.getStock()},"Insufficient Stock",null);
+            String error = messages.getMessage("stock.insufficient", new Object[]{quantity, getBookByIsbn(isbn).getTitle(), book.getStock()}, "Insufficient Stock", Locale.getDefault());
             logger.error(error);
             throw new InsufficientStockException(error);
         }
