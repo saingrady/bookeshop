@@ -1,0 +1,21 @@
+Hi $customer.firstName,
+
+Thank you for your order on our site!
+
+Your order number is : $order.orderId.
+Order details :
+------------------------------------------
+Book          | Quantity  | Subtotal
+------------------------------------------
+#foreach( $item in $order.items )
+$item.bookId |     $item.quantity     |  $item.total
+------------------------------------------
+#end
+
+Order Total = $order.formattedTotal
+
+Shipping address is : $customer.address
+
+Best regards,
+Book eShop customer service.
+email : customer@bookeshop.com

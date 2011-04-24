@@ -51,4 +51,12 @@
 
     <bean id="mailSender" class="org.benassi.bookeshop.web.util.MailSenderMock"/>
 
+    <!-- ============================== -->
+    <!--      velocity configuration    -->
+    <!-- ============================== -->
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="configLocation" value="classpath:velocity/velocity.properties"/>
+    </bean>
+
 </beans>

@@ -23,21 +23,36 @@
 
 package org.benassi.bookeshop.web.interceptors;
 
+import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
+import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.exception.VelocityException;
 import org.benassi.bookeshop.data.model.Customer;
+import org.benassi.bookeshop.data.model.Order;
+import org.benassi.bookeshop.web.actions.cart.CheckoutAction;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.ui.velocity.VelocityEngineUtils;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Confirmation email interceptor
  */
 public class ConfirmationEmailInterceptor extends AbstractInterceptor {
 
+    final Logger logger = LoggerFactory.getLogger(ConfirmationEmailInterceptor.class);
+
     private Customer loggedCustomer;
+
+    private VelocityEngine velocityEngine;
 
     private MailSender mailSender;
 
@@ -45,20 +60,39 @@ public class ConfirmationEmailInterceptor extends AbstractInterceptor {
         this.mailSender = mailSender;
     }
 
+    public void setVelocityEngine(VelocityEngine velocityEngine) {
+        this.velocityEngine = velocityEngine;
+    }
+
     @Override
     public String intercept(ActionInvocation invocation) throws Exception {
+
+        invocation.invoke();
 
         Map<String, Object> session = ActionContext.getContext().getSession();
         loggedCustomer = (Customer)session.get("loggedCustomer");
 
-        //TODO Populate the order confirmation mail from velocity template*/
+        Order order = ((CheckoutAction)invocation.getAction()).getOrder();
+        Map model = new HashMap();
+        model.put("customer", loggedCustomer);
+        model.put("order", order);
+
+        String result = null;
+        try {
+            result = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine,"velocity/orderConfirmation.vm", model);
+        } catch (VelocityException e) {
+            logger.error("Error in generating confirmation email from velocity template.",e);
+            return Action.ERROR;
+        }
+
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("customer-service@bookeshop.com");
+        message.setFrom("customer@bookeshop.com");
+        message.setSentDate(new Date());
         message.setTo(loggedCustomer.getEmail());
-        message.setSubject("Book eShopping center : Order N° ");
-        message.setText("content to populate from a velocity template");
+        message.setSubject("Book eShop order N° " + order.getOrderId());
+        message.setText(result);
         mailSender.send(message);
-        return invocation.invoke();
+        return Action.SUCCESS;
     }
 
 }

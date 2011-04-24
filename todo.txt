@@ -28,7 +28,6 @@ TODO enhancements:
 - add interceptors for requests with parameters for validation
 - add I18N (english,french)
 - review TX advised methods / test transactional behaviour
-- generate confirmation emails from apache velocity template
 - review and remove all unused setters from data model objects
 - uniform packages : org.benassi.bookeshop
 - update struts URLs (naming + namespace)
