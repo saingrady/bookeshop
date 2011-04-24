@@ -33,12 +33,17 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.context.MessageSource;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 /**
  * Hibernate implementation of book DAO interface
  */
 public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
+
+    final Logger logger = LoggerFactory.getLogger(BookDAOImpl.class);
 
     private MessageSource messages;
 
@@ -82,8 +87,11 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
         if (book.getStock() >= quantity ){
             book.setStock(book.getStock() - quantity);
             this.getHibernateTemplate().update(book);
-        }else
-            throw new InsufficientStockException(messages.getMessage("stock.insufficient",new Object[]{quantity,getBookByIsbn(isbn).getTitle(),book.getStock()},"Insufficient Stock",null));
+        }else{
+            String error = messages.getMessage("stock.insufficient",new Object[]{quantity,getBookByIsbn(isbn).getTitle(),book.getStock()},"Insufficient Stock",null);
+            logger.error(error);
+            throw new InsufficientStockException(error);
+        }
     }
 
 }

@@ -32,10 +32,15 @@ import org.benassi.bookeshop.data.model.Book;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Book Manager implementation
  */
 public class BookManagerImpl implements BookManager{
+
+    final Logger logger = LoggerFactory.getLogger(BookManagerImpl.class);
 
     private BookDAO bookDAO;
 
@@ -67,6 +72,7 @@ public class BookManagerImpl implements BookManager{
         try {
             bookDAO.updateStock(isbn, quantity);
         } catch (InsufficientStockException ex) {
+            logger.error(ex.getMessage());
             throw new OutOfStockException(ex.getMessage());
         }
     }

@@ -27,15 +27,19 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Mail Sender mock implementation
  */
 public class MailSenderMock implements MailSender {
 
+    final Logger logger = LoggerFactory.getLogger(MailSenderMock.class);
+
     @Override
     public void send(SimpleMailMessage simpleMessage) throws MailException {
-        //TODO change with logger when log is added to the whole app
-        System.out.println("Mail sent  : " + simpleMessage);
+        logger.warn("Using mock mail sender, message sent [" + simpleMessage + "]");
     }
 
     @Override

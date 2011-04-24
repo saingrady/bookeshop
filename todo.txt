@@ -28,7 +28,6 @@ TODO issues
 
 TODO enhancements:
 - add interceptors for requests with parameters for validation
-- add log (slf4j + log4j)
 - add I18N (english,french)
 - review TX advised methods / test transactional behaviour
 - generate confirmation emails from apache velocity template

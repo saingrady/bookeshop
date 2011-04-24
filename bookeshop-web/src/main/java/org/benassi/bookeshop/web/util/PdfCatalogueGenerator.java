@@ -35,10 +35,15 @@ import java.io.ByteArrayInputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Utility class to generate PDF catalogue on the fly
  */
 public class PdfCatalogueGenerator implements ApplicationContextAware {
+
+    final Logger logger = LoggerFactory.getLogger(PdfCatalogueGenerator.class);
 
     private DataSource dataSource;
 
@@ -70,7 +75,8 @@ public class PdfCatalogueGenerator implements ApplicationContextAware {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
-            //Certainly not in production ! Jasper reports should be compiled only once
+            logger.warn("Not using compiled jasper design, compiling jasper design from 'reports/report.jrxml' ");
+            //Certainly not in production ! Jasper reports should be pre compiled
             JasperDesign jasperDesign = JRXmlLoader.load(jreport.getFile());
             JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
             JRResultSetDataSource jrResultSetDataSource = new JRResultSetDataSource(resultSet);
@@ -80,6 +86,7 @@ public class PdfCatalogueGenerator implements ApplicationContextAware {
             return new ByteArrayInputStream(bytes);
 
         } catch (Exception e) {
+            logger.error("Error generating PDF catalogue.",e);
             return null;
         } finally {
             try {
@@ -88,7 +95,7 @@ public class PdfCatalogueGenerator implements ApplicationContextAware {
                 if (connection != null)
                     connection.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error("Error closing database connection when generating PDF catalogue.",e);
             }
         }
     }

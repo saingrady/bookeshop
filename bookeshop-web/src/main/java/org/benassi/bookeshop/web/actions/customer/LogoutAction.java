@@ -27,15 +27,26 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Action class to logout a customer
  */
 public class LogoutAction implements SessionAware {
 
+    final Logger logger = LoggerFactory.getLogger(LogoutAction.class);
+
     private Map<String, Object> session;
+
+    private String error;
 
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+
+    public String getError() {
+        return error;
     }
 
     public String execute() {
@@ -43,8 +54,9 @@ public class LogoutAction implements SessionAware {
             try {
                 ((org.apache.struts2.dispatcher.SessionMap) session).invalidate();
             } catch (IllegalStateException e) {
-                // TODO add log
-                // return "error";
+                error = "Error in invalidating session";
+                logger.error(error,e);
+                return "error";
             }
         }
         return "success";

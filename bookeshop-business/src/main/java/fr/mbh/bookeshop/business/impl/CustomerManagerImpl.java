@@ -31,10 +31,15 @@ import org.benassi.bookeshop.data.model.Customer;
 import org.springframework.context.MessageSource;
 import org.springframework.dao.DataAccessException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Customer Manager implementation
  */
 public class CustomerManagerImpl implements CustomerManager {
+
+    final Logger logger = LoggerFactory.getLogger(CustomerManagerImpl.class);
 
     private CustomerDAO customerDAO;
 
@@ -51,7 +56,11 @@ public class CustomerManagerImpl implements CustomerManager {
     public Customer login(String email, String password) throws LoginException {
         if(customerDAO.checkLoginCredentials(email, password))
             return customerDAO.getCustomerByEmail(email);
-        else throw new LoginException(messages.getMessage("login.invalid",null,"Invalid login credentials!",null));
+        else{
+            String error = messages.getMessage("login.invalid", null, "Invalid login credentials!", null);
+            logger.error(error);
+            throw new LoginException(error);
+        }
     }
 
     public Customer updateCustomer(Customer customer) throws CustomerExistentException {
@@ -59,6 +68,7 @@ public class CustomerManagerImpl implements CustomerManager {
             customerDAO.update(customer);
             return customerDAO.getCustomerById(customer.getId());
         } catch (DataAccessException e) {
+            logger.error("Error updating customer [" + customer + "]",e);
             throw new CustomerExistentException();
         }
     }
@@ -72,6 +82,7 @@ public class CustomerManagerImpl implements CustomerManager {
             customerDAO.save(customer);
             return customerDAO.getCustomerById(customer.getId());
         } catch (DataAccessException e) {
+            logger.error("Error updating customer [" + customer + "]",e);
             throw new CustomerExistentException();
         }
     }
