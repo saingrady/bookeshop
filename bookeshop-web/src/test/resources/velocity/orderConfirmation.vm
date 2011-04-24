@@ -3,7 +3,7 @@ Hi $customer.firstName,
 Thank you for your order on our site!
 
 Your order number is : $order.orderId.
-Order Details :
+Order details :
 ------------------------------------------
 Book          | Quantity  | Subtotal
 ------------------------------------------
@@ -13,7 +13,6 @@ $item.bookId |     $item.quantity     |  $item.total
 #end
 
 Order Total = $order.formattedTotal
-
 
 Shipping address is : $customer.address
 
