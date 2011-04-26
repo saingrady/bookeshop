@@ -66,9 +66,10 @@ public class OrderDetailsAction {
 
     public String execute(){
         order = orderManager.getOrderById(orderId);
-        items = order.getItems();
-        if (order != null)
+        if (order != null) {
+            items = order.getItems();
             return "success";
+        }
         else {
             error = "No such order with ID = " + orderId;
             return "error";
