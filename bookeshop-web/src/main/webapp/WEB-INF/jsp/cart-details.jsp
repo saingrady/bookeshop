@@ -83,7 +83,7 @@
                         </c:when>
                         <c:otherwise>
                             <h1>Your shopping cart is empty</h1>
-                            <p><a href="catalogue.do">Back to catalogue</a></p>
+                            <p><a href="javascript:history.go(-1)">Back</a></p>
                         </c:otherwise>
                     </c:choose>
                     <div style="clear: both;">&nbsp;</div>
