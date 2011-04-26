@@ -59,6 +59,12 @@ public class CheckoutAction implements SessionAware {
 
     private Order order;
 
+    private String processingMessage;
+
+    public String getProcessingMessage() {
+        return processingMessage;
+    }
+
     public Order getOrder() {
         return order;
     }
@@ -103,6 +109,7 @@ public class CheckoutAction implements SessionAware {
             }
             order = orderManager.createOrder(loggedCustomer,theCart.getItems());
             theCart.clearCart();
+            processingMessage = "Processing your order.. Please wait.";
             return "success";
 
         } catch (OutOfStockException e) {
