@@ -49,6 +49,12 @@ public interface BookDAO {
     public List<Book> getOffers();
 
     /**
+     * get books in catalogue
+     * @return catalogue books list
+     */
+    public List<Book> getCatalogue();
+
+    /**
      * get book by category
      * @param categoryId the category id
      * @return the list of found books in the for the given category

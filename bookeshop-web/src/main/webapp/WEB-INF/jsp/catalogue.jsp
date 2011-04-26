@@ -46,7 +46,9 @@
                         <display:column property="formattedPublishDate" title="Publication date" sortable="true"/>
                         <display:column property="price" title="Price(euro)" sortable="true"/>
                         <display:column title="Offer">
-                            <img src="images/offer_${book.offer}.png" width="32" height="32" border="0"/>
+                            <c:if test="${book.offer != 0}">
+                                <img src="images/offer_${book.offer}.png" width="32" height="32" border="0"/>
+                            </c:if>
                         </display:column>
                         <display:column property="stockStatus" title="Stock" />
                         <display:column title="Cart" >

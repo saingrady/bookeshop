@@ -27,6 +27,7 @@ import org.benassi.bookeshop.data.access.api.BookDAO;
 import org.benassi.bookeshop.data.access.exception.InsufficientStockException;
 import org.benassi.bookeshop.data.model.Book;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
@@ -44,7 +45,13 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
     final Logger logger = LoggerFactory.getLogger(BookDAOImpl.class);
 
+    private int maxCatalogueResults;
+
     private MessageSource messages;
+
+    public void setMaxCatalogueResults(int maxCatalogueResults) {
+        this.maxCatalogueResults = maxCatalogueResults;
+    }
 
     public void setMessages(MessageSource messages) {
         this.messages = messages;
@@ -52,6 +59,13 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
     public List<Book> getOffers() {
         return  this.getHibernateTemplate().find("from Book where offer > 0");
+    }
+
+    public List<Book> getCatalogue() {
+        Criteria criteria = this.getSession().createCriteria(Book.class);
+        criteria.setFirstResult(1);
+        criteria.setMaxResults(maxCatalogueResults);
+        return criteria.list();
     }
 
     public List<Book> getBooksByCategory(int categoryId) {

@@ -57,6 +57,7 @@
     <bean id="bookDAO" class="org.benassi.bookeshop.data.access.impl.BookDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
         <property name="messages" ref="messageSource"/>
+        <property name="maxCatalogueResults" value="10"/>
     </bean>
 
     <bean id="customerDAO" class="org.benassi.bookeshop.data.access.impl.CustomerDAOImpl">

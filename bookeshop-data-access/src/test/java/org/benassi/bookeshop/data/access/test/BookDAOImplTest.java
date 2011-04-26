@@ -59,6 +59,12 @@ public class BookDAOImplTest {
         assertEquals(0,offer);
     }
 
+    @Test
+    public void testGetCatalogue(){
+        List<Book> books = bookDao.getCatalogue();
+        assertEquals(10,books.size());
+    }
+
 
     @Test
     public void testGetBooksByCategory() {

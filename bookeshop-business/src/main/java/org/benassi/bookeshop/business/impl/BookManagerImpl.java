@@ -47,7 +47,9 @@ public class BookManagerImpl implements BookManager{
     }
 
     public List<Book> getDiscountBooks() {
-        return bookDAO.getOffers();
+        //Business rule : if no available offers, display some books from the catalogue
+        List<Book> books = bookDAO.getOffers();
+        return books.size() != 0 ? books : bookDAO.getCatalogue();
     }
 
     public int getBookOffer(String isbn) {
