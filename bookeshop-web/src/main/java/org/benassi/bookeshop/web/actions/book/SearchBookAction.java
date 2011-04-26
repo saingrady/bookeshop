@@ -39,6 +39,8 @@ public class SearchBookAction{
 
     private List<Book> foundItems;
 
+    private String error;
+
     public List<Book> getFoundItems() {
         return foundItems;
     }
@@ -55,8 +57,17 @@ public class SearchBookAction{
         this.keyword = keyword;
     }
 
+    public String getError() {
+        return error;
+    }
+
     public String execute(){
         foundItems = bookManager.getBooksByTitleAuthor(keyword);
+        if (keyword.isEmpty()){
+            error = "Please specify a keyword for search";
+            return "error";
+        }
+        else
         return "success";
     }
 
