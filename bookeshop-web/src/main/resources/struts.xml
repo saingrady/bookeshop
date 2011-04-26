@@ -130,8 +130,9 @@
         </action>
 
         <action name="checkout" class="org.benassi.bookeshop.web.actions.cart.CheckoutAction">
-            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="defaultStack"/><!-- need to be added. See executeAndWaitStack in struts-default.xml -->
             <interceptor-ref name="confirmOrderByMail"/>
+            <interceptor-ref name="execAndWait"/>
             <result name="wait">/WEB-INF/jsp/processing.jsp</result>
             <result>/WEB-INF/jsp/confirm-order.jsp</result>
         </action>
