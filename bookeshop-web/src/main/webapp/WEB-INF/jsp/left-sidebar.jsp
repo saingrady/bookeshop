@@ -38,10 +38,10 @@
         </li>
         <li>
             <h2>Quick Search</h2>
-            <s:form action="search">
-                <s:textfield name="keyword" label="Title/Author"/>
-                <s:submit value="Go!" />
-            </s:form>
+            <form action="search.do">
+                Title/Author<input type="text" name="keyword" size="14"/>
+                <input type="submit" value="Go!"/>
+            <form>
         </li>
     </ul>
     <div style="clear: both;">&nbsp;</div>
