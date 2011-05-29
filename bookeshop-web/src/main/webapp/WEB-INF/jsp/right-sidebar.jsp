@@ -63,6 +63,13 @@
                 </c:choose>
             </ul>
         </li>
+        <li>
+            <h2>Quick Search</h2>
+            <s:form action="lookup">
+                <s:textfield name="keyword" label="Title/Author" size="12"/>
+                <s:submit value="Go!" />
+            </s:form>
+        </li>
     </ul>
 </div>
 <!-- end #sidebar2 -->

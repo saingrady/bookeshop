@@ -47,7 +47,7 @@
             <result>/WEB-INF/jsp/category.jsp</result>
         </action>
 
-        <action name="search" class="org.benassi.bookeshop.web.actions.book.SearchBookAction">
+        <action name="lookup" class="org.benassi.bookeshop.web.actions.book.SearchBookAction">
             <result>/WEB-INF/jsp/search-result.jsp</result>
         </action>
 

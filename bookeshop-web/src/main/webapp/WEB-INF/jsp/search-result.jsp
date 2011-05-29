@@ -35,7 +35,7 @@
                     <h1>Search results for keyword : '<c:out value="${keyword}"/>'</h1><br/>
                     <c:choose>
                         <c:when test="${not empty foundItems}">
-                            <display:table name="foundItems" uid="book" sort="list" defaultorder="descending" requestURI="search.do">
+                            <display:table name="foundItems" uid="book" sort="list" defaultorder="descending" requestURI="lookup.do">
                                 <display:column title="Preview" >
                                     <a href="bookDetails.do?bookId=${book.isbn}">
                                         <img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/>

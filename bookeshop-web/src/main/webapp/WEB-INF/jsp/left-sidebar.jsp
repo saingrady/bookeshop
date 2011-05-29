@@ -33,15 +33,13 @@
                 <c:forEach var="category" items="${categories}">
                 <li><a href="category.do?categoryId=${category.id}">${category.name}</a></li>
                 </c:forEach>
-                <li><a href="download-catalogue.do">Download PDF catalogue <img src="images/pdf.png" width="40" height="40" border="0"/></a></li>
             </ul>
         </li>
         <li>
-            <h2>Quick Search</h2>
-            <s:form action="search">
-                <s:textfield name="keyword" label="Title/Author"/>
-                <s:submit value="Go!" />
-            </s:form>
+            <h2>Download</h2>
+            <ul>
+                <li><a href="download-catalogue.do">Download PDF catalogue <img src="images/pdf.png" width="40" height="40" border="0"/></a></li>
+            <ul>
         </li>
     </ul>
     <div style="clear: both;">&nbsp;</div>
