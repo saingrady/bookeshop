@@ -69,7 +69,7 @@ public class UpdateCartAction implements SessionAware {
         if(theCart != null){
             if(book != null){
                 theCart.addItem(book.getIsbn());
-            } //TODO validate bookId, test else and returning result
+            }
             return "success";
         }
         else {
@@ -85,7 +85,7 @@ public class UpdateCartAction implements SessionAware {
         if(theCart != null){
             if(book != null){
                 theCart.removeItem(book.getIsbn());
-            } //TODO validate bookId, test else and returning result
+            }
             return "success";
         }
         else {
