@@ -24,6 +24,7 @@
 package org.benassi.bookeshop.web.actions.customer;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.validator.annotations.EmailValidator;
 import org.benassi.bookeshop.business.api.CustomerManager;
 import org.benassi.bookeshop.business.exception.CustomerExistentException;
 import org.benassi.bookeshop.data.model.Customer;
@@ -108,6 +109,17 @@ public class AccountAction extends ActionSupport implements SessionAware {
         return "success";
     }
 
+    @Override
+    public void validate() {
+
+        if ( email.isEmpty() || firstName.isEmpty() || lastName.isEmpty() ||
+             password.isEmpty() || address.isEmpty() || passwordConfirm.isEmpty())
+            addActionError("All fields are required"); //TODO i18n
+
+        if (!password.equals(passwordConfirm))
+            addFieldError("passwordConfirm", "Password confirmation does not match password");//TODO i18n
+    }
+
     /*
      * Form fields
      */
@@ -131,6 +143,7 @@ public class AccountAction extends ActionSupport implements SessionAware {
         this.lastName = lastName;
     }
 
+    @EmailValidator(fieldName = "email", message = "invalid email format") //TODO use key attribute for i18n
     public void setEmail(String email) {
         this.email = email;
     }
