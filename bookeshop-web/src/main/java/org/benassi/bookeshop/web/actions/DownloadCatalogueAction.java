@@ -38,12 +38,6 @@ public class DownloadCatalogueAction  {
 
     private String error;
 
-    private String processingMessage;
-
-    public String getProcessingMessage() {
-        return processingMessage;
-    }
-
     public void setPdfCatalogueGenerator(PdfCatalogueGenerator pdfCatalogueGenerator) {
         this.pdfCatalogueGenerator = pdfCatalogueGenerator;
     }
@@ -61,7 +55,6 @@ public class DownloadCatalogueAction  {
         inputStream = pdfCatalogueGenerator.getPdfCatalogueStream();
 
         if (inputStream != null){
-            processingMessage = "Generating PDF catalogue in progress.. Please wait.";
             return"success";
         }
         else{

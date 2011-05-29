@@ -172,7 +172,7 @@
 
         <action name="download-catalogue" class="org.benassi.bookeshop.web.actions.DownloadCatalogueAction">
             <result name="success" type="stream">
-                <param name="contentDisposition">attachment;filename=catalogue.pdf</param>
+                <param name="contentDisposition">attachment;filename=bookeshop-catalogue.pdf</param>
                 <param name="contentType">application/pdf</param>
                 <param name="inputName">inputStream</param>
                 <param name="bufferSize">1024</param>
