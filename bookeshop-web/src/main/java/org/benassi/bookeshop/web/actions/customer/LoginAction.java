@@ -40,9 +40,9 @@ public class LoginAction implements SessionAware{
 
     private ShoppingCart theCart;
 
-    private String email;
+    private String loginEmail;
 
-    private String password;
+    private String loginPassword;
 
     private Map<String, Object> session;
 
@@ -66,25 +66,25 @@ public class LoginAction implements SessionAware{
         this.session = session;
     }
 
-    public String getPassword() {
-        return password;
+    public String getLoginPassword() {
+        return loginPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setLoginPassword(String loginPassword) {
+        this.loginPassword = loginPassword;
     }
 
-    public String getEmail() {
-        return email;
+    public String getLoginEmail() {
+        return loginEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLoginEmail(String loginEmail) {
+        this.loginEmail = loginEmail;
     }
 
     public String execute(){
         try {
-            loggedCustomer = customerManager.login(email,password);
+            loggedCustomer = customerManager.login(loginEmail, loginPassword);
             session.put("loggedCustomer",loggedCustomer);
             session.put("theCart",theCart);
             return "success";

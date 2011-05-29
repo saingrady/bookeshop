@@ -33,8 +33,8 @@
                     <%--TODO : prevent form populating from Value stack when creating a customer--%>
                     <h2>Client Account</h2>
                     <s:form action="login">
-                        <s:textfield name="email" label="Email" size="13"/>
-                        <s:password name="password" label="Password" size="13"/>
+                        <s:textfield name="loginEmail" label="Email" size="13"/>
+                        <s:password name="loginPassword" label="Password" size="13"/>
                         <s:submit value="Sign In" />
                     </s:form>
                     New customer? <a href="create.do">Start here</a></p>
