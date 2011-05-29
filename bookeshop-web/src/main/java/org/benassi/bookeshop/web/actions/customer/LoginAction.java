@@ -28,6 +28,8 @@ import org.benassi.bookeshop.business.exception.LoginException;
 import org.benassi.bookeshop.data.model.Customer;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -35,6 +37,8 @@ import java.util.Map;
  * Action class for customer login
  */
 public class LoginAction implements SessionAware{
+
+    final Logger logger = LoggerFactory.getLogger(LogoutAction.class);
 
     private CustomerManager customerManager;
 
@@ -90,6 +94,7 @@ public class LoginAction implements SessionAware{
             return "success";
         } catch (LoginException e) {
             error = e.getMessage();
+            logger.error(error,e);
             return "error";
         }
     }
