@@ -113,12 +113,9 @@ public class Order {
     }
 
     public String getFormattedTotal() {
-        float result = 0;
-        for (OrderItem item: items)
-            result += item.getTotal();
+        float total = getTotal();
         DecimalFormat df = new DecimalFormat("###.##");
-        return df.format(result);
-
+        return df.format(total);
     }
 
 }
