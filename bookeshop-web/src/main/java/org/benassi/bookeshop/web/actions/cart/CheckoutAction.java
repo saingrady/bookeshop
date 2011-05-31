@@ -39,9 +39,7 @@ import java.util.Map;
 /**
  * Action class to checkout an order
  */
-public class CheckoutAction implements SessionAware {
-
-    private Map<String, Object> session;
+public class CheckoutAction {
 
     private BookManager bookManager;
 
@@ -81,9 +79,12 @@ public class CheckoutAction implements SessionAware {
         return error;
     }
 
-    public void setSession(Map<String, Object> session) {
-        this.session = session;
-        loggedCustomer = (Customer)session.get("loggedCustomer");
+    public void setLoggedCustomer(Customer loggedCustomer) {
+        this.loggedCustomer = loggedCustomer;
+    }
+
+    public void setTheCart(ShoppingCart theCart) {
+        this.theCart = theCart;
     }
 
     public void setBookManager(BookManager bookManager) {
@@ -97,7 +98,6 @@ public class CheckoutAction implements SessionAware {
     public String execute() {
 
         items = new HashMap<Book,Integer>();
-        theCart = (ShoppingCart) session.get("theCart");
         total = 0;
         try {
             for (String bookId : theCart.getItems().keySet()) {
