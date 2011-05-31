@@ -55,10 +55,6 @@ public class BookCategoryAction {
         this.bookManager = bookManager;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
