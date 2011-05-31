@@ -32,27 +32,30 @@
             <div class="post-bgbtm">
                 <div align="center">
                     <h1> Book details : ${book.title} </h1><br/>
-                    <img src="images/books/${book.isbn}.gif" width="80" height="120" border="0" class="floatRight"/>
-                    <table border="0" align="center">
+                    <table border="1" align="center">
+                        <tr>
+                            <td>Preview</td>
+                            <td align="center"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></td>
+                        </tr>
                         <tr>
                             <td>ISBN</td>
-                            <td><c:out value="${book.isbn}"/></td>
+                            <td align="center"><c:out value="${book.isbn}"/></td>
                         </tr>
                         <tr>
                             <td>Title</td>
-                            <td><c:out value="${book.title}"/></td>
+                            <td align="center"><c:out value="${book.title}"/></td>
                         </tr>
                         <tr>
                             <td>Author</td>
-                            <td><c:out value="${book.author.firstName}"/> <c:out value="${book.author.lastName}"/></td>
+                            <td align="center"><c:out value="${book.author.firstName}"/> <c:out value="${book.author.lastName}"/></td>
                         </tr>
                         <tr>
                             <td>Publication date</td>
-                            <td><c:out value="${book.formattedPublishDate}"/></td>
+                            <td align="center"><c:out value="${book.formattedPublishDate}"/></td>
                         </tr>
                         <tr>
                             <td>Price</td>
-                            <td><c:out value="${book.price}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
+                            <td align="center"><c:out value="${book.price}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
                               <c:if test="${book.offer != 0}">
                                   <img src="images/offer_${book.offer}.png" width="32" height="32" border="0"/> = <c:out value="${book.discountPrice}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
                                </c:if>
@@ -60,7 +63,7 @@
                         </tr>
                         <tr>
                             <td>Availability :</td>
-                            <td><c:out value="${book.stockStatus}"/>
+                            <td align="center"><c:out value="${book.stockStatus}"/>
                                 <c:if test="${book.stockStatus != 'Out of stock'}">
                                     <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
                                 </c:if>
