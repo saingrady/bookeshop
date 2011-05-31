@@ -63,7 +63,10 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
     public void setSession(Map<String, Object> session) {
         this.session = session;
-        loggedCustomer = (Customer)session.get("loggedCustomer");
+    }
+
+    public void setLoggedCustomer(Customer loggedCustomer) {
+        this.loggedCustomer = loggedCustomer;
     }
 
     public String create() {
