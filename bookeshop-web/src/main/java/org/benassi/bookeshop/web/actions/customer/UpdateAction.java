@@ -33,10 +33,6 @@ public class UpdateAction extends ActionSupport {
 
     private Customer loggedCustomer;
 
-    public Customer getLoggedCustomer() {
-        return loggedCustomer;
-    }
-
     public void setLoggedCustomer(Customer loggedCustomer) {
         this.loggedCustomer = loggedCustomer;
     }
