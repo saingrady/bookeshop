@@ -29,7 +29,7 @@
     <ul>
         <li>
             <c:choose>
-                <c:when test="${loggedCustomer == null}">
+                <c:when test="${loggedCustomer == null || loggedCustomer.id == 0}">
                     <h2>Client Account</h2>
                     <s:form action="login">
                         <s:textfield name="loginEmail" label="Email" size="13"/>

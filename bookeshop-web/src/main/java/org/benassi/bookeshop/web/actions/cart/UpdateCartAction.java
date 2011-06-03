@@ -25,6 +25,7 @@ package org.benassi.bookeshop.web.actions.cart;
 
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
+import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.web.cart.ShoppingCart;
 
 /**
@@ -36,12 +37,18 @@ public class UpdateCartAction {
 
     private ShoppingCart theCart;
 
+     private Customer loggedCustomer;
+
     private String bookId;
 
     private String error;
 
     public void setTheCart(ShoppingCart theCart) {
         this.theCart = theCart;
+    }
+
+    public void setLoggedCustomer(Customer loggedCustomer) {
+        this.loggedCustomer = loggedCustomer;
     }
 
     public void setBookManager(BookManager bookManager) {
@@ -60,7 +67,7 @@ public class UpdateCartAction {
 
         Book book = bookManager.getBookByIsbn(bookId);
 
-        if(theCart != null){
+        if(loggedCustomer.getId()!= 0 && theCart != null){
             if(book != null){
                 theCart.addItem(book.getIsbn());
             }
