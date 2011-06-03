@@ -30,7 +30,6 @@
         <li>
             <c:choose>
                 <c:when test="${loggedCustomer == null}">
-                    <%--TODO : prevent form populating from Value stack when creating a customer--%>
                     <h2>Client Account</h2>
                     <s:form action="login">
                         <s:textfield name="loginEmail" label="Email" size="13"/>
