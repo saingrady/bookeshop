@@ -34,13 +34,9 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Action class to manage customer account
+ * Action class to get customer orders
  */
-public class OrderAction extends ActionSupport implements SessionAware {
-
-    private Map<String,Object> session;
-
-    private CustomerManager customerManager;
+public class OrderAction extends ActionSupport {
 
     private OrderManager orderManager;
 
@@ -48,26 +44,25 @@ public class OrderAction extends ActionSupport implements SessionAware {
 
     private Set<Order> orders;
 
-    public void setCustomerManager(CustomerManager customerManager) {
-        this.customerManager = customerManager;
-    }
-
-    public void setOrderManager(OrderManager orderManager) {
-        this.orderManager = orderManager;
-    }
-
     public Set<Order> getOrders() {
         return orders;
-    }
-
-    public void setSession(Map<String, Object> session) {
-        this.session = session;
-        loggedCustomer = (Customer)session.get("loggedCustomer");
     }
 
     public String execute() {
         orders = orderManager.getOrdersByCustomers(loggedCustomer.getId());
         return "success";
+    }
+
+    /*
+     * Setters for DI
+     */
+
+    public void setLoggedCustomer(Customer loggedCustomer) {
+        this.loggedCustomer = loggedCustomer;
+    }
+
+    public void setOrderManager(OrderManager orderManager) {
+        this.orderManager = orderManager;
     }
 
 }
