@@ -43,8 +43,6 @@ public class Order {
 
     private Set<OrderItem> items;
 
-    private float total;
-
     public int getOrderId() {
         return orderId;
     }
@@ -100,7 +98,7 @@ public class Order {
                 ", date=" + date +
                 ", status=" + status +
                 ", items=" + items +
-                ", total=" + total +
+                ", total=" + getTotal() +
                 '}';
     }
 
