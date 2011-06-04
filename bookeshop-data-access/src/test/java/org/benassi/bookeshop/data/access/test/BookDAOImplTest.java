@@ -96,7 +96,9 @@ public class BookDAOImplTest {
     @Test
     @ExpectedException(InsufficientStockException.class)
     public void testUpdateQuantityKO() throws InsufficientStockException {
-        bookDao.updateStock("9781430216407",200);   //there are only 100 items available in stock
+        String isbn = "9781430216407";
+        bookDao.updateStock(isbn,200);   //there are only 100 items available in stock
+        assertEquals(100,bookDao.getBookByIsbn(isbn).getStock());
     }
 
 }
