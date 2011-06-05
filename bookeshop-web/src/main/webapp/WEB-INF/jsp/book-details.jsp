@@ -31,8 +31,9 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
+                    <br/>
                     <h1> Book details : ${book.title} </h1><br/>
-                    <table border="1" align="center">
+                    <table class="styledtable">
                         <tr>
                             <td>Preview</td>
                             <td align="center"><img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/></td>

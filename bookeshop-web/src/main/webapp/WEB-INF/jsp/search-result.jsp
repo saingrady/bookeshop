@@ -35,7 +35,7 @@
                     <h1>Search results for keyword : '<c:out value="${keyword}"/>'</h1><br/>
                     <c:choose>
                         <c:when test="${not empty foundItems}">
-                            <display:table name="foundItems" uid="book" sort="list" defaultorder="descending" requestURI="lookup.do">
+                            <display:table name="foundItems" uid="book" sort="list" defaultorder="descending" requestURI="lookup.do" class="dttable">
                                 <display:column title="Preview" >
                                     <a href="bookDetails.do?bookId=${book.isbn}">
                                         <img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/>
@@ -46,7 +46,7 @@
                                     <c:out value="${book.author.firstName}"/> <c:out value="${book.author.lastName}"/>
                                 </display:column>
                                 <display:column property="formattedPublishDate" title="Publication date" sortable="true"/>
-                                <display:column property="price" title="Price(euro)" sortable="true"/>
+                                <display:column property="price" title="Price (euro)" sortable="true"/>
                                 <display:column title="Offer">
                                     <c:if test="${book.offer != 0}">
                                         <img src="images/offer_${book.offer}.png" width="32" height="32" border="0"/>

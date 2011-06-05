@@ -438,3 +438,28 @@ img.floatRight {
 .errorMessage{
     color:red;
 }
+
+/* table styles */
+.styledtable {
+	border: 1px solid #666;
+	width: 90%;
+	margin: 20px 0 20px 0 !important;
+}
+
+.styledtable th{
+	padding: 2px 4px 2px 4px !important;
+	text-align: center;
+	vertical-align: center;
+	background-color: #E4EFF5
+}
+
+.styledtable td {
+	padding: 2px 4px 2px 4px !important;
+	text-align: center;
+	vertical-align: center;
+	background-color: #fff
+}
+
+.styledtable thead tr {
+	background-color: #E4EFF5;
+}

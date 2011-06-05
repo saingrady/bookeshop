@@ -31,15 +31,16 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                <h1> Your order details : </h1><br/>
-                    <table border="1">
+                <br/>
+                <h1> My order details </h1><br/>
+                    <table class="styledtable">
                         <thead>
                         <tr>
                             <th><b>Isbn</b></th>
                             <th><b>Title</b></th>
                             <th><b>Author</b></th>
                             <th><b>Publication date</b></th>
-                            <th><b>Price(<img src="images/euro.png" width="12" height="12" border="0"/>)</b></th>
+                            <th><b>Price (euro)</b></th>
                             <th><b>Quantity</b></th>
                         </tr>
                         </thead>
@@ -56,7 +57,7 @@
                         </c:forEach>
                         </tbody>
                     </table>
-                    <p><b>Your order total = <c:out value="${formattedTotal}"/></b>(<img src="images/euro.png" width="12" height="12" border="0"/>)</p>
+                    <p><b>Your order total = <c:out value="${formattedTotal}"/></b><img src="images/euro.png" width="12" height="12" border="0"/></p>
                     <p><img src="images/ok.png" width="32" height="32" border="0"/>Thank you for your order on our site. <a href="javascript:window.print()"> Print details</a></p>
                     <p><img src="images/mail.png" width="32" height="25" border="0"/> A confirmation email was sent to '<b><c:out value="${loggedCustomer.email}"/></b>'</p>
 

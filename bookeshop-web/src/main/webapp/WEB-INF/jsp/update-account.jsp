@@ -32,7 +32,8 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                <h1> Update your personal data : </h1>
+                <br/>
+                <h1> My account </h1>
                     <s:form action="update-account">
                         <s:actionerror/>
                         <s:textfield label="Identifier" name="id"  size="20" disabled="true"/>

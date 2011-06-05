@@ -62,6 +62,7 @@
         
 <div id="content">
     <div align="center">
+        <br/>
         <h2>${processingMessage}</h2>
         <img src="images/processing.gif" alt="processing ...">
     </div>

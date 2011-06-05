@@ -32,8 +32,9 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
+                    <br/>
                     <h1>Welcome ${loggedCustomer.firstName}</h1><br/>
-                    <display:table name="books" uid="book" sort="list" defaultorder="descending" requestURI="catalogue.do">
+                    <display:table name="books" uid="book" sort="list" defaultorder="descending" requestURI="catalogue.do" class="dttable">
                         <display:column title="Preview" >
                             <a href="bookDetails.do?bookId=${book.isbn}">
                                 <img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/>
@@ -44,7 +45,7 @@
                             <c:out value="${book.author.firstName}"/> <c:out value="${book.author.lastName}"/>
                         </display:column>
                         <display:column property="formattedPublishDate" title="Publication date" sortable="true"/>
-                        <display:column property="price" title="Price(euro)" sortable="true"/>
+                        <display:column property="price" title="Price (euro)" sortable="true"/>
                         <display:column title="Offer">
                             <c:if test="${book.offer != 0}">
                                 <img src="images/offer_${book.offer}.png" width="32" height="32" border="0"/>

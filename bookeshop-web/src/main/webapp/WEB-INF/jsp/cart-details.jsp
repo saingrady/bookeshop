@@ -32,10 +32,11 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
+                    <br/>
                     <c:choose>
                         <c:when test="${not empty items}">
-                            <h1> Your cart details : </h1><br/>
-                            <table border="1">
+                            <h1> My cart details </h1><br/>
+                            <table class="styledtable">
                                 <thead>
                                 <tr>
                                     <th><b>Preview</b></th>
@@ -43,7 +44,7 @@
                                     <th><b>Title</b></th>
                                     <th><b>Author</b></th>
                                     <th><b>Publication date</b></th>
-                                    <th><b>Price (<img src="images/euro.png" width="12" height="12" border="0"/>)</b></th>
+                                    <th><b>Price (euro)</b></th>
                                     <th><b>Quantity</b></th>
                                     <th><b>update</b></th>
                                 </tr>
@@ -83,7 +84,6 @@
                         </c:when>
                         <c:otherwise>
                             <h1>Your shopping cart is empty</h1>
-                            <p><a href="javascript:history.go(-1)">Back</a></p>
                         </c:otherwise>
                     </c:choose>
                     <div style="clear: both;">&nbsp;</div>

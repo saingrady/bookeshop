@@ -32,7 +32,8 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                <h1>Fill in the form with your personal data </h1><br/>
+                <br/>
+                <h1>Create my account </h1><br/>
                 <h3>(All fields are required)</h3><br/>
                     <s:form action="create-account">
                         <s:actionerror/>

@@ -28,6 +28,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/style.css"  type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/displaytag.css"  type="text/css" media="screen" />
     <title>Book e-Shop</title>
 </head>
 

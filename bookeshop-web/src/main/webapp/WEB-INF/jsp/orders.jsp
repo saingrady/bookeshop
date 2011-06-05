@@ -32,8 +32,9 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                    <h1>My Orders</h1><br/>
-                    <display:table name="orders" uid="order" sort="list" defaultorder="descending" requestURI="orders.do">
+                    <br/>
+                    <h1>My orders</h1><br/>
+                    <display:table name="orders" uid="order" sort="list" defaultorder="descending" requestURI="orders.do" class="dttable">
                         <display:column title="Order ID" >
                             <a href="orderDetails.do?orderId=${order.orderId}">${order.orderId}</a>
                         </display:column>
