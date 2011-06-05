@@ -29,9 +29,10 @@ import org.benassi.bookeshop.data.model.OrderItem;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 /**
- * Utility methods for org.benassi.bookeshop.data.model.Order
+ * Utility class for org.benassi.bookeshop.data.model.Order
  */
 public class OrderUtil {
 
@@ -39,17 +40,25 @@ public class OrderUtil {
 
     private String totalFormat;
 
+    /*
+     * public utility methods
+     */
+
+    public void prepareOrdersForView(Set<Order> orders) {
+        for(Order order : orders){
+            order.setFormattedDate(formatDate(order.getDate()));
+            order.setFormattedTotal(formatTotal(order.getTotal()));
+        }
+    }
+
     public String formatDate(final Date date) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
         return simpleDateFormat.format(date);
     }
 
-    public String formatTotal(final Order order) {
-        float result = 0;
-        for (OrderItem item: order.getItems())
-            result += item.getTotal();
+    public String formatTotal(float total) {
         DecimalFormat df = new DecimalFormat(totalFormat);
-        return df.format(result);
+        return df.format(total);
     }
 
      /*
@@ -63,4 +72,6 @@ public class OrderUtil {
     public void setTotalFormat(String totalFormat) {
         this.totalFormat = totalFormat;
     }
+
+
 }
