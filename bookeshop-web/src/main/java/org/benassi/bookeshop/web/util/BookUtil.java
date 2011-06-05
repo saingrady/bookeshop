@@ -23,11 +23,14 @@
 
 package org.benassi.bookeshop.web.util;
 
+import org.benassi.bookeshop.data.model.Book;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
- * Utility methods for org.benassi.bookeshop.data.model.Book
+ * Utility class for org.benassi.bookeshop.data.model.Book
  */
 public class BookUtil {
 
@@ -44,6 +47,13 @@ public class BookUtil {
     /*
      * public utility methods
      */
+    public void prepareBooksForView(List<Book> books){
+        for(Book book : books){
+            book.setFormattedPublishDate(formatPublishDate(book.getPublishDate()));
+            book.setStockStatus(getStockStatus(book.getStock()));
+        }
+    }
+
     public String getStockStatus(int stock) {
         if (stock <= 0)
             return outOfStock;
