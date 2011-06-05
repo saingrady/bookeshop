@@ -49,26 +49,6 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
     private String error;
 
-    public String getError() {
-        return error;
-    }
-
-    public void setCustomerManager(CustomerManager customerManager) {
-        this.customerManager = customerManager;
-    }
-
-    public void setTheCart(ShoppingCart theCart) {
-        this.theCart = theCart;
-    }
-
-    public void setSession(Map<String, Object> session) {
-        this.session = session;
-    }
-
-    public void setLoggedCustomer(Customer loggedCustomer) {
-        this.loggedCustomer = loggedCustomer;
-    }
-
     public String create() {
 
         Customer customer = new Customer(firstName,lastName,address,email,password);
@@ -121,6 +101,25 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
         if (!password.equals(passwordConfirm))
             addFieldError("passwordConfirm", "Password confirmation does not match password");//TODO i18n
+    }
+
+    /*
+     * Setters for DI
+     */
+    public void setCustomerManager(CustomerManager customerManager) {
+        this.customerManager = customerManager;
+    }
+
+    public void setTheCart(ShoppingCart theCart) {
+        this.theCart = theCart;
+    }
+
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
+    }
+
+    public void setLoggedCustomer(Customer loggedCustomer) {
+        this.loggedCustomer = loggedCustomer;
     }
 
     /*
@@ -192,5 +191,9 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getError() {
+        return error;
     }
 }

@@ -41,14 +41,6 @@ public class LogoutAction implements SessionAware {
 
     private String error;
 
-    public void setSession(Map<String, Object> session) {
-        this.session = session;
-    }
-
-    public String getError() {
-        return error;
-    }
-
     public String execute() {
         if (session instanceof org.apache.struts2.dispatcher.SessionMap) {
             try {
@@ -60,5 +52,21 @@ public class LogoutAction implements SessionAware {
             }
         }
         return "success";
+    }
+
+    /*
+     * Setters for DI
+     */
+
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
+    }
+
+    /*
+     * Getters for model
+     */
+
+    public String getError() {
+        return error;
     }
 }

@@ -54,13 +54,22 @@ public class LoginAction implements SessionAware{
 
     private String error;
 
-    public void setTheCart(ShoppingCart theCart) {
-        this.theCart = theCart;
+    public String execute(){
+        try {
+            loggedCustomer = customerManager.login(loginEmail, loginPassword);
+            session.put("loggedCustomer",loggedCustomer);
+            session.put("theCart",theCart);
+            return "success";
+        } catch (LoginException e) {
+            error = e.getMessage();
+            logger.error(error,e);
+            return "error";
+        }
     }
 
-    public String getError() {
-        return error;
-    }
+    /*
+     * Setters for DI
+     */
 
     public void setCustomerManager(CustomerManager customerManager) {
         this.customerManager = customerManager;
@@ -69,6 +78,22 @@ public class LoginAction implements SessionAware{
     public void setSession(Map<String, Object> session) {
         this.session = session;
     }
+
+    public void setTheCart(ShoppingCart theCart) {
+        this.theCart = theCart;
+    }
+
+    /*
+     * Getters for model
+     */
+
+    public String getError() {
+        return error;
+    }
+
+    /*
+     * Form fields
+     */
 
     public String getLoginPassword() {
         return loginPassword;
@@ -84,19 +109,6 @@ public class LoginAction implements SessionAware{
 
     public void setLoginEmail(String loginEmail) {
         this.loginEmail = loginEmail;
-    }
-
-    public String execute(){
-        try {
-            loggedCustomer = customerManager.login(loginEmail, loginPassword);
-            session.put("loggedCustomer",loggedCustomer);
-            session.put("theCart",theCart);
-            return "success";
-        } catch (LoginException e) {
-            error = e.getMessage();
-            logger.error(error,e);
-            return "error";
-        }
     }
 
 }
