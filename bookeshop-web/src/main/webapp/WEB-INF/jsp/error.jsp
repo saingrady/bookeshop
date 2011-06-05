@@ -31,7 +31,8 @@
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                    <h1>Sorry, an error occurred and we were unable to fulfill your request.</h1><br/>
+                    <img src="images/error.png" alt="error">
+                    <h1>Sorry, an error occurred and we are unable to fulfill your request.</h1><br/>
                     <h1>Error details : <c:out value="${error}"/> </h1><br/>
                     <div style="clear: both;">&nbsp;</div>
                 </div>
