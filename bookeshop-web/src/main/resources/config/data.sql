@@ -50,7 +50,7 @@ INSERT INTO book VALUES ('9781590592779', 'The Definitive Guide to Samba 3',16, 
 INSERT INTO book VALUES ('9781590593578', 'WiMax Operators Manual',17, '2004-06-28',4,50,39.99,0);
 INSERT INTO book VALUES ('9781590596746', 'Beginning Suse Linux',18, '2006-11-10',3,50,39.99,0);
 INSERT INTO book VALUES ('9781590597415', 'Expert MySql',19, '2007-01-22',5,50,39.99,0);
-INSERT INTO book VALUES ('9781590598276', 'Pro Oracle Application',20,'2008-09-19',5,50,29.99,0);
+INSERT INTO book VALUES ('9781590598276', 'Pro Oracle Application Express',20,'2008-09-19',5,50,29.99,0);
 INSERT INTO book VALUES ('9781590599686', 'Oracle Database 11g',21, '2009-02-20',5,50,44.99,0);
 
 -- customers
