@@ -26,15 +26,18 @@ package org.benassi.bookeshop.web.actions.customer;
 import org.benassi.bookeshop.business.api.OrderManager;
 import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.data.model.OrderItem;
+import org.benassi.bookeshop.web.util.OrderUtil;
 
 import java.util.Set;
 
 /**
- * BookDetailsAction : action class to get book details
+ * Action class to get order details
  */
 public class OrderDetailsAction {
 
     private OrderManager orderManager;
+
+    private OrderUtil orderUtil;
 
     private int orderId;
 
@@ -44,9 +47,44 @@ public class OrderDetailsAction {
 
     private String error;
 
+    public String execute(){
+        order = orderManager.getOrderById(orderId);
+        if (order != null) {
+            order.setFormattedDate(orderUtil.formatDate(order.getDate()));
+            order.setFormattedTotal(orderUtil.formatTotal(order.getTotal()));
+            items = order.getItems();
+            return "success";
+        }
+        else {
+            error = "No such order with ID = " + orderId;
+            return "error";
+        }
+
+    }
+
+    /*
+     * Setters for DI
+     */
+
     public void setOrderManager(OrderManager orderManager) {
         this.orderManager = orderManager;
     }
+
+    public void setOrderUtil(OrderUtil orderUtil) {
+        this.orderUtil = orderUtil;
+    }
+
+     /*
+     * Setters for request parameters
+     */
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    /*
+     * Getters for model
+     */
 
     public Order getOrder() {
         return order;
@@ -56,24 +94,7 @@ public class OrderDetailsAction {
         return items;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
     public String getError() {
         return error;
-    }
-
-    public String execute(){
-        order = orderManager.getOrderById(orderId);
-        if (order != null) {
-            items = order.getItems();
-            return "success";
-        }
-        else {
-            error = "No such order with ID = " + orderId;
-            return "error";
-        }
-
     }
 }

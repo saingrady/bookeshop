@@ -24,33 +24,31 @@
 package org.benassi.bookeshop.web.actions.customer;
 
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.interceptor.SessionAware;
-import org.benassi.bookeshop.business.api.CustomerManager;
+import com.opensymphony.xwork2.Preparable;
 import org.benassi.bookeshop.business.api.OrderManager;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
+import org.benassi.bookeshop.web.util.OrderUtil;
 
-import java.util.Map;
 import java.util.Set;
 
 /**
  * Action class to get customer orders
  */
-public class OrderAction extends ActionSupport {
+public class OrderAction extends ActionSupport implements Preparable{
 
     private OrderManager orderManager;
+
+    private OrderUtil orderUtil;
 
     private Customer loggedCustomer;
 
     private Set<Order> orders;
 
-    public Set<Order> getOrders() {
-        return orders;
-    }
-
-    public String execute() {
+    @Override
+    public void prepare() throws Exception {
         orders = orderManager.getOrdersByCustomers(loggedCustomer.getId());
-        return "success";
+        orderUtil.prepareOrdersForView(orders);
     }
 
     /*
@@ -64,5 +62,18 @@ public class OrderAction extends ActionSupport {
     public void setOrderManager(OrderManager orderManager) {
         this.orderManager = orderManager;
     }
+
+    public void setOrderUtil(OrderUtil orderUtil) {
+        this.orderUtil = orderUtil;
+    }
+
+    /*
+    * Getters for model
+    */
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
 
 }
