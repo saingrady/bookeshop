@@ -23,31 +23,48 @@
 
 package org.benassi.bookeshop.web.actions.book;
 
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
+import org.benassi.bookeshop.web.util.BookUtil;
 
 import java.util.List;
 
 /**
  * BookCatalogueAction : loads discount books and makes them available to the view
  */
-public class BookCatalogueAction {
+public class BookCatalogueAction extends ActionSupport implements Preparable{
 
     private BookManager bookManager;
 
+    private BookUtil bookUtil;
+
     private List<Book> books;
 
-    public void setBookManager(BookManager bookManager) {
-        this.bookManager = bookManager;
+    @Override
+    public void prepare() throws Exception {
+        books =  bookManager.getDiscountBooks();
+        bookUtil.prepareBooksForView(books);
     }
+
+    /*
+     * Getters for model
+     */
 
     public List<Book> getBooks() {
         return books;
     }
 
-    public String execute() throws Exception {
-        books =  bookManager.getDiscountBooks();
-        return "success";
+    /*
+     * Setters for DI
+     */
+
+    public void setBookUtil(BookUtil bookUtil) {
+        this.bookUtil = bookUtil;
     }
 
+    public void setBookManager(BookManager bookManager) {
+        this.bookManager = bookManager;
+    }
 }

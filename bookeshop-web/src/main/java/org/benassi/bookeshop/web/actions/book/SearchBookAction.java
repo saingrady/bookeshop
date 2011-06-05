@@ -25,6 +25,7 @@ package org.benassi.bookeshop.web.actions.book;
 
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
+import org.benassi.bookeshop.web.util.BookUtil;
 
 import java.util.List;
 
@@ -37,29 +38,11 @@ public class SearchBookAction{
 
     private BookManager bookManager;
 
+    private BookUtil bookUtil;
+
     private List<Book> foundItems;
 
     private String error;
-
-    public List<Book> getFoundItems() {
-        return foundItems;
-    }
-
-    public void setBookManager(BookManager bookManager) {
-        this.bookManager = bookManager;
-    }
-
-    public String getKeyword() {
-        return keyword;
-    }
-
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
-    }
-
-    public String getError() {
-        return error;
-    }
 
     public String execute(){
         foundItems = bookManager.getBooksByTitleAuthor(keyword);
@@ -67,8 +50,43 @@ public class SearchBookAction{
             error = "Please specify a keyword for search";
             return "error";
         }
-        else
-        return "success";
+        else{
+            bookUtil.prepareBooksForView(foundItems);
+            return "success";
+        }
+    }
+
+    /*
+     * Setters for DI
+     */
+    public void setBookManager(BookManager bookManager) {
+        this.bookManager = bookManager;
+    }
+
+    public void setBookUtil(BookUtil bookUtil) {
+        this.bookUtil = bookUtil;
+    }
+
+    /*
+     * Setters for request parameters
+     */
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    /*
+     * Getters for model
+     */
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public List<Book> getFoundItems() {
+        return foundItems;
     }
 
 }

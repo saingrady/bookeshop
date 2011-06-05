@@ -27,6 +27,7 @@ import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.business.api.CategoryManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.data.model.Category;
+import org.benassi.bookeshop.web.util.BookUtil;
 
 import java.util.List;
 
@@ -39,6 +40,8 @@ public class BookCategoryAction {
 
     private BookManager bookManager;
 
+    private BookUtil bookUtil;
+
     private int categoryId;
 
     private Category category;
@@ -46,6 +49,23 @@ public class BookCategoryAction {
     private String error;
 
     private List<Book> categoryItems;
+
+    public String execute(){
+        category = categoryManager.getCategoryById(categoryId);
+        if (category != null){
+            categoryItems = bookManager.getBooksByCategory(categoryId);
+            bookUtil.prepareBooksForView(categoryItems);
+            return "success";
+        }
+        else {
+            error = "No such category with ID = " + categoryId;
+            return "error";
+        }
+    }
+
+    /*
+     * Setters for DI
+     */
 
     public void setCategoryManager(CategoryManager categoryManager) {
         this.categoryManager = categoryManager;
@@ -55,8 +75,24 @@ public class BookCategoryAction {
         this.bookManager = bookManager;
     }
 
+    public void setBookUtil(BookUtil bookUtil) {
+        this.bookUtil = bookUtil;
+    }
+
+    /*
+     * Setters for request parameters
+     */
+
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
+    }
+
+    /*
+     * Getters for model
+     */
+
+    public Category getCategory() {
+        return category;
     }
 
     public String getError() {
@@ -67,16 +103,4 @@ public class BookCategoryAction {
         return categoryItems;
     }
 
-    public String execute(){
-        category = categoryManager.getCategoryById(categoryId);
-        if (category != null){
-            categoryItems = bookManager.getBooksByCategory(categoryId);
-            return "success";
-        }
-        else {
-            error = "No such category with ID = " + categoryId;
-            return "error";
-        }
-
-    }
 }

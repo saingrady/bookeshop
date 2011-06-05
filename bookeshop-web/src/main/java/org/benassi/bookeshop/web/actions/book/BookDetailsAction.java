@@ -25,6 +25,7 @@ package org.benassi.bookeshop.web.actions.book;
 
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
+import org.benassi.bookeshop.web.util.BookUtil;
 
 /**
  * BookDetailsAction : action class to get book details
@@ -33,36 +34,57 @@ public class BookDetailsAction {
 
     private BookManager bookManager;
 
+    private BookUtil bookUtil;
+
     private String bookId;
 
     private Book book;
 
     private String error;
 
-    public void setBookManager(BookManager bookManager) {
-        this.bookManager = bookManager;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
-    }
-
-    public String getError() {
-        return error;
-    }
-
     public String execute(){
         book = bookManager.getBookByIsbn(bookId);
-        if (book != null)
+        if (book != null){
+            //prepare book for view
+            book.setStockStatus(bookUtil.getStockStatus(book.getStock()));
+            book.setFormattedPublishDate(bookUtil.formatPublishDate(book.getPublishDate()));
             return "success";
+        }
         else {
             error = "No such book with ISBN = " + bookId;
             return "error";
         }
 
+    }
+
+    /*
+     * Setters for DI
+     */
+
+    public void setBookManager(BookManager bookManager) {
+        this.bookManager = bookManager;
+    }
+
+    public void setBookUtil(BookUtil bookUtil) {
+        this.bookUtil = bookUtil;
+    }
+
+     /*
+     * Setters for request parameters
+     */
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
+    }
+
+    /*
+     * Getters for model
+     */
+
+    public Book getBook() {
+        return book;
+    }
+
+    public String getError() {
+        return error;
     }
 }
