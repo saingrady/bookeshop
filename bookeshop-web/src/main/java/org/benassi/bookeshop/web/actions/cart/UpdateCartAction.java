@@ -43,26 +43,6 @@ public class UpdateCartAction {
 
     private String error;
 
-    public void setTheCart(ShoppingCart theCart) {
-        this.theCart = theCart;
-    }
-
-    public void setLoggedCustomer(Customer loggedCustomer) {
-        this.loggedCustomer = loggedCustomer;
-    }
-
-    public void setBookManager(BookManager bookManager) {
-        this.bookManager = bookManager;
-    }
-
-    public void setBookId(String bookId) {
-        this.bookId = bookId;
-    }
-
-    public String getError() {
-        return error;
-    }
-
     public String addItem(){
 
         Book book = bookManager.getBookByIsbn(bookId);
@@ -104,6 +84,35 @@ public class UpdateCartAction {
             error = "Please sign up or log in to buy from Book e-Shop";
             return "error";
         }
+    }
+
+    /*
+    * Setters for DI
+    */
+    public void setTheCart(ShoppingCart theCart) {
+        this.theCart = theCart;
+    }
+
+    public void setLoggedCustomer(Customer loggedCustomer) {
+        this.loggedCustomer = loggedCustomer;
+    }
+
+    public void setBookManager(BookManager bookManager) {
+        this.bookManager = bookManager;
+    }
+
+     /*
+     * Setters for request parameters
+     */
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
+    }
+
+    /*
+     * Getters for model
+     */
+    public String getError() {
+        return error;
     }
 
 }

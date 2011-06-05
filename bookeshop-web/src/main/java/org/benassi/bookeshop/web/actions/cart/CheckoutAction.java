@@ -31,6 +31,7 @@ import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.web.cart.ShoppingCart;
+import org.benassi.bookeshop.web.util.BookUtil;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -42,6 +43,8 @@ import java.util.Map;
 public class CheckoutAction {
 
     private BookManager bookManager;
+
+    private BookUtil bookUtil;
 
     private OrderManager orderManager;
 
@@ -59,42 +62,6 @@ public class CheckoutAction {
 
     private String processingMessage;
 
-    public String getProcessingMessage() {
-        return processingMessage;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public Map<Book, Integer> getItems() {
-        return items;
-    }
-
-    public float getTotal() {
-        return total;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setLoggedCustomer(Customer loggedCustomer) {
-        this.loggedCustomer = loggedCustomer;
-    }
-
-    public void setTheCart(ShoppingCart theCart) {
-        this.theCart = theCart;
-    }
-
-    public void setBookManager(BookManager bookManager) {
-        this.bookManager = bookManager;
-    }
-
-    public void setOrderManager(OrderManager orderManager) {
-        this.orderManager = orderManager;
-    }
-
     public String execute() {
 
         items = new HashMap<Book,Integer>();
@@ -102,6 +69,8 @@ public class CheckoutAction {
         try {
             for (String bookId : theCart.getItems().keySet()) {
                 Book book = bookManager.getBookByIsbn(bookId);
+                book.setStockStatus(bookUtil.getStockStatus(book.getStock()));
+                book.setFormattedPublishDate(bookUtil.formatPublishDate(book.getPublishDate()));
                 Integer quantity = theCart.getItems().get(bookId);
                 bookManager.checkoutBook(book.getIsbn(),quantity);
                 total += book.getDiscountPrice() * quantity;
@@ -117,10 +86,48 @@ public class CheckoutAction {
             return "error";
         }
     }
+    /*
+     * Setters for DI
+     */
+    public void setLoggedCustomer(Customer loggedCustomer) {
+        this.loggedCustomer = loggedCustomer;
+    }
+
+    public void setTheCart(ShoppingCart theCart) {
+        this.theCart = theCart;
+    }
+
+    public void setBookManager(BookManager bookManager) {
+        this.bookManager = bookManager;
+    }
+
+    public void setBookUtil(BookUtil bookUtil) {
+        this.bookUtil = bookUtil;
+    }
+
+    public void setOrderManager(OrderManager orderManager) {
+        this.orderManager = orderManager;
+    }
 
     /*
-     * Utility method
+     * Getters for model
      */
+    public String getProcessingMessage() {
+        return processingMessage;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public Map<Book, Integer> getItems() {
+        return items;
+    }
+
+    public String getError() {
+        return error;
+    }
+
     public String getFormattedTotal() {
         DecimalFormat df = new DecimalFormat("###.##");
         return df.format(total);

@@ -26,6 +26,7 @@ package org.benassi.bookeshop.web.actions.cart;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
+import org.benassi.bookeshop.web.util.BookUtil;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -38,6 +39,8 @@ public class CartDetailsAction {
 
     private BookManager bookManager;
 
+    private BookUtil bookUtil;
+
     private ShoppingCart theCart;
 
     private Map<Book,Integer> items;
@@ -46,26 +49,6 @@ public class CartDetailsAction {
 
     private String error;
 
-    public Map<Book, Integer> getItems() {
-        return items;
-    }
-
-    public float getTotal() {
-        return total;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setTheCart(ShoppingCart theCart) {
-        this.theCart = theCart;
-    }
-
-    public void setBookManager(BookManager bookManager) {
-        this.bookManager = bookManager;
-    }
-
     public String execute() {
 
        if( theCart != null){
@@ -73,6 +56,8 @@ public class CartDetailsAction {
            items = new HashMap<Book,Integer>();
            for (String bookId : theCart.getItems().keySet()) {
                Book book = bookManager.getBookByIsbn(bookId);
+               book.setStockStatus(bookUtil.getStockStatus(book.getStock()));
+               book.setFormattedPublishDate(bookUtil.formatPublishDate(book.getPublishDate()));
                Integer quantity = theCart.getItems().get(bookId);
                items.put(book, quantity);
                total += book.getDiscountPrice() * quantity;
@@ -83,10 +68,32 @@ public class CartDetailsAction {
            return "error";
        }
     }
+    /*
+     * Setters for DI
+     */
+    public void setTheCart(ShoppingCart theCart) {
+        this.theCart = theCart;
+    }
+
+    public void setBookUtil(BookUtil bookUtil) {
+        this.bookUtil = bookUtil;
+    }
+
+    public void setBookManager(BookManager bookManager) {
+        this.bookManager = bookManager;
+    }
 
     /*
-     * Utility methods
+     * Getters for model
      */
+    public Map<Book, Integer> getItems() {
+        return items;
+    }
+
+    public String getError() {
+        return error;
+    }
+
     public String getFormattedTotal() {
         DecimalFormat df = new DecimalFormat("###.##");
         return df.format(total);

@@ -40,13 +40,17 @@ public class IndexAction extends ActionSupport implements ServletContextAware{
 
     private CategoryManager categoryManager;
 
-    public void setCategoryManager(CategoryManager categoryManager) {
-        this.categoryManager = categoryManager;
-    }
-
     @Override
     public void setServletContext(ServletContext context) {
         List<Category> categories = categoryManager.getCategories();
         context.setAttribute("categories", categories);
     }
+
+    /*
+     * Setters for DI
+     */
+    public void setCategoryManager(CategoryManager categoryManager) {
+        this.categoryManager = categoryManager;
+    }
+
 }

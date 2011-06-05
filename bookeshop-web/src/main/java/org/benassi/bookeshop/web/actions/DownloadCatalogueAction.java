@@ -38,18 +38,6 @@ public class DownloadCatalogueAction  {
 
     private String error;
 
-    public void setPdfCatalogueGenerator(PdfCatalogueGenerator pdfCatalogueGenerator) {
-        this.pdfCatalogueGenerator = pdfCatalogueGenerator;
-    }
-
-    public InputStream getInputStream() {
-        return inputStream;
-    }
-
-    public String getError() {
-        return error;
-    }
-
     public String execute(){
 
         inputStream = pdfCatalogueGenerator.getPdfCatalogueStream();
@@ -62,5 +50,23 @@ public class DownloadCatalogueAction  {
             return "error";
         }
 
+    }
+
+    /*
+     * Setters for DI
+     */
+    public void setPdfCatalogueGenerator(PdfCatalogueGenerator pdfCatalogueGenerator) {
+        this.pdfCatalogueGenerator = pdfCatalogueGenerator;
+    }
+
+    /*
+     * Getters for model
+     */
+    public InputStream getInputStream() {
+        return inputStream;
+    }
+
+    public String getError() {
+        return error;
     }
 }
