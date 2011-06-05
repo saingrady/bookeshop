@@ -137,7 +137,7 @@ public class Book {
     private String stockStatus;
 
     public float getDiscountPrice(){
-        return price * ( 1 - offer / RATIO );
+        return price * ( 1 - (float) offer / RATIO );
     }
 
     public String getFormattedPublishDate() {
