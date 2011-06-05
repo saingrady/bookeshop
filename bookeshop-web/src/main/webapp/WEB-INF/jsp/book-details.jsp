@@ -55,7 +55,7 @@
                         </tr>
                         <tr>
                             <td>Price</td>
-                            <td align="center"><c:out value="${book.price}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
+                            <td align="center"><c:out value="${book.price}"/> <img src="images/euro.png" width="12" height="12" border="0"/>
                               <c:if test="${book.offer != 0}">
                                   <img src="images/offer_${book.offer}.png" width="32" height="32" border="0"/> = <c:out value="${book.discountPrice}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
                                </c:if>

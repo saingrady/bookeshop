@@ -39,7 +39,7 @@
                         <display:column property="purchasePrice" title="Price" sortable="true"/>
                         <display:column property="total" title="Subtotal" sortable="true"/>
                     </display:table>
-                    <p><b>Total = <c:out value="${order.formattedTotal}"/></b></p>
+                    <p><b>Total = <c:out value="${order.formattedTotal}"/></b> <img src="images/euro.png" width="12" height="12" border="0"/></p>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
             </div>

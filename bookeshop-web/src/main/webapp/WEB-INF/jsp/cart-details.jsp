@@ -43,7 +43,7 @@
                                     <th><b>Title</b></th>
                                     <th><b>Author</b></th>
                                     <th><b>Publication date</b></th>
-                                    <th><b>Price (<img src="images/euro.png" width="18" height="18" border="0"/>)</b></th>
+                                    <th><b>Price (<img src="images/euro.png" width="12" height="12" border="0"/>)</b></th>
                                     <th><b>Quantity</b></th>
                                     <th><b>update</b></th>
                                 </tr>
@@ -74,7 +74,7 @@
 
                             </table><br/>
 
-                            <p><b>Cart Total = <c:out value="${formattedTotal}"/></b></p>
+                            <p><b>Cart Total = <c:out value="${formattedTotal}"/></b> <img src="images/euro.png" width="12" height="12" border="0"/></p>
                             <b>Clear cart </b><a href="clearCart.do"><img src="images/cart.png" width="32" height="32" border="0"/></a>
 
                             <s:form action="checkout">
