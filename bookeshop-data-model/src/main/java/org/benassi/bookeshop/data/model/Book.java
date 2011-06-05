@@ -128,23 +128,31 @@ public class Book {
     }
 
     /*
-    * Utility methods
+    * Utility fields and methods
     */
-    public float getDiscountPrice(){
-        return price - price * offer / 100;
-    }
+    private static final int RATIO = 100;
 
-    public String getStockStatus() {
-        if (stock <= 0)
-            return "Out of stock";
-        else if (stock <= 10)
-            return "Last items";
-        else return "In stock";
+    private String formattedPublishDate;
+
+    private String stockStatus;
+
+    public float getDiscountPrice(){
+        return price * ( 1 - offer / RATIO );
     }
 
     public String getFormattedPublishDate() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return simpleDateFormat.format(publishDate);
+        return formattedPublishDate;
     }
 
+    public void setFormattedPublishDate(String formattedPublishDate) {
+        this.formattedPublishDate = formattedPublishDate;
+    }
+
+    public String getStockStatus() {
+        return stockStatus;
+    }
+
+    public void setStockStatus(String stockStatus) {
+        this.stockStatus = stockStatus;
+    }
 }

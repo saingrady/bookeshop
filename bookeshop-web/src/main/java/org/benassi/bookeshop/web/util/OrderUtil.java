@@ -35,16 +35,32 @@ import java.util.Date;
  */
 public class OrderUtil {
 
-    public static String getFormattedDate(Date date) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    private String dateFormat;
+
+    private String totalFormat;
+
+    public String formatDate(final Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
         return simpleDateFormat.format(date);
     }
 
-    public static String getFormattedTotal(Order order) {
+    public String formatTotal(final Order order) {
         float result = 0;
         for (OrderItem item: order.getItems())
             result += item.getTotal();
-        DecimalFormat df = new DecimalFormat("###.##");
+        DecimalFormat df = new DecimalFormat(totalFormat);
         return df.format(result);
+    }
+
+     /*
+     * Setters for DI
+     */
+
+    public void setDateFormat(String dateFormat) {
+        this.dateFormat = dateFormat;
+    }
+
+    public void setTotalFormat(String totalFormat) {
+        this.totalFormat = totalFormat;
     }
 }

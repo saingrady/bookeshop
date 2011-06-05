@@ -103,17 +103,26 @@ public class Order {
     }
 
     /*
-    * Utility methods
+    * Utility fields
     */
+
+    private String formattedDate;
+
+    private String formattedTotal;
+
     public String getFormattedDate() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        return simpleDateFormat.format(date);
+        return formattedDate;
+    }
+
+    public void setFormattedDate(String formattedDate) {
+        this.formattedDate = formattedDate;
     }
 
     public String getFormattedTotal() {
-        float total = getTotal();
-        DecimalFormat df = new DecimalFormat("###.##");
-        return df.format(total);
+        return formattedTotal;
     }
 
+    public void setFormattedTotal(String formattedTotal) {
+        this.formattedTotal = formattedTotal;
+    }
 }

@@ -68,4 +68,21 @@
         <property name="configLocation" value="classpath:velocity/velocity.properties"/>
     </bean>
 
+    <!-- ================== -->
+    <!--      Web utils     -->
+    <!-- ================== -->
+
+    <bean id="bookUtil" class="org.benassi.bookeshop.web.util.BookUtil">
+         <property name="limitedStockThreshold" value="10"/>
+         <property name="dateFormat" value="yyyy-MM-dd"/>
+         <property name="outOfStock" value="Out of stock"/>
+         <property name="lastItems" value="Last items!"/>
+         <property name="inStock" value="In stock"/>
+    </bean>
+
+    <bean id="orderUtil" class="org.benassi.bookeshop.web.util.OrderUtil">
+         <property name="dateFormat" value="yyyy-MM-dd"/>
+         <property name="totalFormat" value="###.##"/>
+    </bean>
+
 </beans>

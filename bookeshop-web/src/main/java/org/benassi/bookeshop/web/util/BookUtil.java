@@ -31,20 +31,53 @@ import java.util.Date;
  */
 public class BookUtil {
 
-    public static float getDiscountPrice(float price, int offer){
-        return price - price * offer / 100;
-    }
+    private int limitedStockThreshold;
 
-    public static String getStockStatus(int stock) {
+    private String dateFormat;
+
+    private String outOfStock;
+
+    private String lastItems;
+
+    private String inStock;
+
+    /*
+     * public utility methods
+     */
+    public String getStockStatus(int stock) {
         if (stock <= 0)
-            return "Out of stock"; //TODO externalize + I18N
-        else if (stock <= 10)
-            return "Last items";
-        else return "In stock";
+            return outOfStock;
+        else if (stock <= limitedStockThreshold)
+            return lastItems;
+        else return inStock;
     }
 
-    public static String getFormattedPublishDate(Date publishDate) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    public String formatPublishDate(final Date publishDate) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
         return simpleDateFormat.format(publishDate);
+    }
+
+    /*
+     * Setters for DI
+     */
+
+    public void setLimitedStockThreshold(int limitedStockThreshold) {
+        this.limitedStockThreshold = limitedStockThreshold;
+    }
+
+    public void setDateFormat(String dateFormat) {
+        this.dateFormat = dateFormat;
+    }
+
+    public void setOutOfStock(String outOfStock) {
+        this.outOfStock = outOfStock;
+    }
+
+    public void setLastItems(String lastItems) {
+        this.lastItems = lastItems;
+    }
+
+    public void setInStock(String inStock) {
+        this.inStock = inStock;
     }
 }
