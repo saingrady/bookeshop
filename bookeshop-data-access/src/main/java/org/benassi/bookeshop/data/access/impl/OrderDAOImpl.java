@@ -50,4 +50,8 @@ public class OrderDAOImpl extends HibernateDaoSupport implements OrderDAO {
         this.getHibernateTemplate().save(order);
     }
 
+    @Override
+    public void removeOrder(final Order order) {
+        this.getHibernateTemplate().delete(order);
+    }
 }

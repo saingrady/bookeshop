@@ -36,4 +36,6 @@ public interface OrderDAO {
 
     public void createOrder(final Order order);
 
+    public void removeOrder(final Order order);
+
 }
