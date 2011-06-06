@@ -43,10 +43,12 @@
                         <s:textfield label="Address" name="address"  size="20"/>
                         <s:password label="Password" name="password" size="20"/>
                         <s:password label="Confirm password" name="passwordConfirm" size="20"/>
-                        <s:submit value="Update"/> <s:reset value="Reset" />
+                        <s:submit value="Update" cssClass="buttonStyle" align="center"/>
                         <s:div style="clear: both;">&nbsp;</s:div>
                     </s:form>
-                    <p><b><a href="remove.do">Remove my account</a></b></p>
+                    <s:form action="remove">
+                        <s:submit value="Remove my account" cssClass="buttonStyle"/>
+                    </s:form>
                     <%-- TODO add onclick="confirm_account_removal() --%>
                 </div>
             </div>

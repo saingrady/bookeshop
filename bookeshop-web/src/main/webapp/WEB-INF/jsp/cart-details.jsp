@@ -76,11 +76,20 @@
                             </table><br/>
 
                             <p><b>Cart Total = <c:out value="${formattedTotal}"/></b> <img src="images/icons/euro.png" width="12" height="12" border="0"/></p>
-                            <b>Clear cart </b><a href="clearCart.do"><img src="images/icons/cart.png" width="32" height="32" border="0"/></a>
-
-                            <s:form action="checkout">
-                                <s:submit value="proceed to checkout"/>
-                            </s:form>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <s:form action="clearCart">
+                                            <s:submit value="clear cart" cssClass="buttonStyle"/>
+                                        </s:form>
+                                    </td>
+                                    <td>
+                                        <s:form action="checkout">
+                                            <s:submit value="checkout" cssClass="buttonStyle"/>
+                                        </s:form>
+                                    </td>
+                                </tr>
+                            </table>
                         </c:when>
                         <c:otherwise>
                             <h1>Your shopping cart is empty</h1>

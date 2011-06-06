@@ -34,7 +34,7 @@
                     <s:form action="login">
                         <s:textfield name="loginEmail" label="Email" size="13"/>
                         <s:password name="loginPassword" label="Password" size="13"/>
-                        <s:submit value="Sign In" />
+                        <s:submit value="Sign In" cssClass="buttonStyle"/>
                     </s:form>
                     New customer? <a href="create.do">Start here</a></p>
                 </c:when>
@@ -66,7 +66,7 @@
             <h2>Quick Search</h2>
             <s:form action="lookup">
                 <s:textfield name="keyword" label="Title/Author" size="12"/>
-                <s:submit value="Go!" />
+                <s:submit value="Go!" cssClass="buttonStyle"/>
             </s:form>
         </li>
     </ul>
