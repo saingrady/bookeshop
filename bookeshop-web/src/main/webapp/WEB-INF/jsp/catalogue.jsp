@@ -48,17 +48,17 @@
                         <display:column property="price" title="Price (euro)" sortable="true"/>
                         <display:column title="Offer">
                             <c:if test="${book.offer != 0}">
-                                <img src="images/offer_${book.offer}.png" width="32" height="32" border="0"/>
+                                <img src="images/icons/offer_${book.offer}.png" width="32" height="32" border="0"/>
                             </c:if>
                         </display:column>
                         <display:column property="stockStatus" title="Stock" />
                         <display:column title="Cart" >
                             <c:choose>
                                 <c:when test="${book.stockStatus == 'Out of stock'}">
-                                    <img src="images/cancel.png" width="32" height="32" border="0"/>
+                                    <img src="images/icons/cancel.png" width="32" height="32" border="0"/>
                                 </c:when>
                                 <c:otherwise>
-                                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/icons/cart_add.png" width="32" height="32" border="0"/></a>
                                 </c:otherwise>
                             </c:choose>
                         </display:column>

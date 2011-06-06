@@ -32,7 +32,7 @@
             <div class="post-bgbtm">
                 <div align="center">
                     <br/>
-                    <img src="images/error.png" alt="error">
+                    <img src="images/icons/error.png" alt="error">
                     <br/>
                     <br/>
                     <h2>Sorry, an error occurred and we are unable to fulfill your request.</h2><br/>

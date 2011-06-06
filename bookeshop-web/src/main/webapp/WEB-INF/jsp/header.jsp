@@ -28,7 +28,6 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/style.css"  type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/displaytag.css"  type="text/css" media="screen" />
     <title>Book e-Shop</title>
 </head>
 
@@ -42,9 +41,9 @@
 	<!-- end #header -->
 	<div id="menu">
 		<ul>
-			<li><a href="index.do">Home</a><img src="images/home.png" width="32" height="32" border="0"/></li>
-			<li><a href="contact.do">Contact</a><img src="images/customer_service.png" width="32" height="32" border="0"/></li>
-			<li><a href="about.do">About</a><img src="images/info.png" width="32" height="32" border="0"/></li>
+			<li><a href="index.do">Home</a><img src="images/icons/home.png" width="32" height="32" border="0"/></li>
+			<li><a href="contact.do">Contact</a><img src="images/icons/customer_service.png" width="32" height="32" border="0"/></li>
+			<li><a href="about.do">About</a><img src="images/icons/info.png" width="32" height="32" border="0"/></li>
 		</ul>
 	</div>
 	<!-- end #menu -->

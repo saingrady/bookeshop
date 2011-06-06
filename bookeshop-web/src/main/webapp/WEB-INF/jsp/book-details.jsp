@@ -56,9 +56,9 @@
                         </tr>
                         <tr>
                             <td>Price</td>
-                            <td align="center"><c:out value="${book.price}"/> <img src="images/euro.png" width="12" height="12" border="0"/>
+                            <td align="center"><c:out value="${book.price}"/> <img src="images/icons/euro.png" width="12" height="12" border="0"/>
                               <c:if test="${book.offer != 0}">
-                                  <img src="images/offer_${book.offer}.png" width="32" height="32" border="0"/> = <c:out value="${book.discountPrice}"/> <img src="images/euro.png" width="18" height="18" border="0"/>
+                                  <img src="images/icons/offer_${book.offer}.png" width="32" height="32" border="0"/> = <c:out value="${book.discountPrice}"/> <img src="images/icons/euro.png" width="18" height="18" border="0"/>
                                </c:if>
                             </td>
                         </tr>
@@ -66,7 +66,7 @@
                             <td>Availability :</td>
                             <td align="center"><c:out value="${book.stockStatus}"/>
                                 <c:if test="${book.stockStatus != 'Out of stock'}">
-                                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/cart_add.png" width="32" height="32" border="0"/></a>
+                                    <a href="addItem.do?bookId=${book.isbn}"><img src="images/icons/cart_add.png" width="32" height="32" border="0"/></a>
                                 </c:if>
                             </td>
                         </tr>

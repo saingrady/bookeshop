@@ -48,9 +48,9 @@
 	<!-- end #header -->
 	<div id="menu">
 		<ul>
-			<li><a href="#">Home</a><img src="images/home.png" width="32" height="32" border="0"/></li>
-			<li><a href="#">About</a><img src="images/info.png" width="32" height="32" border="0"/></li>
-			<li><a href="#">Contact</a><img src="images/customer_service.png" width="32" height="32" border="0"/></li>
+			<li><a href="#">Home</a><img src="images/icons/home.png" width="32" height="32" border="0"/></li>
+			<li><a href="#">About</a><img src="images/icons/info.png" width="32" height="32" border="0"/></li>
+			<li><a href="#">Contact</a><img src="images/icons/customer_service.png" width="32" height="32" border="0"/></li>
 		</ul>
 	</div>
 	<!-- end #menu -->
@@ -64,7 +64,7 @@
     <div align="center">
         <br/>
         <h2>${processingMessage}</h2>
-        <img src="images/processing.gif" alt="processing ...">
+        <img src="images/icons/processing.gif" alt="processing ...">
     </div>
 </div>
 <!-- end #content -->

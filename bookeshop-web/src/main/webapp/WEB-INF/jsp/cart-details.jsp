@@ -63,11 +63,11 @@
                                         <td><c:out value="${entry.key.formattedPublishDate}"/></td>
                                         <td><c:out value="${entry.key.price}"/>
                                         <c:if test="${entry.key.offer != 0}">
-                                                <img src="images/offer_${entry.key.offer}.png" width="32" height="32" border="0"/> = <c:out value="${entry.key.discountPrice}"/>
+                                                <img src="images/icons/offer_${entry.key.offer}.png" width="32" height="32" border="0"/> = <c:out value="${entry.key.discountPrice}"/>
                                         </c:if>
                                         </td>
                                         <td><c:out value="${entry.value}"/></td>
-                                        <td><a href="addItem.do?bookId=${entry.key.isbn}"/><img src="images/cart_add.png" width="32" height="32" border="0"/><a href="removeItem.do?bookId=${entry.key.isbn}"/><img src="images/cart_remove.png" width="32" height="32" border="0"/></td>
+                                        <td><a href="addItem.do?bookId=${entry.key.isbn}"/><img src="images/icons/cart_add.png" width="32" height="32" border="0"/><a href="removeItem.do?bookId=${entry.key.isbn}"/><img src="images/icons/cart_remove.png" width="32" height="32" border="0"/></td>
 
                                     </tr>
                                 </c:forEach>
@@ -75,8 +75,8 @@
 
                             </table><br/>
 
-                            <p><b>Cart Total = <c:out value="${formattedTotal}"/></b> <img src="images/euro.png" width="12" height="12" border="0"/></p>
-                            <b>Clear cart </b><a href="clearCart.do"><img src="images/cart.png" width="32" height="32" border="0"/></a>
+                            <p><b>Cart Total = <c:out value="${formattedTotal}"/></b> <img src="images/icons/euro.png" width="12" height="12" border="0"/></p>
+                            <b>Clear cart </b><a href="clearCart.do"><img src="images/icons/cart.png" width="32" height="32" border="0"/></a>
 
                             <s:form action="checkout">
                                 <s:submit value="proceed to checkout"/>

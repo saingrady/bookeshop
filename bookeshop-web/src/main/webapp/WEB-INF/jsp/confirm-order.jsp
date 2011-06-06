@@ -57,12 +57,12 @@
                         </c:forEach>
                         </tbody>
                     </table>
-                    <p><b>Your order total = <c:out value="${formattedTotal}"/></b><img src="images/euro.png" width="12" height="12" border="0"/></p>
-                    <p><img src="images/ok.png" width="32" height="32" border="0"/>Thank you for your order on our site. <a href="javascript:window.print()"> Print details</a></p>
-                    <p><img src="images/mail.png" width="32" height="25" border="0"/> A confirmation email was sent to '<b><c:out value="${loggedCustomer.email}"/></b>'</p>
+                    <p><b>Your order total = <c:out value="${formattedTotal}"/></b><img src="images/icons/euro.png" width="12" height="12" border="0"/></p>
+                    <p><img src="images/icons/ok.png" width="32" height="32" border="0"/>Thank you for your order on our site. <a href="javascript:window.print()"> Print details</a></p>
+                    <p><img src="images/icons/mail.png" width="32" height="25" border="0"/> A confirmation email was sent to '<b><c:out value="${loggedCustomer.email}"/></b>'</p>
 
-                    <p><img src="images/delivery.png" width="32" height="32" border="0"/> Your items will be delivered to '<b><c:out value="${loggedCustomer.address}"/></b>'</p>
-                    <p><img src="images/customer_service.png" width="32" height="32" border="0"/> For after sale service, please contact us at <a href="mailto:customer@bookeshop.com">customer@bookeshop.com</a></p>
+                    <p><img src="images/icons/delivery.png" width="32" height="32" border="0"/> Your items will be delivered to '<b><c:out value="${loggedCustomer.address}"/></b>'</p>
+                    <p><img src="images/icons/customer_service.png" width="32" height="32" border="0"/> For after sale service, please contact us at <a href="mailto:customer@bookeshop.com">customer@bookeshop.com</a></p>
                     <p>We hope to see you soon on our site. <a href="catalogue.do"> Back to catalogue page</a></p>
                     <div style="clear: both;">&nbsp;</div>
                 </div>

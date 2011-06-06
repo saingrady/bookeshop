@@ -38,7 +38,7 @@
         <li>
             <h2>Download</h2>
             <ul>
-                <li><a href="download-catalogue.do">Download PDF catalogue <img src="images/pdf_icon.png" width="32" height="32" border="0"/></a></li>
+                <li><a href="download-catalogue.do">Download PDF catalogue <img src="images/icons/pdf_icon.png" width="32" height="32" border="0"/></a></li>
             <ul>
         </li>
     </ul>
