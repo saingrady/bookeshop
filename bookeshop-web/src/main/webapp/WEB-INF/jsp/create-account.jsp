@@ -43,7 +43,11 @@
                         <s:textfield label="Address" name="address"  size="20"/>
                         <s:password label="Password" name="password" size="20"/>
                         <s:password label="Confirm password" name="passwordConfirm" size="20"/>
-                        <s:submit value="Create"/> <s:reset value="Reset" />
+                        <tr>
+                            <td colspan="2" align="center">
+                                <s:submit value="Register" cssClass="buttonStyle" theme="simple"/> <s:reset value="Reset" cssClass="buttonStyle" theme="simple"/>
+                            </td>
+                        </tr>
                         <s:div style="clear: both;">&nbsp;</s:div>
                     </s:form>
                 </div>
