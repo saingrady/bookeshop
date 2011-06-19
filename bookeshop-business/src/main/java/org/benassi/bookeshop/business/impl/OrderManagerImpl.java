@@ -76,9 +76,9 @@ public class OrderManagerImpl implements OrderManager {
     public Order createOrder(final Customer customer,final Map<String,Integer> items) {
 
         Order order = new Order();
-        order.setCustomer(customer);
+        order.setCustomerId(customer.getId());
         order.setDate(new Date());
-        OrderStatus orderStatus = orderStatusDAO.getStatusById(1);
+        OrderStatus orderStatus = orderStatusDAO.getStatusById(1); //status confirmed
         order.setStatus(orderStatus);
         order.setItems(new HashSet<OrderItem>());
 
