@@ -27,6 +27,7 @@ import org.benassi.bookeshop.data.access.api.CustomerDAO;
 import org.benassi.bookeshop.data.model.Customer;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -158,10 +159,7 @@ public class CustomerDAOImplTest {
 
     /**
      * test to delete a loaded customer
-
-    //@Ignore
-    //TODO hsqldb : java.sql.BatchUpdateException: failed batch
-    // pass with mysql, bug hsqldb
+     */
     @Test
     public void testDeleteLoadedCustomer() {
 
@@ -172,7 +170,7 @@ public class CustomerDAOImplTest {
         customerDAO.delete(customer);
 
         assertNull( customerDAO.getCustomerById(id) );
-    }*/
+    }
 
     @After
     public void teardown(){

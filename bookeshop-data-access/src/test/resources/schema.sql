@@ -64,7 +64,7 @@ CREATE TABLE book_order (
   statusId int NOT NULL
 );
 
-alter table book_order add constraint customer_fk foreign key (customerId) references customer(id);
+-- alter table book_order add constraint customer_fk foreign key (customerId) references customer(id);
 alter table book_order add constraint status_fk foreign key (statusId) references book_order_status(id);
 
 -- Order item table
@@ -79,4 +79,4 @@ CREATE TABLE book_order_item (
 );
 
 alter table book_order_item add constraint order_id_fk foreign key (orderId) references book_order(orderId);
-alter table book_order_item add constraint book_id_fk foreign key (bookId) references book(isbn);
+-- alter table book_order_item add constraint book_id_fk foreign key (bookId) references book(isbn);
