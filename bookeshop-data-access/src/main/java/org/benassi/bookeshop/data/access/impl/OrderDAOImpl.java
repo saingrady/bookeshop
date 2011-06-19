@@ -41,7 +41,7 @@ public class OrderDAOImpl extends HibernateDaoSupport implements OrderDAO {
 
     @Override
     public Set<Order> getOrdersByCustomer(final int customerId) {
-        List<Order> orderList = this.getHibernateTemplate().find("from Order where customer.id = ? ",customerId);
+        List<Order> orderList = this.getHibernateTemplate().find("from Order where customerId = ? ",customerId);
         return new HashSet<Order>(orderList);
     }
 
