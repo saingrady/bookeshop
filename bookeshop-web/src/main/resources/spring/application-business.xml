@@ -31,6 +31,7 @@
     <!-- ========================== -->
 
     <bean id="customerManager" class="org.benassi.bookeshop.business.impl.CustomerManagerImpl">
+        <property name="orderDAO" ref="orderDAO"/>
         <property name="customerDAO" ref="customerDAO"/>
         <property name="messages" ref="businessMessageSource"/>
     </bean>
