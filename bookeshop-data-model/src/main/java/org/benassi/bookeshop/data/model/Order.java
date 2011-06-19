@@ -23,8 +23,6 @@
 
 package org.benassi.bookeshop.data.model;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -35,7 +33,7 @@ public class Order {
 
     private int orderId;
 
-    private Customer customer;
+    private int customerId;
 
     private Date date;
 
@@ -51,12 +49,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public Date getDate() {
@@ -94,7 +92,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "orderId=" + orderId +
-                ", customer=" + customer +
+                ", customerId=" + customerId +
                 ", date=" + date +
                 ", status=" + status +
                 ", items=" + items +
