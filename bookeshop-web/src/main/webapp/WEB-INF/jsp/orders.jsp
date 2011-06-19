@@ -33,6 +33,8 @@
             <div class="post-bgbtm">
                 <div align="center">
                     <br/>
+                    <c:choose>
+                    <c:when test="${not empty orders}">
                     <h1>My orders</h1><br/>
                     <display:table name="orders" uid="order" sort="list" defaultorder="descending" requestURI="orders.do" class="dttable">
                         <display:column title="Order ID" >
@@ -43,6 +45,12 @@
                             <c:out value="${order.status.label}"/>
                         </display:column>
                     </display:table>
+                    </c:when>
+                    <c:otherwise>
+                       <h1>You have no order yet on Book eShop</h1>
+                    </c:otherwise>
+                    </c:choose>
+                    <div style="clear: both;">&nbsp;</div>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
             </div>
