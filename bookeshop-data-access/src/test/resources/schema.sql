@@ -78,5 +78,5 @@ CREATE TABLE book_order_item (
   purchasePrice float NOT NULL
 );
 
-alter table book_order_item add constraint order_id_fk foreign key (orderId) references book_order(orderId);
--- alter table book_order_item add constraint book_id_fk foreign key (bookId) references book(isbn);
+-- alter table book_order_item add constraint order_id_fk foreign key (orderId) references book_order(orderId);
+alter table book_order_item add constraint book_id_fk foreign key (bookId) references book(isbn);

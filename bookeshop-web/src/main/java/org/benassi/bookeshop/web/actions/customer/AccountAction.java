@@ -26,7 +26,6 @@ package org.benassi.bookeshop.web.actions.customer;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.EmailValidator;
 import org.benassi.bookeshop.business.api.CustomerManager;
-import org.benassi.bookeshop.business.exception.CustomerExistentException;
 import org.benassi.bookeshop.data.model.Customer;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
@@ -51,38 +50,38 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
     public String create() {
 
-        Customer customer = new Customer(firstName,lastName,address,email,password);
+        if (!customerManager.isRegistered(email)){
 
-        try {
+            Customer customer = new Customer(firstName,lastName,address,email,password);
             customerManager.createCustomer(customer);
             session.put("loggedCustomer",customer);
             session.put("theCart",theCart);
             return "success";
-        } catch (CustomerExistentException e) {
-            error = "We have already an account for email '" + email + "'!\n" +
-                    "If you have already signed up with this email and forgot your password,\n" +
-                    "you can request to reset your password on the right-side bar";
+
+        }  else {
+            error = "We have already an account for email ' " + email + " '!";
             return "error";
         }
     }
 
     public String update() {
 
-        loggedCustomer.setFirstName(firstName);
-        loggedCustomer.setLastName(lastName);
-        loggedCustomer.setEmail(email);
-        loggedCustomer.setAddress(address);
-        loggedCustomer.setPassword(password);
-        try {
+        if (!customerManager.isRegistered(email)){
+
+            loggedCustomer.setFirstName(firstName);
+            loggedCustomer.setLastName(lastName);
+            loggedCustomer.setEmail(email);
+            loggedCustomer.setAddress(address);
+            loggedCustomer.setPassword(password);
             customerManager.updateCustomer(loggedCustomer);
             session.put("loggedCustomer",loggedCustomer);
             return "success";
-        } catch (CustomerExistentException e) {
-            error = "We have already an account for email '" + email + "'!\n" +
-                    "If you ave already signed up with this email and forgot your password,\n" +
-                    "you can request to reset your password on the right-side bar";
+
+        } else {
+            error = "We have already an account for email ' " + email + " '!";
             return "error";
         }
+
     }
 
     @SkipValidation

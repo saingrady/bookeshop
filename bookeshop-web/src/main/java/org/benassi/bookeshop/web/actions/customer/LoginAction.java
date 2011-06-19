@@ -55,14 +55,15 @@ public class LoginAction implements SessionAware{
     private String error;
 
     public String execute(){
-        try {
-            loggedCustomer = customerManager.login(loginEmail, loginPassword);
+        Customer c = customerManager.login(loginEmail, loginPassword);
+        if (c != null){
+            loggedCustomer = c;
             session.put("loggedCustomer",loggedCustomer);
             session.put("theCart",theCart);
             return "success";
-        } catch (LoginException e) {
-            error = e.getMessage();
-            logger.error(error,e);
+        }   else {
+            error = "Invalid credentials";
+            logger.error(error);
             return "error";
         }
     }

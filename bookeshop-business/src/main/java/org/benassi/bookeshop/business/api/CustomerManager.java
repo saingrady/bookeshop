@@ -23,8 +23,6 @@
 
 package org.benassi.bookeshop.business.api;
 
-import org.benassi.bookeshop.business.exception.CustomerExistentException;
-import org.benassi.bookeshop.business.exception.LoginException;
 import org.benassi.bookeshop.data.model.Customer;
 
 /**
@@ -33,21 +31,26 @@ import org.benassi.bookeshop.data.model.Customer;
 public interface CustomerManager {
 
     /**
+     * check if there is a registered customer with the given email
+     * @param email the customer email to check
+     * @return true if a customer is registered with the given email
+     */
+    public boolean isRegistered(String email);
+
+    /**
      * login a customer
      * @param email the customer email
      * @param password the customer password
      * @return the logged customer
-     * @throws org.benassi.bookeshop.business.exception.LoginException if the login fails
      */
-    public Customer login(String email, String password) throws LoginException;
+    public Customer login(String email, String password);
 
     /**
      * update an existent customer
      * @param customer the customer to update
      * @return the updated customer
-     * @throws org.benassi.bookeshop.business.exception.CustomerExistentException if a customer with the given email already exists
      */
-    public Customer updateCustomer(Customer customer) throws CustomerExistentException;
+    public Customer updateCustomer(Customer customer);
 
     /**
      * remove a customer
@@ -59,8 +62,7 @@ public interface CustomerManager {
      * Create a customer
      * @param customer the customer to create
      * @return the created customer
-     * @throws org.benassi.bookeshop.business.exception.CustomerExistentException if a customer with the given email already exists
      */
-    public Customer createCustomer(Customer customer) throws CustomerExistentException;
+    public Customer createCustomer(Customer customer);
 
 }

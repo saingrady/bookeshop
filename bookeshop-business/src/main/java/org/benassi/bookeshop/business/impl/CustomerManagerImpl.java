@@ -25,8 +25,6 @@ package org.benassi.bookeshop.business.impl;
 
 
 import org.benassi.bookeshop.business.api.CustomerManager;
-import org.benassi.bookeshop.business.exception.CustomerExistentException;
-import org.benassi.bookeshop.business.exception.LoginException;
 import org.benassi.bookeshop.data.access.api.CustomerDAO;
 import org.benassi.bookeshop.data.access.api.OrderDAO;
 import org.benassi.bookeshop.data.model.Customer;
@@ -34,9 +32,7 @@ import org.benassi.bookeshop.data.model.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
-import org.springframework.dao.DataAccessException;
 
-import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -65,24 +61,17 @@ public class CustomerManagerImpl implements CustomerManager {
         this.messages = messages;
     }
 
-    public Customer login(String email, String password) throws LoginException {
+    public Customer login(String email, String password) {
         if(customerDAO.checkLoginCredentials(email, password))
             return customerDAO.getCustomerByEmail(email);
         else{
-            String error = messages.getMessage("login.invalid", null, "Invalid login credentials!", Locale.getDefault());
-            logger.error(error);
-            throw new LoginException(error);
+            return null;
         }
     }
 
-    public Customer updateCustomer(Customer customer) throws CustomerExistentException {
-        try {
-            customerDAO.update(customer);
-            return customerDAO.getCustomerById(customer.getId());
-        } catch (DataAccessException e) {
-            logger.error("Error updating customer [" + customer + "]",e);
-            throw new CustomerExistentException();
-        }
+    public Customer updateCustomer(Customer customer) {
+        customerDAO.update(customer);
+        return customerDAO.getCustomerById(customer.getId());
     }
 
     public void removeCustomer(Customer customer) {
@@ -93,14 +82,14 @@ public class CustomerManagerImpl implements CustomerManager {
         customerDAO.delete(customer);
     }
 
-    public Customer createCustomer(Customer customer) throws CustomerExistentException {
-        try {
-            customerDAO.save(customer);
-            return customerDAO.getCustomerById(customer.getId());
-        } catch (DataAccessException e) {
-            logger.error("Error creating customer [" + customer + "]",e);
-            throw new CustomerExistentException();
-        }
+    public Customer createCustomer(Customer customer) {
+        customerDAO.save(customer);
+        return customerDAO.getCustomerById(customer.getId());
+    }
+
+    public boolean isRegistered(String email){
+        Customer c = customerDAO.getCustomerByEmail(email);
+        return (c != null);
     }
 
 }
