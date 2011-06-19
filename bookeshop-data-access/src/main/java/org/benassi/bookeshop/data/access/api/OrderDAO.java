@@ -23,19 +23,39 @@
 
 package org.benassi.bookeshop.data.access.api;
 
-
 import org.benassi.bookeshop.data.model.Order;
 
 import java.util.Set;
 
+/**
+ * Interface for order data access object
+ */
 public interface OrderDAO {
 
+    /**
+     * get an order by its id
+     * @param orderId the order's id
+     * @return the order or null if no order with the given id
+     */
     public Order getOrderById(final int orderId);
 
+    /**
+     * get orders for a customer
+     * @param customerId the customer's id
+     * @return the set of orders for the given customer
+     */
     public Set<Order> getOrdersByCustomer(final int customerId);
 
+    /**
+     * create an order
+     * @param order the order to persist
+     */
     public void createOrder(final Order order);
 
+    /**
+     * remove an order
+     * @param order the order to remove
+     */
     public void removeOrder(final Order order);
 
 }
