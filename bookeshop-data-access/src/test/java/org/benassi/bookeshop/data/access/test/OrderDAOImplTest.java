@@ -61,7 +61,7 @@ public class OrderDAOImplTest {
         Order order = orderDAO.getOrderById(22135);
         assertNotNull(order);
         assertEquals(1, order.getItems().size());
-        assertEquals("Mahmoud",order.getCustomer().getFirstName());
+        assertEquals(56325,order.getCustomerId());
     }
 
     @Test
@@ -74,9 +74,8 @@ public class OrderDAOImplTest {
     @Test
     public void testCreateOrder(){
 
-        Customer customer = customerDAO.getCustomerById(56325);
         Order order = new Order();
-        order.setCustomer(customer);
+        order.setCustomerId(56325);
         order.setDate(new Date());
         OrderStatus orderStatus = orderStatusDAO.getStatusById(1);
         order.setStatus(orderStatus);
