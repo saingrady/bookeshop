@@ -50,10 +50,9 @@
                         </tr>
                         <s:div style="clear: both;">&nbsp;</s:div>
                     </s:form>
-                    <s:form action="remove">
+                    <s:form action="remove" onsubmit="return confirm_account_removal()">
                         <s:submit value="Remove my account" cssClass="buttonStyle"/>
                     </s:form>
-                    <%-- TODO add onclick="confirm_account_removal()" --%>
                 </div>
             </div>
         </div>

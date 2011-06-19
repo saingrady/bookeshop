@@ -28,6 +28,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/style.css"  type="text/css" media="screen" />
+    <script type="text/javascript" src="js/validation.js"></script>
     <title>Book e-Shop</title>
 </head>
 
