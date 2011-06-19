@@ -48,7 +48,7 @@
         <aspectj.version>1.6.8</aspectj.version>
         <jasperreports.version>3.6.2</jasperreports.version>
         <itext.version>2.1.0</itext.version>
-        <hsqldb.version>1.8.0.10</hsqldb.version>
+        <hsqldb.version>2.0.0</hsqldb.version>
         <hibernate.version>3.6.2.Final</hibernate.version>
         <junit.version>4.7</junit.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
