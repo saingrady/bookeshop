@@ -28,11 +28,6 @@ import java.util.Map;
 
 public class ShoppingCartImpl implements ShoppingCart {
 
-    /*
-     * Using Map<Book,Integer> causes problem when loading books from DB
-     * Two different loaded books may have the same id but not the same object id
-     * NB : use bookId as map key instead
-     */
     //<bookId,quantity> map
     private Map<String,Integer> items;
 
