@@ -24,7 +24,6 @@
 package org.benassi.bookeshop.web.actions.customer;
 
 import org.benassi.bookeshop.business.api.CustomerManager;
-import org.benassi.bookeshop.business.exception.LoginException;
 import org.benassi.bookeshop.data.model.Customer;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
@@ -63,7 +62,7 @@ public class LoginAction implements SessionAware{
             return "success";
         }   else {
             error = "Invalid credentials";
-            logger.error(error);
+            logger.error(error + "[" + loginEmail + "," + loginPassword + "]");
             return "error";
         }
     }
