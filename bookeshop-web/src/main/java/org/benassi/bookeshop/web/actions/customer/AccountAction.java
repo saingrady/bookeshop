@@ -66,22 +66,22 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
     public String update() {
 
-        if (!customerManager.isRegistered(email)){
-
-            loggedCustomer.setFirstName(firstName);
-            loggedCustomer.setLastName(lastName);
-            loggedCustomer.setEmail(email);
-            loggedCustomer.setAddress(address);
-            loggedCustomer.setPassword(password);
-            customerManager.updateCustomer(loggedCustomer);
-            session.put("loggedCustomer",loggedCustomer);
-            return "success";
-
-        } else {
-            error = "We have already an account for email ' " + email + " '!";
-            return "error";
+        if (loggedCustomer.getEmail() != email) { //user modified his email
+            if (customerManager.isRegistered(email)) { //check if new email is already registered
+                error = "We have already an account for email ' " + email + " '!";
+                return "error";
+            } else {
+                loggedCustomer.setEmail(email);
+            }
         }
 
+        loggedCustomer.setFirstName(firstName);
+        loggedCustomer.setLastName(lastName);
+        loggedCustomer.setAddress(address);
+        loggedCustomer.setPassword(password);
+        customerManager.updateCustomer(loggedCustomer);
+        session.put("loggedCustomer", loggedCustomer);
+        return "success";
     }
 
     @SkipValidation
