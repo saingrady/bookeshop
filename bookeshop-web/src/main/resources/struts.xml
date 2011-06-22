@@ -156,6 +156,12 @@
 
     <package name="utils" extends="struts-default">
 
+        <action name="locale" class="org.benassi.bookeshop.web.actions.LocaleAction">
+            <result type="redirectAction">
+                <param name="actionName">catalogue</param>
+            </result>
+        </action>
+
         <action name="index" class="org.benassi.bookeshop.web.actions.IndexAction">
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
