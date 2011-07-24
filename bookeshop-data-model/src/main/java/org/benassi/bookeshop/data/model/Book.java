@@ -23,7 +23,6 @@
 
 package org.benassi.bookeshop.data.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
