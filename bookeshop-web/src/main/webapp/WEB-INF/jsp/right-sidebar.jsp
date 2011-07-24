@@ -31,9 +31,9 @@
             <c:choose>
                 <c:when test="${loggedCustomer == null || loggedCustomer.id == 0}">
                     <h2>Client Account</h2>
-                    <s:form action="login">
-                        <s:textfield name="loginEmail" label="Email" size="13"/>
-                        <s:password name="loginPassword" label="Password" size="13"/>
+                    <s:form action="login" onsubmit="return check_empty_credentials()">
+                        <s:textfield name="loginEmail" label="Email" id="email" size="13"/>
+                        <s:password name="loginPassword" label="Password" id="password" size="13"/>
                         <s:submit value="Sign In" cssClass="buttonStyle"/>
                     </s:form>
                     New customer? <a href="create.do">Start here</a></p>
@@ -64,8 +64,8 @@
         </li>
         <li>
             <h2>Quick Search</h2>
-            <s:form action="lookup">
-                <s:textfield name="keyword" label="Title/Author" size="12"/>
+            <s:form action="lookup" onsubmit="return check_empty_keyword()">
+                <s:textfield id="keyword" name="keyword" label="Title/Author" size="12"/>
                 <s:submit value="Go!" cssClass="buttonStyle"/>
             </s:form>
         </li>
