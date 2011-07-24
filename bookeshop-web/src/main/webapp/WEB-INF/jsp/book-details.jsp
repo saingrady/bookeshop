@@ -63,7 +63,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Availability :</td>
+                            <td>Availability</td>
                             <td align="center"><c:out value="${book.stockStatus}"/>
                                 <c:if test="${book.stockStatus != 'Out of stock'}">
                                     <a href="addItem.do?bookId=${book.isbn}"><img src="images/icons/cart_add.png" width="32" height="32" border="0"/></a>
