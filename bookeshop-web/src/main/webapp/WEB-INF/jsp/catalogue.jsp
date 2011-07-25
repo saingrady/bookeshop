@@ -33,7 +33,7 @@
             <div class="post-bgbtm">
                 <div align="center">
                     <br/>
-                    <h1>Welcome ${loggedCustomer.firstName}</h1><br/>
+                    <h1>Discount books!</h1><br/>
                     <display:table name="books" uid="book" sort="list" defaultorder="descending" requestURI="catalogue.do" class="dttable">
                         <display:column title="Preview" >
                             <a href="bookDetails.do?bookId=${book.isbn}">
