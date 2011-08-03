@@ -85,4 +85,8 @@
          <property name="totalFormat" value="###.##"/>
     </bean>
 
+    <bean id="ajaxContentProvider" class="org.benassi.bookeshop.web.util.AjaxContentProvider">
+        <property name="velocityEngine" ref="velocityEngine"/>
+    </bean>
+
 </beans>

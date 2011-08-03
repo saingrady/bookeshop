@@ -1,0 +1,29 @@
+<table border="1" cellpadding="4">
+    <tr>
+        <td align="center" rowspan="7"><img src="images/books/${book.isbn}.gif"/></td>
+    </tr>
+    <tr>
+        <td>ISBN</td>
+        <td align="center">$book.isbn</td>
+    </tr>
+    <tr>
+        <td>Title</td>
+        <td align="center">$book.title</td>
+    </tr>
+    <tr>
+        <td>Author</td>
+        <td align="center">$book.author.firstName $book.author.lastName</td>
+    </tr>
+    <tr>
+        <td>Publication date</td>
+        <td align="center">$book.formattedPublishDate</td>
+    </tr>
+    <tr>
+        <td>Price</td>
+        <td align="center">$book.discountPrice <img src="images/icons/euro.png" width="12" height="12" border="0"/></td>
+    </tr>
+    <tr>
+        <td>Availability</td>
+        <td align="center">$book.stockStatus</td>
+    </tr>
+</table>
