@@ -27,6 +27,10 @@ import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.web.cart.ShoppingCart;
+import org.benassi.bookeshop.web.util.AjaxContentProvider;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 /**
  * Action class to update cart content
@@ -43,6 +47,10 @@ public class UpdateCartAction {
 
     private String error;
 
+    private InputStream inputStream;
+
+    private AjaxContentProvider ajaxContentProvider;
+
     public String addItem(){
 
         Book book = bookManager.getBookByIsbn(bookId);
@@ -55,6 +63,29 @@ public class UpdateCartAction {
         }
         else {
             error = "Please sign up or log in to buy from Book e-Shop";
+            return "error";
+        }
+    }
+
+    public String addItemWithAjax(){
+
+        Book book = bookManager.getBookByIsbn(bookId);
+
+        if(loggedCustomer.getId()!= 0 && theCart != null){
+            if(book != null){
+                theCart.addItem(book.getIsbn());
+                String message = ajaxContentProvider.getCartUpdateAsJson(book.getTitle(),theCart.getCount());
+                inputStream = new ByteArrayInputStream(message.getBytes());
+                return "success";
+            }else{
+                error = "No such book with Id = " + bookId;
+                inputStream = new ByteArrayInputStream(error.getBytes());
+                return "error";
+            }
+        }
+        else {
+            error = "Please sign up or log in to buy from Book e-Shop";
+            inputStream = new ByteArrayInputStream(error.getBytes());
             return "error";
         }
     }
@@ -101,6 +132,10 @@ public class UpdateCartAction {
         this.bookManager = bookManager;
     }
 
+    public void setAjaxContentProvider(AjaxContentProvider ajaxContentProvider) {
+        this.ajaxContentProvider = ajaxContentProvider;
+    }
+
      /*
      * Setters for request parameters
      */
@@ -111,6 +146,10 @@ public class UpdateCartAction {
     /*
      * Getters for model
      */
+    public InputStream getInputStream() {
+        return inputStream;
+    }
+
     public String getError() {
         return error;
     }

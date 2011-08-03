@@ -37,7 +37,7 @@
                         <c:when test="${not empty foundItems}">
                             <display:table name="foundItems" uid="book" sort="list" defaultorder="descending" requestURI="lookup.do" class="dttable">
                                 <display:column title="Preview" >
-                                    <a href="bookDetails.do?bookId=${book.isbn}">
+                                    <a href="bookDetails.do?bookId=${book.isbn}&height=200&width=300" title="Book details" class="thickbox">
                                         <img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/>
                                     </a>
                                 </display:column>
@@ -59,7 +59,7 @@
                                             <img src="images/icons/cancel.png" width="32" height="32" border="0"/>
                                         </c:when>
                                         <c:otherwise>
-                                            <a href="addItem.do?bookId=${book.isbn}"><img src="images/icons/cart_add.png" width="32" height="32" border="0"/></a>
+                                            <a href="javascript:addItemToCart(${book.isbn})"><img src="images/icons/cart_add.png" width="32" height="32" border="0"/></a>
                                         </c:otherwise>
                                     </c:choose>
                                 </display:column>

@@ -51,6 +51,7 @@
         <li>
             <h2>Shopping Cart</h2>
             <ul>
+                <div id="cartStatus">
                 <c:choose>
                     <c:when test="${theCart == null || theCart.count == 0}">
                         <li>Your shopping cart is empty</li>
@@ -60,6 +61,7 @@
                         <a href="cartDetails.do">cart details</a>
                     </c:otherwise>
                 </c:choose>
+                </div>
             </ul>
         </li>
         <li>

@@ -26,6 +26,10 @@ package org.benassi.bookeshop.web.actions.book;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.web.util.BookUtil;
+import org.benassi.bookeshop.web.util.AjaxContentProvider;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 /**
  * BookDetailsAction : action class to get book details
@@ -42,16 +46,23 @@ public class BookDetailsAction {
 
     private String error;
 
+    private InputStream inputStream;
+
+    private AjaxContentProvider ajaxContentProvider;
+
     public String execute(){
         book = bookManager.getBookByIsbn(bookId);
         if (book != null){
             //prepare book for view
             book.setStockStatus(bookUtil.getStockStatus(book.getStock()));
             book.setFormattedPublishDate(bookUtil.formatPublishDate(book.getPublishDate()));
+            String message = ajaxContentProvider.getBookDetailsAsHtml(book);
+            inputStream = new ByteArrayInputStream(message.getBytes());
             return "success";
         }
         else {
             error = "No such book with ISBN = " + bookId;
+            inputStream = new ByteArrayInputStream(error.getBytes());
             return "error";
         }
 
@@ -69,9 +80,13 @@ public class BookDetailsAction {
         this.bookUtil = bookUtil;
     }
 
-     /*
-     * Setters for request parameters
-     */
+    public void setAjaxContentProvider(AjaxContentProvider ajaxContentProvider) {
+        this.ajaxContentProvider = ajaxContentProvider;
+    }
+
+    /*
+    * Setters for request parameters
+    */
     public void setBookId(String bookId) {
         this.bookId = bookId;
     }
@@ -79,6 +94,9 @@ public class BookDetailsAction {
     /*
      * Getters for model
      */
+    public InputStream getInputStream() {
+        return inputStream;
+    }
 
     public Book getBook() {
         return book;
