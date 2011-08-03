@@ -40,7 +40,7 @@
                             <th><b>Title</b></th>
                             <th><b>Author</b></th>
                             <th><b>Publication date</b></th>
-                            <th><b>Price (euro)</b></th>
+                            <th><b>Price <img src="images/icons/euro.png" width="12" height="12" border="0"/></b></th>
                             <th><b>Quantity</b></th>
                         </tr>
                         </thead>
