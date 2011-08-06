@@ -33,7 +33,7 @@
             <div class="post-bgbtm">
                 <div align="center">
                     <br/>
-                    <h1> Order details : N° ${order.orderId} (${order.formattedDate} | ${order.status.label})  </h1><br/>
+                    <h1> Order N° ${order.orderId} details : (${order.formattedDate} | ${order.status.label})  </h1><br/>
                     <display:table name="items" uid="item" sort="list" defaultorder="descending" requestURI="orderDetails.do" class="dttable">
                         <display:column property="bookId" title="Book ID"/>
                         <display:column property="quantity" title="Quantity" sortable="true"/>
