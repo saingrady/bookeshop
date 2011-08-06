@@ -26,7 +26,6 @@ package org.benassi.bookeshop.web.util;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
 import org.benassi.bookeshop.data.model.Book;
-import org.benassi.bookeshop.data.model.Order;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import java.util.HashMap;
