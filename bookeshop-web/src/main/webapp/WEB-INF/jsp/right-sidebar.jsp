@@ -30,7 +30,7 @@
         <li>
             <c:choose>
                 <c:when test="${loggedCustomer == null || loggedCustomer.id == 0}">
-                    <h2>Client Account</h2>
+                    <h2>Client account</h2>
                     <s:form action="login" onsubmit="return check_empty_credentials()">
                         <s:textfield name="loginEmail" label="Email" id="email" size="13"/>
                         <s:password name="loginPassword" label="Password" id="password" size="13"/>
@@ -49,7 +49,7 @@
             </c:choose>
         </li>
         <li>
-            <h2>Shopping Cart</h2>
+            <h2>Shopping cart</h2>
             <ul>
                 <div id="cartStatus">
                 <c:choose>
@@ -65,7 +65,7 @@
             </ul>
         </li>
         <li>
-            <h2>Quick Search</h2>
+            <h2>Quick search</h2>
             <s:form action="lookup" onsubmit="return check_empty_keyword()">
                 <s:textfield id="keyword" name="keyword" label="Title/Author" size="12"/>
                 <s:submit value="Go!" cssClass="buttonStyle"/>
