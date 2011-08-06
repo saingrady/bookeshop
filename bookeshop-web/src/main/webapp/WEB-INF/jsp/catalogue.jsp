@@ -37,7 +37,7 @@
                     <display:table name="books" uid="book" sort="list" defaultorder="descending" requestURI="catalogue.do" class="dttable">
                         <display:column title="Preview" >
                             <a href="bookDetails.do?bookId=${book.isbn}&height=200&width=300" title="Book details" class="thickbox">
-                                <img src="images/books/${book.isbn}.gif" width="80" height="120" border="0"/>
+                                <img src="images/books/${book.isbn}.gif" width="80" height="100" border="0"/>
                             </a>
                         </display:column>
                         <display:column property="title" title="Title" sortable="true"/>
