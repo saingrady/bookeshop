@@ -53,8 +53,8 @@
                                 <c:forEach var="entry" items="${items}">
                                     <tr>
                                         <td>
-                                            <a href="bookDetails.do?bookId=${entry.key.isbn}">
-                                                <img src="images/books/${entry.key.isbn}.gif" width="80" height="120" border="0"/>
+                                            <a href="bookDetails.do?bookId=${entry.key.isbn}&height=200&width=300" title="Book details" class="thickbox">
+                                                <img src="images/books/${entry.key.isbn}.gif" width="80" height="100" border="0"/>
                                             </a>
                                         </td>
                                         <td><c:out value="${entry.key.isbn}"/></td>
