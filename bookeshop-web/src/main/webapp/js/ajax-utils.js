@@ -46,8 +46,30 @@ function updateCartStatus(request) {
         var jsonResponse = eval( "(" + request.responseText + ")");
         var cartStatus = "<li>Items number = " + jsonResponse.cartSize + "</li><a href='cartDetails.do\'>cart details</a>";
         document.getElementById("cartStatus").innerHTML = cartStatus;
-        alert("Book '" + jsonResponse.book + "' successfully added your cart.");
+        var message = "Book '" + jsonResponse.book + "' successfully added your cart.";
+        styledDialog("Confirmation",message,false);
     }else {
-        alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
+        var error = "HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText;
+        styledDialog("Error",error,true);
     }
+}
+
+/*
+ * JQueryUI
+ */
+function styledDialog(title,message,modal){
+	var $dialog = $('<div></div>')
+	.html(message)
+	.dialog({
+		autoOpen: false,
+		title: title,
+        modal : modal,
+		buttons: {
+				OK: function() {
+                    $( this ).dialog( "close" );
+                    return true;
+				}
+	}});
+
+	$dialog.dialog('open');
 }

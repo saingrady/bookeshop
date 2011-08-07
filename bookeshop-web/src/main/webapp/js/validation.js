@@ -6,7 +6,7 @@ function confirm_account_removal(){
 function check_empty_keyword(){
     keyword = document.getElementById("keyword").value;
     if (keyword == ""){
-        alert("Please enter a keyword!")
+        styledDialog("Information","Please enter a keyword for search.",true);
         return false;
     }else
     return true;
@@ -16,7 +16,7 @@ function check_empty_credentials(){
     email = document.getElementById("email").value;
     password = document.getElementById("password").value;
     if (email == "" || password == ""){
-        alert("Please enter login credentials!")
+        styledDialog("Information","Please enter your login credentials!",true);
         return false;
     }else
     return true;

@@ -33,8 +33,8 @@
     <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
     <script type="text/javascript" src="js/thickbox.js"></script>
+    <script type="text/javascript" src="js/ajax-utils.js"></script>
     <script type="text/javascript" src="js/validation.js"></script>
-    <script src="js/ajax-utils.js"></script>
     <link rel="shortcut icon" href="images/icons/book_icon.ico"/>
     <title>Book e-Shop</title>
 </head>
