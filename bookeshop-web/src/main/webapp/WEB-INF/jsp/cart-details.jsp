@@ -43,10 +43,9 @@
                                     <th><b>Isbn</b></th>
                                     <th><b>Title</b></th>
                                     <th><b>Author</b></th>
-                                    <th><b>Publication date</b></th>
-                                    <th><b>Price (euro)</b></th>
+                                    <th><b>Date</b></th>
+                                    <th><b>Price <img src="images/icons/euro.png" width="12" height="12" border="0"/></b></th>
                                     <th><b>Quantity</b></th>
-                                    <th><b>update</b></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -63,11 +62,12 @@
                                         <td><c:out value="${entry.key.formattedPublishDate}"/></td>
                                         <td><c:out value="${entry.key.price}"/>
                                         <c:if test="${entry.key.offer != 0}">
-                                                <img src="images/icons/offer_${entry.key.offer}.png" width="32" height="32" border="0"/> = <c:out value="${entry.key.discountPrice}"/>
+                                                <img src="images/icons/offer_${entry.key.offer}.png" width="32" height="32" border="0" align="absmiddle"/>
                                         </c:if>
                                         </td>
-                                        <td><c:out value="${entry.value}"/></td>
-                                        <td><a href="addItem.do?bookId=${entry.key.isbn}"/><img src="images/icons/cart_add.png" width="32" height="32" border="0"/><a href="removeItem.do?bookId=${entry.key.isbn}"/><img src="images/icons/cart_remove.png" width="32" height="32" border="0"/></td>
+                                        <td><c:out value="${entry.value}"/><br/><br/>
+                                        <a href="addItem.do?bookId=${entry.key.isbn}"/><img src="images/icons/cart_add.png" width="32" height="32" border="0"/><a href="removeItem.do?bookId=${entry.key.isbn}"/><img src="images/icons/cart_remove.png" width="32" height="32" border="0"/>
+                                        </td>
 
                                     </tr>
                                 </c:forEach>

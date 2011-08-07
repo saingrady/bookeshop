@@ -44,14 +44,14 @@
                         <display:column title="Author" sortable="true">
                             <c:out value="${book.author.firstName}"/> <c:out value="${book.author.lastName}"/>
                         </display:column>
-                        <display:column property="formattedPublishDate" title="Publication date" sortable="true"/>
-                        <display:column property="price" title="Price (euro)" sortable="true"/>
-                        <display:column title="Offer">
+                        <display:column property="formattedPublishDate" title="Date" sortable="true"/>
+                        <display:column title='Price <img src="images/icons/euro.png" width="12" height="12" border="0"/>' sortable="true">
+                            <c:out value="${book.price}"/>
                             <c:if test="${book.offer != 0}">
-                                <img src="images/icons/offer_${book.offer}.png" width="32" height="32" border="0"/>
+                                <img src="images/icons/offer_${book.offer}.png" width="32" height="32" border="0" align="absmiddle"/>
                             </c:if>
                         </display:column>
-                        <display:column property="stockStatus" title="Stock" />
+                        <display:column property="stockStatus" title="Stock"/>
                         <display:column title="Cart" >
                             <c:choose>
                                 <c:when test="${book.stockStatus == 'Out of stock'}">
