@@ -74,17 +74,17 @@ public class UpdateCartAction {
         if(loggedCustomer.getId()!= 0 && theCart != null){
             if(book != null){
                 theCart.addItem(book.getIsbn());
-                String message = ajaxContentProvider.getCartUpdateAsJson(book.getTitle(),theCart.getCount());
+                String message = ajaxContentProvider.getCartUpdateAsJson("ok",book.getTitle(),theCart.getCount(),null);
                 inputStream = new ByteArrayInputStream(message.getBytes());
                 return "success";
             }else{
-                error = "No such book with Id = " + bookId;
+                error = ajaxContentProvider.getCartUpdateAsJson("ko",null,null,"No such book with Id = " + bookId);
                 inputStream = new ByteArrayInputStream(error.getBytes());
                 return "error";
             }
         }
         else {
-            error = "Please sign up or log in to buy from Book e-Shop";
+            error = ajaxContentProvider.getCartUpdateAsJson("ko",null,null,"Please sign up or log in to buy from Book e-Shop");
             inputStream = new ByteArrayInputStream(error.getBytes());
             return "error";
         }

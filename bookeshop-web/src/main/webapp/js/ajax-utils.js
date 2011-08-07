@@ -44,10 +44,13 @@ function updateCartStatus(request) {
     if ((request.readyState == 4) &&
         (request.status == 200)) {
         var jsonResponse = eval( "(" + request.responseText + ")");
-        var cartStatus = "<li>Items number = " + jsonResponse.cartSize + "</li><a href='cartDetails.do\'>cart details</a>";
-        document.getElementById("cartStatus").innerHTML = cartStatus;
-        var message = "Book '" + jsonResponse.book + "' successfully added your cart.";
-        styledDialog("Confirmation",message,false);
+        if(jsonResponse.status == "ok"){
+            var cartStatus = "<li>Items number = " + jsonResponse.cartSize + "</li><a href='cartDetails.do\'>cart details</a>";
+            document.getElementById("cartStatus").innerHTML = cartStatus;
+            var message = "Book '" + jsonResponse.book + "' successfully added your cart.";
+            styledDialog("Confirmation",message,false);
+        }else
+            styledDialog("Error",jsonResponse.error,false);
     }else {
         var error = "HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText;
         styledDialog("Error",error,true);

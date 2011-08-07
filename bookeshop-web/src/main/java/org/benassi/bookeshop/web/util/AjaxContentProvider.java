@@ -38,11 +38,13 @@ public class AjaxContentProvider {
 
     private VelocityEngine velocityEngine;
 
-    public String getCartUpdateAsJson(final String title,final int size){
+    public String getCartUpdateAsJson(final String status,final String title,final Integer size,final String error){
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        sb.append("status:\"" + status + "\",");
         sb.append("book:\"" + title + "\",");
-        sb.append("cartSize:\""+ size + "\"");
+        sb.append("cartSize:\""+ size + "\",");
+        sb.append("error:\""+ error + "\"");
         sb.append("}");
         return sb.toString();
     }
