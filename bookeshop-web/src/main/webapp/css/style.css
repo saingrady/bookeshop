@@ -106,7 +106,13 @@ a:hover {
 	float: left;
 	padding: 40px 0 0 10px;
 	letter-spacing: -1px;
-	font-size: 4.5em;
+	font-size: 3.5em;
+}
+
+#logo h3 {
+	float: right;
+	padding: 40px 0 0 10px;
+	font-size: 1.2em;
 }
 
 #logo p {
@@ -560,5 +566,4 @@ input[type="submit"].buttonStyle:active,input[type="reset"].buttonStyle:active {
 /* stock style */
 .stock{
     font-weight: bold;
-    color: #006400;
 }
