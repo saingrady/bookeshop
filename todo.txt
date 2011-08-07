@@ -25,12 +25,10 @@ Book e-Shop v2.0 : Struts2 + Spring3 + Hibernate3
 
 TODO enhancements:
 - remove setters for DI, use @Autowired and @Inject instead
-- add I18N (english,french)
 - review TX advised methods / test transactional behaviour
 - update struts URLs (naming + namespace)
 - review pom dependencies (dependency plugin : analyze)
 TODO Features:
 - add security checks (Spring security)
-- add javascript (jQuery) for client side validation and UI effects (thickbox)
-- add ajax to get book/order details and update cart without reloading/redirecting to details JSPs
+- add I18N (english,french)
 - add SOAP/REST web services exposed to partners (available books, quantity,etc)
