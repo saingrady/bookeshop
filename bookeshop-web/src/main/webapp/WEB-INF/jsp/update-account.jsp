@@ -50,9 +50,7 @@
                         </tr>
                         <s:div style="clear: both;">&nbsp;</s:div>
                     </s:form>
-                    <s:form action="remove" onsubmit="return confirm_account_removal()">
-                        <s:submit value="Remove my account" cssClass="buttonStyle"/>
-                    </s:form>
+                    <button type="button" onclick="confirm_account_removal()">Remove my account</button>
                 </div>
             </div>
         </div>

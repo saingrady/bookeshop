@@ -29,12 +29,12 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/style.css"  type="text/css" media="screen" />
     <link rel="stylesheet" href="css/thickbox.css"  type="text/css" media="screen" />
-    <link rel="stylesheet" href="css/cupertino/jquery-ui-1.8.13.custom.css" type="text/css" />
+    <link rel="stylesheet" href="css/zebra/zebra_dialog.css" type="text/css" />
     <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.14.custom.min.js"></script>
     <script type="text/javascript" src="js/thickbox.js"></script>
-    <script type="text/javascript" src="js/ajax-utils.js"></script>
+    <script type="text/javascript" src="js/zebra_dialog.js"></script>
     <script type="text/javascript" src="js/validation.js"></script>
+    <script type="text/javascript" src="js/ajax-utils.js"></script>
     <link rel="shortcut icon" href="images/icons/book_icon.ico"/>
     <title>Book e-Shop</title>
 </head>
@@ -46,8 +46,8 @@
             <h1><a href="index.do">Book e-Shop <img src="images/icons/library.png" width="64" height="64" border="0" align="absmiddle"/></a></h1>
             <h3>
                 Customer service &nbsp; <img src="images/icons/customer_service.png" width="32" height="32" border="0" align="absmiddle"/><br/>
-                <img src="images/icons/phone.png" width="32" height="32" border="0" align="absmiddle"/> +33 1 23 45 67 89 <br/>
-                <img src="images/icons/email_icon.png" width="32" height="32" border="0" align="absmiddle"/> <a href="mailto:customer@bookeshop.com">customer@bookeshop.com</a>
+                <img src="images/icons/phone.png" width="24" height="24" border="0" align="absmiddle"/> +33 1 23 45 67 89 <br/>
+                <img src="images/icons/email_icon.png" width="24" height="24" border="0" align="absmiddle"/> <a href="mailto:customer@bookeshop.com">customer@bookeshop.com</a>
             </h3>
 		</div>
 	</div>

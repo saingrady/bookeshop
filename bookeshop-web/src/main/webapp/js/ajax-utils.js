@@ -47,32 +47,14 @@ function updateCartStatus(request) {
         if(jsonResponse.status == "ok"){
             var cartStatus = "<li>Items number = " + jsonResponse.cartSize + "</li><a href='cartDetails.do\'>cart details</a>";
             document.getElementById("cartStatus").innerHTML = cartStatus;
-            var message = "Book '" + jsonResponse.book + "' successfully added your cart.";
-            styledDialog("Confirmation",message,false);
+            var message = "Book '" + jsonResponse.book + "' successfully added your cart.<br/>" +
+                "Your cart contains " + jsonResponse.cartSize + " item(s)<br/>" +
+                "<a href='cartDetails.do\'>cart details</a>";
+            zebra_styled_dialog("confirmation","Confirmation",message,true);
         }else
-            styledDialog("Error",jsonResponse.error,false);
+            zebra_styled_dialog("error","Error",jsonResponse.error,true);
     }else {
         var error = "HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText;
         styledDialog("Error",error,true);
     }
-}
-
-/*
- * JQueryUI
- */
-function styledDialog(title,message,modal){
-	var $dialog = $('<div></div>')
-	.html(message)
-	.dialog({
-		autoOpen: false,
-		title: title,
-        modal : modal,
-		buttons: {
-				OK: function() {
-                    $( this ).dialog( "close" );
-                    return true;
-				}
-	}});
-
-	$dialog.dialog('open');
 }
