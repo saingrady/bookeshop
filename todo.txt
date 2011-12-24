@@ -30,5 +30,6 @@ TODO enhancements:
 - review pom dependencies (dependency plugin : analyze)
 TODO Features:
 - add security checks (Spring security)
+- add cache (ehcache)
 - add I18N (english,french)
 - add SOAP/REST web services exposed to partners (available books, quantity,etc)
