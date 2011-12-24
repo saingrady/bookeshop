@@ -26,11 +26,12 @@ package org.benassi.bookeshop.web.actions.cart;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
+import org.benassi.bookeshop.web.util.BookComparator;
 import org.benassi.bookeshop.web.util.BookUtil;
 
 import java.text.DecimalFormat;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Action class to show shopping cart details
@@ -53,7 +54,7 @@ public class CartDetailsAction {
 
        if( theCart != null){
            total = 0;
-           items = new HashMap<Book,Integer>();
+           items = new TreeMap<Book,Integer>(new BookComparator());
            for (String bookId : theCart.getItems().keySet()) {
                Book book = bookManager.getBookByIsbn(bookId);
                book.setStockStatus(bookUtil.getStockStatus(book.getStock()));
