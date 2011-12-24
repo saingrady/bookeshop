@@ -24,7 +24,9 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
     <!-- ========================== -->
     <!--   Business configuration   -->
@@ -51,8 +53,12 @@
         <property name="bookManager" ref="bookManager"/>
     </bean>
 
-    <bean id="theCart" class="org.benassi.bookeshop.web.cart.ShoppingCartImpl" scope="session"/>
+    <bean id="theCart" class="org.benassi.bookeshop.web.cart.ShoppingCartImpl" scope="session">
+        <aop:scoped-proxy/>
+    </bean>
 
-    <bean id="loggedCustomer" class="org.benassi.bookeshop.data.model.Customer" scope="session"/>
+    <bean id="loggedCustomer" class="org.benassi.bookeshop.data.model.Customer" scope="session">
+        <aop:scoped-proxy/>
+    </bean>
 
 </beans>
