@@ -28,7 +28,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>BookeShop</artifactId>
+        <artifactId>bookeshop</artifactId>
         <groupId>org.benassi</groupId>
         <version>2.0</version>
     </parent>
