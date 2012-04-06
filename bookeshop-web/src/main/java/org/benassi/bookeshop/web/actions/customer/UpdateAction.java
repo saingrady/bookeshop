@@ -24,21 +24,27 @@
 package org.benassi.bookeshop.web.actions.customer;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.data.model.Customer;
+
+import java.util.Map;
 
 /**
  * Action class to redirect update account requests to update form page
  */
-public class UpdateAction extends ActionSupport {
+public class UpdateAction extends ActionSupport implements SessionAware {
 
     private Customer loggedCustomer;
+
+    private Map<String, Object> session;
 
     /*
      * Setters for DI
      */
 
-    public void setLoggedCustomer(Customer loggedCustomer) {
-        this.loggedCustomer = loggedCustomer;
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
+        this.loggedCustomer = (Customer)session.get("loggedCustomer");
     }
 
     /*
@@ -66,10 +72,6 @@ public class UpdateAction extends ActionSupport {
         return loggedCustomer.getAddress();
     }
 
-    /*
-     * Warning : even with password getters, password fields are not populated in the form when using <s:password> tag 
-     * (but they are populated when using <s:textfield>)
-     */
     public String getPassword() {
         return loggedCustomer.getPassword();
     }

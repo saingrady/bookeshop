@@ -25,17 +25,21 @@ package org.benassi.bookeshop.web.actions.customer;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
+import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.business.api.OrderManager;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.web.util.OrderUtil;
 
+import java.util.Map;
 import java.util.Set;
 
 /**
  * Action class to get customer orders
  */
-public class OrderAction extends ActionSupport implements Preparable{
+public class OrderAction extends ActionSupport implements SessionAware, Preparable{
+
+    private Map<String,Object> session;
 
     private OrderManager orderManager;
 
@@ -55,16 +59,17 @@ public class OrderAction extends ActionSupport implements Preparable{
      * Setters for DI
      */
 
-    public void setLoggedCustomer(Customer loggedCustomer) {
-        this.loggedCustomer = loggedCustomer;
-    }
-
     public void setOrderManager(OrderManager orderManager) {
         this.orderManager = orderManager;
     }
 
     public void setOrderUtil(OrderUtil orderUtil) {
         this.orderUtil = orderUtil;
+    }
+
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
+        loggedCustomer = (Customer)session.get("loggedCustomer");
     }
 
     /*

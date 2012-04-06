@@ -30,6 +30,7 @@ import org.benassi.bookeshop.data.model.Customer;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+import org.benassi.bookeshop.web.cart.ShoppingCartImpl;
 
 import java.util.Map;
 
@@ -44,8 +45,6 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
     private Customer loggedCustomer;
 
-    private ShoppingCart theCart;
-
     private String error;
 
     public String create() {
@@ -53,9 +52,9 @@ public class AccountAction extends ActionSupport implements SessionAware {
         if (!customerManager.isRegistered(email)){
 
             Customer customer = new Customer(firstName,lastName,address,email,password);
-            customerManager.createCustomer(customer);
+            customer = customerManager.createCustomer(customer);
             session.put("loggedCustomer",customer);
-            session.put("theCart",theCart);
+            session.put("theCart",new ShoppingCartImpl());
             return "success";
 
         }  else {
@@ -109,16 +108,9 @@ public class AccountAction extends ActionSupport implements SessionAware {
         this.customerManager = customerManager;
     }
 
-    public void setTheCart(ShoppingCart theCart) {
-        this.theCart = theCart;
-    }
-
     public void setSession(Map<String, Object> session) {
         this.session = session;
-    }
-
-    public void setLoggedCustomer(Customer loggedCustomer) {
-        this.loggedCustomer = loggedCustomer;
+        loggedCustomer = (Customer)session.get("loggedCustomer");
     }
 
     /*

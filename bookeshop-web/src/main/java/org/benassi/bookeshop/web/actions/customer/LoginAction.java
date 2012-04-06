@@ -25,8 +25,8 @@ package org.benassi.bookeshop.web.actions.customer;
 
 import org.benassi.bookeshop.business.api.CustomerManager;
 import org.benassi.bookeshop.data.model.Customer;
-import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
+import org.benassi.bookeshop.web.cart.ShoppingCartImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,24 +41,19 @@ public class LoginAction implements SessionAware{
 
     private CustomerManager customerManager;
 
-    private ShoppingCart theCart;
-
     private String loginEmail;
 
     private String loginPassword;
 
     private Map<String, Object> session;
 
-    private Customer loggedCustomer;
-
     private String error;
 
     public String execute(){
-        Customer c = customerManager.login(loginEmail, loginPassword);
-        if (c != null){
-            loggedCustomer = c;
-            session.put("loggedCustomer",loggedCustomer);
-            session.put("theCart",theCart);
+        Customer customer = customerManager.login(loginEmail, loginPassword);
+        if (customer != null){
+            session.put("loggedCustomer",customer);
+            session.put("theCart",new ShoppingCartImpl());
             return "success";
         }   else {
             error = "Invalid credentials";
@@ -77,10 +72,6 @@ public class LoginAction implements SessionAware{
 
     public void setSession(Map<String, Object> session) {
         this.session = session;
-    }
-
-    public void setTheCart(ShoppingCart theCart) {
-        this.theCart = theCart;
     }
 
     /*

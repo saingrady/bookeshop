@@ -56,12 +56,4 @@
         <property name="bookManager" ref="bookManager"/>
     </bean>
 
-    <bean id="theCart" class="org.benassi.bookeshop.web.cart.ShoppingCartImpl" scope="session">
-        <aop:scoped-proxy></aop:scoped-proxy>
-    </bean>
-
-    <bean id="loggedCustomer" class="org.benassi.bookeshop.data.model.Customer" scope="session">
-        <aop:scoped-proxy></aop:scoped-proxy>
-    </bean>
-
 </beans>

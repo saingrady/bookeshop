@@ -40,7 +40,9 @@ import java.util.Map;
 /**
  * Action class to checkout an order
  */
-public class CheckoutAction {
+public class CheckoutAction implements SessionAware{
+
+    private Map<String, Object> session;
 
     private BookManager bookManager;
 
@@ -89,12 +91,10 @@ public class CheckoutAction {
     /*
      * Setters for DI
      */
-    public void setLoggedCustomer(Customer loggedCustomer) {
-        this.loggedCustomer = loggedCustomer;
-    }
-
-    public void setTheCart(ShoppingCart theCart) {
-        this.theCart = theCart;
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
+        loggedCustomer = (Customer)session.get("loggedCustomer");
+        theCart = (ShoppingCart) session.get("theCart");
     }
 
     public void setBookManager(BookManager bookManager) {

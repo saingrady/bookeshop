@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.web.actions.cart;
 
+import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.data.model.Customer;
@@ -31,11 +32,14 @@ import org.benassi.bookeshop.web.util.AjaxContentProvider;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Map;
 
 /**
  * Action class to update cart content
  */
-public class UpdateCartAction {
+public class UpdateCartAction implements SessionAware {
+
+    private Map<String, Object> session;
 
     private BookManager bookManager;
 
@@ -120,12 +124,10 @@ public class UpdateCartAction {
     /*
     * Setters for DI
     */
-    public void setTheCart(ShoppingCart theCart) {
-        this.theCart = theCart;
-    }
-
-    public void setLoggedCustomer(Customer loggedCustomer) {
-        this.loggedCustomer = loggedCustomer;
+    public void setSession(Map<String, Object> session) {
+        this.session = session;
+        this.loggedCustomer = (Customer)session.get("loggedCustomer");
+        this.theCart = (ShoppingCart)session.get("theCart");
     }
 
     public void setBookManager(BookManager bookManager) {
