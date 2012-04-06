@@ -28,9 +28,9 @@ package org.benassi.bookeshop.web.util;
  */
 public class BookeshopConstants {
 
-    public static final String SESSION_USER = "customer";
+    public static final String SESSION_USER = "loggedCustomer";
 
-    public static final String SESSION_CART = "cart";
+    public static final String SESSION_CART = "theCart";
 
     public static final String APPLICATION_CATEGORIES = "categories";
 
