@@ -30,7 +30,6 @@ import org.benassi.bookeshop.data.model.Customer;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
-import org.benassi.bookeshop.web.cart.ShoppingCartImpl;
 import org.benassi.bookeshop.web.util.BookeshopConstants;
 
 import java.util.Map;
@@ -55,7 +54,7 @@ public class AccountAction extends ActionSupport implements SessionAware {
             Customer customer = new Customer(firstName,lastName,address,email,password);
             customer = customerManager.createCustomer(customer);
             session.put(BookeshopConstants.SESSION_USER,customer);
-            session.put(BookeshopConstants.SESSION_CART,new ShoppingCartImpl());
+            session.put(BookeshopConstants.SESSION_CART,new ShoppingCart());
             return ActionSupport.SUCCESS;
 
         }  else {

@@ -23,18 +23,52 @@
 
 package org.benassi.bookeshop.web.cart;
 
+import java.util.HashMap;
 import java.util.Map;
 
-public interface ShoppingCart {
+public class ShoppingCart {
 
-    public int getCount();
+    //<bookId,quantity> map
+    private Map<String,Integer> items;
 
-    public void addItem(String bookId);
+    private int count;
 
-    public void clearCart();
+    public ShoppingCart() {
+        this.items = new HashMap<String,Integer>();
+        count = 0;
+    }
 
-    public Map<String, Integer> getItems();
+    public int getCount() {
+        return count;
+    }
 
-    public void removeItem(String bookId);
+    public void addItem(String bookId){
+        if (items.containsKey(bookId) )
+            items.put(bookId, items.get(bookId) + 1);
+        else
+            items.put(bookId, 1);
+        count++;
+    }
+
+    public void removeItem(String bookId){
+        if (items.containsKey(bookId) ){
+            int quantity = items.get(bookId) - 1;
+            if(quantity == 0)
+                items.remove(bookId);
+            else
+                items.put(bookId,quantity);
+            count--;
+        }
+
+    }
+
+    public void clearCart(){
+        items.clear();
+        count = 0;
+    }
+
+    public Map<String,Integer> getItems(){
+        return items;
+    }
 
 }

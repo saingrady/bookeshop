@@ -33,13 +33,13 @@ import static org.junit.Assert.assertNull;
 /**
  * Shopping cart unit tests
  */
-public class ShoppingCartImplTest {
+public class ShoppingCartTest {
 
     private ShoppingCart cart;
 
     @Before
     public void setUp() throws Exception {
-        cart = new ShoppingCartImpl();
+        cart = new ShoppingCart();
         cart.addItem("9781430216407");
         cart.addItem("9781430219088");
     }
