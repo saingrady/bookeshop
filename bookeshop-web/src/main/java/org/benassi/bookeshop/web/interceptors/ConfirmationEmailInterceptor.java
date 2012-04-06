@@ -32,6 +32,7 @@ import org.apache.velocity.exception.VelocityException;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.web.actions.cart.CheckoutAction;
+import org.benassi.bookeshop.web.util.BookeshopConstants;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.ui.velocity.VelocityEngineUtils;
@@ -70,7 +71,7 @@ public class ConfirmationEmailInterceptor extends AbstractInterceptor {
         invocation.invoke();
 
         Map<String, Object> session = ActionContext.getContext().getSession();
-        loggedCustomer = (Customer)session.get("loggedCustomer");
+        loggedCustomer = (Customer)session.get(BookeshopConstants.SESSION_USER);
 
         Order order = ((CheckoutAction)invocation.getAction()).getOrder();
         Map model = new HashMap();

@@ -23,10 +23,12 @@
 
 package org.benassi.bookeshop.web.actions.customer;
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.benassi.bookeshop.business.api.CustomerManager;
 import org.benassi.bookeshop.data.model.Customer;
 import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.web.cart.ShoppingCartImpl;
+import org.benassi.bookeshop.web.util.BookeshopConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,13 +54,13 @@ public class LoginAction implements SessionAware{
     public String execute(){
         Customer customer = customerManager.login(loginEmail, loginPassword);
         if (customer != null){
-            session.put("loggedCustomer",customer);
-            session.put("theCart",new ShoppingCartImpl());
-            return "success";
+            session.put(BookeshopConstants.SESSION_USER,customer);
+            session.put(BookeshopConstants.SESSION_CART,new ShoppingCartImpl());
+            return ActionSupport.SUCCESS;
         }   else {
             error = "Invalid credentials";
             logger.error(error + "[" + loginEmail + "," + loginPassword + "]");
-            return "error";
+            return ActionSupport.ERROR;
         }
     }
 

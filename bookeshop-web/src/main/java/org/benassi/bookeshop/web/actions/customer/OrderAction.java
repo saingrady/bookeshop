@@ -29,6 +29,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.business.api.OrderManager;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
+import org.benassi.bookeshop.web.util.BookeshopConstants;
 import org.benassi.bookeshop.web.util.OrderUtil;
 
 import java.util.Map;
@@ -69,7 +70,7 @@ public class OrderAction extends ActionSupport implements SessionAware, Preparab
 
     public void setSession(Map<String, Object> session) {
         this.session = session;
-        loggedCustomer = (Customer)session.get("loggedCustomer");
+        loggedCustomer = (Customer)session.get(BookeshopConstants.SESSION_USER);
     }
 
     /*

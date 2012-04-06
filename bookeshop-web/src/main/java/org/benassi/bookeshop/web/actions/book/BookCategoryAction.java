@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.web.actions.book;
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.business.api.CategoryManager;
 import org.benassi.bookeshop.data.model.Book;
@@ -55,11 +56,11 @@ public class BookCategoryAction {
         if (category != null){
             categoryItems = bookManager.getBooksByCategory(categoryId);
             bookUtil.prepareBooksForView(categoryItems);
-            return "success";
+            return ActionSupport.SUCCESS;
         }
         else {
             error = "No such category with ID = " + categoryId;
-            return "error";
+            return ActionSupport.ERROR;
         }
     }
 

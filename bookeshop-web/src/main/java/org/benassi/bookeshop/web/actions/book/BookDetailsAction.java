@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.web.actions.book;
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.web.util.BookUtil;
@@ -58,12 +59,12 @@ public class BookDetailsAction {
             book.setFormattedPublishDate(bookUtil.formatPublishDate(book.getPublishDate()));
             String message = ajaxContentProvider.getBookDetailsAsHtml(book);
             inputStream = new ByteArrayInputStream(message.getBytes());
-            return "success";
+            return ActionSupport.SUCCESS;
         }
         else {
             error = "No such book with ISBN = " + bookId;
             inputStream = new ByteArrayInputStream(error.getBytes());
-            return "error";
+            return ActionSupport.ERROR;
         }
 
     }

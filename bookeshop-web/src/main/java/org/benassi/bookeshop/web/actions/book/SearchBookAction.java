@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.web.actions.book;
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.web.util.BookUtil;
@@ -48,11 +49,11 @@ public class SearchBookAction{
         foundItems = bookManager.getBooksByTitleAuthor(keyword);
         if (keyword.isEmpty()){
             error = "Please specify a keyword for search";
-            return "error";
+            return ActionSupport.ERROR;
         }
         else{
             bookUtil.prepareBooksForView(foundItems);
-            return "success";
+            return ActionSupport.SUCCESS;
         }
     }
 

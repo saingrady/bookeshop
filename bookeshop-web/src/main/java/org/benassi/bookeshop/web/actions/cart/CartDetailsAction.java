@@ -23,12 +23,14 @@
 
 package org.benassi.bookeshop.web.actions.cart;
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.benassi.bookeshop.web.util.BookComparator;
 import org.benassi.bookeshop.web.util.BookUtil;
+import org.benassi.bookeshop.web.util.BookeshopConstants;
 
 import java.text.DecimalFormat;
 import java.util.Map;
@@ -66,10 +68,10 @@ public class CartDetailsAction implements SessionAware {
                items.put(book, quantity);
                total += book.getDiscountPrice() * quantity;
            }
-           return "success";
+           return ActionSupport.SUCCESS;
        }else{
            error = "Please sign up or log in to buy from Book e-Shop";
-           return "error";
+           return ActionSupport.ERROR;
        }
     }
     /*
@@ -77,7 +79,7 @@ public class CartDetailsAction implements SessionAware {
      */
     public void setSession(Map<String, Object> session) {
         this.session = session;
-        theCart = (ShoppingCart) session.get("theCart");
+        theCart = (ShoppingCart) session.get(BookeshopConstants.SESSION_CART);
     }
 
     public void setBookUtil(BookUtil bookUtil) {

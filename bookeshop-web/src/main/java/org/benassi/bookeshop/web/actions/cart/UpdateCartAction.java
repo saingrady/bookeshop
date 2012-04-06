@@ -23,12 +23,14 @@
 
 package org.benassi.bookeshop.web.actions.cart;
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.benassi.bookeshop.web.util.AjaxContentProvider;
+import org.benassi.bookeshop.web.util.BookeshopConstants;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -63,11 +65,11 @@ public class UpdateCartAction implements SessionAware {
             if(book != null){
                 theCart.addItem(book.getIsbn());
             }
-            return "success";
+            return ActionSupport.SUCCESS;
         }
         else {
             error = "Please sign up or log in to buy from Book e-Shop";
-            return "error";
+            return ActionSupport.ERROR;
         }
     }
 
@@ -80,17 +82,17 @@ public class UpdateCartAction implements SessionAware {
                 theCart.addItem(book.getIsbn());
                 String message = ajaxContentProvider.getCartUpdateAsJson("ok",book.getTitle(),theCart.getCount(),null);
                 inputStream = new ByteArrayInputStream(message.getBytes());
-                return "success";
+                return ActionSupport.SUCCESS;
             }else{
                 error = ajaxContentProvider.getCartUpdateAsJson("ko",null,null,"No such book with Id = " + bookId);
                 inputStream = new ByteArrayInputStream(error.getBytes());
-                return "error";
+                return ActionSupport.ERROR;
             }
         }
         else {
             error = ajaxContentProvider.getCartUpdateAsJson("ko",null,null,"Please sign up or log in to buy from Book e-Shop");
             inputStream = new ByteArrayInputStream(error.getBytes());
-            return "error";
+            return ActionSupport.ERROR;
         }
     }
 
@@ -102,11 +104,11 @@ public class UpdateCartAction implements SessionAware {
             if(book != null){
                 theCart.removeItem(book.getIsbn());
             }
-            return "success";
+            return ActionSupport.SUCCESS;
         }
         else {
             error = "Please sign up or log in to buy from Book e-Shop";
-            return "error";
+            return ActionSupport.ERROR;
         }
     }
 
@@ -114,10 +116,10 @@ public class UpdateCartAction implements SessionAware {
 
         if (theCart != null){
             theCart.clearCart();
-            return "success";
+            return ActionSupport.SUCCESS;
         }else{
             error = "Please sign up or log in to buy from Book e-Shop";
-            return "error";
+            return ActionSupport.ERROR;
         }
     }
 
@@ -126,8 +128,8 @@ public class UpdateCartAction implements SessionAware {
     */
     public void setSession(Map<String, Object> session) {
         this.session = session;
-        this.loggedCustomer = (Customer)session.get("loggedCustomer");
-        this.theCart = (ShoppingCart)session.get("theCart");
+        this.loggedCustomer = (Customer)session.get(BookeshopConstants.SESSION_USER);
+        this.theCart = (ShoppingCart)session.get(BookeshopConstants.SESSION_CART);
     }
 
     public void setBookManager(BookManager bookManager) {

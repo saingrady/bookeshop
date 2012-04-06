@@ -27,6 +27,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.util.ServletContextAware;
 import org.benassi.bookeshop.business.api.CategoryManager;
 import org.benassi.bookeshop.data.model.Category;
+import org.benassi.bookeshop.web.util.BookeshopConstants;
 
 import javax.servlet.ServletContext;
 import java.util.List;
@@ -43,7 +44,7 @@ public class IndexAction extends ActionSupport implements ServletContextAware{
     @Override
     public void setServletContext(ServletContext context) {
         List<Category> categories = categoryManager.getCategories();
-        context.setAttribute("categories", categories);
+        context.setAttribute(BookeshopConstants.APPLICATION_CATEGORIES, categories);
     }
 
     /*

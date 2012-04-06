@@ -31,6 +31,7 @@ import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.benassi.bookeshop.web.cart.ShoppingCartImpl;
+import org.benassi.bookeshop.web.util.BookeshopConstants;
 
 import java.util.Map;
 
@@ -53,13 +54,13 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
             Customer customer = new Customer(firstName,lastName,address,email,password);
             customer = customerManager.createCustomer(customer);
-            session.put("loggedCustomer",customer);
-            session.put("theCart",new ShoppingCartImpl());
-            return "success";
+            session.put(BookeshopConstants.SESSION_USER,customer);
+            session.put(BookeshopConstants.SESSION_CART,new ShoppingCartImpl());
+            return ActionSupport.SUCCESS;
 
         }  else {
             error = "We have already an account for email ' " + email + " '!";
-            return "error";
+            return ActionSupport.ERROR;
         }
     }
 
@@ -68,7 +69,7 @@ public class AccountAction extends ActionSupport implements SessionAware {
         if (loggedCustomer.getEmail() != email) { //user modified his email
             if (customerManager.isRegistered(email)) { //check if new email is already registered
                 error = "We have already an account for email ' " + email + " '!";
-                return "error";
+                return ActionSupport.ERROR;
             } else {
                 loggedCustomer.setEmail(email);
             }
@@ -79,15 +80,15 @@ public class AccountAction extends ActionSupport implements SessionAware {
         loggedCustomer.setAddress(address);
         loggedCustomer.setPassword(password);
         customerManager.updateCustomer(loggedCustomer);
-        session.put("loggedCustomer", loggedCustomer);
-        return "success";
+        session.put(BookeshopConstants.SESSION_USER, loggedCustomer);
+        return ActionSupport.SUCCESS;
     }
 
     @SkipValidation
     public String remove() {
         customerManager.removeCustomer(loggedCustomer);
         session.clear();
-        return "success";
+        return ActionSupport.SUCCESS;
     }
 
     @Override
@@ -110,7 +111,7 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
     public void setSession(Map<String, Object> session) {
         this.session = session;
-        loggedCustomer = (Customer)session.get("loggedCustomer");
+        loggedCustomer = (Customer)session.get(BookeshopConstants.SESSION_USER);
     }
 
     /*

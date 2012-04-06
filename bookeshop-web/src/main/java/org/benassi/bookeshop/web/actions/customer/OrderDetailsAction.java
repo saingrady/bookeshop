@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.web.actions.customer;
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.benassi.bookeshop.business.api.OrderManager;
 import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.data.model.OrderItem;
@@ -53,11 +54,11 @@ public class OrderDetailsAction {
             order.setFormattedDate(orderUtil.formatDate(order.getDate()));
             order.setFormattedTotal(orderUtil.formatTotal(order.getTotal()));
             items = order.getItems();
-            return "success";
+            return ActionSupport.SUCCESS;
         }
         else {
             error = "No such order with ID = " + orderId;
-            return "error";
+            return ActionSupport.ERROR;
         }
 
     }

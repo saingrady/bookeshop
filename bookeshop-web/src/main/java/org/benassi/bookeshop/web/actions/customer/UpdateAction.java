@@ -26,6 +26,7 @@ package org.benassi.bookeshop.web.actions.customer;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.data.model.Customer;
+import org.benassi.bookeshop.web.util.BookeshopConstants;
 
 import java.util.Map;
 
@@ -44,7 +45,7 @@ public class UpdateAction extends ActionSupport implements SessionAware {
 
     public void setSession(Map<String, Object> session) {
         this.session = session;
-        this.loggedCustomer = (Customer)session.get("loggedCustomer");
+        this.loggedCustomer = (Customer)session.get(BookeshopConstants.SESSION_USER);
     }
 
     /*

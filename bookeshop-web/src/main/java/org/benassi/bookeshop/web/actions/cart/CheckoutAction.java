@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.web.actions.cart;
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.business.api.OrderManager;
@@ -32,6 +33,7 @@ import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.benassi.bookeshop.web.util.BookUtil;
+import org.benassi.bookeshop.web.util.BookeshopConstants;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -81,11 +83,11 @@ public class CheckoutAction implements SessionAware{
             order = orderManager.createOrder(loggedCustomer,theCart.getItems());
             theCart.clearCart();
             processingMessage = "Processing your order.. Please wait.";
-            return "success";
+            return ActionSupport.SUCCESS;
 
         } catch (OutOfStockException e) {
             error = e.getMessage();
-            return "error";
+            return ActionSupport.ERROR;
         }
     }
     /*
@@ -93,8 +95,8 @@ public class CheckoutAction implements SessionAware{
      */
     public void setSession(Map<String, Object> session) {
         this.session = session;
-        loggedCustomer = (Customer)session.get("loggedCustomer");
-        theCart = (ShoppingCart) session.get("theCart");
+        loggedCustomer = (Customer)session.get(BookeshopConstants.SESSION_USER);
+        theCart = (ShoppingCart) session.get(BookeshopConstants.SESSION_CART);
     }
 
     public void setBookManager(BookManager bookManager) {

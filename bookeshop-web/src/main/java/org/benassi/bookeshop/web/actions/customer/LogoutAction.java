@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.web.actions.customer;
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
@@ -48,10 +49,10 @@ public class LogoutAction implements SessionAware {
             } catch (IllegalStateException e) {
                 error = "Error in invalidating session";
                 logger.error(error,e);
-                return "error";
+                return ActionSupport.ERROR;
             }
         }
-        return "success";
+        return ActionSupport.SUCCESS;
     }
 
     /*

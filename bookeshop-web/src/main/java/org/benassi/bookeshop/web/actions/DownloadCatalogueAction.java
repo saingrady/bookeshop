@@ -23,6 +23,7 @@
 
 package org.benassi.bookeshop.web.actions;
 
+import com.opensymphony.xwork2.ActionSupport;
 import org.benassi.bookeshop.web.util.PdfCatalogueGenerator;
 
 import java.io.InputStream;
@@ -43,11 +44,11 @@ public class DownloadCatalogueAction  {
         inputStream = pdfCatalogueGenerator.getPdfCatalogueStream();
 
         if (inputStream != null){
-            return"success";
+            return ActionSupport.SUCCESS;
         }
         else{
             error = "An exception occurred while generating PDF catalogue.";
-            return "error";
+            return ActionSupport.ERROR;
         }
 
     }
