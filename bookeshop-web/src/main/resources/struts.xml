@@ -44,10 +44,6 @@
                 <param name="contentType">text/html</param>
                 <param name="inputName">inputStream</param>
             </result>
-            <result name="error" type="stream">
-                <param name="contentType">text/html</param>
-                <param name="inputName">inputStream</param>
-            </result>
         </action>
 
         <action name="category" class="org.benassi.bookeshop.web.actions.book.BookCategoryAction">
