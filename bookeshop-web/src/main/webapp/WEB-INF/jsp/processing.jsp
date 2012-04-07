@@ -50,7 +50,6 @@
 		<ul>
 			<li><a href="#">Home</a><img src="images/icons/home.png" width="32" height="32" border="0"/></li>
 			<li><a href="#">About</a><img src="images/icons/info.png" width="32" height="32" border="0"/></li>
-			<li><a href="#">Contact</a><img src="images/icons/customer_service.png" width="32" height="32" border="0"/></li>
 		</ul>
 	</div>
 	<!-- end #menu -->
