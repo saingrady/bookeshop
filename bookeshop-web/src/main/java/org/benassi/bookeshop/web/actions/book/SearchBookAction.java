@@ -27,6 +27,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.web.util.BookUtil;
+import org.springframework.context.MessageSource;
 
 import java.util.List;
 
@@ -42,6 +43,8 @@ public class SearchBookAction{
     private BookUtil bookUtil;
 
     private List<Book> foundItems;
+
+    private MessageSource messageProvider;
 
     public String execute(){
         foundItems = bookManager.getBooksByTitleAuthor(keyword);//empty value validated in client side with javascript
@@ -60,6 +63,10 @@ public class SearchBookAction{
         this.bookUtil = bookUtil;
     }
 
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
+    }
+
     /*
      * Setters for request parameters
      */
@@ -76,6 +83,10 @@ public class SearchBookAction{
 
     public List<Book> getFoundItems() {
         return foundItems;
+    }
+
+    public String getProcessingMessage() {
+        return messageProvider.getMessage("web.search.wait",new Object[]{keyword},null,null);
     }
 
 }
