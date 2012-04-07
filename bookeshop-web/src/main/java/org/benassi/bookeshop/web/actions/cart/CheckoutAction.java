@@ -64,8 +64,6 @@ public class CheckoutAction implements SessionAware{
 
     private Order order;
 
-    private String processingMessage;
-
     public String execute() {
 
         items = new HashMap<Book,Integer>();
@@ -82,7 +80,6 @@ public class CheckoutAction implements SessionAware{
             }
             order = orderManager.createOrder(loggedCustomer,theCart.getItems());
             theCart.clearCart();
-            processingMessage = "Processing your order.. Please wait.";
             return ActionSupport.SUCCESS;
 
         } catch (OutOfStockException e) {
@@ -115,7 +112,7 @@ public class CheckoutAction implements SessionAware{
      * Getters for model
      */
     public String getProcessingMessage() {
-        return processingMessage;
+        return "Processing your order.. Please wait.";//TODO i18n
     }
 
     public Order getOrder() {
