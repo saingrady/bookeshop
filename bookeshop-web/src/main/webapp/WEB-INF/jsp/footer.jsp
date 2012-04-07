@@ -28,7 +28,7 @@
 	<!-- end #page -->
 	<div id="footer">
 	<p>
-		Copyright (c) 2011 Book e-Shop. All rights reserved
+		Copyright (c) 2012 Book e-Shop. All rights reserved
 	</p>
 	</div>
 	<!-- end #footer -->
