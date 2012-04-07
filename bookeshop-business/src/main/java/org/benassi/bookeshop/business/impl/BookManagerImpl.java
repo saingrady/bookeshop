@@ -72,7 +72,6 @@ public class BookManagerImpl implements BookManager{
         try {
             bookDAO.updateStock(isbn, quantity);
         } catch (InsufficientStockException ise) {
-            logger.error(ise.getMessage());
             throw new OutOfStockException(ise.getRequestedQuantity(),ise.getCurrentStock(),ise.getBookISBN());
         }
     }
