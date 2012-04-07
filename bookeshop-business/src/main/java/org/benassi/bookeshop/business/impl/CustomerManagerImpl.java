@@ -31,9 +31,7 @@ import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.MessageSource;
 
-import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -47,18 +45,12 @@ public class CustomerManagerImpl implements CustomerManager {
 
     private OrderDAO orderDAO;
 
-    private MessageSource messages;
-
     public void setCustomerDAO(CustomerDAO customerDAO) {
         this.customerDAO = customerDAO;
     }
 
     public void setOrderDAO(OrderDAO orderDAO) {
         this.orderDAO = orderDAO;
-    }
-
-    public void setMessages(MessageSource messages) {
-        this.messages = messages;
     }
 
     public Customer login(String email, String password) {
