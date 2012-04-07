@@ -32,11 +32,9 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.MessageSource;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Hibernate implementation of book DAO interface
@@ -47,14 +45,8 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
     private int maxCatalogueResults;
 
-    private MessageSource messages;
-
     public void setMaxCatalogueResults(int maxCatalogueResults) {
         this.maxCatalogueResults = maxCatalogueResults;
-    }
-
-    public void setMessages(MessageSource messages) {
-        this.messages = messages;
     }
 
     public List<Book> getOffers() {
