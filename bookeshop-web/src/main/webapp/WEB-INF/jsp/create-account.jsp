@@ -36,20 +36,21 @@
                 <h1>Create my account </h1><br/>
                 <h3>(All fields are required)</h3><br/>
                     <s:form action="create-account">
-                        <s:actionerror/>
+                        <div align="center" style="width:20%;"><s:actionerror/></div>
                         <s:textfield label="Fist name"  name="firstName"  size="20"/>
                         <s:textfield label="Last name" name="lastName" size="20"/>
                         <s:textfield label="E-mail" name="email" size="20"/>
                         <s:textfield label="Address" name="address"  size="20"/>
                         <s:password label="Password" name="password" size="20"/>
                         <s:password label="Confirm password" name="passwordConfirm" size="20"/>
+                        <tr><td colspan="2" align="center">&nbsp;</td></tr>
                         <tr>
                             <td colspan="2" align="center">
                                 <s:submit value="Register" cssClass="buttonStyle" theme="simple"/> <s:reset value="Reset" cssClass="buttonStyle" theme="simple"/>
                             </td>
                         </tr>
-                        <s:div style="clear: both;">&nbsp;</s:div>
                     </s:form>
+                    <s:div style="clear: both;">&nbsp;</s:div>
                 </div>
             </div>
         </div>
