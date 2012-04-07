@@ -34,8 +34,9 @@
                 <div align="center">
                 <br/>
                 <h1> My account </h1>
+                    <div style="clear: both;">&nbsp;</div>
                     <s:form action="update-account">
-                        <s:actionerror/>
+                        <div align="center" style="width:20%;"><s:actionerror/></div>
                         <s:textfield label="Identifier" name="id"  size="20" disabled="true"/>
                         <s:textfield label="Fist name"  name="firstName"  size="20"/>
                         <s:textfield label="Last name" name="lastName" size="20"/>
@@ -43,14 +44,17 @@
                         <s:textfield label="Address" name="address"  size="20"/>
                         <s:password label="Password" name="password" size="20"/>
                         <s:password label="Confirm password" name="passwordConfirm" size="20"/>
+                        <tr><td colspan="2" align="center">&nbsp;</td></tr>
                         <tr>
                             <td colspan="2" align="center">
                                 <s:submit value="Update" cssClass="buttonStyle" theme="simple"/> <s:reset value="Reset" cssClass="buttonStyle" theme="simple"/>
                             </td>
                         </tr>
-                        <s:div style="clear: both;">&nbsp;</s:div>
                     </s:form>
-                    <button type="button" onclick="confirm_account_removal()">Remove my account</button>
+                    <s:form action="remove" id="accountRemovalForm">
+                        <input type="button" onclick="javascript:confirm_account_removal()" class="buttonStyle" value="Remove my account"/>
+                    </s:form>
+                    <div style="clear: both;">&nbsp;</div>
                 </div>
             </div>
         </div>

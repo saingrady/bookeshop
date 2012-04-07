@@ -1,18 +1,18 @@
 function confirm_account_removal(){
-    $.Zebra_Dialog(message, {
+    $.Zebra_Dialog("Are you sure to remove your account?", {
         'type':     "question",
-        'title':    title,
+        'title':    "Confirmation",
         'modal': true,
         'onClose':  function(caption) {
             if (caption == "Yes"){
-               document.location.href = "remove.do";
+                document.getElementById("accountRemovalForm").submit();
             }
         }
     });
 }
 
 function check_empty_keyword(){
-    keyword = document.getElementById("keyword").value;
+    var keyword = document.getElementById("keyword").value;
     if (keyword == ""){
         zebra_styled_dialog("error","Information","Please enter a keyword for search.",true);
         return false;
@@ -21,8 +21,8 @@ function check_empty_keyword(){
 }
 
 function check_empty_credentials(){
-    email = document.getElementById("email").value;
-    password = document.getElementById("password").value;
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
     if (email == "" || password == ""){
         zebra_styled_dialog("error","Information","Please enter your login credentials!",true);
         return false;
