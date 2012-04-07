@@ -65,7 +65,7 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
     public String update() {
 
-        if (loggedCustomer.getEmail() != email) { //user modified his email
+        if (!loggedCustomer.getEmail().equals(email)) { //user modified his email
             if (customerManager.isRegistered(email)) { //check if new email is already registered
                 error = "We have already an account for email ' " + email + " '!";
                 return ActionSupport.ERROR;
