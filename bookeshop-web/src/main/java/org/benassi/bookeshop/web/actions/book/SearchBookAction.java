@@ -43,18 +43,10 @@ public class SearchBookAction{
 
     private List<Book> foundItems;
 
-    private String error;
-
     public String execute(){
-        foundItems = bookManager.getBooksByTitleAuthor(keyword);
-        if (keyword.isEmpty()){
-            error = "Please specify a keyword for search";
-            return ActionSupport.ERROR;
-        }
-        else{
-            bookUtil.prepareBooksForView(foundItems);
-            return ActionSupport.SUCCESS;
-        }
+        foundItems = bookManager.getBooksByTitleAuthor(keyword);//empty value validated in client side with javascript
+        bookUtil.prepareBooksForView(foundItems);
+        return ActionSupport.SUCCESS;
     }
 
     /*
@@ -80,10 +72,6 @@ public class SearchBookAction{
      */
     public String getKeyword() {
         return keyword;
-    }
-
-    public String getError() {
-        return error;
     }
 
     public List<Book> getFoundItems() {

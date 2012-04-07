@@ -31,6 +31,7 @@ import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 import org.benassi.bookeshop.web.util.BookeshopConstants;
+import org.springframework.context.MessageSource;
 
 import java.util.Map;
 
@@ -47,6 +48,8 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
     private String error;
 
+    private MessageSource messageProvider;
+
     public String create() {
 
         if (!customerManager.isRegistered(email)){
@@ -58,7 +61,7 @@ public class AccountAction extends ActionSupport implements SessionAware {
             return ActionSupport.SUCCESS;
 
         }  else {
-            error = "We have already an account for email ' " + email + " '!";
+            error = messageProvider.getMessage("web.error.account.email.alreadyUsed",new Object [] {email},null,null);
             return ActionSupport.ERROR;
         }
     }
@@ -67,7 +70,7 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
         if (!loggedCustomer.getEmail().equals(email)) { //user modified his email
             if (customerManager.isRegistered(email)) { //check if new email is already registered
-                error = "We have already an account for email ' " + email + " '!";
+                error = messageProvider.getMessage("web.error.account.email.alreadyUsed",new Object [] {email},null,null);
                 return ActionSupport.ERROR;
             } else {
                 loggedCustomer.setEmail(email);
@@ -95,10 +98,10 @@ public class AccountAction extends ActionSupport implements SessionAware {
 
         if ( email.isEmpty() || firstName.isEmpty() || lastName.isEmpty() ||
              password.isEmpty() || address.isEmpty() || passwordConfirm.isEmpty())
-            addActionError("All fields are required"); //TODO i18n
+            addActionError(messageProvider.getMessage("web.error.account.fields.required",null,null,null));
 
         if (!password.equals(passwordConfirm))
-            addFieldError("passwordConfirm", "Password confirmation does not match password");//TODO i18n
+            addFieldError("passwordConfirm", messageProvider.getMessage("web.error.account.password.confirm",null,null,null));
     }
 
     /*
@@ -111,6 +114,10 @@ public class AccountAction extends ActionSupport implements SessionAware {
     public void setSession(Map<String, Object> session) {
         this.session = session;
         loggedCustomer = (Customer)session.get(BookeshopConstants.SESSION_USER);
+    }
+
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
     }
 
     /*
@@ -136,7 +143,7 @@ public class AccountAction extends ActionSupport implements SessionAware {
         this.lastName = lastName;
     }
 
-    @EmailValidator(fieldName = "email", message = "invalid email format") //TODO use key attribute for i18n
+    @EmailValidator(fieldName = "email", key = "web.error.account.email.invalid")
     public void setEmail(String email) {
         this.email = email;
     }

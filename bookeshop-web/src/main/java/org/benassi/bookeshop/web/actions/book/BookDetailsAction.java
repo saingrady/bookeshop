@@ -28,6 +28,7 @@ import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.web.util.BookUtil;
 import org.benassi.bookeshop.web.util.AjaxContentProvider;
+import org.springframework.context.MessageSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -51,6 +52,8 @@ public class BookDetailsAction {
 
     private AjaxContentProvider ajaxContentProvider;
 
+    private MessageSource messageProvider;
+
     public String execute(){
         book = bookManager.getBookByIsbn(bookId);
         if (book != null){
@@ -62,8 +65,7 @@ public class BookDetailsAction {
             return ActionSupport.SUCCESS;
         }
         else {
-            error = "No such book with ISBN = " + bookId;
-            inputStream = new ByteArrayInputStream(error.getBytes());
+            error = messageProvider.getMessage("web.error.book.unknown",new Object [] {bookId},null,null);
             return ActionSupport.ERROR;
         }
 
@@ -83,6 +85,10 @@ public class BookDetailsAction {
 
     public void setAjaxContentProvider(AjaxContentProvider ajaxContentProvider) {
         this.ajaxContentProvider = ajaxContentProvider;
+    }
+
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
     }
 
     /*

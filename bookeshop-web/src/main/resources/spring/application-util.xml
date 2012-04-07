@@ -26,27 +26,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- ========================== -->
-    <!--            I18N            -->
-    <!-- ========================== -->
+    <!-- ========================= -->
+    <!--      Resource bundles     -->
+    <!-- ========================= -->
 
-    <bean id="webMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basenames">
-            <list>
-                <value>org.benassi.bookeshop.web.i18n.web_views</value>
-                <value>org.benassi.bookeshop.web.i18n.web_exceptions</value>
-            </list>
-        </property>
+    <bean id="messageProvider" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages.messages"/>
     </bean>
 
-    <bean id="businessMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="org.benassi.bookeshop.business.i18n.business_exceptions"/>
-    </bean>
-
-    <bean id="dataMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="org.benassi.bookeshop.data.access.i18n.data_access_exceptions"/>
-    </bean>
-    
     <!-- ========================== -->
     <!--      Email sending bean    -->
     <!-- ========================== -->

@@ -33,6 +33,7 @@ import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.web.actions.cart.CheckoutAction;
 import org.benassi.bookeshop.web.util.BookeshopConstants;
+import org.springframework.context.MessageSource;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.ui.velocity.VelocityEngineUtils;
@@ -56,6 +57,12 @@ public class ConfirmationEmailInterceptor extends AbstractInterceptor {
     private VelocityEngine velocityEngine;
 
     private MailSender mailSender;
+
+    private MessageSource messageProvider;
+
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
+    }
 
     public void setMailSender(MailSender mailSender) {
         this.mailSender = mailSender;
@@ -87,10 +94,10 @@ public class ConfirmationEmailInterceptor extends AbstractInterceptor {
         }
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("customer@bookeshop.com");
+        message.setFrom(messageProvider.getMessage("web.checkout.mail.from",null,null,null));
         message.setSentDate(new Date());
         message.setTo(loggedCustomer.getEmail());
-        message.setSubject("Book eShop order N° " + order.getOrderId());
+        message.setSubject(messageProvider.getMessage("web.checkout.mail.object", new Object[]{order.getOrderId()}, null, null));
         message.setText(result);
         mailSender.send(message);
         return Action.SUCCESS;

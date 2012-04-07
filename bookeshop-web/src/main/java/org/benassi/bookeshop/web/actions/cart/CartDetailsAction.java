@@ -31,6 +31,7 @@ import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.benassi.bookeshop.web.util.BookComparator;
 import org.benassi.bookeshop.web.util.BookUtil;
 import org.benassi.bookeshop.web.util.BookeshopConstants;
+import org.springframework.context.MessageSource;
 
 import java.text.DecimalFormat;
 import java.util.Map;
@@ -55,6 +56,8 @@ public class CartDetailsAction implements SessionAware {
 
     private String error;
 
+    private MessageSource messageProvider;
+
     public String execute() {
 
        if( theCart != null){
@@ -70,7 +73,7 @@ public class CartDetailsAction implements SessionAware {
            }
            return ActionSupport.SUCCESS;
        }else{
-           error = "Please sign up or log in to buy from Book e-Shop";
+           error = messageProvider.getMessage("web.error.purchase.login",null,null,null);
            return ActionSupport.ERROR;
        }
     }
@@ -90,9 +93,13 @@ public class CartDetailsAction implements SessionAware {
         this.bookManager = bookManager;
     }
 
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
+    }
+
     /*
-     * Getters for model
-     */
+    * Getters for model
+    */
     public Map<Book, Integer> getItems() {
         return items;
     }

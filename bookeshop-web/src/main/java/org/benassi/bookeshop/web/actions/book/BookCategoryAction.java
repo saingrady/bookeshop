@@ -29,6 +29,7 @@ import org.benassi.bookeshop.business.api.CategoryManager;
 import org.benassi.bookeshop.data.model.Book;
 import org.benassi.bookeshop.data.model.Category;
 import org.benassi.bookeshop.web.util.BookUtil;
+import org.springframework.context.MessageSource;
 
 import java.util.List;
 
@@ -51,6 +52,8 @@ public class BookCategoryAction {
 
     private List<Book> categoryItems;
 
+    private MessageSource messageProvider;
+
     public String execute(){
         category = categoryManager.getCategoryById(categoryId);
         if (category != null){
@@ -59,7 +62,7 @@ public class BookCategoryAction {
             return ActionSupport.SUCCESS;
         }
         else {
-            error = "No such category with ID = " + categoryId;
+            error = messageProvider.getMessage("web.error.category.unknown",new Object [] {categoryId},null,null);
             return ActionSupport.ERROR;
         }
     }
@@ -78,6 +81,10 @@ public class BookCategoryAction {
 
     public void setBookUtil(BookUtil bookUtil) {
         this.bookUtil = bookUtil;
+    }
+
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
     }
 
     /*

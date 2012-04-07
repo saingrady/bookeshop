@@ -28,6 +28,7 @@ import org.benassi.bookeshop.business.api.OrderManager;
 import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.data.model.OrderItem;
 import org.benassi.bookeshop.web.util.OrderUtil;
+import org.springframework.context.MessageSource;
 
 import java.util.Set;
 
@@ -48,6 +49,8 @@ public class OrderDetailsAction {
 
     private String error;
 
+    private MessageSource messageProvider;
+
     public String execute(){
         order = orderManager.getOrderById(orderId);
         if (order != null) {
@@ -57,7 +60,7 @@ public class OrderDetailsAction {
             return ActionSupport.SUCCESS;
         }
         else {
-            error = "No such order with ID = " + orderId;
+            error = messageProvider.getMessage("web.error.order.unknown",new Object [] {orderId},null,null);
             return ActionSupport.ERROR;
         }
 
@@ -75,9 +78,13 @@ public class OrderDetailsAction {
         this.orderUtil = orderUtil;
     }
 
-     /*
-     * Setters for request parameters
-     */
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
+    }
+
+    /*
+    * Setters for request parameters
+    */
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;

@@ -34,6 +34,7 @@ import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.benassi.bookeshop.web.util.BookUtil;
 import org.benassi.bookeshop.web.util.BookeshopConstants;
+import org.springframework.context.MessageSource;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -64,6 +65,8 @@ public class CheckoutAction implements SessionAware{
 
     private Order order;
 
+    private MessageSource messageProvider;
+
     public String execute() {
 
         items = new HashMap<Book,Integer>();
@@ -82,8 +85,8 @@ public class CheckoutAction implements SessionAware{
             theCart.clearCart();
             return ActionSupport.SUCCESS;
 
-        } catch (OutOfStockException e) {
-            error = e.getMessage();
+        } catch (OutOfStockException oose) {
+            error = messageProvider.getMessage("web.error.stock.insufficient", new Object[]{oose.getRequestedQuantity(),oose.getBookISBN(),oose.getCurrentStock()}, null, null);
             return ActionSupport.ERROR;
         }
     }
@@ -108,11 +111,15 @@ public class CheckoutAction implements SessionAware{
         this.orderManager = orderManager;
     }
 
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
+    }
+
     /*
      * Getters for model
      */
     public String getProcessingMessage() {
-        return "Processing your order.. Please wait.";//TODO i18n
+        return messageProvider.getMessage("web.checkout.wait",null,null,null);
     }
 
     public Order getOrder() {

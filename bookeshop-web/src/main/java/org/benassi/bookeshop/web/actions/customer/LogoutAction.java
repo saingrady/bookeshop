@@ -30,6 +30,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.MessageSource;
 
 /**
  * Action class to logout a customer
@@ -42,12 +43,14 @@ public class LogoutAction implements SessionAware {
 
     private String error;
 
+    private MessageSource messageProvider;
+
     public String execute() {
         if (session instanceof org.apache.struts2.dispatcher.SessionMap) {
             try {
                 ((org.apache.struts2.dispatcher.SessionMap) session).invalidate();
             } catch (IllegalStateException e) {
-                error = "Error in invalidating session";
+                error = messageProvider.getMessage("web.error.logout",null,null,null);
                 logger.error(error,e);
                 return ActionSupport.ERROR;
             }
@@ -61,6 +64,10 @@ public class LogoutAction implements SessionAware {
 
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
     }
 
     /*

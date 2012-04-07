@@ -31,6 +31,7 @@ import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.benassi.bookeshop.web.util.AjaxContentProvider;
 import org.benassi.bookeshop.web.util.BookeshopConstants;
+import org.springframework.context.MessageSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -57,6 +58,8 @@ public class UpdateCartAction implements SessionAware {
 
     private AjaxContentProvider ajaxContentProvider;
 
+    private MessageSource messageProvider;
+
     public String addItem(){
 
         Book book = bookManager.getBookByIsbn(bookId);
@@ -68,7 +71,7 @@ public class UpdateCartAction implements SessionAware {
             return ActionSupport.SUCCESS;
         }
         else {
-            error = "Please sign up or log in to buy from Book e-Shop";
+            error = messageProvider.getMessage("web.error.purchase.login",null,null,null);
             return ActionSupport.ERROR;
         }
     }
@@ -77,20 +80,20 @@ public class UpdateCartAction implements SessionAware {
 
         Book book = bookManager.getBookByIsbn(bookId);
 
-        if(loggedCustomer.getId()!= 0 && theCart != null){
+        if(loggedCustomer != null && theCart != null){
             if(book != null){
                 theCart.addItem(book.getIsbn());
                 String message = ajaxContentProvider.getCartUpdateAsJson("ok",book.getTitle(),theCart.getCount(),null);
                 inputStream = new ByteArrayInputStream(message.getBytes());
                 return ActionSupport.SUCCESS;
             }else{
-                error = ajaxContentProvider.getCartUpdateAsJson("ko",null,null,"No such book with Id = " + bookId);
+                error = ajaxContentProvider.getCartUpdateAsJson("ko",null,null,messageProvider.getMessage("web.error.book.unknown",new Object [] {bookId},null,null));
                 inputStream = new ByteArrayInputStream(error.getBytes());
                 return ActionSupport.ERROR;
             }
         }
         else {
-            error = ajaxContentProvider.getCartUpdateAsJson("ko",null,null,"Please sign up or log in to buy from Book e-Shop");
+            error = ajaxContentProvider.getCartUpdateAsJson("ko",null,null,messageProvider.getMessage("web.error.purchase.login",null,null,null));
             inputStream = new ByteArrayInputStream(error.getBytes());
             return ActionSupport.ERROR;
         }
@@ -100,25 +103,25 @@ public class UpdateCartAction implements SessionAware {
 
         Book book = bookManager.getBookByIsbn(bookId);
 
-        if(theCart != null){
+        if(loggedCustomer != null && theCart != null){
             if(book != null){
                 theCart.removeItem(book.getIsbn());
             }
             return ActionSupport.SUCCESS;
         }
         else {
-            error = "Please sign up or log in to buy from Book e-Shop";
+            error = messageProvider.getMessage("web.error.purchase.login",null,null,null);
             return ActionSupport.ERROR;
         }
     }
 
     public String clearCart(){
 
-        if (theCart != null){
+        if (loggedCustomer != null && theCart != null){
             theCart.clearCart();
             return ActionSupport.SUCCESS;
         }else{
-            error = "Please sign up or log in to buy from Book e-Shop";
+            error = messageProvider.getMessage("web.error.purchase.login",null,null,null);
             return ActionSupport.ERROR;
         }
     }
@@ -140,9 +143,13 @@ public class UpdateCartAction implements SessionAware {
         this.ajaxContentProvider = ajaxContentProvider;
     }
 
-     /*
-     * Setters for request parameters
-     */
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
+    }
+
+    /*
+    * Setters for request parameters
+    */
     public void setBookId(String bookId) {
         this.bookId = bookId;
     }

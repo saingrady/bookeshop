@@ -25,6 +25,7 @@ package org.benassi.bookeshop.web.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.benassi.bookeshop.web.util.PdfCatalogueGenerator;
+import org.springframework.context.MessageSource;
 
 import java.io.InputStream;
 
@@ -39,6 +40,8 @@ public class DownloadCatalogueAction  {
 
     private String error;
 
+    private MessageSource messageProvider;
+
     public String execute(){
 
         inputStream = pdfCatalogueGenerator.getPdfCatalogueStream();
@@ -47,7 +50,7 @@ public class DownloadCatalogueAction  {
             return ActionSupport.SUCCESS;
         }
         else{
-            error = "An exception occurred while generating PDF catalogue.";
+            error = messageProvider.getMessage("web.error.catalogue.pdf",null,null,null);
             return ActionSupport.ERROR;
         }
 
@@ -60,9 +63,13 @@ public class DownloadCatalogueAction  {
         this.pdfCatalogueGenerator = pdfCatalogueGenerator;
     }
 
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
+    }
+
     /*
-     * Getters for model
-     */
+    * Getters for model
+    */
     public InputStream getInputStream() {
         return inputStream;
     }

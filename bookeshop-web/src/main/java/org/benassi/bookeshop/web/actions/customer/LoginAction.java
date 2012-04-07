@@ -31,6 +31,7 @@ import org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.benassi.bookeshop.web.util.BookeshopConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.MessageSource;
 
 import java.util.Map;
 
@@ -51,6 +52,8 @@ public class LoginAction implements SessionAware{
 
     private String error;
 
+    private MessageSource messageProvider;
+
     public String execute(){
         Customer customer = customerManager.login(loginEmail, loginPassword);
         if (customer != null){
@@ -58,7 +61,7 @@ public class LoginAction implements SessionAware{
             session.put(BookeshopConstants.SESSION_CART,new ShoppingCart());
             return ActionSupport.SUCCESS;
         }   else {
-            error = "Invalid credentials";
+            error = messageProvider.getMessage("web.error.account.login.fail",null,null,null);
             logger.error(error + "[" + loginEmail + "," + loginPassword + "]");
             return ActionSupport.ERROR;
         }
@@ -74,6 +77,10 @@ public class LoginAction implements SessionAware{
 
     public void setSession(Map<String, Object> session) {
         this.session = session;
+    }
+
+    public void setMessageProvider(MessageSource messageProvider) {
+        this.messageProvider = messageProvider;
     }
 
     /*
