@@ -57,7 +57,7 @@
                         </c:forEach>
                         </tbody>
                     </table>
-                    <p><b>Order total = <c:out value="${formattedTotal}"/></b><img src="images/icons/euro.png" width="12" height="12" border="0"/></p>
+                    <p><b>Order total = <c:out value="${order.formattedTotal}"/></b><img src="images/icons/euro.png" width="12" height="12" border="0"/></p>
                     <p><a href="javascript:window.print()"> Print details</a></p>
 
                     <p><img src="images/icons/ok.png" width="32" height="32" border="0" align="absmiddle"/> Thank you for your order on our site. A confirmation email was sent to '<b><c:out value="${loggedCustomer.email}"/></b>'</p>

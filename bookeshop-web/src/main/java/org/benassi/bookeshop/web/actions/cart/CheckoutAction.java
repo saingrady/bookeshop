@@ -34,6 +34,7 @@ import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.benassi.bookeshop.web.util.BookUtil;
 import org.benassi.bookeshop.web.util.BookeshopConstants;
+import org.benassi.bookeshop.web.util.OrderUtil;
 import org.springframework.context.MessageSource;
 
 import java.text.DecimalFormat;
@@ -67,6 +68,8 @@ public class CheckoutAction implements SessionAware{
 
     private MessageSource messageProvider;
 
+    private OrderUtil orderUtil;
+
     public String execute() {
 
         items = new HashMap<Book,Integer>();
@@ -82,6 +85,8 @@ public class CheckoutAction implements SessionAware{
                 items.put(book, quantity);
             }
             order = orderManager.createOrder(loggedCustomer,theCart.getItems());
+            order.setFormattedDate(orderUtil.formatDate(order.getDate()));
+            order.setFormattedTotal(orderUtil.formatTotal(order.getTotal()));
             theCart.clearCart();
             return ActionSupport.SUCCESS;
 
@@ -115,6 +120,10 @@ public class CheckoutAction implements SessionAware{
         this.messageProvider = messageProvider;
     }
 
+    public void setOrderUtil(OrderUtil orderUtil) {
+        this.orderUtil = orderUtil;
+    }
+
     /*
      * Getters for model
      */
@@ -134,8 +143,4 @@ public class CheckoutAction implements SessionAware{
         return error;
     }
 
-    public String getFormattedTotal() {
-        DecimalFormat df = new DecimalFormat("###.##");
-        return df.format(total);
-    }
 }

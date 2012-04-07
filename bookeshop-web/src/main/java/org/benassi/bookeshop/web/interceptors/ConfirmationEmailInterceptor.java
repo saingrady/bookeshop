@@ -33,6 +33,7 @@ import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
 import org.benassi.bookeshop.web.actions.cart.CheckoutAction;
 import org.benassi.bookeshop.web.util.BookeshopConstants;
+import org.benassi.bookeshop.web.util.OrderUtil;
 import org.springframework.context.MessageSource;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -60,6 +61,12 @@ public class ConfirmationEmailInterceptor extends AbstractInterceptor {
 
     private MessageSource messageProvider;
 
+    private OrderUtil orderUtil;
+
+    public void setOrderUtil(OrderUtil orderUtil) {
+        this.orderUtil = orderUtil;
+    }
+
     public void setMessageProvider(MessageSource messageProvider) {
         this.messageProvider = messageProvider;
     }
@@ -81,6 +88,8 @@ public class ConfirmationEmailInterceptor extends AbstractInterceptor {
         loggedCustomer = (Customer)session.get(BookeshopConstants.SESSION_USER);
 
         Order order = ((CheckoutAction)invocation.getAction()).getOrder();
+        order.setFormattedDate(orderUtil.formatDate(order.getDate()));
+        order.setFormattedTotal(orderUtil.formatTotal(order.getTotal()));
         Map model = new HashMap();
         model.put("customer", loggedCustomer);
         model.put("order", order);
