@@ -37,7 +37,7 @@ function confirm_account_removal(){
 function check_empty_keyword(){
     var keyword = document.getElementById("keyword").value;
     if (keyword == ""){
-        zebra_styled_dialog("error","Information","Please enter a keyword for search.",true);
+        zebra_styled_dialog("error","Error","Please enter a keyword for search.",true);
         return false;
     }else
     return true;
@@ -47,7 +47,7 @@ function check_empty_credentials(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
     if (email == "" || password == ""){
-        zebra_styled_dialog("error","Information","Please enter your login credentials!",true);
+        zebra_styled_dialog("error","Error","Please enter your login credentials!",true);
         return false;
     }else
     return true;
