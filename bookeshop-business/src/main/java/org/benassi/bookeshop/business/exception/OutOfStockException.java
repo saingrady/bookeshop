@@ -25,8 +25,28 @@ package org.benassi.bookeshop.business.exception;
 
 public class OutOfStockException extends Exception{
 
-    public OutOfStockException(String message) {
-        super(message);
+    private int requestedQuantity;
+
+    private int currentStock;
+
+    private String bookISBN;
+
+    public OutOfStockException(int requestedQuantity, int currentStock, String bookISBN) {
+        this.requestedQuantity = requestedQuantity;
+        this.currentStock = currentStock;
+        this.bookISBN = bookISBN;
+    }
+
+    public int getRequestedQuantity() {
+        return requestedQuantity;
+    }
+
+    public int getCurrentStock() {
+        return currentStock;
+    }
+
+    public String getBookISBN() {
+        return bookISBN;
     }
     
 }

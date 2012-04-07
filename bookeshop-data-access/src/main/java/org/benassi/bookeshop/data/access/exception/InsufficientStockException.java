@@ -25,7 +25,28 @@ package org.benassi.bookeshop.data.access.exception;
 
 public class InsufficientStockException extends Exception {
 
-    public InsufficientStockException(String s) {
-        super(s);
+    private int requestedQuantity;
+    
+    private int currentStock;
+    
+    private String bookISBN;
+
+    public InsufficientStockException(int requestedQuantity, int currentStock, String bookISBN) {
+        this.requestedQuantity = requestedQuantity;
+        this.currentStock = currentStock;
+        this.bookISBN = bookISBN;
     }
+
+    public int getRequestedQuantity() {
+        return requestedQuantity;
+    }
+
+    public int getCurrentStock() {
+        return currentStock;
+    }
+
+    public String getBookISBN() {
+        return bookISBN;
+    }
+
 }

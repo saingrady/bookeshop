@@ -71,9 +71,9 @@ public class BookManagerImpl implements BookManager{
     public void checkoutBook(String isbn,int quantity) throws OutOfStockException {
         try {
             bookDAO.updateStock(isbn, quantity);
-        } catch (InsufficientStockException ex) {
-            logger.error(ex.getMessage());
-            throw new OutOfStockException(ex.getMessage());
+        } catch (InsufficientStockException ise) {
+            logger.error(ise.getMessage());
+            throw new OutOfStockException(ise.getRequestedQuantity(),ise.getCurrentStock(),ise.getBookISBN());
         }
     }
 

@@ -95,15 +95,13 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
 
 
     public void updateStock(String isbn,int quantity) throws InsufficientStockException{
-        // TODO should throw DataAccessException (add trigger for negative stock)
         Book book = this.getHibernateTemplate().get(Book.class,isbn);
         if (book.getStock() >= quantity ){
             book.setStock(book.getStock() - quantity);
             this.getHibernateTemplate().update(book);
         }else{
-            String error = messages.getMessage("stock.insufficient", new Object[]{quantity, getBookByIsbn(isbn).getTitle(), book.getStock()}, "Insufficient Stock", Locale.getDefault());
-            logger.error(error);
-            throw new InsufficientStockException(error);
+            logger.error("Insufficient stock of " + quantity + " item(s) for book " + isbn + ". Remaining only " + book.getStock()  + " item(s).");
+            throw new InsufficientStockException(quantity,book.getStock(),isbn);
         }
     }
 
