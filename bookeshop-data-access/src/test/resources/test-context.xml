@@ -56,7 +56,6 @@
 
     <bean id="bookDAO" class="org.benassi.bookeshop.data.access.impl.BookDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
-        <property name="messages" ref="messageSource"/>
         <property name="maxCatalogueResults" value="10"/>
     </bean>
 
@@ -79,10 +78,5 @@
     <bean id="orderItemDAO" class="org.benassi.bookeshop.data.access.impl.OrderItemDAOImpl">
         <property name="sessionFactory" ref="hibernateSessionFactory"/>
     </bean>
-
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="data_access_exceptions"/>
-    </bean>
-
 
 </beans>
