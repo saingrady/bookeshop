@@ -48,6 +48,14 @@
                         <td><a href="http://www.freecsstemplates.org">http://www.freecsstemplates.org</a></td>
                     </tr>
                     <tr>
+                        <td>Javascript Dialogs by </td>
+                        <td><a href="http://stefangabos.ro/jquery/zebra-dialog/">Stefan Gabos</a></td>
+                    </tr>
+                    <tr>
+                        <td>Thickbox by </td>
+                        <td><a href="http://jquery.com/demo/thickbox/">Cody Lindley</a></td>
+                    </tr>
+                    <tr>
                         <td>Developed with</td>
                         <td><a href="http://www.jetbrains.com/idea/"><img alt="The best Java IDE" src="images/icons/idea.png" border="0"/></a></td>
                     </tr>
