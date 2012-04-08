@@ -79,7 +79,7 @@ public class OrderManagerImpl implements OrderManager {
             orderItem.setOrderId(order.getOrderId());
             orderItem.setBookId(book.getIsbn());
             orderItem.setQuantity(items.get(bookId));
-            orderItem.setPurchasePrice(book.getPrice());
+            orderItem.setPurchasePrice(book.getDiscountPrice());
             order.getItems().add(orderItem);
             orderItemDAO.createOrderItem(orderItem);
         }
