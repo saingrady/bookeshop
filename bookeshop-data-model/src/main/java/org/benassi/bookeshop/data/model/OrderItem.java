@@ -25,6 +25,7 @@ package org.benassi.bookeshop.data.model;
 
 /**
  * Domain object for order items
+ * @author Mahmoud Ben Hassine
  */
 public class OrderItem {
 

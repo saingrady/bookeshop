@@ -32,6 +32,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Mail Sender mock implementation
+ * @author Mahmoud Ben Hassine
  */
 public class MailSenderMock implements MailSender {
 

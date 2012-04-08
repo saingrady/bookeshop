@@ -33,6 +33,7 @@ import java.util.List;
 
 /**
  * Action class to look for books by Title/Author
+ * @author Mahmoud Ben Hassine
  */
 public class SearchBookAction{
 

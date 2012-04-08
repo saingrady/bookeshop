@@ -39,6 +39,7 @@ import java.util.Map;
 
 /**
  * Action class to update cart content
+ * @author Mahmoud Ben Hassine
  */
 public class UpdateCartAction implements SessionAware {
 

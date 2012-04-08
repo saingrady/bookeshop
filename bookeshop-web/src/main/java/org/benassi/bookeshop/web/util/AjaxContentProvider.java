@@ -33,6 +33,7 @@ import java.util.Map;
 
 /**
  * Utility class to provide ajax content
+ * @author Mahmoud Ben Hassine
  */
 public class AjaxContentProvider {
 

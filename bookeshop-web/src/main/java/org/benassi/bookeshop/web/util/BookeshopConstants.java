@@ -25,6 +25,7 @@ package org.benassi.bookeshop.web.util;
 
 /**
  * Utility constants class
+ * @author Mahmoud Ben Hassine
  */
 public class BookeshopConstants {
 

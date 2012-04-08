@@ -31,6 +31,7 @@ import  org.benassi.bookeshop.web.cart.ShoppingCart;
 import org.benassi.bookeshop.web.util.BookComparator;
 import org.benassi.bookeshop.web.util.BookUtil;
 import org.benassi.bookeshop.web.util.BookeshopConstants;
+import org.benassi.bookeshop.web.util.OrderUtil;
 import org.springframework.context.MessageSource;
 
 import java.text.DecimalFormat;
@@ -39,6 +40,7 @@ import java.util.TreeMap;
 
 /**
  * Action class to show shopping cart details
+ * @author Mahmoud Ben Hassine
  */
 public class CartDetailsAction implements SessionAware {
 
@@ -47,6 +49,8 @@ public class CartDetailsAction implements SessionAware {
     private BookManager bookManager;
 
     private BookUtil bookUtil;
+
+    private OrderUtil orderUtil;
 
     private ShoppingCart theCart;
 
@@ -97,6 +101,10 @@ public class CartDetailsAction implements SessionAware {
         this.messageProvider = messageProvider;
     }
 
+    public void setOrderUtil(OrderUtil orderUtil) {
+        this.orderUtil = orderUtil;
+    }
+
     /*
     * Getters for model
     */
@@ -109,8 +117,7 @@ public class CartDetailsAction implements SessionAware {
     }
 
     public String getFormattedTotal() {
-        DecimalFormat df = new DecimalFormat("###.##");
-        return df.format(total);
+        return orderUtil.formatTotal(total);
     }
 
 }

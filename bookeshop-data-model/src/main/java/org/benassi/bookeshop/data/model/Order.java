@@ -28,6 +28,7 @@ import java.util.Set;
 
 /**
  * Domain object for orders
+ * @author Mahmoud Ben Hassine
  */
 public class Order {
 

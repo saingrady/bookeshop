@@ -26,6 +26,10 @@ package org.benassi.bookeshop.web.cart;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Shopping cart implementation
+ * @author Mahmoud Ben Hassine
+ */
 public class ShoppingCart {
 
     //<bookId,quantity> map

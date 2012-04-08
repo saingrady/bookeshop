@@ -32,6 +32,7 @@ import java.util.Map;
 
 /**
  * Action class to redirect update account requests to update form page
+ * @author Mahmoud Ben Hassine
  */
 public class UpdateAction extends ActionSupport implements SessionAware {
 

@@ -37,6 +37,7 @@ import java.util.Set;
 
 /**
  * Action class to get customer orders
+ * @author Mahmoud Ben Hassine
  */
 public class OrderAction extends ActionSupport implements SessionAware, Preparable{
 

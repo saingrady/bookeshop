@@ -29,6 +29,7 @@ import java.util.Date;
  * Book domain object. To keep it simple : <br/>
  * - Use only lead author instead of authors list <br/>
  * - Store the stock details (stock, price, offer) instead of separate table BookStock
+ * @author Mahmoud Ben Hassine
  */
 public class Book {
 

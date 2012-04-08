@@ -36,6 +36,7 @@ import java.util.List;
  * IndexAction : use category manager to get available categories
  * and put the list in servlet context (ServletContextAware)
  * //available categories are application scoped (until this requirement changes)
+ * @author Mahmoud Ben Hassine
  */
 public class IndexAction extends ActionSupport implements ServletContextAware{
 

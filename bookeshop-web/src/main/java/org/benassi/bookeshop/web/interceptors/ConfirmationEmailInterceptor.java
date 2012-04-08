@@ -48,6 +48,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Confirmation email interceptor
+ * @author Mahmoud Ben Hassine
  */
 public class ConfirmationEmailInterceptor extends AbstractInterceptor {
 

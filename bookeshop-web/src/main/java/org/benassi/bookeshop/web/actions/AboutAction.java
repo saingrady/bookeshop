@@ -27,6 +27,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * Action class to redirect to about page
+ * @author Mahmoud Ben Hassine
  */
 public class AboutAction extends ActionSupport{
 

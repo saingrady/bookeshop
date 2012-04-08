@@ -27,6 +27,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * Action class to redirect to contact page
+ * @author Mahmoud Ben Hassine
  */
 public class ContactAction extends ActionSupport{
 

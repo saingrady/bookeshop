@@ -25,6 +25,7 @@ package org.benassi.bookeshop.data.model;
 
 /**
  * Category domain object
+ * @author Mahmoud Ben Hassine
  */
 public class Category {
 

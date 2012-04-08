@@ -34,7 +34,8 @@ import org.springframework.context.MessageSource;
 import java.util.List;
 
 /**
- * BookCategoryAction : action class to get books by category
+ * Action class to get books by category
+ * @author Mahmoud Ben Hassine
  */
 public class BookCategoryAction {
 

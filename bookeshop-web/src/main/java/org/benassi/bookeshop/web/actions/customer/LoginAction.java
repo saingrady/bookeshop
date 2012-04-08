@@ -37,6 +37,7 @@ import java.util.Map;
 
 /**
  * Action class for customer login
+ * @author Mahmoud Ben Hassine
  */
 public class LoginAction implements SessionAware{
 

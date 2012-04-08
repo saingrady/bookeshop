@@ -32,7 +32,8 @@ import org.benassi.bookeshop.web.util.BookUtil;
 import java.util.List;
 
 /**
- * BookCatalogueAction : loads discount books and makes them available to the view
+ * Action class to load discount books
+ * @author Mahmoud Ben Hassine
  */
 public class BookCatalogueAction extends ActionSupport implements Preparable{
 

@@ -34,7 +34,8 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 /**
- * BookDetailsAction : action class to get book details
+ * Action class to get book details
+ * @author Mahmoud Ben Hassine
  */
 public class BookDetailsAction {
 

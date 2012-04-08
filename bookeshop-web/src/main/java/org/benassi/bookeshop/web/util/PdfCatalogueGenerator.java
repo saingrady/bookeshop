@@ -40,6 +40,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Utility class to generate PDF catalogue on the fly
+ * @author Mahmoud Ben Hassine
  */
 public class PdfCatalogueGenerator implements ApplicationContextAware {
 

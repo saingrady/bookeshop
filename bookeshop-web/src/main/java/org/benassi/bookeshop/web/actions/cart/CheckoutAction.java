@@ -42,7 +42,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Action class to checkout an order
+ * Action class to checkout orders
+ * @author Mahmoud Ben Hassine
  */
 public class CheckoutAction implements SessionAware{
 

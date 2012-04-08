@@ -27,6 +27,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * Action class to redirect create account request to create account form page
+ * @author Mahmoud Ben Hassine
  */
 public class CreateAction extends ActionSupport {
 

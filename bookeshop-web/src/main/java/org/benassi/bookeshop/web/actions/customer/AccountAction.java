@@ -37,6 +37,7 @@ import java.util.Map;
 
 /**
  * Action class to manage customer account
+ * @author Mahmoud Ben Hassine
  */
 public class AccountAction extends ActionSupport implements SessionAware {
 
@@ -161,7 +162,7 @@ public class AccountAction extends ActionSupport implements SessionAware {
     }
 
     /*
-     * getters to populate creation/update forms if there are errors 
+     * getters to populate creation/update forms
      */
     public int getId() {
         return loggedCustomer.getId();

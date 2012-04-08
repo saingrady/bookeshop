@@ -67,7 +67,7 @@ public interface BookManager {
      * checkout a book from the stock
      * @param isbn the book ISBN
      * @param quantity the quantity to checkout
-     * @throws org.benassi.bookeshop.business.exception.OutOfStockException thrown if no stock is available for the requested quantity
+     * @throws {@link org.benassi.bookeshop.business.exception.OutOfStockException} thrown if no stock is available for the requested quantity
      */
     public void checkoutBook(String isbn, int quantity) throws OutOfStockException;
 

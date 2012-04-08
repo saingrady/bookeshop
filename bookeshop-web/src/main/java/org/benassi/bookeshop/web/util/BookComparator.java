@@ -29,6 +29,7 @@ import java.util.Comparator;
 
 /**
  * Comparator class to order books by ISBN
+ * @author Mahmoud Ben Hassine
  */
 public class BookComparator implements Comparator<Book>{
 

@@ -31,6 +31,7 @@ import java.io.InputStream;
 
 /**
  * Action class to generate and download PDF catalogue
+ * @author Mahmoud Ben Hassine
  */
 public class DownloadCatalogueAction  {
 

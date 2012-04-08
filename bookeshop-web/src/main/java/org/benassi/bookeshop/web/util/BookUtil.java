@@ -30,7 +30,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Utility class for org.benassi.bookeshop.data.model.Book
+ * Utility class for {@link org.benassi.bookeshop.data.model.Book}
+ * @author Mahmoud Ben Hassine
  */
 public class BookUtil {
 

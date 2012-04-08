@@ -34,6 +34,7 @@ import org.springframework.context.MessageSource;
 
 /**
  * Action class to logout a customer
+ * @author Mahmoud Ben Hassine
  */
 public class LogoutAction implements SessionAware {
 

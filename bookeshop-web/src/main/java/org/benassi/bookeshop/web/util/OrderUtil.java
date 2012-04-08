@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.Set;
 
 /**
- * Utility class for org.benassi.bookeshop.data.model.Order
+ * Utility class for {@link org.benassi.bookeshop.data.model.Order}
  */
 public class OrderUtil {
 
