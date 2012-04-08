@@ -44,10 +44,6 @@
                         <td><a href="mailto:md.benhassine@gmail.com">Mahmoud Ben Hassine</a></td>
                     </tr>
                     <tr>
-                        <td>Site template by</td>
-                        <td><a href="http://www.freecsstemplates.org">http://www.freecsstemplates.org</a></td>
-                    </tr>
-                    <tr>
                         <td>Javascript Dialogs by </td>
                         <td><a href="http://stefangabos.ro/jquery/zebra-dialog/">Stefan Gabos</a></td>
                     </tr>
@@ -56,24 +52,38 @@
                         <td><a href="http://jquery.com/demo/thickbox/">Cody Lindley</a></td>
                     </tr>
                     <tr>
-                        <td>Developed with</td>
-                        <td><a href="http://www.jetbrains.com/idea/"><img alt="The best Java IDE" src="images/icons/idea.png" border="0"/></a></td>
+                        <td>Site template by</td>
+                        <td><a href="http://www.freecsstemplates.org">http://www.freecsstemplates.org</a></td>
                     </tr>
                     <tr>
-                        <td>Built by</td>
-                        <td><a href="http://maven.apache.org/"><img alt="Built by Maven" src="images/icons/maven.png" border="0"/></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="http://www.springsource.org/about">Spring</a></td>
-                        <td>3.0.7</td>
+                        <td colspan="2"><hr/></td>
                     </tr>
                     <tr>
                         <td><a href="http://struts.apache.org/">Struts</a></td>
                         <td>2.3.1</td>
                     </tr>
                     <tr>
+                        <td><a href="http://www.displaytag.org/1.2/">Displaytag</a></td>
+                        <td>1.2</td>
+                    </tr>
+                    <tr>
+                        <td><a href="http://www.springsource.org/about">Spring</a></td>
+                        <td>3.0.7</td>
+                    </tr>
+                    <tr>
                         <td><a href="http://www.hibernate.org/">Hibernate</a></td>
                         <td>3.6.8</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><hr/></td>
+                    </tr>
+                    <tr>
+                        <td>Developed with</td>
+                        <td><a href="http://www.jetbrains.com/idea/"><img alt="The best Java IDE" src="images/icons/idea.png" border="0"/></a></td>
+                    </tr>
+                    <tr>
+                        <td>Built by</td>
+                        <td><a href="http://maven.apache.org/"><img alt="Built by Maven" src="images/icons/maven.png" border="0"/></a></td>
                     </tr>
                     </tbody>
                     </table>
