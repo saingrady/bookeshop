@@ -31,7 +31,6 @@ import java.util.List;
 
 /**
  * Interface for book data access object
- * (may be split in BookDAO and BookStockDAO)
  */
 public interface BookDAO {
 
