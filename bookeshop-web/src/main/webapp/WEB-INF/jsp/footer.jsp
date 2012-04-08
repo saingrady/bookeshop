@@ -29,7 +29,7 @@
 	<!-- end #page -->
 	<div id="footer">
 	<p>
-		Copyright (c) 2012 Book e-Shop. All rights reserved
+		Copyright (c) 2012 Book e-Shop. All rights reserved . DESIGN BY <a href="http://www.freecsstemplates.org">FREE CSS TEMPLATES.</a>
 	</p>
 	</div>
 	<!-- end #footer -->
