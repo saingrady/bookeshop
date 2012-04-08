@@ -29,6 +29,10 @@ import org.benassi.bookeshop.data.model.Order;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Order manager business interface
+ * @author Mahmoud Ben Hassine
+ */
 public interface OrderManager {
 
     /**

@@ -35,45 +35,48 @@ import java.util.List;
 
 /**
  * Book Manager implementation
+ * @author Mahmoud Ben Hassine
  */
 public class BookManagerImpl implements BookManager{
 
-    final Logger logger = LoggerFactory.getLogger(BookManagerImpl.class);
-
     private BookDAO bookDAO;
 
-    public void setBookDAO(BookDAO bookDAO) {
-        this.bookDAO = bookDAO;
-    }
-
+    /** {@inheritDoc} */
     public List<Book> getDiscountBooks() {
         //Business rule : if no available offers, display some books from the catalogue
         List<Book> books = bookDAO.getOffers();
         return books.size() != 0 ? books : bookDAO.getCatalogue();
     }
 
-    public int getBookOffer(String isbn) {
-        return bookDAO.getBookByIsbn(isbn).getOffer();
-    }
-
+    /** {@inheritDoc} */
     public List<Book> getBooksByCategory(int categoryId) {
         return bookDAO.getBooksByCategory(categoryId);
     }
 
+    /** {@inheritDoc} */
     public List<Book> getBooksByTitleAuthor(String keyword) {
         return bookDAO.getBooksByTitleAuthor(keyword);
     }
 
+    /** {@inheritDoc} */
     public Book getBookByIsbn(String isbn) {
         return bookDAO.getBookByIsbn(isbn);
     }
 
+    /** {@inheritDoc} */
     public void checkoutBook(String isbn,int quantity) throws OutOfStockException {
         try {
             bookDAO.updateStock(isbn, quantity);
         } catch (InsufficientStockException ise) {
             throw new OutOfStockException(ise.getRequestedQuantity(),ise.getCurrentStock(),ise.getBookISBN());
         }
+    }
+
+    /*
+     * Setters for DI
+     */
+    public void setBookDAO(BookDAO bookDAO) {
+        this.bookDAO = bookDAO;
     }
 
 }

@@ -23,6 +23,10 @@
 
 package org.benassi.bookeshop.business.exception;
 
+/**
+ * Business exception to throw when checking out out of stock items.
+ * @author Mahmoud Ben Hassine
+ */
 public class OutOfStockException extends Exception{
 
     private int requestedQuantity;

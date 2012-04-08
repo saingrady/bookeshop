@@ -29,30 +29,20 @@ import org.benassi.bookeshop.data.access.api.CustomerDAO;
 import org.benassi.bookeshop.data.access.api.OrderDAO;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Set;
 
 /**
  * Customer Manager implementation
+ * @author Mahmoud Ben Hassine
  */
 public class CustomerManagerImpl implements CustomerManager {
-
-    final Logger logger = LoggerFactory.getLogger(CustomerManagerImpl.class);
 
     private CustomerDAO customerDAO;
 
     private OrderDAO orderDAO;
 
-    public void setCustomerDAO(CustomerDAO customerDAO) {
-        this.customerDAO = customerDAO;
-    }
-
-    public void setOrderDAO(OrderDAO orderDAO) {
-        this.orderDAO = orderDAO;
-    }
-
+    /** {@inheritDoc} */
     public Customer login(String email, String password) {
         if(customerDAO.checkLoginCredentials(email, password))
             return customerDAO.getCustomerByEmail(email);
@@ -61,11 +51,13 @@ public class CustomerManagerImpl implements CustomerManager {
         }
     }
 
+    /** {@inheritDoc} */
     public Customer updateCustomer(Customer customer) {
         customerDAO.update(customer);
         return customerDAO.getCustomerById(customer.getId());
     }
 
+    /** {@inheritDoc} */
     public void removeCustomer(Customer customer) {
         Set<Order> orders = orderDAO.getOrdersByCustomer(customer.getId());
         for(Order order : orders){
@@ -74,14 +66,27 @@ public class CustomerManagerImpl implements CustomerManager {
         customerDAO.delete(customer);
     }
 
+    /** {@inheritDoc} */
     public Customer createCustomer(Customer customer) {
         customerDAO.save(customer);
         return customerDAO.getCustomerById(customer.getId());
     }
 
+    /** {@inheritDoc} */
     public boolean isRegistered(String email){
         Customer c = customerDAO.getCustomerByEmail(email);
         return (c != null);
+    }
+
+    /*
+     * Setters for DI
+     */
+    public void setCustomerDAO(CustomerDAO customerDAO) {
+        this.customerDAO = customerDAO;
+    }
+
+    public void setOrderDAO(OrderDAO orderDAO) {
+        this.orderDAO = orderDAO;
     }
 
 }

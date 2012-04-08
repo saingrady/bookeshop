@@ -36,6 +36,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Order manager implementation
+ * @author Mahmoud Ben Hassine
+ */
 public class OrderManagerImpl implements OrderManager {
 
     private OrderDAO orderDAO;
@@ -46,33 +50,17 @@ public class OrderManagerImpl implements OrderManager {
 
     private BookManager bookManager;
 
-    public void setOrderDAO(OrderDAO orderDAO) {
-        this.orderDAO = orderDAO;
-    }
-
-    public void setOrderItemDAO(OrderItemDAO orderItemDAO) {
-        this.orderItemDAO = orderItemDAO;
-    }
-
-    public void setOrderStatusDAO(OrderStatusDAO orderStatusDAO) {
-        this.orderStatusDAO = orderStatusDAO;
-    }
-
-    public void setBookManager(BookManager bookManager) {
-        this.bookManager = bookManager;
-    }
-
-    @Override
+    /** {@inheritDoc} */
     public Order getOrderById(int orderId) {
         return orderDAO.getOrderById(orderId);
     }
 
-    @Override
+    /** {@inheritDoc} */
     public Set<Order> getOrdersByCustomers(final int customerId) {
         return orderDAO.getOrdersByCustomer(customerId);
     }
 
-    @Override
+    /** {@inheritDoc} */
     public Order createOrder(final Customer customer,final Map<String,Integer> items) {
 
         Order order = new Order();
@@ -96,5 +84,24 @@ public class OrderManagerImpl implements OrderManager {
         }
 
         return order;
+    }
+
+    /*
+     * Setters for DI
+     */
+    public void setOrderDAO(OrderDAO orderDAO) {
+        this.orderDAO = orderDAO;
+    }
+
+    public void setOrderItemDAO(OrderItemDAO orderItemDAO) {
+        this.orderItemDAO = orderItemDAO;
+    }
+
+    public void setOrderStatusDAO(OrderStatusDAO orderStatusDAO) {
+        this.orderStatusDAO = orderStatusDAO;
+    }
+
+    public void setBookManager(BookManager bookManager) {
+        this.bookManager = bookManager;
     }
 }

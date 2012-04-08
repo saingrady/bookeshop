@@ -31,21 +31,27 @@ import java.util.List;
 
 /**
  * Category Manager implementation
+ * @author Mahmoud Ben Hassine
  */
 public class CategoryManagerImpl implements CategoryManager {
 
     private CategoryDAO categoryDAO;
 
-    public void setCategoryDAO(CategoryDAO categoryDAO) {
-        this.categoryDAO = categoryDAO;
-    }
-
+    /** {@inheritDoc} */
     public List<Category> getCategories() {
         return categoryDAO.getCategories();
     }
 
+    /** {@inheritDoc} */
     public Category getCategoryById(int categoryId) {
         return categoryDAO.getCategoryById(categoryId);
+    }
+
+    /*
+    * Setters for DI
+    */
+    public void setCategoryDAO(CategoryDAO categoryDAO) {
+        this.categoryDAO = categoryDAO;
     }
 
 }

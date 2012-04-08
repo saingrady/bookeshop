@@ -30,7 +30,8 @@ import java.util.List;
 
 /**
  *
- * Book Manager interface
+ * Book Manager business interface
+ * @author Mahmoud Ben Hassine
  * 
  */
 public interface BookManager {
@@ -42,7 +43,7 @@ public interface BookManager {
     public List<Book> getDiscountBooks();
 
     /**
-     * look for books for a category
+     * look for books by category
      * @param categoryId the category ID
      * @return the list of books belonging to the given category
      */
@@ -56,7 +57,7 @@ public interface BookManager {
     public List<Book> getBooksByTitleAuthor(String keyword);
 
     /**
-     * look for a book by its ISBN
+     * look for a book by ISBN
      * @param isbn the book ISBN to look for
      * @return the book
      */
@@ -66,7 +67,7 @@ public interface BookManager {
      * checkout a book from the stock
      * @param isbn the book ISBN
      * @param quantity the quantity to checkout
-     * @throws org.benassi.bookeshop.business.exception.OutOfStockException thrown if no stock is available for the given quantity
+     * @throws org.benassi.bookeshop.business.exception.OutOfStockException thrown if no stock is available for the requested quantity
      */
     public void checkoutBook(String isbn, int quantity) throws OutOfStockException;
 

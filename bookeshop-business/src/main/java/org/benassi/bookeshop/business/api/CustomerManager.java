@@ -26,7 +26,8 @@ package org.benassi.bookeshop.business.api;
 import org.benassi.bookeshop.data.model.Customer;
 
 /**
- * Customer Manager interface
+ * Customer Manager business interface
+ * @author Mahmoud Ben Hassine
  */
 public interface CustomerManager {
 

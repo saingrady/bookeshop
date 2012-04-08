@@ -30,7 +30,8 @@ import org.benassi.bookeshop.data.model.Category;
 import java.util.List;
 
 /**
- * Category Manager interface
+ * Category Manager business interface
+ * @author Mahmoud Ben Hassine
  */
 public interface CategoryManager {
 
