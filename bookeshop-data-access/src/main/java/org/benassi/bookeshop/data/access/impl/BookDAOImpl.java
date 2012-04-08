@@ -28,9 +28,6 @@ import org.benassi.bookeshop.data.access.api.BookDAO;
 import org.benassi.bookeshop.data.access.exception.InsufficientStockException;
 import org.benassi.bookeshop.data.model.Book;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -66,20 +63,7 @@ public class BookDAOImpl extends HibernateDaoSupport implements BookDAO {
     }
 
     public List<Book> getBooksByTitleAuthor(String keyword) {
-
-        Criteria criteria = this.getSession().createCriteria(Book.class);
-        //TODO : fix & test this restriction
-        criteria.add( //Restrictions.or(
-                        Restrictions.like("title",keyword, MatchMode.ANYWHERE).ignoreCase()
-                        //Restrictions.ilike("author.firstName",keyword, MatchMode.ANYWHERE) // ilike = a case-insensitive like (see hibernate javadoc)
-                        //Restrictions.ilike("author.lastName",keyword, MatchMode.ANYWHERE) // ilike = a case-insensitive like (see hibernate javadoc)
-                ) ;
-        return criteria.list();
-
-        /*
-        * may use the following query but it is case sensitive
-        */
-        //  return  this.getHibernateTemplate().findByNamedParam("from Book b where b.author like :keyword or b.title like :keyword ", "keyword", "%" + keyword + "%");
+        return  this.getHibernateTemplate().findByNamedParam("from Book b where upper(b.author.firstName) like :keyword or upper(b.author.lastName) like :keyword or upper(b.title) like :keyword ", "keyword", "%" + keyword.toUpperCase() + "%");
     }
 
     public Book getBookByIsbn(String isbn) {
