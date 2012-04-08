@@ -51,12 +51,9 @@ public class CustomerDAOImplTest {
 
     private Customer toto;
 
-    private Customer titi;
-
     @Before
     public void setup() {
         toto = new Customer( "toto", "ben toto", "totoadr","toto@gmail.com","totopwd");
-        titi = new Customer( "titi", "ben titi", "titiadr","titi@gmail.com","titipwd");
     }
 
     @Test
@@ -149,15 +146,6 @@ public class CustomerDAOImplTest {
     }
 
     /**
-     * try to update a non existent customer
-     */
-    @Test
-    @ExpectedException(DataAccessException.class)
-    public void testUpdateNonExistentCustomer() {
-        customerDAO.update(titi);
-    }
-
-    /**
      * test to delete a loaded customer
      */
     @Test
@@ -175,7 +163,6 @@ public class CustomerDAOImplTest {
     @After
     public void teardown(){
         toto =null;
-        titi = null;
         customerDAO = null;
         System.gc();
     }

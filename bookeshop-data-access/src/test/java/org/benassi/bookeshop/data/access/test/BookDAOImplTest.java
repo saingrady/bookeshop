@@ -46,20 +46,6 @@ public class BookDAOImplTest {
     private BookDAO bookDao;
 
     @Test
-    public void testGetBookOfferOK() {
-        String isbn = "9781430216407"; // 5% discount for book 'pro spring dm server'
-        int offer = bookDao.getBookByIsbn(isbn).getOffer();
-        assertEquals(5,offer);
-    }
-
-    @Test
-    public void testGetBookOfferKO() {
-        String isbn = "9781430219088"; // no offer for book 'Pro Hyper-V'
-        int offer = bookDao.getBookByIsbn(isbn).getOffer();
-        assertEquals(0,offer);
-    }
-
-    @Test
     public void testGetCatalogue(){
         List<Book> books = bookDao.getCatalogue();
         assertEquals(10,books.size());
