@@ -40,7 +40,11 @@
                     </tr>
                     <tr>
                         <td>Developed by</td>
-                        <td><a href="mailto:md.benhassine@gmail.com">Mahmoud Ben Hasine</a></td>
+                        <td><a href="mailto:md.benhassine@gmail.com">Mahmoud Ben Hassine</a></td>
+                    </tr>
+                    <tr>
+                        <td>Site template by</td>
+                        <td><a href="http://www.freecsstemplates.org">http://www.freecsstemplates.org</a></td>
                     </tr>
                     <tr>
                         <td>Developed with</td>
