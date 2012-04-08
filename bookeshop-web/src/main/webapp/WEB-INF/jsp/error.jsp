@@ -36,8 +36,8 @@
                     <img src="images/icons/error.png" alt="error">
                     <br/>
                     <br/>
-                    <h2>Sorry, an error occurred and we are unable to fulfill your request.</h2><br/>
-                    <h2>Error details : <c:out value="${error}"/> </h2><br/>
+                    <h1>An error occurred and your request cannot be served.</h1><br/>
+                    <h3 style="color: red;">Error details : <c:out value="${error}"/> </h3><br/>
                     <div style="clear: both;">&nbsp;</div>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
