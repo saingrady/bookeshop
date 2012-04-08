@@ -27,7 +27,6 @@ TODO enhancements:
 - remove setters for DI, use @Autowired and @Inject instead
 - review TX advised methods / test transactional behaviour
 - update struts URLs (naming + namespace)
-- review pom dependencies (dependency plugin : analyze)
 TODO Features:
 - add security checks (Spring security)
 - add cache (ehcache)
