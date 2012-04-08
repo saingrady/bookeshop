@@ -31,11 +31,9 @@
             <div class="post-bgbtm">
                 <div align="center">
                 <br/>
-                <h1> About Book eShop </h1><br/>
-                <table border="1">
-                    <tr>
-                        <th colspan="2">Generalities</th>
-                    </tr>
+                <h1> About Book e-Shop </h1><br/>
+                <table cellspacing="15px">
+                    <tbody>
                     <tr>
                         <td>License</td>
                         <td><a href="http://www.gnu.org/licenses/gpl-2.0.html">GPL v2</a></td>
@@ -43,9 +41,6 @@
                     <tr>
                         <td>Developed by</td>
                         <td><a href="mailto:md.benhassine@gmail.com">Mahmoud Ben Hasine</a></td>
-                    </tr>
-                    <tr>
-                        <th colspan="2">IDE & build tool</th>
                     </tr>
                     <tr>
                         <td>Developed with</td>
@@ -56,20 +51,18 @@
                         <td><a href="http://maven.apache.org/"><img alt="Built by Maven" src="images/icons/maven.png" border="0"/></a></td>
                     </tr>
                     <tr>
-                        <th colspan="2">Frameworks</th>
-                    </tr>
-                    <tr>
                         <td><a href="http://www.springsource.org/about">Spring</a></td>
-                        <td>3.0.5</td>
+                        <td>3.0.7</td>
                     </tr>
                     <tr>
                         <td><a href="http://struts.apache.org/">Struts</a></td>
-                        <td>2.2.1</td>
+                        <td>2.3.1</td>
                     </tr>
                     <tr>
                         <td><a href="http://www.hibernate.org/">Hibernate</a></td>
-                        <td>3.6.2</td>
+                        <td>3.6.8</td>
                     </tr>
+                    </tbody>
                     </table>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
