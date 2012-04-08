@@ -58,21 +58,21 @@ public class CustomerDAOImplTest {
 
     @Test
     public void testCheckLoginCredentialsOK(){
-        String email = "md.benhassine@gmail.com";
-        String password = "mahmoud";
+        String email = "guest@server.com";
+        String password = "guest";
         assertTrue(customerDAO.checkLoginCredentials(email,password));
     }
 
     @Test
     public void testCheckLoginCredentialsKO(){
-        String email = "md.benhassine@gmail.com";
-        String password = "blabla";
+        String email = "guest@server.com";
+        String password = "blah";
         assertFalse(customerDAO.checkLoginCredentials(email,password));
     }
 
     @Test
     public void testGetCustomerByEmailOK(){
-        String email = "md.benhassine@gmail.com";
+        String email = "guest@server.com";
         Customer customer = customerDAO.getCustomerByEmail(email);
         assertNotNull(customer);
         assertEquals(56325,customer.getId());
@@ -80,7 +80,7 @@ public class CustomerDAOImplTest {
 
     @Test
     public void testGetCustomerByEmailKO(){
-        String email = "foo@bar.org";
+        String email = "blah@server.org";
         Customer customer = customerDAO.getCustomerByEmail(email);
         assertNull(customer);
     }
@@ -113,7 +113,7 @@ public class CustomerDAOImplTest {
 
         Customer customer = customerDAO.getCustomerById(id);
         customer.setAddress("new adr");
-        customer.setEmail("mahmoud@yahoo.com");
+        customer.setEmail("guest@server.org");
         customer.setPassword("new pwd");
 
         customerDAO.update(customer);
@@ -121,7 +121,7 @@ public class CustomerDAOImplTest {
         Customer c = customerDAO.getCustomerById(id);
 
         assertEquals("new adr", c.getAddress());
-        assertEquals("mahmoud@yahoo.com", c.getEmail());
+        assertEquals("guest@server.org", c.getEmail());
         assertEquals("new pwd", c.getPassword());
 
     }
@@ -135,7 +135,7 @@ public class CustomerDAOImplTest {
 
         int id = 56326;
 
-        String newEmail = "md.benhassine@gmail.com";
+        String newEmail = "guest@server.com";
 
         Customer customer = customerDAO.getCustomerById(id);
         

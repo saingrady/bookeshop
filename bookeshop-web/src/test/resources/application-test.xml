@@ -78,4 +78,9 @@
         <property name="configLocation" value="classpath:velocity/velocity.properties"/>
     </bean>
 
+    <bean id="orderUtil" class="org.benassi.bookeshop.web.util.OrderUtil">
+        <property name="dateFormat" value="yyyy-MM-dd"/>
+        <property name="totalFormat" value="###.##"/>
+    </bean>
+
 </beans>

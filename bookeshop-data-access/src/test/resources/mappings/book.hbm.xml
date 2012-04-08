@@ -29,9 +29,9 @@
       <generator class="assigned"/>
     </id>
     <property name="title"/>
-    <many-to-one column="author_id" name="author" class="org.benassi.bookeshop.data.model.Author"/>
+    <many-to-one column="author_id" name="author" class="org.benassi.bookeshop.data.model.Author" lazy="false"/>
     <property column="pub_date" name="publishDate"/>
-    <many-to-one column="category_id" name="category" class="org.benassi.bookeshop.data.model.Category"/>
+    <many-to-one column="category_id" name="category" class="org.benassi.bookeshop.data.model.Category" lazy="false"/>
     <property name="stock"/>
     <property name="price"/>
     <property name="offer"/>

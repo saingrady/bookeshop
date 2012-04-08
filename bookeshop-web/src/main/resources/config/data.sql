@@ -54,8 +54,8 @@ INSERT INTO book VALUES ('9781590598276', 'Pro Oracle Application Express',20,'2
 INSERT INTO book VALUES ('9781590599686', 'Oracle Database 11g',21, '2009-02-20',5,50,44.99,0);
 
 -- customers
-INSERT INTO customer VALUES (56325,'Mahmoud', 'Ben Hassine', 'somewhere on earth','md.benhassine@gmail.com', 'mahmoud');
-INSERT INTO customer VALUES (56326,'guest', 'van guest', 'somewhere on moon','guest@server.com','guest');
+INSERT INTO customer VALUES (56325,'guest', 'van guest', 'somewhere on earth','guest@server.com','guest');
+INSERT INTO customer VALUES (56326,'foo', 'bar', 'somewhere on moon','foo@bar.org','foobar');
 
 -- book order status
 INSERT INTO book_order_status VALUES (1,'confirmed');

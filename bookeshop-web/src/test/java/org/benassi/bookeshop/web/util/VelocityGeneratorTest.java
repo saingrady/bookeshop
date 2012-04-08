@@ -42,7 +42,7 @@ import java.util.Map;
 import static junit.framework.Assert.assertNotNull;
 
 /**
- * Velocity generator test
+ * Confirmation mail generation from velocity template test
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -53,16 +53,21 @@ public class VelocityGeneratorTest {
     private CustomerDAO customerDao;
 
     @Autowired
-    OrderDAO orderDAO;
+    private OrderDAO orderDAO;
 
     @Autowired
-    VelocityEngine velocityEngine;
+    private VelocityEngine velocityEngine;
+
+    @Autowired
+    private OrderUtil orderUtil;
 
     @Test
     public void testGetPdfCatalogueStream() {
 
-        Customer customer = customerDao.getCustomerByEmail("md.benhassine@gmail.com");
+        Customer customer = customerDao.getCustomerByEmail("guest@server.com");
         Order order = orderDAO.getOrderById(22136);
+        order.setFormattedDate(orderUtil.formatDate(order.getDate()));
+        order.setFormattedTotal(orderUtil.formatTotal(order.getTotal()));
         assertNotNull(customer);
         assertNotNull(order);
 

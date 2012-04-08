@@ -28,7 +28,9 @@
     <id name="itemId">
       <generator class="increment"/>
     </id>
+    <!--<many-to-one name="order" class="org.benassi.bookeshop.data.model.Book" lazy="false" unique="true"/>-->
     <property name="orderId"/>
+    <!--<many-to-one name="book" class="org.benassi.bookeshop.data.model.Book" lazy="false"/>-->
     <property name="bookId"/>
     <property name="quantity"/>
     <property name="purchasePrice"/>

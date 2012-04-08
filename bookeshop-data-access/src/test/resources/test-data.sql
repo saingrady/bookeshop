@@ -34,28 +34,28 @@ INSERT INTO book VALUES ('9781430216407', 'Pro Spring dm Server',1, '2009-05-25'
 INSERT INTO book VALUES ('9781430218418', 'Expert Shell scripting',2, '2009-01-06',3,50,30,10);
 INSERT INTO book VALUES ('9781430218517', 'Cisco Routers',3, '2009-01-02',4,50,40,20);
 INSERT INTO book VALUES ('9781430218890', 'Linux command line',4, '2009-04-22',3,10,50,50);
-INSERT INTO book VALUES ('9781430219088', 'Pro Hyper-V',5, '2009-05-11',6,50,44.99,0);
+INSERT INTO book VALUES ('9781430219088', 'Pro Hyper-V',5, '2009-05-11',6,0,44.99,0);
 INSERT INTO book VALUES ('9781430224259', 'Silverlight 4 lab',6, '2009-09-14',2,50,39.99,0);
 INSERT INTO book VALUES ('9781430224693', 'Windows Azure',7, '2009-12-08',6,50,39.99,0);
-INSERT INTO book VALUES ('9781430224976', 'Spring Entreprise recipes',1, '2009-11-20',1,50,44.99,0);
-INSERT INTO book VALUES ('9781430225539', 'Java Google App Engine',8, '2009-12-31',1,50,44.99,0);
+INSERT INTO book VALUES ('9781430224976', 'Spring Entreprise recipes',1, '2009-11-20',1,0,44.99,0);
+INSERT INTO book VALUES ('9781430225539', 'Java Google App Engine',8, '2009-12-31',1,20,44.99,0);
 INSERT INTO book VALUES ('9781430228028', 'Beginning Google Maps API 3',9, '2010-07-27',2,50,39.99,0);
 INSERT INTO book VALUES ('9781430228509', 'Beginning Hibernate',10, '2010-05-31',1,50,39.99,0);
 INSERT INTO book VALUES ('9781430228899', 'JavaEE6 with Glassfish',11, '2010-08-31',1,50,44.99,0);
-INSERT INTO book VALUES ('9781430232889', 'Pro CSS',12, '2011-04-20',2,50,39.99,0);
+INSERT INTO book VALUES ('9781430232889', 'Pro CSS',12, '2011-04-20',2,0,39.99,0);
 INSERT INTO book VALUES ('9781430233213', 'Windows Power Shell',13, '2011-01-25',6,2,39.99,0);
 INSERT INTO book VALUES ('9781430268727', 'Java FX 2',14, '2010-01-11',1,50,39.99,0);
 INSERT INTO book VALUES ('9781430272151', 'Adobe Cold Fusion',15, '2010-04-30',2,50,39.99,0);
 INSERT INTO book VALUES ('9781590592779', 'The Definitive Guide to Samba 3',16, '2004-01-12',4,50,39.99,0);
 INSERT INTO book VALUES ('9781590593578', 'WiMax Operators Manual',17, '2004-06-28',4,50,39.99,0);
-INSERT INTO book VALUES ('9781590596746', 'Beginning Suse Linux',18, '2006-11-10',3,50,39.99,0);
+INSERT INTO book VALUES ('9781590596746', 'Beginning Suse Linux',18, '2006-11-10',3,10,39.99,0);
 INSERT INTO book VALUES ('9781590597415', 'Expert MySql',19, '2007-01-22',5,50,39.99,0);
-INSERT INTO book VALUES ('9781590598276', 'Pro Oracle Application',20,'2008-09-19',5,50,29.99,0);
+INSERT INTO book VALUES ('9781590598276', 'Pro Oracle Application Express',20,'2008-09-19',5,50,29.99,0);
 INSERT INTO book VALUES ('9781590599686', 'Oracle Database 11g',21, '2009-02-20',5,50,44.99,0);
 
 -- customers
-INSERT INTO customer VALUES (56325,'Mahmoud', 'Ben Hassine', 'somewhere on earth','md.benhassine@gmail.com', 'mahmoud');
-INSERT INTO customer VALUES (56326,'guest', 'van guest', 'somewhere on moon','guest@server.com','guest');
+INSERT INTO customer VALUES (56325,'guest', 'van guest', 'somewhere on earth','guest@server.com','guest');
+INSERT INTO customer VALUES (56326,'foo', 'bar', 'somewhere on moon','foo@bar.org','foobar');
 
 -- book order status
 INSERT INTO book_order_status VALUES (1,'confirmed');
