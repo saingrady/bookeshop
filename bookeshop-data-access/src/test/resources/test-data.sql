@@ -37,7 +37,7 @@ INSERT INTO book VALUES ('9781430218890', 'Linux command line',4, '2009-04-22',3
 INSERT INTO book VALUES ('9781430219088', 'Pro Hyper-V',5, '2009-05-11',6,0,44.99,0);
 INSERT INTO book VALUES ('9781430224259', 'Silverlight 4 lab',6, '2009-09-14',2,50,39.99,0);
 INSERT INTO book VALUES ('9781430224693', 'Windows Azure',7, '2009-12-08',6,50,39.99,0);
-INSERT INTO book VALUES ('9781430224976', 'Spring Entreprise recipes',1, '2009-11-20',1,0,44.99,0);
+INSERT INTO book VALUES ('9781430224976', 'Spring Enterprise recipes',1, '2009-11-20',1,0,44.99,0);
 INSERT INTO book VALUES ('9781430225539', 'Java Google App Engine',8, '2009-12-31',1,20,44.99,0);
 INSERT INTO book VALUES ('9781430228028', 'Beginning Google Maps API 3',9, '2010-07-27',2,50,39.99,0);
 INSERT INTO book VALUES ('9781430228509', 'Beginning Hibernate',10, '2010-05-31',1,50,39.99,0);
