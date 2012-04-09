@@ -30,14 +30,14 @@
 
 <struts>
 
-    <package name="book" extends="struts-default">
+    <package name="book" namespace="/book" extends="struts-default">
 
         <global-results>
             <result name="error">/WEB-INF/jsp/error.jsp</result>
         </global-results>
 
         <action name="catalogue" class="org.benassi.bookeshop.web.actions.book.BookCatalogueAction">
-            <result>/WEB-INF/jsp/catalogue.jsp</result>
+            <result>/WEB-INF/jsp/book/catalogue.jsp</result>
         </action>
 
         <action name="bookDetails" class="org.benassi.bookeshop.web.actions.book.BookDetailsAction">
@@ -48,19 +48,28 @@
         </action>
 
         <action name="category" class="org.benassi.bookeshop.web.actions.book.BookCategoryAction">
-            <result>/WEB-INF/jsp/category.jsp</result>
+            <result>/WEB-INF/jsp/book/category.jsp</result>
         </action>
 
         <action name="lookup" class="org.benassi.bookeshop.web.actions.book.SearchBookAction">
             <interceptor-ref name="defaultStack"/><!-- need to be added. See executeAndWaitStack in struts-default.xml -->
             <interceptor-ref name="execAndWait"/>
             <result name="wait">/WEB-INF/jsp/processing.jsp</result>
-            <result>/WEB-INF/jsp/search-result.jsp</result>
+            <result>/WEB-INF/jsp/book/search-result.jsp</result>
+        </action>
+
+        <action name="download-catalogue" class="org.benassi.bookeshop.web.actions.DownloadCatalogueAction">
+            <result name="success" type="stream">
+                <param name="contentDisposition">attachment;filename=bookeshop-catalogue.pdf</param>
+                <param name="contentType">application/pdf</param>
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">1024</param>
+            </result>
         </action>
 
     </package>
 
-    <package name="customer" extends="struts-default">
+    <package name="customer" namespace="/customer" extends="struts-default">
 
         <global-results>
             <result name="error">/WEB-INF/jsp/error.jsp</result>
@@ -69,57 +78,62 @@
         <action name="login" class="org.benassi.bookeshop.web.actions.customer.LoginAction">
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
+                <param name="namespace">/book</param>
             </result>
         </action>
 
         <action name="logout" class="org.benassi.bookeshop.web.actions.customer.LogoutAction">
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
+                <param name="namespace">/book</param>
             </result>
         </action>
 
         <action name="update" class="org.benassi.bookeshop.web.actions.customer.UpdateAction">
-            <result>/WEB-INF/jsp/update-account.jsp</result>
+            <result>/WEB-INF/jsp/customer/update-account.jsp</result>
         </action>
 
         <action name="update-account" class="org.benassi.bookeshop.web.actions.customer.AccountAction" method="update">
-            <result name="input">/WEB-INF/jsp/update-account.jsp</result>
+            <result name="input">/WEB-INF/jsp/customer/update-account.jsp</result>
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
+                <param name="namespace">/book</param>
             </result>
         </action>
 
 
         <action name="create" class="org.benassi.bookeshop.web.actions.customer.CreateAction">
-            <result>/WEB-INF/jsp/create-account.jsp</result>
+            <result>/WEB-INF/jsp/customer/create-account.jsp</result>
         </action>
 
         <action name="create-account" class="org.benassi.bookeshop.web.actions.customer.AccountAction" method="create">
-            <result name="input">/WEB-INF/jsp/create-account.jsp</result>
+            <result name="input">/WEB-INF/jsp/customer/create-account.jsp</result>
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
+                <param name="namespace">/book</param>
             </result>
         </action>
 
         <action name="remove" class="org.benassi.bookeshop.web.actions.customer.AccountAction" method="remove">
-            <result name="input">/WEB-INF/jsp/update-account.jsp</result>
+            <result name="input">/WEB-INF/jsp/customer/update-account.jsp</result>
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
+                <param name="namespace">/book</param>
             </result>
         </action>
 
         <action name="orders" class="org.benassi.bookeshop.web.actions.customer.OrderAction">
-            <result>/WEB-INF/jsp/orders.jsp</result>
+            <result>/WEB-INF/jsp/customer/orders.jsp</result>
         </action>
 
         <action name="orderDetails" class="org.benassi.bookeshop.web.actions.customer.OrderDetailsAction">
-            <result>/WEB-INF/jsp/order-details.jsp</result>
+            <result>/WEB-INF/jsp/customer/order-details.jsp</result>
         </action>
 
     </package>
 
 
-    <package name="cart" extends="struts-default">
+    <package name="cart" namespace="/cart" extends="struts-default">
 
         <interceptors>
             <interceptor name="confirmOrderByMail" class="org.benassi.bookeshop.web.interceptors.ConfirmationEmailInterceptor"/>
@@ -130,7 +144,7 @@
         </global-results>
 
         <action name="cartDetails" class="org.benassi.bookeshop.web.actions.cart.CartDetailsAction">
-            <result>/WEB-INF/jsp/cart-details.jsp</result>
+            <result>/WEB-INF/jsp/cart/cart-details.jsp</result>
         </action>
 
         <action name="checkout" class="org.benassi.bookeshop.web.actions.cart.CheckoutAction">
@@ -138,12 +152,13 @@
             <interceptor-ref name="confirmOrderByMail"/>
             <interceptor-ref name="execAndWait"/>
             <result name="wait">/WEB-INF/jsp/processing.jsp</result>
-            <result>/WEB-INF/jsp/confirm-order.jsp</result>
+            <result>/WEB-INF/jsp/customer/confirm-order.jsp</result>
         </action>
 
         <action name="addItem" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="addItem">
             <result type="redirectAction">
                 <param name="actionName">cartDetails</param>
+                <param name="namespace">/cart</param>
             </result>
         </action>
 
@@ -161,22 +176,25 @@
         <action name="removeItem" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="removeItem">
             <result type="redirectAction">
                 <param name="actionName">cartDetails</param>
+                <param name="namespace">/cart</param>
             </result>
         </action>
 
         <action name="clearCart" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="clearCart">
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
+                <param name="namespace">/book</param>
             </result>
         </action>
 
     </package>
 
-    <package name="utils" extends="struts-default">
+    <package name="utils" namespace="/" extends="struts-default">
 
         <action name="index" class="org.benassi.bookeshop.web.actions.IndexAction">
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
+                <param name="namespace">/book</param>
             </result>
         </action>
 
@@ -184,15 +202,6 @@
             <result>/WEB-INF/jsp/about.jsp</result>
         </action>
 
-        <action name="download-catalogue" class="org.benassi.bookeshop.web.actions.DownloadCatalogueAction">
-            <result name="success" type="stream">
-                <param name="contentDisposition">attachment;filename=bookeshop-catalogue.pdf</param>
-                <param name="contentType">application/pdf</param>
-                <param name="inputName">inputStream</param>
-                <param name="bufferSize">1024</param>
-            </result>
-        </action>
-
-    </package>    
+    </package>
 
 </struts>

@@ -26,8 +26,8 @@
   ~   THE SOFTWARE.
   --%>
 
-<jsp:include page="header.jsp" flush="true"/>
-<jsp:include page="left-sidebar.jsp" flush="true"/>
+<jsp:include page="../header.jsp" flush="true"/>
+<jsp:include page="../left-sidebar.jsp" flush="true"/>
 <div id="content">
     <div class="post">
         <div class="post-bgtop">
@@ -36,7 +36,7 @@
                 <br/>
                 <h1> My account </h1>
                     <div style="clear: both;">&nbsp;</div>
-                    <s:form action="update-account">
+                    <s:form action="/customer/update-account.do">
                         <div align="center" style="width:20%;"><s:actionerror/></div>
                         <s:textfield label="Identifier" name="id"  size="20" disabled="true"/>
                         <s:textfield label="Fist name"  name="firstName"  size="20"/>
@@ -52,7 +52,7 @@
                             </td>
                         </tr>
                     </s:form>
-                    <s:form action="remove" id="accountRemovalForm">
+                    <s:form action="/customer/remove.do" id="accountRemovalForm">
                         <input type="button" onclick="javascript:confirm_account_removal()" class="buttonStyle" value="Remove my account"/>
                     </s:form>
                     <div style="clear: both;">&nbsp;</div>
@@ -63,5 +63,5 @@
     <div style="clear: both;">&nbsp;</div>
 </div>
 <!-- end #content -->
-<jsp:include page="right-sidebar.jsp" flush="true"/>
-<jsp:include page="footer.jsp" flush="true"/>
+<jsp:include page="../right-sidebar.jsp" flush="true"/>
+<jsp:include page="../footer.jsp" flush="true"/>

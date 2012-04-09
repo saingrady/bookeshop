@@ -79,11 +79,11 @@
                     </tr>
                     <tr>
                         <td>Developed with</td>
-                        <td><a href="http://www.jetbrains.com/idea/"><img alt="The best Java IDE" src="images/icons/idea.png" border="0"/></a></td>
+                        <td><a href="http://www.jetbrains.com/idea/"><img alt="The best Java IDE" src="/images/icons/idea.png" border="0"/></a></td>
                     </tr>
                     <tr>
                         <td>Built by</td>
-                        <td><a href="http://maven.apache.org/"><img alt="Built by Maven" src="images/icons/maven.png" border="0"/></a></td>
+                        <td><a href="http://maven.apache.org/"><img alt="Built by Maven" src="/images/icons/maven.png" border="0"/></a></td>
                     </tr>
                     </tbody>
                     </table>

@@ -1,6 +1,6 @@
 <table border="1" cellpadding="4">
     <tr>
-        <td align="center" rowspan="7"><img src="images/books/${book.isbn}.gif"/></td>
+        <td align="center" rowspan="7"><img src="/images/books/${book.isbn}.gif"/></td>
     </tr>
     <tr>
         <td>ISBN</td>
@@ -20,7 +20,7 @@
     </tr>
     <tr>
         <td>Price</td>
-        <td align="center">$book.discountPrice <img src="images/icons/euro.png" width="12" height="12" border="0"/></td>
+        <td align="center">$book.discountPrice <img src="/images/icons/euro.png" width="12" height="12" border="0"/></td>
     </tr>
     <tr>
         <td>Availability</td>

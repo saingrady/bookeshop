@@ -26,32 +26,22 @@
   ~   THE SOFTWARE.
   --%>
 
-<jsp:include page="header.jsp" flush="true"/>
-<jsp:include page="left-sidebar.jsp" flush="true"/>
+<jsp:include page="../header.jsp" flush="true"/>
+<jsp:include page="../left-sidebar.jsp" flush="true"/>
 <div id="content">
     <div class="post">
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
                     <br/>
-                    <c:choose>
-                    <c:when test="${not empty orders}">
-                    <h1>My orders</h1><br/>
-                    <display:table name="orders" uid="order" sort="list" defaultorder="descending" requestURI="orders.do" class="dttable">
-                        <display:column title="Order ID" >
-                            <a href="orderDetails.do?orderId=${order.orderId}">${order.orderId}</a>
-                        </display:column>
-                        <display:column property="formattedDate" title="Date" sortable="true"/>
-                        <display:column title="Status" sortable="true">
-                            <c:out value="${order.status.label}"/>
-                        </display:column>
+                    <h1> Order N° ${order.orderId} details : (${order.formattedDate} | ${order.status.label})  </h1><br/>
+                    <display:table name="items" uid="item" sort="list" defaultorder="descending" requestURI="orderDetails.do" class="dttable">
+                        <display:column property="bookId" title="ISBN"/>
+                        <display:column property="quantity" title="Quantity" sortable="true"/>
+                        <display:column property="purchasePrice" title="Price" sortable="true"/>
+                        <display:column property="total" title="Subtotal" sortable="true"/>
                     </display:table>
-                    </c:when>
-                    <c:otherwise>
-                       <h1>You have no order yet on Book eShop</h1>
-                    </c:otherwise>
-                    </c:choose>
-                    <div style="clear: both;">&nbsp;</div>
+                    <p><b>Total = <c:out value="${order.formattedTotal}"/></b> <img src="/images/icons/euro.png" width="12" height="12" border="0"/></p>
                 </div>
                 <div style="clear: both;">&nbsp;</div>
             </div>
@@ -60,5 +50,6 @@
     <div style="clear: both;">&nbsp;</div>
 </div>
 <!-- end #content -->
-<jsp:include page="right-sidebar.jsp" flush="true"/>
-<jsp:include page="footer.jsp" flush="true"/>
+<jsp:include page="../right-sidebar.jsp" flush="true"/>
+<jsp:include page="../footer.jsp" flush="true"/>
+

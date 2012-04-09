@@ -32,7 +32,7 @@
             <h2>Categories</h2>
             <ul>
                 <c:forEach var="category" items="${categories}">
-                <li><a href="category.do?categoryId=${category.id}">${category.name}</a></li>
+                <li><a href="/book/category.do?categoryId=${category.id}">${category.name}</a></li>
                 </c:forEach>
             </ul>
         </li>
@@ -42,8 +42,8 @@
                 <li>
                     <table>
                         <tr>
-                            <td><a href="download-catalogue.do">Download PDF catalogue</a></td>
-                            <td><img src="images/icons/pdf_icon.png" width="32" height="32" border="0"/></td>
+                            <td><a href="/book/download-catalogue.do">Download PDF catalogue</a></td>
+                            <td><img src="/images/icons/pdf_icon.png" width="32" height="32" border="0"/></td>
                         </tr>
                     </table>
                 </li>

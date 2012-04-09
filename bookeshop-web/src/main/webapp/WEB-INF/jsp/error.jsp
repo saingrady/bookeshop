@@ -33,7 +33,7 @@
             <div class="post-bgbtm">
                 <div align="center">
                     <br/>
-                    <img src="images/icons/error.png" alt="error">
+                    <img src="/images/icons/error.png" alt="error">
                     <br/>
                     <br/>
                     <h1>An error occurred and your request cannot be served.</h1><br/>

@@ -26,49 +26,24 @@
   ~   THE SOFTWARE.
   --%>
 
-<%--Processing wait page : does not include header.jsp to add HTML meta refresh --%>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%--Not able to add meta http-equiv="refresh" tag in included header (with jsp:include directive)
+    1- add the tag in a separate head tag (as it is currently) => this produces 2 head tags but it works since it is a loose.dtd html doc
+    2- Do not include header in this page and reproduce it entirely in addition to the meta http-equiv="refresh" tag => redendancy in maintenance :-( --%>
 <html>
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="refresh" content="3;url=<s:url includeParams="all"/>"/>
-    <link rel="stylesheet" href="css/style.css"  type="text/css" media="screen" />
-    <title>Book e-Shop</title>
 </head>
-
-<body>
-<div id="wrapper">
-    <div id="header">
-        <div id="logo">
-            <h1><a href="index.do">Book e-Shop <img src="images/icons/library.png" width="64" height="64" border="0" align="absmiddle"/></a></h1>
-            <h3>
-                Customer service &nbsp; <img src="images/icons/customer_service.png" width="32" height="32" border="0" align="absmiddle"/><br/>
-                <img src="images/icons/phone.png" width="24" height="24" border="0" align="absmiddle"/> +33 1 23 45 67 89 <br/>
-                <img src="images/icons/email_icon.png" width="24" height="24" border="0" align="absmiddle"/> <a href="mailto:customer@bookeshop.com">customer@bookeshop.com</a>
-            </h3>
-        </div>
-    </div>
-    <!-- end #header -->
-    <div id="menu">
-        <ul>
-            <li><a href="index.do">Home</a><img src="images/icons/home.png" width="32" height="32" border="0"/></li>
-            <li><a href="about.do">About</a><img src="images/icons/info.png" width="32" height="32" border="0"/></li>
-        </ul>
-    </div>
-    <!-- end #menu -->
-    <div id="page">
-        <div id="page-bgtop">
-            <div id="page-bgbtm">
-
+</html>
+<jsp:include page="header.jsp" flush="true"/>
 <jsp:include page="left-sidebar.jsp" flush="true"/>
         
 <div id="content">
     <div align="center">
         <br/>
         <h2>${processingMessage}</h2>
-        <img src="images/icons/processing.gif" alt="processing ...">
+        <img src="/images/icons/processing.gif" alt="processing ...">
     </div>
 </div>
 <!-- end #content -->

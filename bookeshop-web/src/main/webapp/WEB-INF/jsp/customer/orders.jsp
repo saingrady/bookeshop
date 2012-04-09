@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="display" uri="http://displaytag.sf.net/el"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%--
@@ -26,38 +26,39 @@
   ~   THE SOFTWARE.
   --%>
 
-<jsp:include page="header.jsp" flush="true"/>
-<jsp:include page="left-sidebar.jsp" flush="true"/>
+<jsp:include page="../header.jsp" flush="true"/>
+<jsp:include page="../left-sidebar.jsp" flush="true"/>
 <div id="content">
     <div class="post">
         <div class="post-bgtop">
             <div class="post-bgbtm">
                 <div align="center">
-                <br/>
-                <h1>Create my account </h1><br/>
-                <h3>(All fields are required)</h3><br/>
-                    <s:form action="create-account">
-                        <div align="center" style="width:20%;"><s:actionerror/></div>
-                        <s:textfield label="Fist name"  name="firstName"  size="20"/>
-                        <s:textfield label="Last name" name="lastName" size="20"/>
-                        <s:textfield label="E-mail" name="email" size="20"/>
-                        <s:textfield label="Address" name="address"  size="20"/>
-                        <s:password label="Password" name="password" size="20"/>
-                        <s:password label="Confirm password" name="passwordConfirm" size="20"/>
-                        <tr><td colspan="2" align="center">&nbsp;</td></tr>
-                        <tr>
-                            <td colspan="2" align="center">
-                                <s:submit value="Register" cssClass="buttonStyle" theme="simple"/> <s:reset value="Reset" cssClass="buttonStyle" theme="simple"/>
-                            </td>
-                        </tr>
-                    </s:form>
-                    <s:div style="clear: both;">&nbsp;</s:div>
+                    <br/>
+                    <c:choose>
+                    <c:when test="${not empty orders}">
+                    <h1>My orders</h1><br/>
+                    <display:table name="orders" uid="order" sort="list" defaultorder="descending" requestURI="orders.do" class="dttable">
+                        <display:column title="Order ID" >
+                            <a href="/customer/orderDetails.do?orderId=${order.orderId}">${order.orderId}</a>
+                        </display:column>
+                        <display:column property="formattedDate" title="Date" sortable="true"/>
+                        <display:column title="Status" sortable="true">
+                            <c:out value="${order.status.label}"/>
+                        </display:column>
+                    </display:table>
+                    </c:when>
+                    <c:otherwise>
+                       <h1>You have no order yet on Book eShop</h1>
+                    </c:otherwise>
+                    </c:choose>
+                    <div style="clear: both;">&nbsp;</div>
                 </div>
+                <div style="clear: both;">&nbsp;</div>
             </div>
         </div>
     </div>
     <div style="clear: both;">&nbsp;</div>
 </div>
 <!-- end #content -->
-<jsp:include page="right-sidebar.jsp" flush="true"/>
-<jsp:include page="footer.jsp" flush="true"/>
+<jsp:include page="../right-sidebar.jsp" flush="true"/>
+<jsp:include page="../footer.jsp" flush="true"/>

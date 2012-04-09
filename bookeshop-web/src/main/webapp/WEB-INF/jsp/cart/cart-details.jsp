@@ -26,8 +26,8 @@
   ~   THE SOFTWARE.
   --%>
 
-<jsp:include page="header.jsp" flush="true"/>
-<jsp:include page="left-sidebar.jsp" flush="true"/>
+<jsp:include page="../header.jsp" flush="true"/>
+<jsp:include page="../left-sidebar.jsp" flush="true"/>
 <div id="content">
     <div class="post">
         <div class="post-bgtop">
@@ -45,7 +45,7 @@
                                     <th><b>Title</b></th>
                                     <th><b>Author</b></th>
                                     <th><b>Date</b></th>
-                                    <th><b>Price <img src="images/icons/euro.png" width="12" height="12" border="0"/></b></th>
+                                    <th><b>Price <img src="/images/icons/euro.png" width="12" height="12" border="0"/></b></th>
                                     <th><b>Quantity</b></th>
                                 </tr>
                                 </thead>
@@ -53,8 +53,8 @@
                                 <c:forEach var="entry" items="${items}">
                                     <tr>
                                         <td>
-                                            <a href="bookDetails.do?bookId=${entry.key.isbn}&height=200&width=300" title="Book details" class="thickbox">
-                                                <img src="images/books/${entry.key.isbn}.gif" width="80" height="100" border="0"/>
+                                            <a href="/book/bookDetails.do?bookId=${entry.key.isbn}&height=200&width=300" title="Book details" class="thickbox">
+                                                <img src="/images/books/${entry.key.isbn}.gif" width="80" height="100" border="0"/>
                                             </a>
                                         </td>
                                         <td><c:out value="${entry.key.isbn}"/></td>
@@ -63,11 +63,11 @@
                                         <td><c:out value="${entry.key.formattedPublishDate}"/></td>
                                         <td><c:out value="${entry.key.price}"/>
                                         <c:if test="${entry.key.offer != 0}">
-                                                <img src="images/icons/offer_${entry.key.offer}.png" width="32" height="32" border="0" align="absmiddle"/>
+                                                <img src="/images/icons/offer_${entry.key.offer}.png" width="32" height="32" border="0" align="absmiddle"/>
                                         </c:if>
                                         </td>
                                         <td><c:out value="${entry.value}"/><br/><br/>
-                                        <a href="addItem.do?bookId=${entry.key.isbn}"/><img src="images/icons/cart_add.png" width="32" height="32" border="0"/><a href="removeItem.do?bookId=${entry.key.isbn}"/><img src="images/icons/cart_remove.png" width="32" height="32" border="0"/>
+                                        <a href="/cart/addItem.do?bookId=${entry.key.isbn}"/><img src="/images/icons/cart_add.png" width="32" height="32" border="0"/><a href="/cart/removeItem.do?bookId=${entry.key.isbn}"/><img src="/images/icons/cart_remove.png" width="32" height="32" border="0"/>
                                         </td>
 
                                     </tr>
@@ -76,16 +76,16 @@
 
                             </table><br/>
 
-                            <p><b>Cart Total = <c:out value="${formattedTotal}"/></b> <img src="images/icons/euro.png" width="12" height="12" border="0"/></p>
+                            <p><b>Cart Total = <c:out value="${formattedTotal}"/></b> <img src="/images/icons/euro.png" width="12" height="12" border="0"/></p>
                             <table>
                                 <tr>
                                     <td>
-                                        <s:form action="clearCart">
+                                        <s:form action="/cart/clearCart.do">
                                             <s:submit value="clear cart" cssClass="buttonStyle"/>
                                         </s:form>
                                     </td>
                                     <td>
-                                        <s:form action="checkout">
+                                        <s:form action="/cart/checkout.do">
                                             <s:submit value="checkout" cssClass="buttonStyle"/>
                                         </s:form>
                                     </td>
@@ -105,6 +105,6 @@
     <div style="clear: both;">&nbsp;</div>
 </div>
 <!-- end #content -->
-<jsp:include page="right-sidebar.jsp" flush="true"/>
-<jsp:include page="footer.jsp" flush="true"/>               
+<jsp:include page="../right-sidebar.jsp" flush="true"/>
+<jsp:include page="../footer.jsp" flush="true"/>
 

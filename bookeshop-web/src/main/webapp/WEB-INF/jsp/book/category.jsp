@@ -26,8 +26,8 @@
   ~   THE SOFTWARE.
   --%>
 
-<jsp:include page="header.jsp" flush="true"/>
-<jsp:include page="left-sidebar.jsp" flush="true"/>
+<jsp:include page="../header.jsp" flush="true"/>
+<jsp:include page="../left-sidebar.jsp" flush="true"/>
 <div id="content">
     <div class="post">
         <div class="post-bgtop">
@@ -37,10 +37,10 @@
                     <h1>Books in category '${category.name}'</h1><br/>
                     <c:choose>
                         <c:when test="${not empty categoryItems}">
-                            <display:table name="categoryItems" uid="book" sort="list" defaultorder="descending" requestURI="category.do" class="dttable">
+                            <display:table name="categoryItems" uid="book" sort="list" defaultorder="descending" requestURI="/book/category.do" class="dttable">
                                 <display:column title="Preview" >
-                                    <a href="bookDetails.do?bookId=${book.isbn}&height=200&width=300" title="Book details" class="thickbox">
-                                        <img src="images/books/${book.isbn}.gif" width="80" height="100" border="0"/>
+                                    <a href="/book/bookDetails.do?bookId=${book.isbn}&height=200&width=300" title="Book details" class="thickbox">
+                                        <img src="/images/books/${book.isbn}.gif" width="80" height="100" border="0"/>
                                     </a>
                                 </display:column>
                                 <display:column property="title" title="Title" sortable="true"/>
@@ -48,20 +48,20 @@
                                     <c:out value="${book.author.firstName}"/> <c:out value="${book.author.lastName}"/>
                                 </display:column>
                                 <display:column property="formattedPublishDate" title="Date" sortable="true"/>
-                                <display:column title='Price <img src="images/icons/euro.png" width="12" height="12" border="0"/>' sortable="true">
+                                <display:column title='Price <img src="/images/icons/euro.png" width="12" height="12" border="0"/>' sortable="true">
                                     <c:out value="${book.price}"/>
                                     <c:if test="${book.offer != 0}">
-                                        <img src="images/icons/offer_${book.offer}.png" width="32" height="32" border="0" align="absmiddle"/>
+                                        <img src="/images/icons/offer_${book.offer}.png" width="32" height="32" border="0" align="absmiddle"/>
                                     </c:if>
                                 </display:column>
                                 <display:column property="stockStatus" title="Stock"/>
                                 <display:column title="Cart">
                                     <c:choose>
                                         <c:when test="${book.stockStatus == 'Out of stock'}">
-                                            <img src="images/icons/cancel.png" width="32" height="32" border="0"/>
+                                            <img src="/images/icons/cancel.png" width="32" height="32" border="0"/>
                                         </c:when>
                                         <c:otherwise>
-                                            <a href="javascript:addItemToCart(${book.isbn})"><img src="images/icons/cart_add.png" width="32" height="32" border="0"/></a>
+                                            <a href="javascript:addItemToCart(${book.isbn})"><img src="/images/icons/cart_add.png" width="32" height="32" border="0"/></a>
                                         </c:otherwise>
                                     </c:choose>
                                 </display:column>
@@ -81,5 +81,5 @@
     <div style="clear: both;">&nbsp;</div>
 </div>
 <!-- end #content -->
-<jsp:include page="right-sidebar.jsp" flush="true"/>
-<jsp:include page="footer.jsp" flush="true"/>
+<jsp:include page="../right-sidebar.jsp" flush="true"/>
+<jsp:include page="../footer.jsp" flush="true"/>

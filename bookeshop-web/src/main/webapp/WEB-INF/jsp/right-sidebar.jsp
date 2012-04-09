@@ -32,12 +32,12 @@
             <c:choose>
                 <c:when test="${loggedCustomer == null || loggedCustomer.id == 0}">
                     <h2>Client account</h2>
-                    <s:form action="login" onsubmit="return check_empty_credentials()">
+                    <s:form action="/customer/login.do" onsubmit="return check_empty_credentials()">
                         <s:textfield name="loginEmail" label="Email" id="email" size="13"/>
                         <s:password name="loginPassword" label="Password" id="password" size="13"/>
                         <s:submit value="Sign In" cssClass="buttonStyle"/>
                     </s:form>
-                    New customer? <a href="create.do">Start here</a></p>
+                    New customer? <a href="/customer/create.do">Start here</a></p>
                 </c:when>
                 <c:otherwise>
                     <h2>Client details</h2>
@@ -45,7 +45,7 @@
                     First name: <c:out value="${loggedCustomer.firstName}"/><br/>
                     Last name: <c:out value="${loggedCustomer.lastName}"/><br/>
                     Email: <c:out value="${loggedCustomer.email}"/><br/>
-                    <p><a href="update.do">My account</a> | <a href="orders.do">My orders</a> |<a href="logout.do">Sign out</a></p>
+                    <p><a href="/customer/update.do">My account</a> | <a href="/customer/orders.do">My orders</a> |<a href="/customer/logout.do">Sign out</a></p>
                 </c:otherwise>
             </c:choose>
         </li>
@@ -59,7 +59,7 @@
                     </c:when>
                     <c:otherwise>
                         <li>Items number = ${theCart.count}</li>
-                        <a href="cartDetails.do">cart details</a>
+                        <a href="/cart/cartDetails.do">cart details</a>
                     </c:otherwise>
                 </c:choose>
                 </div>
@@ -67,7 +67,7 @@
         </li>
         <li>
             <h2>Quick search</h2>
-            <s:form action="lookup" onsubmit="return check_empty_keyword()">
+            <s:form action="/book/lookup.do" onsubmit="return check_empty_keyword()">
                 <s:textfield id="keyword" name="keyword" label="Title/Author" size="12"/>
                 <s:submit value="Go!" cssClass="buttonStyle"/>
             </s:form>
