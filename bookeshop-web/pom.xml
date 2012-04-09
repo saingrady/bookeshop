@@ -232,6 +232,15 @@
                     <warName>bookeshop</warName>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tomcat-maven-plugin</artifactId>
+                <version>1.1</version>
+                <configuration>
+                    <warFile>target/bookeshop.war</warFile>
+                    <path>/</path>
+                </configuration>
+            </plugin>
         </plugins>
 
     </build>
