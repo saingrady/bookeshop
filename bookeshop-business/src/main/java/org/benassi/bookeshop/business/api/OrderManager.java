@@ -24,6 +24,7 @@
 
 package org.benassi.bookeshop.business.api;
 
+import org.benassi.bookeshop.business.exception.OutOfStockException;
 import org.benassi.bookeshop.data.model.Customer;
 import org.benassi.bookeshop.data.model.Order;
 
@@ -55,7 +56,8 @@ public interface OrderManager {
      * @param customer the customer for which the order will be created
      * @param items the shopping cart items
      * @return the created order
+     * @throws {@link org.benassi.bookeshop.business.exception.OutOfStockException} thrown if no stock is available for one of the items
      */
-    public Order createOrder(final Customer customer, final Map<String, Integer> items);
+    public Order createOrder(final Customer customer, final Map<String, Integer> items) throws OutOfStockException;
 
 }

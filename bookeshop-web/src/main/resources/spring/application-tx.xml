@@ -44,15 +44,13 @@
 
     <tx:advice id="bookTxAdvice">
         <tx:attributes>
-            <tx:method name="checkoutBook" isolation="REPEATABLE_READ" propagation="REQUIRED" timeout="10000"/>
             <tx:method name="*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true" timeout="10000"/>
         </tx:attributes>
     </tx:advice>
 
     <tx:advice id="categoryTxAdvice">
         <tx:attributes>
-            <tx:method name="getCategories" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"
-                       timeout="10000"/>
+            <tx:method name="getCategories" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true" timeout="10000"/>
         </tx:attributes>
     </tx:advice>
 
@@ -65,13 +63,18 @@
         </tx:attributes>
     </tx:advice>
 
+    <tx:advice id="orderTxAdvice">
+        <tx:attributes>
+            <tx:method name="createOrder" isolation="REPEATABLE_READ" propagation="REQUIRED" timeout="10000" rollback-for="org.benassi.bookeshop.business.exception.OutOfStockException"/>
+            <tx:method name="*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true" timeout="10000"/>
+        </tx:attributes>
+    </tx:advice>
+
     <aop:config>
-        <aop:advisor pointcut="execution(public * org.benassi.bookeshop.business.impl.BookManagerImpl.*(..))"
-                     advice-ref="bookTxAdvice"/>
-        <aop:advisor pointcut="execution(public * org.benassi.bookeshop.business.impl.CustomerManagerImpl.*(..))"
-                     advice-ref="customerTxAdvice"/>
-        <aop:advisor pointcut="execution(public * org.benassi.bookeshop.business.impl.CategoryManagerImpl.getCategories())"
-                     advice-ref="categoryTxAdvice"/>
+        <aop:advisor pointcut="execution(public * org.benassi.bookeshop.business.impl.BookManagerImpl.*(..))" advice-ref="bookTxAdvice"/>
+        <aop:advisor pointcut="execution(public * org.benassi.bookeshop.business.impl.CustomerManagerImpl.*(..))" advice-ref="customerTxAdvice"/>
+        <aop:advisor pointcut="execution(public * org.benassi.bookeshop.business.impl.CategoryManagerImpl.getCategories())" advice-ref="categoryTxAdvice"/>
+        <aop:advisor pointcut="execution(public * org.benassi.bookeshop.business.impl.OrderManagerImpl.*(..))" advice-ref="orderTxAdvice"/>
     </aop:config>
 
 </beans>

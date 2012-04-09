@@ -77,23 +77,35 @@ public class CheckoutAction implements SessionAware{
         items = new HashMap<Book,Integer>();
         total = 0;
         try {
+
+            //create order (transactional)
+            order = orderManager.createOrder(loggedCustomer,theCart.getItems());
+            order.setFormattedDate(orderUtil.formatDate(order.getDate()));
+            order.setFormattedTotal(orderUtil.formatTotal(order.getTotal()));
+
+            //prepare books for confirmation page
             for (String bookId : theCart.getItems().keySet()) {
                 Book book = bookManager.getBookByIsbn(bookId);
                 book.setStockStatus(bookUtil.getStockStatus(book.getStock()));
                 book.setFormattedPublishDate(bookUtil.formatPublishDate(book.getPublishDate()));
                 Integer quantity = theCart.getItems().get(bookId);
-                bookManager.checkoutBook(book.getIsbn(),quantity);
                 total += book.getDiscountPrice() * quantity;
                 items.put(book, quantity);
             }
-            order = orderManager.createOrder(loggedCustomer,theCart.getItems());
-            order.setFormattedDate(orderUtil.formatDate(order.getDate()));
-            order.setFormattedTotal(orderUtil.formatTotal(order.getTotal()));
+
+            //clear the cart
             theCart.clearCart();
+
             return ActionSupport.SUCCESS;
 
         } catch (OutOfStockException oose) {
-            error = messageProvider.getMessage("web.error.stock.insufficient", new Object[]{oose.getRequestedQuantity(),oose.getBookISBN(),oose.getCurrentStock()}, null, null);
+            int requestedQuantity = oose.getRequestedQuantity();
+            int currentStock = oose.getCurrentStock();
+            String title = bookManager.getBookByIsbn(oose.getBookISBN()).getTitle();
+            if(currentStock > 0)
+                error = messageProvider.getMessage("web.error.stock.insufficient", new Object[]{requestedQuantity,title, currentStock}, null, null);
+            else
+                error = messageProvider.getMessage("web.error.stock.outOfStockItem", new Object[]{title}, null, null);
             return ActionSupport.ERROR;
         }
     }

@@ -27,6 +27,7 @@ package org.benassi.bookeshop.business.impl;
 
 import org.benassi.bookeshop.business.api.BookManager;
 import org.benassi.bookeshop.business.api.OrderManager;
+import org.benassi.bookeshop.business.exception.OutOfStockException;
 import org.benassi.bookeshop.data.access.api.OrderDAO;
 import org.benassi.bookeshop.data.access.api.OrderItemDAO;
 import org.benassi.bookeshop.data.access.api.OrderStatusDAO;
@@ -62,7 +63,7 @@ public class OrderManagerImpl implements OrderManager {
     }
 
     /** {@inheritDoc} */
-    public Order createOrder(final Customer customer,final Map<String,Integer> items) {
+    public Order createOrder(final Customer customer,final Map<String,Integer> items) throws OutOfStockException {
 
         Order order = new Order();
         order.setCustomerId(customer.getId());
@@ -75,9 +76,10 @@ public class OrderManagerImpl implements OrderManager {
 
         for (String bookId : items.keySet()) {
             Book book = bookManager.getBookByIsbn(bookId);
+            bookManager.checkoutBook(bookId,items.get(bookId));
             OrderItem orderItem = new OrderItem();
             orderItem.setOrderId(order.getOrderId());
-            orderItem.setBookId(book.getIsbn());
+            orderItem.setBookId(bookId);
             orderItem.setQuantity(items.get(bookId));
             orderItem.setPurchasePrice(book.getDiscountPrice());
             order.getItems().add(orderItem);
