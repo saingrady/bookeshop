@@ -38,7 +38,7 @@
                         <c:when test="${not empty foundItems}">
                             <display:table name="foundItems" uid="book" class="dttable">
                                 <display:column title="Preview" >
-                                    <a href="/book/bookDetails.do?bookId=${book.isbn}&height=200&width=300" title="Book details" class="thickbox">
+                                    <a href="/book/details.do?bookId=${book.isbn}&height=200&width=300" title="Book details" class="thickbox">
                                         <img src="/images/books/${book.isbn}.gif" width="80" height="100" border="0"/>
                                     </a>
                                 </display:column>

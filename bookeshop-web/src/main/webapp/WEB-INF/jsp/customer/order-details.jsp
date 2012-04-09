@@ -35,7 +35,7 @@
                 <div align="center">
                     <br/>
                     <h1> Order N° ${order.orderId} details : (${order.formattedDate} | ${order.status.label})  </h1><br/>
-                    <display:table name="items" uid="item" sort="list" defaultorder="descending" requestURI="orderDetails.do" class="dttable">
+                    <display:table name="items" uid="item" sort="list" defaultorder="descending" requestURI="/customer/order-details.do" class="dttable">
                         <display:column property="bookId" title="ISBN"/>
                         <display:column property="quantity" title="Quantity" sortable="true"/>
                         <display:column property="purchasePrice" title="Price" sortable="true"/>

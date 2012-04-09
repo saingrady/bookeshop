@@ -45,7 +45,7 @@
                     First name: <c:out value="${loggedCustomer.firstName}"/><br/>
                     Last name: <c:out value="${loggedCustomer.lastName}"/><br/>
                     Email: <c:out value="${loggedCustomer.email}"/><br/>
-                    <p><a href="/customer/update.do">My account</a> | <a href="/customer/orders.do">My orders</a> |<a href="/customer/logout.do">Sign out</a></p>
+                    <p><a href="/customer/account.do">My account</a> | <a href="/customer/orders.do">My orders</a> |<a href="/customer/logout.do">Sign out</a></p>
                 </c:otherwise>
             </c:choose>
         </li>
@@ -59,7 +59,7 @@
                     </c:when>
                     <c:otherwise>
                         <li>Items number = ${theCart.count}</li>
-                        <a href="/cart/cartDetails.do">cart details</a>
+                        <a href="/cart/details.do">cart details</a>
                     </c:otherwise>
                 </c:choose>
                 </div>
@@ -67,7 +67,7 @@
         </li>
         <li>
             <h2>Quick search</h2>
-            <s:form action="/book/lookup.do" onsubmit="return check_empty_keyword()">
+            <s:form id="searchForm" action="/book/search.do" onsubmit="return check_empty_keyword()">
                 <s:textfield id="keyword" name="keyword" label="Title/Author" size="12"/>
                 <s:submit value="Go!" cssClass="buttonStyle"/>
             </s:form>

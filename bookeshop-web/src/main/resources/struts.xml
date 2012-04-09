@@ -40,7 +40,7 @@
             <result>/WEB-INF/jsp/book/catalogue.jsp</result>
         </action>
 
-        <action name="bookDetails" class="org.benassi.bookeshop.web.actions.book.BookDetailsAction">
+        <action name="details" class="org.benassi.bookeshop.web.actions.book.BookDetailsAction">
             <result type="stream">
                 <param name="contentType">text/html</param>
                 <param name="inputName">inputStream</param>
@@ -51,7 +51,7 @@
             <result>/WEB-INF/jsp/book/category.jsp</result>
         </action>
 
-        <action name="lookup" class="org.benassi.bookeshop.web.actions.book.SearchBookAction">
+        <action name="search" class="org.benassi.bookeshop.web.actions.book.SearchBookAction">
             <interceptor-ref name="defaultStack"/><!-- need to be added. See executeAndWaitStack in struts-default.xml -->
             <interceptor-ref name="execAndWait"/>
             <result name="wait">/WEB-INF/jsp/processing.jsp</result>
@@ -89,7 +89,7 @@
             </result>
         </action>
 
-        <action name="update" class="org.benassi.bookeshop.web.actions.customer.UpdateAction">
+        <action name="account" class="org.benassi.bookeshop.web.actions.customer.UpdateAction">
             <result>/WEB-INF/jsp/customer/update-account.jsp</result>
         </action>
 
@@ -126,7 +126,7 @@
             <result>/WEB-INF/jsp/customer/orders.jsp</result>
         </action>
 
-        <action name="orderDetails" class="org.benassi.bookeshop.web.actions.customer.OrderDetailsAction">
+        <action name="order-details" class="org.benassi.bookeshop.web.actions.customer.OrderDetailsAction">
             <result>/WEB-INF/jsp/customer/order-details.jsp</result>
         </action>
 
@@ -143,7 +143,7 @@
             <result name="error">/WEB-INF/jsp/error.jsp</result>
         </global-results>
 
-        <action name="cartDetails" class="org.benassi.bookeshop.web.actions.cart.CartDetailsAction">
+        <action name="details" class="org.benassi.bookeshop.web.actions.cart.CartDetailsAction">
             <result>/WEB-INF/jsp/cart/cart-details.jsp</result>
         </action>
 
@@ -155,14 +155,14 @@
             <result>/WEB-INF/jsp/customer/confirm-order.jsp</result>
         </action>
 
-        <action name="addItem" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="addItem">
+        <action name="add" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="addItem">
             <result type="redirectAction">
-                <param name="actionName">cartDetails</param>
+                <param name="actionName">details</param>
                 <param name="namespace">/cart</param>
             </result>
         </action>
 
-        <action name="addItemWithAjax" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="addItemWithAjax">
+        <action name="addAjax" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="addItemWithAjax">
             <result type="stream">
                 <param name="contentType">application/json</param>
                 <param name="inputName">inputStream</param>
@@ -173,14 +173,14 @@
             </result>
         </action>
 
-        <action name="removeItem" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="removeItem">
+        <action name="remove" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="removeItem">
             <result type="redirectAction">
-                <param name="actionName">cartDetails</param>
+                <param name="actionName">details</param>
                 <param name="namespace">/cart</param>
             </result>
         </action>
 
-        <action name="clearCart" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="clearCart">
+        <action name="clear" class="org.benassi.bookeshop.web.actions.cart.UpdateCartAction" method="clearCart">
             <result type="redirectAction">
                 <param name="actionName">catalogue</param>
                 <param name="namespace">/book</param>

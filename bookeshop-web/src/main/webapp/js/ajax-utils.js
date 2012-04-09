@@ -36,7 +36,7 @@ function addItemToCart(bookId) {
 	var xhr = getRequestObject();
 	xhr.onreadystatechange = function() { updateCartStatus(xhr); };
 	var data = "bookId=" + bookId;
-	var address = "/cart/addItemWithAjax.do?" + data;
+	var address = "/cart/addAjax.do?" + data;
 	xhr.open("GET", address, true);
 	xhr.send(null);
 }
@@ -46,11 +46,11 @@ function updateCartStatus(request) {
         (request.status == 200)) {
         var jsonResponse = eval( "(" + request.responseText + ")");
         if(jsonResponse.status == "ok"){
-            var cartStatus = "<li>Items number = " + jsonResponse.cartSize + "</li><a href='/cart/cartDetails.do\'>cart details</a>";
+            var cartStatus = "<li>Items number = " + jsonResponse.cartSize + "</li><a href='/cart/details.do\'>cart details</a>";
             document.getElementById("cartStatus").innerHTML = cartStatus;
             var message = "Book '" + jsonResponse.book + "' successfully added your cart.<br/>" +
                 "Your cart contains " + jsonResponse.cartSize + " item(s)<br/>" +
-                "<a href='/cart/cartDetails.do\'>cart details</a>";
+                "<a href='/cart/details.do\'>cart details</a>";
             zebra_styled_dialog("confirmation","Confirmation",message,true);
         }else
             zebra_styled_dialog("error","Error",jsonResponse.error,true);

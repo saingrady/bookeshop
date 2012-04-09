@@ -37,7 +37,7 @@
                     <h1>Discount books!</h1><br/>
                     <display:table name="books" uid="book" sort="list" defaultorder="descending" requestURI="/book/catalogue.do" class="dttable">
                         <display:column title="Preview" >
-                            <a href="/book/bookDetails.do?bookId=${book.isbn}&height=200&width=300" title="Book details" class="thickbox">
+                            <a href="/book/details.do?bookId=${book.isbn}&height=200&width=300" title="Book details" class="thickbox">
                                 <img src="/images/books/${book.isbn}.gif" width="80" height="100" border="0"/>
                             </a>
                         </display:column>

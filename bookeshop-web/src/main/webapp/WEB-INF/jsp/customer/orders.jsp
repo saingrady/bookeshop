@@ -37,9 +37,9 @@
                     <c:choose>
                     <c:when test="${not empty orders}">
                     <h1>My orders</h1><br/>
-                    <display:table name="orders" uid="order" sort="list" defaultorder="descending" requestURI="orders.do" class="dttable">
+                    <display:table name="orders" uid="order" sort="list" defaultorder="descending" requestURI="/customer/orders.do" class="dttable">
                         <display:column title="Order ID" >
-                            <a href="/customer/orderDetails.do?orderId=${order.orderId}">${order.orderId}</a>
+                            <a href="/customer/order-details.do?orderId=${order.orderId}">${order.orderId}</a>
                         </display:column>
                         <display:column property="formattedDate" title="Date" sortable="true"/>
                         <display:column title="Status" sortable="true">

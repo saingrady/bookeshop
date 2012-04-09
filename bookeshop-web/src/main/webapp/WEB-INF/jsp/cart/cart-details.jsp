@@ -53,7 +53,7 @@
                                 <c:forEach var="entry" items="${items}">
                                     <tr>
                                         <td>
-                                            <a href="/book/bookDetails.do?bookId=${entry.key.isbn}&height=200&width=300" title="Book details" class="thickbox">
+                                            <a href="/book/details.do?bookId=${entry.key.isbn}&height=200&width=300" title="Book details" class="thickbox">
                                                 <img src="/images/books/${entry.key.isbn}.gif" width="80" height="100" border="0"/>
                                             </a>
                                         </td>
@@ -67,7 +67,7 @@
                                         </c:if>
                                         </td>
                                         <td><c:out value="${entry.value}"/><br/><br/>
-                                        <a href="/cart/addItem.do?bookId=${entry.key.isbn}"/><img src="/images/icons/cart_add.png" width="32" height="32" border="0"/><a href="/cart/removeItem.do?bookId=${entry.key.isbn}"/><img src="/images/icons/cart_remove.png" width="32" height="32" border="0"/>
+                                        <a href="/cart/add.do?bookId=${entry.key.isbn}"/><img src="/images/icons/cart_add.png" width="32" height="32" border="0"/><a href="/cart/remove.do?bookId=${entry.key.isbn}"/><img src="/images/icons/cart_remove.png" width="32" height="32" border="0"/>
                                         </td>
 
                                     </tr>
@@ -80,7 +80,7 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <s:form action="/cart/clearCart.do">
+                                        <s:form action="/cart/clear.do">
                                             <s:submit value="clear cart" cssClass="buttonStyle"/>
                                         </s:form>
                                     </td>
