@@ -41,7 +41,7 @@ public class MailSenderMock implements MailSender {
 
     @Override
     public void send(SimpleMailMessage simpleMessage) throws MailException {
-        logger.warn("Using mock mail sender, message sent [" + simpleMessage + "]");
+        logger.error("Using mock mail sender, message sent [" + simpleMessage + "]");
     }
 
     @Override
