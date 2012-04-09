@@ -184,10 +184,6 @@
             <result>/WEB-INF/jsp/about.jsp</result>
         </action>
 
-        <action name="contact" class="org.benassi.bookeshop.web.actions.ContactAction">
-            <result>/WEB-INF/jsp/contact.jsp</result>
-        </action>
-
         <action name="download-catalogue" class="org.benassi.bookeshop.web.actions.DownloadCatalogueAction">
             <result name="success" type="stream">
                 <param name="contentDisposition">attachment;filename=bookeshop-catalogue.pdf</param>
